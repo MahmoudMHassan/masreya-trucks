@@ -1,4 +1,4 @@
 class Bookmark < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :ad
+  belongs_to :user, dependent: :destroy
+  belongs_to :ad, dependent: :destroy
 end
