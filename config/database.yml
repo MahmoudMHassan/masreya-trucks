@@ -9,6 +9,7 @@ default: &default
   username: root
   password: aa2991994
   database: masreya
+  encoding: utf8
 
 development:
   <<: *default
