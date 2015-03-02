@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'vehicle/create'
+
+  get 'vehicle/destroy'
+
+  get 'vehicle/index'
+
+  get 'vehicle/edit'
+
+  get 'vehicle/new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
