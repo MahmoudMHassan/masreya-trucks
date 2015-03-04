@@ -7,8 +7,9 @@
 default: &default
   adapter: mysql
   username: root
-  password: aa2991994
+  password: 0115639400olalashine
   database: masreya
+  encoding: utf8
 
 development:
   <<: *default

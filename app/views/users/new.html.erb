@@ -1,0 +1,38 @@
+<div style = "text-align:right">
+<h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>
+<%= form_for :user do |f|%>
+<h2> Number of registered members is <%= User.all.count(:id)%> </h2>
+  <p>
+  <p>البريد الالكتروني </p>
+    <%= f.email_field :email%>
+  </p>
+ 
+  <p>
+    <p>كلمة السر</p>
+    <%= f.password_field :password %>
+  </p>
+  
+ <p>
+    <p>الاسم</p>
+    <%= f.text_field :fname %>
+ </p> 
+ <p>
+    <p>اسم العائلة</p>
+    <%= f.text_field :lname%>
+  </p>
+ <p>
+     <p>البلد</p>
+    <%= f.date_field :country %>
+  </p>
+   <p>
+    <p>الهاتف</p>
+    <%= f.text_field :phone %>
+  </p>
+  
+  <p>
+  	
+    <%= f.submit "حفظ"%>
+  </p>
+<% end %>
+</div>
