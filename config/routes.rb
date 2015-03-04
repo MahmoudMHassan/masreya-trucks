@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'users/new' 
   post 'users/new'=> 'users#create'
   get 'users/index'
@@ -9,6 +10,17 @@ Rails.application.routes.draw do
 
   post 'users/destroy/:id' => 'users#destroy'
   post 'signout' => 'login#logout'
+
+  get 'vehicle/create'
+
+  get 'vehicle/destroy'
+
+  get 'vehicle/index'
+
+  get 'vehicle/edit'
+
+  get 'vehicle/new'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
