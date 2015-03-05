@@ -7,7 +7,11 @@
 default: &default
   adapter: mysql
   username: root
+<<<<<<< HEAD
   password: Ahmed53
+=======
+  password: 0115639400olalashine
+>>>>>>> b77ea4b16a634b784b8e584d9621f09ae297bd09
   database: masreya
   encoding: utf8
 
