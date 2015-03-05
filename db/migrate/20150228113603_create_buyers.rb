@@ -1,6 +1,6 @@
 class CreateBuyers < ActiveRecord::Migration
   def change
-    create_table :buyers do |t|
+    create_table(:buyers, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8') do |t|
       t.references :user, index: true
 
       t.timestamps null: false

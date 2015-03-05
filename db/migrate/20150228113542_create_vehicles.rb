@@ -1,6 +1,6 @@
 class CreateVehicles < ActiveRecord::Migration
   def change
-    create_table :vehicles do |t|
+    create_table(:vehicles, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8') do |t|
       t.string :make
       t.string :model
       t.date :manyear

@@ -1,6 +1,6 @@
 class CreateHeavytrucks < ActiveRecord::Migration
   def change
-    create_table :heavytrucks do |t|
+    create_table(:heavytrucks, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8')  do |t|
       t.references :vehicle, index: true
       t.integer :capactiy
       t.integer :mileage

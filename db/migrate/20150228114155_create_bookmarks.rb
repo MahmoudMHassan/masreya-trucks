@@ -1,6 +1,6 @@
 class CreateBookmarks < ActiveRecord::Migration
   def change
-    create_table :bookmarks do |t|
+    create_table(:bookmarks, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8')  do |t|
       t.references :user, index: true
       t.references :ad, index: true
 
