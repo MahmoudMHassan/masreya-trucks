@@ -1,22 +1,16 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<b>الاسم: </b><%= @user.fname%><br>
+<br>
+<b> اسم العائلة: </b><%= @user.lname%>
+<br><br>
+<b>البريد الالكتروني: </b><%= @user.email%>
+<br><br>
+<b>البلد: </b><%= @user.country%>
+<br><br>
+<b>الهاتف: </b><%= @user.phone%>
+<br><br>
+<br>
 
-<div id="page_wrapper">
-	<b>Name: </b><%= @user.fname%> <%= @user.lname%>
-	<br>
-	<br>
-	<b>Email: </b><%= @user.email%>
-	<br>
-	<br>
-	<b>Country: </b><%= @user.country%>
-	<br>
-	<br>
-	<b>Phone: </b><%= @user.phone%>
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<div style="color: red">
-		<%= link_to "Delete Account", "destroy/#{@user.id}", method: :post ,data: {confirm: 'Are you sure?'}%>
-	</div></h3>
+<div style="color: red">
+<%= link_to "إلغاء الحساب", "destroy/#{@user.id}",
+:style=>'color: red', method: :post ,data: {confirm: 'Are you sure?'}%>
+</div></h3>

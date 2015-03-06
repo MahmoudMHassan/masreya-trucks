@@ -1,25 +1,27 @@
 Rails.application.routes.draw do
+  root :to => 'vehicles#index'
 
   get 'users/new' 
   post 'users/new'=> 'users#create'
   get 'users/index'
-
+ get 'users/signin'
   get 'users/show'
 
   get 'users/:id' => 'users#show'
 
   post 'users/destroy/:id' => 'users#destroy'
-  post 'signout' => 'login#logout'
+  post 'users/logout' => 'users#logout'
+  post 'users/signin' => 'users#login'
 
-  get 'vehicle/create'
+  get 'vehicles/create'
 
-  get 'vehicle/destroy'
+  get 'vehicles/destroy'
 
-  get 'vehicle/index'
+  get 'vehicles/index'
 
-  get 'vehicle/edit'
+  get 'vehicles/edit'
 
-  get 'vehicle/new'
+  get 'vehicles/new'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

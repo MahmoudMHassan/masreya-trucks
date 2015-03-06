@@ -1,4 +1,4 @@
-class VehicleController < ApplicationController
+class VehiclesController < ApplicationController
   def create
   end
 

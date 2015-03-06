@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl">
 <head>
   <title>MasreyaTrucks</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%if self.current_user==nil %>
+<%= link_to "فتح حساب", "/users/new",:style=>'color: black'%>
+<%= link_to "تسجيل الدخول", "/users/signin",:style=>'color: black'%>
+<%else%>
+<%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
+<%end%>
 <%= yield %>
 
 </body>

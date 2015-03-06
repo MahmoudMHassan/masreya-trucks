@@ -1,4 +1,4 @@
-<div style = "text-align:right">
+
 <h1>Users#new</h1>
 <p>Find me in app/views/users/new.html.erb</p>
 <%= form_for :user do |f|%>
@@ -23,7 +23,7 @@
   </p>
  <p>
      <p>البلد</p>
-    <%= f.date_field :country %>
+    <%= f.text_field :country %>
   </p>
    <p>
     <p>الهاتف</p>
@@ -35,4 +35,4 @@
     <%= f.submit "حفظ"%>
   </p>
 <% end %>
-</div>
+
