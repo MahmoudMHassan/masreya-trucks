@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'vehicles/show'
+
+  get 'vehicles/delete'
+
+  get 'vehicles/update'
+
   root :to => 'vehicles#index'
 
   get 'users/new' 

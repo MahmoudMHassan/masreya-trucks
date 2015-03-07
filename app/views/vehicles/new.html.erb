@@ -1,2 +1,14 @@
-<h1>Vehicle#new</h1>
-<p>Find me in app/views/vehicle/new.html.erb</p>
+<h1>Vehicles#new</h1>
+<p>Find me in app/views/vehicles/new.html.erb</p>
+<%= form_for :vehicle do |f| %>
+<%= f.label :Model%>
+<%=f.select : %>
+<%= f.label :Make%>
+<%=f.select :%>
+<%= f.label :Country%>
+<%=f.select :%>
+<%= f.label :Price%>
+<%=f.select :%>
+<%= f.label :%>
+<%=f.select :%>
+

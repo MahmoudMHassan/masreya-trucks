@@ -1,18 +1,27 @@
 class VehiclesController < ApplicationController
+  def index
+    @vehicles=Vehicle.all
+  end
+
+  def new
+    @vehicle=Vehicle.new
+  end
+
   def create
+  end
+
+  def show
+  end
+
+  def delete
   end
 
   def destroy
   end
 
-  def index
-    @vehicles = Vehicle.all
-  end
-
   def edit
   end
 
-  def new
-    @vehicle = Vehicle.new
+  def update
   end
 end
