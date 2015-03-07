@@ -23,33 +23,51 @@ class UsersController < ApplicationController
     end
   end
 
-  def create 
+  def create
+
+    @email = params[:user][:email]
+    @password = params[:user][:password]
+    @phone = params[:user][:phone]
+    @fname = params[:user][:fname]
+    @lname = params[:user][:lname]
+    @country = params[:user][:country]
+    @blank = false
+    @usedemail = false
+    if @email.blank? || @password.blank? || @phone.blank? || @fname.blank? || @lname.blank? || @country.blank?
+    @blank = true
+    render 'new'
+    return
+    end
+
   	  @user = User.new(params.require(:user).permit(:email, :password , :fname , :lname, :country, :phone ,:validated))
     if  @user.save
       log_in(@user)
       redirect_to "/users/#{@user.id}"
     else
-    render 'create'
+    render 'new'
 
-  end 
-  end 
+  end
+  end
   def logout
     sign_out
   end
   def signin
-    
+
   end
   def login
+    @email = params[:login][:email]
+    @password = params[:login][:password]
     @blank = false
     @wrong = false
-    user = User.where(:email => params[:login][:email].downcase).first
-    
-    if params[:login][:email].blank? || params[:login][:password].blank?
+
+    user = User.where(:email => @email.downcase).first
+    if @email.blank? || @password.blank?
+
       @blank = true
       render 'signin'
     return
     end
-if user!= nil && User.login?(params[:login][:email].downcase,params[:login][:password])
+if user!= nil && User.login?(@email.downcase,@password)
       log_in user
       redirect_to "/users/#{user.id}"
       return
@@ -59,7 +77,7 @@ if user!= nil && User.login?(params[:login][:email].downcase,params[:login][:pas
       render 'signin'
       return
     end
-    
+
   end
 
 end

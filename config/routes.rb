@@ -31,9 +31,11 @@ Rails.application.routes.draw do
 
   get 'semitrailers/update'
 
+  post 'semitrailers/new' => 'semitrailers#create'
+
   root :to => 'vehicles#index'
 
-  get 'users/new' 
+  get 'users/new'
   post 'users/new'=> 'users#create'
   get 'users/index'
  get 'users/signin'
