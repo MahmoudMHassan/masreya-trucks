@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
-  get 'vehicles/show'
+  get 'semitrailers/index'
 
-  get 'vehicles/delete'
+  get 'semitrailers/new'
 
-  get 'vehicles/update'
+  get 'semitrailers/create'
+
+  get 'semitrailers/show'
+
+  get 'semitrailers/delete'
+
+  get 'semitrailers/destroy'
+
+  get 'semitrailers/edit'
+
+  get 'semitrailers/update'
 
   root :to => 'vehicles#index'
 
@@ -18,16 +28,6 @@ Rails.application.routes.draw do
   post 'users/destroy/:id' => 'users#destroy'
   post 'users/logout' => 'users#logout'
   post 'users/signin' => 'users#login'
-
-  get 'vehicles/create'
-
-  get 'vehicles/destroy'
-
-  get 'vehicles/index'
-
-  get 'vehicles/edit'
-
-  get 'vehicles/new'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

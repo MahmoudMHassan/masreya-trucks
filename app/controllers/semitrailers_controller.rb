@@ -1,10 +1,8 @@
-class VehiclesController < ApplicationController
+class SemitrailersController < ApplicationController
   def index
-    @vehicles=Vehicle.all
   end
 
   def new
-    @vehicle=Vehicle.new
   end
 
   def create
