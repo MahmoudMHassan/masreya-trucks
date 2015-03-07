@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  get 'heavytrucks/new'
+
+  get 'heavytrucks/create'
+
+  get 'heavytrucks/edit'
+
+  get 'heavytrucks/update'
+
+  get 'heavytrucks/delete'
+
+  get 'heavytrucks/destroy'
+
+  get 'heavytrucks/show'
+
+  get 'heavytrucks/index'
+
   get 'semitrailers/index'
 
   get 'semitrailers/new'
