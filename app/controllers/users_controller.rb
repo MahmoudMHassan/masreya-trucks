@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def create
+
     @email = params[:user][:email]
     @password = params[:user][:password]
     @phone = params[:user][:phone]
@@ -37,6 +38,7 @@ class UsersController < ApplicationController
     render 'new'
     return
     end
+
   	  @user = User.new(params.require(:user).permit(:email, :password , :fname , :lname, :country, :phone ,:validated))
     if  @user.save
       log_in(@user)
@@ -44,22 +46,23 @@ class UsersController < ApplicationController
     else
     render 'new'
 
-  end 
-  end 
+  end
+  end
   def logout
     sign_out
   end
   def signin
-    
+
   end
   def login
     @email = params[:login][:email]
     @password = params[:login][:password]
     @blank = false
     @wrong = false
+
     user = User.where(:email => @email.downcase).first
-    
     if @email.blank? || @password.blank?
+
       @blank = true
       render 'signin'
     return
@@ -74,7 +77,7 @@ if user!= nil && User.login?(@email.downcase,@password)
       render 'signin'
       return
     end
-    
+
   end
 
 end
