@@ -5,4 +5,5 @@ class Vehicle < ActiveRecord::Base
   has_one :van
   has_one :seller, through: :make
   has_many :ads, through: :make
+  accepts_nested_attributes_for :heavytruck, :capacity
 end

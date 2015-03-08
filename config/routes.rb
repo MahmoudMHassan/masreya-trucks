@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'heavytrucks/new'
+  
+  post 'heavytrucks/new' => 'heavytrucks#create'
 
   get 'heavytrucks/create'
 
