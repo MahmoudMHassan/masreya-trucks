@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20150228114249) do
   add_index "buyers", ["user_id"], name: "index_buyers_on_user_id", using: :btree
 
   create_table "heavytrucks", primary_key: "vehicle_id", force: :cascade do |t|
-    t.integer  "capactiy",   limit: 4
+    t.integer  "capacity",   limit: 4
     t.integer  "mileage",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20150228114249) do
     t.datetime "updated_at",                       null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_12daf27c1e", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_b49e65e0e8", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_f29c67fbd2", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_521e65b0e7", using: :btree
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20150228114249) do
   add_index "sellers", ["user_id"], name: "index_sellers_on_user_id", using: :btree
 
   create_table "semitrailers", primary_key: "vehicle_id", force: :cascade do |t|
-    t.integer  "capactiy",   limit: 4
+    t.integer  "capacity",   limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20150228114249) do
   end
 
   create_table "vans", primary_key: "vehicle_id", force: :cascade do |t|
-    t.integer  "capactiy",   limit: 4
+    t.integer  "capacity",   limit: 4
     t.integer  "mileage",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false

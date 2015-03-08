@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+   resources :vehicles
+  get 'vehicles/new'=> 'vehicles#create'
+
+  get 'vehicles/edit'
+
+  get 'vehicles/create'
+  resources :heavytrucks
   get 'heavytrucks/new'
-  
+
   post 'heavytrucks/new' => 'heavytrucks#create'
 
   get 'heavytrucks/create'
@@ -40,7 +47,7 @@ Rails.application.routes.draw do
   get 'users/new'
   post 'users/new'=> 'users#create'
   get 'users/index'
- get 'users/signin'
+  get 'users/signin'
   get 'users/show'
 
   get 'users/:id' => 'users#show'

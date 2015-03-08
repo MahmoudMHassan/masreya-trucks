@@ -2,7 +2,7 @@ class CreateVans < ActiveRecord::Migration
   def change
     create_table(:vans , :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8') do |t|
       t.references :vehicle, index: true
-      t.integer :capactiy
+      t.integer :capacity
       t.integer :mileage
 
       t.timestamps null: false
