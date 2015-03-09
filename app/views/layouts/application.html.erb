@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="user-widget">
+  <% if current_user %>
+    Welcome <strong><%= current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div> 
+<%= link_to 'Login with Facebook', '/auth/facebook/' %>
 <%if self.current_user==nil %>
 <%= link_to "فتح حساب", "/users/new",:style=>'color: black'%>
 <%= link_to "تسجيل الدخول", "/users/signin",:style=>'color: black'%>

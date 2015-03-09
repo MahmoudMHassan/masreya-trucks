@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
    resources :vehicles
   get 'vehicles/new'=> 'vehicles#create'
 
@@ -24,6 +25,10 @@ Rails.application.routes.draw do
 
   get 'heavytrucks/index'
 
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   get 'semitrailers/index'
 
   get 'semitrailers/new'
@@ -42,7 +47,7 @@ Rails.application.routes.draw do
 
   post 'semitrailers/new' => 'semitrailers#create'
 
-  root :to => 'vehicles#index'
+  root :to => 'users#index'
 
   get 'users/new'
   post 'users/new'=> 'users#create'
@@ -55,6 +60,13 @@ Rails.application.routes.draw do
   post 'users/destroy/:id' => 'users#destroy'
   post 'users/logout' => 'users#logout'
   post 'users/signin' => 'users#login'
+
+match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+match 'auth/failure', to: redirect('/'), via: [:get, :post]
+match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+
+  
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -110,5 +122,5 @@ Rails.application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end
-end
+    end
+
