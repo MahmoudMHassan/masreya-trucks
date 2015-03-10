@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'ads/new'
+
    resources :vehicles
+   resources :vans
+   resources :semitrailertrucks
   get 'vehicles/new'=> 'vehicles#create'
 
   get 'vehicles/edit'
@@ -10,6 +14,8 @@ Rails.application.routes.draw do
   get 'heavytrucks/new'
 
   post 'heavytrucks/new' => 'heavytrucks#create'
+  post 'vans/new' => 'vans#create'
+  post 'semitrailertrucks/new' => 'semitrailertrucks#create'
 
   get 'heavytrucks/create'
 

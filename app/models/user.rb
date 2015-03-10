@@ -15,4 +15,13 @@ class User < ActiveRecord::Base
     user.save
   end
 end
+ def self.login?(email, password)
+    member = User.where(email: email).take
+    if member != nil
+      if member.password == password
+      return true
+      end
+    end
+    return false
+  end
 end 
