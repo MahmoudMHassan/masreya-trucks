@@ -6,6 +6,11 @@
 <%else%>
 <%= link_to "إزالة الإعلان من الجراج", "/ads/unbookmark/#{@ad.id}", method: :post%>
 <%end%>
+<%if @seller.id == self.current_user.id%>
+<%= link_to "إزالة الإعلان", "/ads/delete/#{@ad.id}", method: :post%>
+<%= link_to "تعديل الإعلان", "/ads/edit/#{@ad.id}"%>
+
+<%end%>
 <%end%>
 </div>
 <b>Title</b>
@@ -23,6 +28,18 @@
 <b>Model</b>
 <br>
 <%=@vehicle.model%><br>
+<b>Vehicle Info</b><br>
+<%if @make.new%>
+|New
+<%end%>
+<%if @make.imported%>
+| Imported
+<%end%>
+<%if @make.purchase%>
+| Purchase
+<%end%>
+<br>
+
 <b>Manyear</b>
 <br>
 <%=@vehicle.manyear%><br>

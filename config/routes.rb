@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get 'ads/:id' => 'ads#show'
   post 'ads/bookmark/:id' => 'ads#bookmark'
   post 'ads/unbookmark/:id' => 'ads#unbookmark'
+  post 'ads/delete/:id' => 'ads#delete'
+  get 'ads/edit/:id' => 'ads#edit'
+  post 'ads/edit/:id' => 'ads#update'
   get 'users/bookmark/:id' => 'users#bookmark'
 
    resources :vehicles

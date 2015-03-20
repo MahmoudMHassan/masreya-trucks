@@ -40,11 +40,12 @@ Imported
 <p>Manufacture year</p>
 <%=number_field_tag :manyear%>
 <br>
+<%= label_tag :Country%>
+<br>
 <%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
                  ['madagascar', 'madagascar']], 'Egypt')) %>
 <br>
-<%= label_tag :Country%>
-<br>
+
 
 <p>Number of Axels</p>
 <%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]], 1)) %>
