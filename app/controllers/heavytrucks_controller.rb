@@ -5,7 +5,7 @@ class HeavytrucksController < ApplicationController
 	  return
 	end
     @vehicle = Vehicle.new
-	
+
   end
   def create
    @vehicle = Vehicle.new(make: params[:make], model: params[:model], manyear: params[:manyear], country: params[:country], axles: params[:axles], gearbox: params[:gearbox], colour: params[:colour], price: params[:price])
@@ -35,6 +35,7 @@ redirect_to "/ads/#{@ad.id}"
   end
 
   def index
+    @vehicles=Vehicle.all
     @heavytrucks=Heavytruck.all
   end
 end
