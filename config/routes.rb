@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+  
+    resources :ads, only: [:show]
+    root to: "ads#show"
+  end
+=======
 
+>>>>>>> 98e8e4ef6bf71632d60265d5f06fa04d7a6e4ace
 
   get 'semitrailertrucks/new'
 
@@ -17,6 +24,10 @@ Rails.application.routes.draw do
 
   get 'semitrailertrucks/destroy'
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 98e8e4ef6bf71632d60265d5f06fa04d7a6e4ace
   get 'ads/home' => 'ads#home'
 
   get 'ads/new'
