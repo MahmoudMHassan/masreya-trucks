@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'vehicles/edit'
 
   get 'vehicles/create'
-  resources :heavytrucks
+ # resources :heavytrucks
   get 'heavytrucks/new'
 
   post 'heavytrucks/new' => 'heavytrucks#create'
@@ -71,7 +71,7 @@ match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]
 match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
-  
+
 
 
 
