@@ -10,6 +10,10 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+  def bookmark
+    @bookmarks = Bookmark.where(user_id: self.current_user.id).first(10)
+    
+  end
 
   def destroy
     User.find_by_id(self.current_user.id).delete if User.find_by_id(self.current_user.id)!=nil

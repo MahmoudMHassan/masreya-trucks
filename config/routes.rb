@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-
+  get 'ads/home' => 'ads#home'
   get 'ads/new'
+  get 'ads/:id' => 'ads#show'
+  post 'ads/bookmark/:id' => 'ads#bookmark'
+  post 'ads/unbookmark/:id' => 'ads#unbookmark'
+  get 'users/bookmark/:id' => 'users#bookmark'
 
    resources :vehicles
    resources :vans
@@ -53,7 +57,7 @@ Rails.application.routes.draw do
 
   post 'semitrailers/new' => 'semitrailers#create'
 
-  root :to => 'users#index'
+  root :to => 'ads#home'
 
   get 'users/new'
   post 'users/new'=> 'users#create'

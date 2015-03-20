@@ -6,7 +6,26 @@
 </div>
 <%= form_tag do %>
 
-
+<%=label_tag :Title%>
+<br>
+ <%= text_field_tag :title %>
+<br>
+<%=label_tag :Description%>
+<br>
+ <%= text_field_tag :description %>
+<br>
+<%= hidden_field_tag 'new', 0 %>
+New
+<input id="new" name="new" type="checkbox" value="1" />
+<br>
+<%= hidden_field_tag 'purchase', 0 %>
+Purchase
+<input id="purchase" name="purchase" type="checkbox" value="1" />
+<br>
+<%= hidden_field_tag 'imported', 0 %>
+Imported
+<input id="imported" name="imported" type="checkbox" value="1" />
+<br>
 <%=label_tag :Make%>
 <br>
  <%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],

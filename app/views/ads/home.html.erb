@@ -1,0 +1,5 @@
+<br>
+<%@ads.each do |a|%>
+<%=link_to a.title, "/ads/#{a.id}"%><br>
+<%=a.description%><br>
+<%end%>
