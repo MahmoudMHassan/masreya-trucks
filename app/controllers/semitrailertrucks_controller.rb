@@ -35,13 +35,21 @@ class SemitrailertrucksController < ApplicationController
   end
 
   def index
-    @semitrailertruck= Semitrailertruck.all
+    @vehicles=Vehicle.all
+    @semitrailertrucks= Semitrailertruck.all
   end
 
   def delete
     Semitrailertruck.destroy(params[:id])
     Mileage.where(pid: params[:id]).destroy_all
     flash.keep
+    redirect_to root_path
+  end
+  
+  def destroy
+    @semitrailertrucks = Semitrailertruck.find(params[:id])
+    # @embed = Embed.find(params[:postid])
+    @semitrailertrucks.destroy
     redirect_to root_path
   end
   
