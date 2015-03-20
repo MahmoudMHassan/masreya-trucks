@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "title",       limit: 255
-    t.text     "descrpition", limit: 65535
+    t.text     "description", limit: 65535
     t.boolean  "validated",   limit: 1
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 20150307132021) do
     t.datetime "updated_at",                       null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_744aca08c5", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_a49f0071a8", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_c0efab3950", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_9d82838b59", using: :btree
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false

@@ -1,0 +1,6 @@
+<br>
+<%@bookmarks.each do |b|%><br>
+<%=link_to Ad.find(b.ad_id).title, "/ads/#{b.ad_id}"%><br>
+<%=Ad.find(b.ad_id).description%><br>
+
+<%end%>
