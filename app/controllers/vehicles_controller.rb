@@ -14,4 +14,4 @@ class VehiclesController < ApplicationController
     #     @vehicle.heavytruck = heavytruck_attributes.map{|h| Heavytruck.new(h)}
     @vehicle.save
   end
-end
+end 
