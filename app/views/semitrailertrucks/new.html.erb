@@ -1,8 +1,8 @@
 <div style="text-align: center">
 |<span><%= link_to "VAN", "/vans/new",:style=>'color: black'%></span> | 
 <span><%= link_to "SEMITRAILER", "/semitrailers/new",:style=>'color: black'%></span> |
-<span><%= link_to "HEAVYTRUCK", "/heavytrucks/new",:style=>'color: grey'%></span> |
-<span><%= link_to "SEMITRAILERTRUCK", "/semitrailertrucks/new",:style=>'color: black'%></span> |
+<span><%= link_to "HEAVYTRUCK", "/heavytrucks/new",:style=>'color: black'%></span> |
+<span><%= link_to "SEMITRAILERTRUCK", "/semitrailertrucks/new",:style=>'color: grey'%></span> |
 </div>
 <%= form_tag do %>
 
@@ -32,9 +32,9 @@
 <br>
 
 
-<%= label_tag :Capacity%>
+<%= label_tag :Type%>
 <br>
-<%= number_field_tag :capacity%>
+<%= text_field_tag :type%>
 <br>
 <%= label_tag :Mileage%>
 <br>

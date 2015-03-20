@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
     user.save
   end
 end
-def self.login?(email, password)
+
+ def self.login?(email, password)
+
     member = User.where(email: email).take
     if member != nil
       if member.password == password

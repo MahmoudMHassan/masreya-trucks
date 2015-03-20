@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 20150307132021) do
     t.datetime "updated_at",                       null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_fa2a91f4d0", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_89db049ece", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_744aca08c5", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_a49f0071a8", using: :btree
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
     t.integer  "manyear",    limit: 4
     t.string   "country",    limit: 255
     t.integer  "axles",      limit: 4
-    t.boolean  "gearbox",    limit: 1
+    t.integer  "gearbox",    limit: 4
     t.string   "colour",     limit: 255
     t.integer  "price",      limit: 4
     t.datetime "created_at",             null: false

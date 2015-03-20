@@ -5,8 +5,19 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%if self.current_user==nil %>
+<%= link_to "فتح حساب", "/users/new",:style=>'color: black'%>
+<%= link_to "تسجيل الدخول", "/users/signin",:style=>'color: black'%>
+<%else%>
+<%= link_to "تسجيل الخروج", "/users/logout",:style=>'color: black', method: :post%>
+<%end%>
 </head>
 <body>
+<%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
+<div style="text-align: left">
+<%= link_to "إضافة إعلان", "/ads/new",:style=>'color: black'%>
+</div>
+<%end%>
 <div id="user-widget">
   <% if current_user %>
     Welcome <strong><%= current_user.name %></strong>!
@@ -15,13 +26,8 @@
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div> 
+<%= link_to 'Login with Facebook', '/auth/facebook/' %>
 
-<%if self.current_user==nil %>
-<%= link_to "فتح حساب", "/users/new",:style=>'color: black'%>
-<%= link_to "تسجيل الدخول", "/users/signin",:style=>'color: black'%>
-<%else%>
-<%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
-<%end%>
 <%= yield %>
 
 </body>
