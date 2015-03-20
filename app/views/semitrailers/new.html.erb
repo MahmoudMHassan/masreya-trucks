@@ -1,48 +1,60 @@
-<h1>semitrailers</h1>
-<p>Find me in app/views/vehicles/new.html.erb</p>
-<%= form_for :vehicle do |f| %>
+<div style="text-align: center">
+|<span><%= link_to "VAN", "/vans/new",:style=>'color: black'%></span> | 
+<span><%= link_to "SEMITRAILER", "/semitrailers/new",:style=>'color: grey'%></span> |
+<span><%= link_to "HEAVYTRUCK", "/heavytrucks/new",:style=>'color: black'%></span> |
+<span><%= link_to "SEMITRAILERTRUCK", "/semitrailertrucks/new",:style=>'color: black'%></span> |
+</div>
+<%= form_tag do %>
 
-<p>
-<%=f.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
-<%= f.label :Make%>
-</p>
 
-<p>
-<%=f.select :model,([ "i10" , "w30" , "503"])%>
-<%= f.label :Model%>
-</p>
+<%=label_tag :Make%>
+<br>
+ <%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
+                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], 'Mercedes')) %>
+<br>
 
-<p>
-<%=f.number_field :manyear%>
-Manufacture Year
-</p>
+<%= label_tag :Model%>
+<br>
+<%= select_tag(:model, options_for_select([['i10', 'i10'],
+                 ['w30', 'w30'],['503','503']], 'i10')) %>
+<br>
+<p>Manufacture year</p>
+<%=number_field_tag :manyear%>
+<br>
+<%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
+                 ['madagascar', 'madagascar']], 'Egypt')) %>
+<br>
+<%= label_tag :Country%>
+<br>
 
-<p>
-<%=f.select :country ,(["Egypt" , "madagascar"])%>
-<%= f.label :Country%>
-</p>
+<p>Number of Axels</p>
+<%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]], 1)) %>
+<br>
 
-<p>
-<%=f.select :axles, (["1","2","3","4","5","6","7","8"])%>
-Number of Axels
-</p>
 
-<p>
-<%=f.select :gearbox , (["Automatic", "semi Automatic" ,"Manual"])%>
-<%= f.label :Gearbox%>
-</p>
+<%= label_tag :Capacity%>
+<br>
+<%= number_field_tag :capacity%>
+<br>
+<%= label_tag :Gearbox%>
+<br>
+<%= select_tag(:gearbox, options_for_select([['Automatic', 0],['Semi Automatic', 1],['Manual', 2]], 'Automatic')) %>
 
-<p>
-<%=f.select :colour ,(["white","black","yellow","brown","green","red","orange","blue","grey"])%>
-<%= f.label :Colour%>
-</p>
+<br>
 
-<p>
-<%=f.number_field :price%>
-<%= f.label :Price%>
-</p>
+<br>
+<%=label_tag :Colour%>
+<br>
+<%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], 'white')) %>
+<br>
 
-<p>
-<%=f.submit%>
-</p>
+<br>
+<%= label_tag :Price%>
+<br>
+<%=number_field_tag :price%>
+<br>
+
+
+<%=submit_tag%>
+
 <%end%>

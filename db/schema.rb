@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150228114249) do
+ActiveRecord::Schema.define(version: 20150307132021) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20150228114249) do
     t.boolean  "validated",   limit: 1
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+  end
+
+  create_table "authentications", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.string   "token",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "bookmarks", id: false, force: :cascade do |t|
@@ -58,8 +67,8 @@ ActiveRecord::Schema.define(version: 20150228114249) do
     t.datetime "updated_at",                       null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_f29c67fbd2", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_521e65b0e7", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_744aca08c5", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_a49f0071a8", using: :btree
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -86,15 +95,20 @@ ActiveRecord::Schema.define(version: 20150228114249) do
   add_index "semitrailertrucks", ["vehicle_id"], name: "index_semitrailertrucks_on_vehicle_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",      limit: 255
-    t.string   "password",   limit: 255
-    t.string   "fname",      limit: 255
-    t.string   "lname",      limit: 255
-    t.string   "country",    limit: 255
-    t.string   "phone",      limit: 255
-    t.boolean  "validated",  limit: 1
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "provider",         limit: 255
+    t.string   "uid",              limit: 255
+    t.string   "name",             limit: 255
+    t.string   "oauth_token",      limit: 255
+    t.datetime "oauth_expires_at"
+    t.string   "email",            limit: 255
+    t.string   "password",         limit: 255
+    t.string   "fname",            limit: 255
+    t.string   "lname",            limit: 255
+    t.string   "country",          limit: 255
+    t.string   "phone",            limit: 255
+    t.boolean  "validated",        limit: 1
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "vans", primary_key: "vehicle_id", force: :cascade do |t|
@@ -112,7 +126,7 @@ ActiveRecord::Schema.define(version: 20150228114249) do
     t.integer  "manyear",    limit: 4
     t.string   "country",    limit: 255
     t.integer  "axles",      limit: 4
-    t.boolean  "gearbox",    limit: 1
+    t.integer  "gearbox",    limit: 4
     t.string   "colour",     limit: 255
     t.integer  "price",      limit: 4
     t.datetime "created_at",             null: false
