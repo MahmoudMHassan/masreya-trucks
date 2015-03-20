@@ -10,6 +10,10 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+  def bookmark
+    @bookmarks = Bookmark.where(user_id: self.current_user.id).first(10)
+    
+  end
 
   def destroy
     User.find_by_id(self.current_user.id).delete if User.find_by_id(self.current_user.id)!=nil
@@ -79,5 +83,16 @@ class UsersController < ApplicationController
     end
 
   end
+   def edit
+    @user = User.find(params[:id])
+  end 
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(params[:user].permit(:email,:password,:fname,:lname,:country,:phone,:validated))
+      redirect_to "/users/#{@user.id}"
+    else
+      render 'edit'
+    end
+  end
 end

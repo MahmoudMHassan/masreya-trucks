@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "title",       limit: 255
-    t.text     "descrpition", limit: 65535
+    t.text     "description", limit: 65535
     t.boolean  "validated",   limit: 1
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
