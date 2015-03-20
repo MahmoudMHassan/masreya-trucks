@@ -56,11 +56,11 @@ Rails.application.routes.draw do
   get 'users/show'
 
   get 'users/:id' => 'users#show'
-
+  get 'users/edit/:id' => 'users#edit'
   post 'users/destroy/:id' => 'users#destroy'
   post 'users/logout' => 'users#logout'
   post 'users/signin' => 'users#login'
-
+  post 'users/edit/:id' => 'users#update'
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]
 match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
