@@ -9,8 +9,11 @@
 <b>الهاتف: </b><%= @user.phone%>
 <br><br>
 <br>
-
+<%if self.current_user != nil && @user.id == self.current_user.id%>
+<%= link_to "تعديل البيانات", "edit/#{@user.id}", method: :get%>
 <div style="color: red">
 <%= link_to "إلغاء الحساب", "destroy/#{@user.id}",
 :style=>'color: red', method: :post ,data: {confirm: 'Are you sure?'}%>
-</div></h3>
+</div>
+<%end%>
+</h3>

@@ -17,7 +17,11 @@ class SemitrailersController < ApplicationController
     #@vehicle = Vehicle.new(params.require(:vehicle).permit(:make, :model, :manyear, :country, :axles, :gearbox,:colour, :price))
        @vehicle.semitrailer = Semitrailer.new(vehicle_id: @vehicle.id,capacity: params[:capacity])
     @vehicle.save
-redirect_to root_path
+     @ad = Ad.new(title: params[:title], description: params[:description])
+    @ad.save
+    @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id,new: params[:new],purchase: params[:purchase], imported: params[:imported])
+    @make.save
+redirect_to "/ads/#{@ad.id}"
   end
 
   def show
