@@ -1,5 +1,24 @@
 Rails.application.routes.draw do
+
+
+  get 'semitrailertrucks/new'
+
+  get 'semitrailertrucks/create'
+
+  get 'semitrailertrucks/edit'
+
+  get 'semitrailertrucks/update'
+
+  get 'semitrailertrucks/show'
+
+  get 'semitrailertrucks/index'
+
+  get 'semitrailertrucks/delete'
+
+  get 'semitrailertrucks/destroy'
+
   get 'ads/home' => 'ads#home'
+
   get 'ads/new'
   get 'ads/:id' => 'ads#show'
   post 'ads/bookmark/:id' => 'ads#bookmark'
