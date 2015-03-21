@@ -20,16 +20,12 @@ class AdsController < ApplicationController
     redirect_to "/ads/#{params[:id]}"
   end
   def unbookmark
-    sql = "DELETE FROM bookmarks WHERE user_id = #{self.current_user.id} and ad_id = #{params[:id]}"
-    ActiveRecord::Base.connection.execute(sql)
+    Bookmark.delete_all(user_id: self.current_user.id,ad_id: params[:id])
     redirect_to "/ads/#{params[:id]}"
   end
   def delete
-    sql = "DELETE FROM makes WHERE user_id = #{self.current_user.id} and ad_id = #{params[:id]}"
-    sql2 = "DELETE FROM bookmarks WHERE ad_id = #{params[:id]}"
-
-    ActiveRecord::Base.connection.execute(sql)
-    ActiveRecord::Base.connection.execute(sql2)
+    Make.delete_all(user_id: self.current_user.id, ad_id: params[:id])
+    Bookmark.delete_all(ad_id: params[:id])
     Ad.destroy(params[:id])
     redirect_to root_path
   end
@@ -66,14 +62,10 @@ class AdsController < ApplicationController
     @vehicle.save
     @ad.update(title: params[:title], description: params[:description])
     @ad.save
-   # @make.update(new: params[:new],purchase: params[:purchase], imported: params[:imported])
-     sql ="Update makes SET new = #{params[:new]} WHERE ad_id = #{params[:id]}"
-         ActiveRecord::Base.connection.execute(sql)
-     sql ="Update makes SET imported = #{params[:imported]} WHERE ad_id = #{params[:id]}"
-         ActiveRecord::Base.connection.execute(sql)
-     sql ="Update makes SET purchase = #{params[:purchase]} WHERE ad_id = #{params[:id]}"
-         ActiveRecord::Base.connection.execute(sql)
-
+    connect = ActiveRecord::Base.connection();
+    connect.execute(ActiveRecord::Base.send(:sanitize_sql_array, ["Update makes SET new = %s, purchase = %s, imported =%s WHERE ad_id =%s",params[:new],params[:purchase],params[:imported],@ad.id]))
+     #sql ="Update makes SET new = #{params[:new]}, purchase = #{params[:purchase]}, imported =  #{params[:imported]} WHERE ad_id = #{@ad.id}"
+     # ActiveRecord::Base.connection.execute(sql)
 redirect_to "/ads/#{@ad.id}"
   end
  

@@ -9,6 +9,12 @@ class VansController < ApplicationController
   end
 
   def create
+    @blank = false
+    if params[:title] == "" || params[:description] == ""
+      @blank = true
+      render 'new'
+      return
+    end
    @vehicle = Vehicle.new(make: params[:make], model: params[:model], manyear: params[:manyear], country: params[:country], axles: params[:axles], gearbox: params[:gearbox], colour: params[:colour], price: params[:price])
        @vehicle.van = Van.new(vehicle_id: @vehicle.id,capacity: params[:capacity],mileage: params[:mileage])
     @vehicle.save

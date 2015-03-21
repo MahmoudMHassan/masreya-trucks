@@ -1,25 +1,32 @@
 Rails.application.routes.draw do
 
-
-  get 'semitrailertrucks/new'
-
-  get 'semitrailertrucks/create'
-
-  get 'semitrailertrucks/edit'
-
-  get 'semitrailertrucks/update'
-
-  get 'semitrailertrucks/show'
-
+  root :to => 'ads#home'
+  #SEMITRAILERTRUCK
   get 'semitrailertrucks/index'
-
-  get 'semitrailertrucks/delete'
-
-  get 'semitrailertrucks/destroy'
-
-
+  get 'semitrailertrucks/new'
+  get 'semitrailertrucks/edit'
+  get 'semitrailertrucks/show'
+  post 'semitrailertrucks/new' => 'semitrailertrucks#create'
+  #HEAVYTRUCK
+  get 'heavytrucks/index'
+  get 'heavytrucks/new'
+  get 'heavytrucks/edit'
+  get 'heavytrucks/show'
+  post 'heavytrucks/new' => 'heavytrucks#create'
+  #SEMITRAILER
+  get 'semitrailers/index'
+  get 'semitrailers/new'
+  get 'semitrailers/edit'
+  get 'semitrailers/show'
+  post 'semitrailers/new' => 'semitrailers#create'
+  #VAN
+  get 'vans/index'
+  get 'vans/new'
+  get 'vans/edit'
+  get 'vans/show'
+  post 'vans/new' => 'vans#create'
+  #AD
   get 'ads/home' => 'ads#home'
-
   get 'ads/new'
   get 'ads/:id' => 'ads#show'
   post 'ads/bookmark/:id' => 'ads#bookmark'
@@ -27,67 +34,25 @@ Rails.application.routes.draw do
   post 'ads/delete/:id' => 'ads#delete'
   get 'ads/edit/:id' => 'ads#edit'
   post 'ads/edit/:id' => 'ads#update'
-  get 'users/bookmark/:id' => 'users#bookmark'
 
-   resources :vehicles
-   resources :vans
-   resources :semitrailertrucks
-  get 'vehicles/new'=> 'vehicles#create'
+   #resources :vehicles
+   #resources :vans
+   #resources :semitrailertrucks
 
-  get 'vehicles/edit'
 
-  get 'vehicles/create'
- # resources :heavytrucks
-  get 'heavytrucks/new'
 
-  post 'heavytrucks/new' => 'heavytrucks#create'
-  post 'vans/new' => 'vans#create'
-  post 'semitrailertrucks/new' => 'semitrailertrucks#create'
 
-  get 'heavytrucks/create'
 
-  get 'heavytrucks/edit'
 
-  get 'heavytrucks/update'
 
-  get 'heavytrucks/delete'
-
-  get 'heavytrucks/destroy'
-
-  get 'heavytrucks/show'
-
-  get 'heavytrucks/index'
-
-  get 'sessions/create'
 
   get 'sessions/destroy'
-
-  get 'semitrailers/index'
-
-  get 'semitrailers/new'
-
-  get 'semitrailers/create'
-
-  get 'semitrailers/show'
-
-  get 'semitrailers/delete'
-
-  get 'semitrailers/destroy'
-
-  get 'semitrailers/edit'
-
-  get 'semitrailers/update'
-
-  post 'semitrailers/new' => 'semitrailers#create'
-
-  root :to => 'ads#home'
-
+  
+  get 'users/bookmark/:id' => 'users#bookmark'
   get 'users/new'
   post 'users/new'=> 'users#create'
-  get 'users/index'
   get 'users/signin'
   get 'users/show'
-
   get 'users/:id' => 'users#show'
   get 'users/edit/:id' => 'users#edit'
   post 'users/destroy/:id' => 'users#destroy'

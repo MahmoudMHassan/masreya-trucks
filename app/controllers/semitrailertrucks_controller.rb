@@ -9,6 +9,12 @@ class SemitrailertrucksController < ApplicationController
   end
 
   def create
+    @blank = false
+    if params[:title] == "" || params[:description] == ""
+      @blank = true
+      render 'new'
+      return
+    end
    @vehicle = Vehicle.new(make: params[:make], model: params[:model], manyear: params[:manyear], country: params[:country], axles: params[:axles], gearbox: params[:gearbox], colour: params[:colour], price: params[:price])
     #@vehicle = Vehicle.new(params.require(:vehicle).permit(:make, :model, :manyear, :country, :axles, :gearbox,:colour, :price))
        @vehicle.semitrailertruck = Semitrailertruck.new(vehicle_id: @vehicle.id,type: params[:type],mileage: params[:mileage])
