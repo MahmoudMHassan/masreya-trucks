@@ -16,15 +16,16 @@
 <br>
 <%= hidden_field_tag 'new', 0 %>
 New
-<input id="new" name="new" type="checkbox" value="1" />
+<%= check_box_tag(:new) %>
 <br>
 <%= hidden_field_tag 'purchase', 0 %>
 Purchase
-<input id="purchase" name="purchase" type="checkbox" value="1" />
+<%= check_box_tag(:purchase) %>
 <br>
 <%= hidden_field_tag 'imported', 0 %>
 Imported
-<input id="imported" name="imported" type="checkbox" value="1" />
+<%=check_box("post", "validated")%>
+
 <br>
 <%=label_tag :Make%>
 <br>

@@ -10,31 +10,35 @@
 <br>
 
 New
+<%= check_box_tag(:new) %>
 <%if @make.new%>
 <%= hidden_field_tag 'new', false %>
-<input id="new" name="new" type="checkbox" value=true checked/>
+<!-- <input id="new" name="new" type="checkbox" value=true checked/> -->
 <%else%>
 <%= hidden_field_tag 'new', false %>
-<input id="new" name="new" type="checkbox" value=true />
+<!-- <input id="new" name="new" type="checkbox" value=true /> -->
 <%end%>
 <br>
 Purchase
+<%= check_box_tag(:purchase) %>
 <%if @make.purchase%>
-<%= hidden_field_tag 'purchase', false %>
-<input id="purchase" name="purchase" type="checkbox" value=true checked/>
+<!-- <%= hidden_field_tag 'purchase', false %> -->
+<%= check_box_tag(:purchase) %>
+<!--<input id="purchase" name="purchase" type="checkbox" value=true checked/> -->
 <%else%>
 <%= hidden_field_tag 'purchase', false %>
-<input id="purchase" name="purchase" type="checkbox" value=true/>
+<!-- <input id="purchase" name="purchase" type="checkbox" value=true/> -->
 <%end%>
 <br>
 Imported
+<%= check_box_tag(:imported) %>
 <%if @make.imported%>
 <%= hidden_field_tag 'imported', false %>
-<input id="imported" name="imported" type="checkbox" value=true checked/>
+<!-- <input id="imported" name="imported" type="checkbox" value=true checked/> -->
 <%else%>
 <%= hidden_field_tag 'imported', false %>
 
-<input id="imported" name="imported" type="checkbox" value=true/>
+<!-- <input id="imported" name="imported" type="checkbox" value=true/> -->
 <%end%>
 
 <br>
@@ -112,4 +116,4 @@ Imported
 
 <%=submit_tag%>
 
-<%end%> 
+<%end%>
