@@ -22,6 +22,18 @@
 <br>
 <%=@ad.description%>
 <br>
+<b>Type</b>
+<br>
+<%if @van!=nil%>
+Van
+<%elsif @heavytruck !=nil%>
+Heavytruck
+<%elsif @semitrailer !=nil%>
+Semitrailer
+<%elsif @semitrailertruck !=nil%>
+Semitrailertruck
+<%end%>
+<br>
 <b>Make</b>
 <br>
 <%=@vehicle.make%>

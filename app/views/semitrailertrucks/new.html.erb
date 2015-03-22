@@ -4,6 +4,9 @@
 <span><%= link_to "HEAVYTRUCK", "/heavytrucks/new",:style=>'color: black'%></span> |
 <span><%= link_to "SEMITRAILERTRUCK", "/semitrailertrucks/new",:style=>'color: grey'%></span> |
 </div>
+<%if @blank%>
+<span class ="error">يوجد بيانات فارغة*</span>
+<%end%>
 <%= form_tag do %>
 
 <%=label_tag :Title%>
