@@ -20,7 +20,7 @@ class AdsController < ApplicationController
     redirect_to "/ads/#{params[:id]}"
   end
   def unbookmark
-    Bookmark.where(:user_id => self.current_user.id).destroy_all
+    Bookmark.where(:user_id => self.current_user.id,:ad_id => params[:id]).destroy_all
     redirect_to "/ads/#{params[:id]}"
   end
   def delete
