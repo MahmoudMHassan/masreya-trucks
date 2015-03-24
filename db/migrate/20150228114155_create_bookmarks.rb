@@ -8,7 +8,7 @@ class CreateBookmarks < ActiveRecord::Migration
     end
     add_foreign_key :bookmarks, :users
     add_foreign_key :bookmarks, :ads
-    remove_column :bookmarks, :id
-     execute "alter table bookmarks add primary key(user_id, ad_id)"
+    #remove_column :bookmarks, :id
+     #execute "alter table bookmarks add primary key(user_id, ad_id)"
   end
 end

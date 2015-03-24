@@ -1,4 +1,4 @@
 class Semitrailer < ActiveRecord::Base
-  belongs_to :vehicle, dependent: :destroy
+  belongs_to :vehicle
   
 end

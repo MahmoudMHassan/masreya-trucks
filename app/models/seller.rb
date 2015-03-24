@@ -1,5 +1,5 @@
 class Seller < ActiveRecord::Base
-  belongs_to :user, dependent: :destroy
-  has_many :ads, through: :make
+  belongs_to :user
+  has_many :ads
   has_many :vehicles, through: :make
 end

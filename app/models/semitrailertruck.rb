@@ -1,4 +1,4 @@
 class Semitrailertruck < ActiveRecord::Base
-  belongs_to :vehicle, dependent: :destroy
+  belongs_to :vehicle
       self.inheritance_column = nil
 end
