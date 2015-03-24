@@ -1,2 +1,7 @@
-<h1>Semitrailers#show</h1>
-<p>Find me in app/views/semitrailers/show.html.erb</p>
+<%= link_to "DELETE", {:controller => :semitrailertrucks,
+			:action => 'delete',
+			:id => @semitrailertruck.id },
+			:method => :delete, data: {confirm: 'Are you sure?'}%>
+			<br>
+			<br>
+			

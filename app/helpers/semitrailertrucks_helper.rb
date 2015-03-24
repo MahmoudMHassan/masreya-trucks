@@ -1,0 +1,2 @@
+module SemitrailertrucksHelper
+end

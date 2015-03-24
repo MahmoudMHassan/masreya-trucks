@@ -1,0 +1,9 @@
+<br>
+<%@ads.each do |a|%>
+<div class = "post_wrapper">
+<%=link_to a.title, "/ads/#{a.id}"%><br>
+<div style ="width: 400px;">
+<%=a.description%><br>
+</div>
+</div>
+<%end%>

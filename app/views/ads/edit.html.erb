@@ -1,0 +1,115 @@
+<%= form_tag do %>
+
+<%=label_tag :Title%>
+<br>
+ <%= text_field_tag :title, value=@ad.title%>
+<br>
+<%=label_tag :Description%>
+<br>
+ <%= text_area_tag :description , value=@ad.description,size: "35x7"%>
+<br>
+
+New
+<%if @make.new%>
+<%= hidden_field_tag 'new', false %>
+<input id="new" name="new" type="checkbox" value=true checked/>
+<%else%>
+<%= hidden_field_tag 'new', false %>
+<input id="new" name="new" type="checkbox" value=true />
+<%end%>
+<br>
+Purchase
+<%if @make.purchase%>
+<%= hidden_field_tag 'purchase', false %>
+<input id="purchase" name="purchase" type="checkbox" value=true checked/>
+<%else%>
+<%= hidden_field_tag 'purchase', false %>
+<input id="purchase" name="purchase" type="checkbox" value=true />
+<%end%>
+<br>
+Imported
+<%if @make.imported%>
+<%= hidden_field_tag 'imported', false %>
+<input id="imported" name="imported" type="checkbox" value=true checked/>
+<%else%>
+<%= hidden_field_tag 'imported', false %>
+
+<input id="imported" name="imported" type="checkbox" value=true />
+<%end%>
+
+<br>
+<%=label_tag :Make%>
+<br>
+ <%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
+                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], @vehicle.make)) %>
+<br>
+
+<%= label_tag :Model%>
+<br>
+<%= select_tag(:model, options_for_select([['i10', 'i10'],
+                 ['w30', 'w30'],['503','503']], @vehicle.model)) %>
+<br>
+<p>Manufacture year</p>
+<%=number_field_tag :manyear,value=@vehicle.manyear%>
+<br><%= label_tag :Country%><br>
+<%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
+                 ['madagascar', 'madagascar']], @vehicle.country))%>
+
+
+<br>
+
+<p>Number of Axels</p>
+<%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]], @vehicle.axles)) %>
+<br>
+
+<%if @van !=nil%>
+<%= label_tag :Capacity%>
+<br>
+<%= number_field_tag :capacity, value = @van.capacity%>
+<br>
+<%= label_tag :Mileage%>
+<br>
+<%= number_field_tag :mileage, value = @van.mileage%>
+<%elsif @semitrailer != nil%>
+<%= label_tag :Capacity%>
+<br>
+<%= number_field_tag :capacity, value = @semitrailer.capacity%>
+<%elsif @semitrailertruck !=nil %>
+<%= label_tag :Type%>
+<br>
+<%= text_field_tag :type,value = @semitrailertruck.type%>
+<br>
+<%= label_tag :Mileage%>
+<br>
+<%= number_field_tag :mileage,value=@semitrailertruck.mileage%>
+<%elsif @heavytruck !=nil %>
+<br>
+<%= number_field_tag :capacity, value = @heavytruck.capacity%>
+<br>
+<%= label_tag :Mileage%>
+<br>
+<%= number_field_tag :mileage, value = @heavytruck.mileage%>
+<%end%>
+<br>
+<%= label_tag :Gearbox%>
+<br>
+<%= select_tag(:gearbox, options_for_select([['Automatic', 0],['Semi Automatic', 1],['Manual', 2]], @vehicle.gearbox)) %>
+
+<br>
+
+<br>
+<%=label_tag :Colour%>
+<br>
+<%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], @vehicle.colour)) %>
+<br>
+
+<br>
+<%= label_tag :Price%>
+<br>
+<%=number_field_tag :price,value = @vehicle.price%>
+<br>
+
+
+<%=submit_tag%>
+
+<%end%> 

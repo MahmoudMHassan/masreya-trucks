@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>semitrailers</h1>
 <p>Find me in app/views/vehicles/new.html.erb</p>
 <%= form_for :vehicle do |f| %>
@@ -46,8 +47,23 @@ Number of Axels
 <%=f.number_field :price%>
 <%= f.label :Price%>
 </p>
+=======
+<div style="text-align: center">
+|<span><%= link_to "VAN", "/vans/new",:style=>'color: black'%></span> | 
+<span><%= link_to "SEMITRAILER", "/semitrailers/new",:style=>'color: grey'%></span> |
+<span><%= link_to "HEAVYTRUCK", "/heavytrucks/new",:style=>'color: black'%></span> |
+<span><%= link_to "SEMITRAILERTRUCK", "/semitrailertrucks/new",:style=>'color: black'%></span> |
+</div>
+<%if @blank%>
+<span class ="error">يوجد بيانات فارغة*</span>
+<%end%>
+<%= form_tag do %>
+<%= render 'ads/adform'%>
+<%= label_tag :Capacity%>
+<br>
+<%= number_field_tag :capacity%>
+<br>
+<%=submit_tag%>
+>>>>>>> a657be456c99cf3d2f7236d9c3f09847e551d410
 
-<p>
-<%=f.submit%>
-</p>
 <%end%>

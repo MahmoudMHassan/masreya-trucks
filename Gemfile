@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
-
-
+#for social button
+gem 'social-share-button'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-oauth2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

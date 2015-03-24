@@ -1,0 +1,17 @@
+<%= form_for :user do |f|%>
+<%if @blank%>
+<span class ="error">يوجد مسافات فارغة*</span>
+<%end%>
+<br>
+    <p>البريد الالكتروني<%if @email==""%><span style = "color: red;"> * </span><%end%> </p>
+    <%= f.email_field :email, :value => self.current_user.email%>
+    <p>الاسم<%if @fname==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.text_field :fname, :value => self.current_user.fname %>
+    <p>اسم العائلة<%if @lname==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.text_field :lname, :value => self.current_user.lname%>
+     <p>البلد<%if @country==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.text_field :country,:value => self.current_user.country %>
+    <p>الهاتف<%if @phone==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.text_field :phone ,:value => self.current_user.phone%><br>
+    <%= f.submit "حفظ"%>
+<% end %>

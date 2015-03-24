@@ -1,35 +1,69 @@
 Rails.application.routes.draw do
+
+  root :to => 'ads#home'
+  #SEMITRAILERTRUCK
+  get 'semitrailertrucks/index'
+  get 'semitrailertrucks/new'
+  get 'semitrailertrucks/edit'
+  get 'semitrailertrucks/show'
+  post 'semitrailertrucks/new' => 'semitrailertrucks#create'
+  #HEAVYTRUCK
+  get 'heavytrucks/index'
+  get 'heavytrucks/new'
+  get 'heavytrucks/edit'
+  get 'heavytrucks/show'
+  post 'heavytrucks/new' => 'heavytrucks#create'
+  #SEMITRAILER
   get 'semitrailers/index'
-
   get 'semitrailers/new'
-
-  get 'semitrailers/create'
-
-  get 'semitrailers/show'
-
-  get 'semitrailers/delete'
-
-  get 'semitrailers/destroy'
-
   get 'semitrailers/edit'
-
-  get 'semitrailers/update'
-
+  get 'semitrailers/show'
   post 'semitrailers/new' => 'semitrailers#create'
+  #VAN
+  get 'vans/index'
+  get 'vans/new'
+  get 'vans/edit'
+  get 'vans/show'
+  post 'vans/new' => 'vans#create'
+  #AD
+  get 'ads/home' => 'ads#home'
+  get 'ads/new'
+  get 'ads/:id' => 'ads#show'
+  post 'ads/bookmark/:id' => 'ads#bookmark'
+  post 'ads/unbookmark/:id' => 'ads#unbookmark'
+  post 'ads/delete/:id' => 'ads#delete'
+  get 'ads/edit/:id' => 'ads#edit'
+  post 'ads/edit/:id' => 'ads#update'
+   #resources :vehicles
+   #resources :vans
+   #resources :semitrailertrucks
 
-  root :to => 'vehicles#index'
 
+
+
+
+
+
+
+  get 'sessions/destroy'
+  
+  get 'users/bookmark/:id' => 'users#bookmark'
   get 'users/new'
   post 'users/new'=> 'users#create'
-  get 'users/index'
- get 'users/signin'
+  get 'users/signin'
   get 'users/show'
-
   get 'users/:id' => 'users#show'
-
+  get 'users/edit/:id' => 'users#edit'
   post 'users/destroy/:id' => 'users#destroy'
   post 'users/logout' => 'users#logout'
   post 'users/signin' => 'users#login'
+  post 'users/edit/:id' => 'users#update'
+match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+match 'auth/failure', to: redirect('/'), via: [:get, :post]
+match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -85,5 +119,5 @@ Rails.application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end
-end
+    end
+
