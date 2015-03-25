@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  get 'vehicles/new'
+
+  get 'vehicles/create'
+
+  get 'vehicles/edit'
+
+  get 'vehicles/delete'
+
+  get 'vehicles/destroy'
+
+  get 'vehicles/update'
+
+  get 'vehicles/index'
+
+  get 'vehicles/show'
+
   root :to => 'ads#home'
   #SEMITRAILERTRUCK
   get 'semitrailertrucks/index'
