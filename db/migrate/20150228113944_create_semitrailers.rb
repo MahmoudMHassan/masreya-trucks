@@ -2,7 +2,7 @@ class CreateSemitrailers < ActiveRecord::Migration
   def change
     create_table(:semitrailers, :options => 'ENGINE=InnoDB DEFAULT CHARSET=utf8')  do |t|
       t.references :vehicle, index: true
-      t.integer :capacity
+      t.boolean :capacity
 
       t.timestamps null: false
     end

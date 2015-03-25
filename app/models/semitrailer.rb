@@ -1,4 +1,4 @@
 class Semitrailer < ActiveRecord::Base
-  belongs_to :vehicle
-  
+  has_one :vehicle, as: :vehicable
+
 end
