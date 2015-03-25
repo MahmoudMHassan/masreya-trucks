@@ -15,37 +15,41 @@
 <%end%>
 </div>
 <div class = "show_wrapper">
-<b>Seller</b>
+<b>بيانات البائع</b>
 <br>
-<%=link_to  @seller.fname, "/users/#{@seller.id}"%><br>
-<b>Title</b>
+<%=link_to  "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%><br>
+<b> تليفون : </b>
+<br><%=@seller.phone%><br>
+<b> البريد الالكتروني : </b>
+<br> <%=@seller.email%>
+<br><b>العنوان</b>
 <br>
 <%=@ad.title%>
 <br>
-<b>Description</b>
+<b>الوصف</b>
 <br>
 <%=@ad.description%>
 <br>
-<b>Type</b>
+<b>النوع</b>
 <br>
 <%if @van!=nil%>
-Van
+<b>عربة</b>
 <%elsif @heavytruck !=nil%>
-Heavytruck
+<b> الشاحنات الثقيلة </b>
 <%elsif @semitrailer !=nil%>
-Semitrailer
+<b> شبه مقطورة </b>
 <%elsif @semitrailertruck !=nil%>
-Semitrailertruck
+<b> الشاحنات أشباه المقطورة </b>
 <%end%>
 <br>
-<b>Make</b>
+<b>انتاج</b>
 <br>
 <%=@vehicle.make%>
 <br>
-<b>Model</b>
+<b>الموديل</b>
 <br>
 <%=@vehicle.model%><br>
-<b>Vehicle Info</b><br>
+<b>معلومات عربة النقل</b><br>
 <%if @make.new%>
 |New
 <%end%>
@@ -57,16 +61,16 @@ Semitrailertruck
 <%end%>
 <br>
 
-<b>Manyear</b>
+<b>سنة الانتاج</b>
 <br>
 <%=@vehicle.manyear%><br>
-<b>Country</b>
+<b>البلد</b>
 <br>
 <%=@vehicle.country%><br>
-<b>Axles</b>
+<b>المحاور (النقلات) </b>
 <br>
 <%=@vehicle.axles%><br>
-<b>Gearbox</b>
+<b>عجلة السرعة</b>
 <br>
 <%if @vehicle.gearbox == 1%>
 Semi Automatic
@@ -75,30 +79,30 @@ Manual
 <%else%>
 Automatic
 <%end%><br>
-<b>Colour</b>
+<b>اللون</b>
 <br>
 <%=@vehicle.colour%><br>
-<b>Price</b>
+<b>السعر</b>
 <br>
 <%=@vehicle.price%><br>
 
 <%if @van !=nil %>
-<b>Capacity</b><br>
+<b>السعة</b><br>
 <%=@van.capacity%><br>
-<b>Mileage</b><br>
+<b>عدد الأميال</b><br>
 <%=@van.mileage%><br>
 <%elsif @semitrailer !=nil%>
-<b>Capacity</b><br>
+<b>القدرة</b><br>
 <%=@semitrailer.capacity%><br>
 <%elsif @semitrailertruck !=nil%>
-<b>Type</b><br>
+<b>النوع</b><br>
 <%=@semitrailertruck.type%><br>
-<b>Mileage</b><br>
+<b>عدد الأميال</b><br>
 <%=@semitrailertruck.mileage%><br>
 <%elsif @heavytruck !=nil%>
-<b>Capacity</b><br>
+<b>السعة</b><br>
 <%=@heavytruck.capacity%><br>
-<b>Mileage</b><br>
+<b>عدد الأميال</b><br>
 <%=@heavytruck.mileage%><br>
 <%end%>
 </div>
