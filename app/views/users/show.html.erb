@@ -8,6 +8,10 @@
 <br><br>
 <b>الهاتف: </b><%= @user.phone%>
 <br><br>
+
+
+<%= image_tag(@user.avatar.thumb)%>
+
 <br>
 <%if self.current_user != nil && @user.id == self.current_user.id%>
 <%= link_to "تعديل البيانات", "edit/#{@user.id}", method: :get%>

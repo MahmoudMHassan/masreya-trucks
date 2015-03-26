@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307132021) do
+ActiveRecord::Schema.define(version: 20150325151759) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "title",       limit: 255
     t.text     "description", limit: 65535
     t.boolean  "validated",   limit: 1
+    t.string   "phone",       limit: 255
+    t.string   "email",       limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
   add_index "buyers", ["user_id"], name: "index_buyers_on_user_id", using: :btree
 
   create_table "heavytrucks", primary_key: "vehicle_id", force: :cascade do |t|
-    t.integer  "capacity",   limit: 4
+    t.boolean  "capacity",   limit: 1
     t.integer  "mileage",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
@@ -67,9 +69,19 @@ ActiveRecord::Schema.define(version: 20150307132021) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_003d6ce40b", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_706324f490", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_f2a0822227", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_abba8d7765", using: :btree
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "image",          limit: 255
+    t.integer  "imageable_id",   limit: 4
+    t.string   "imageable_type", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "pictures", ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id", using: :btree
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -79,7 +91,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
   add_index "sellers", ["user_id"], name: "index_sellers_on_user_id", using: :btree
 
   create_table "semitrailers", primary_key: "vehicle_id", force: :cascade do |t|
-    t.integer  "capacity",   limit: 4
+    t.boolean  "capacity",   limit: 1
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
@@ -87,10 +99,9 @@ ActiveRecord::Schema.define(version: 20150307132021) do
   add_index "semitrailers", ["vehicle_id"], name: "index_semitrailers_on_vehicle_id", using: :btree
 
   create_table "semitrailertrucks", primary_key: "vehicle_id", force: :cascade do |t|
-    t.string   "type",       limit: 255
     t.integer  "mileage",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "semitrailertrucks", ["vehicle_id"], name: "index_semitrailertrucks_on_vehicle_id", using: :btree
@@ -110,10 +121,11 @@ ActiveRecord::Schema.define(version: 20150307132021) do
     t.boolean  "validated",        limit: 1
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.string   "avatar",           limit: 255
   end
 
   create_table "vans", primary_key: "vehicle_id", force: :cascade do |t|
-    t.integer  "capacity",   limit: 4
+    t.boolean  "capacity",   limit: 1
     t.integer  "mileage",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
@@ -127,7 +139,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
     t.integer  "manyear",    limit: 4
     t.string   "country",    limit: 255
     t.integer  "axles",      limit: 4
-    t.integer  "gearbox",    limit: 4
+    t.boolean  "gearbox",    limit: 1
     t.string   "colour",     limit: 255
     t.integer  "price",      limit: 4
     t.datetime "created_at",             null: false
