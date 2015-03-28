@@ -34,7 +34,6 @@ Rails.application.routes.draw do
   post 'ads/delete/:id' => 'ads#delete'
   get 'ads/edit/:id' => 'ads#edit'
   post 'ads/edit/:id' => 'ads#update'
-
    #resources :vehicles
    #resources :vans
    #resources :semitrailertrucks

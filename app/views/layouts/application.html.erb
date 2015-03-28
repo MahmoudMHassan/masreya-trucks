@@ -5,23 +5,24 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %><div id="header">
+  <%= link_to "home", root_path%>
   <%if self.current_user==nil %>
-<%= link_to "فتح حساب", "/users/new",:style=>'color: black'%>
-<%= link_to "تسجيل الدخول", "/users/signin",:style=>'color: black'%>
+<%= link_to "فتح حساب", "/users/new"%>
+<%= link_to "تسجيل الدخول", "/users/signin"%>
 <%else%>
 <div style = "text-align: left">
-<%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}",:style=>'color: black'%>
+<%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%>
 </div>
-<%= link_to "صفحة الحساب", "/users/#{self.current_user.id}",:style=>'color: black'%>
+<%= link_to "صفحة الحساب", "/users/#{self.current_user.id}"%>
 
-<%= link_to "تسجيل الخروج", "/users/logout",:style=>'color: black', method: :post%>
+<%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
 <%end%>
 
 </head>
 <body>
 <%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
 <div style="text-align: left">
-<%= link_to "إضافة إعلان", "/ads/new",:style=>'color: black'%>
+<%= link_to "إضافة إعلان", "/ads/new"%>
 </div>
 <%end%>
 <div id="user-widget">
@@ -32,7 +33,6 @@
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div> 
-<%= link_to 'Login with Facebook', '/auth/facebook/' %>
 </div>
 <%= yield %>
 

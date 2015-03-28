@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 20150307132021) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "bookmarks", id: false, force: :cascade do |t|
-    t.integer  "user_id",    limit: 4, default: 0, null: false
-    t.integer  "ad_id",      limit: 4, default: 0, null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "ad_id",      limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "bookmarks", ["ad_id"], name: "index_bookmarks_on_ad_id", using: :btree
@@ -56,19 +56,22 @@ ActiveRecord::Schema.define(version: 20150307132021) do
 
   add_index "heavytrucks", ["vehicle_id"], name: "index_heavytrucks_on_vehicle_id", using: :btree
 
-  create_table "makes", id: false, force: :cascade do |t|
-    t.integer  "user_id",    limit: 4, default: 0, null: false
-    t.integer  "vehicle_id", limit: 4, default: 0, null: false
-    t.integer  "ad_id",      limit: 4, default: 0, null: false
+  create_table "makes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "vehicle_id", limit: 4
+    t.integer  "ad_id",      limit: 4
     t.boolean  "new",        limit: 1
     t.boolean  "purchase",   limit: 1
     t.boolean  "imported",   limit: 1
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_347d600481", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_44028d776e", using: :btree
+
+  add_index "makes", ["ad_id"], name: "fk_rails_003d6ce40b", using: :btree
+  add_index "makes", ["user_id"], name: "user_id", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_f2a0822227", using: :btree
+
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false

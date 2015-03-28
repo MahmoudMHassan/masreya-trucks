@@ -13,8 +13,8 @@ class CreateMakes < ActiveRecord::Migration
 
     add_foreign_key :makes, :ads
     add_foreign_key :makes, :vehicles
-    remove_column :makes, :id
-     execute "alter table makes add primary key(user_id, ad_id, vehicle_id)"
+    #remove_column :makes, :id
+     #execute "alter table makes add primary key(user_id, ad_id, vehicle_id)"
      execute "alter table makes add foreign key(user_id) references sellers(user_id)"
 
   end

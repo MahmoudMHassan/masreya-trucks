@@ -29,3 +29,20 @@
 		color: #9eafba;	
 		height: 150px;
 	}
+	.show_wrapper {
+		width:500px;
+	}
+	.post_wrapper {
+		padding: 1em;
+		border-bottom: 1px solid #d6dce0;
+	}
+	a {
+				font-weight: 500;
+				text-decoration: none;
+				//color: #2a2f35;
+				color: #002186;
+				font-size: 1.1em;
+				&:hover {
+					color: #33acb7;
+				}
+			}

@@ -5,8 +5,6 @@
 <br>
     <p>البريد الالكتروني<%if @email==""%><span style = "color: red;"> * </span><%end%> </p>
     <%= f.email_field :email, :value => self.current_user.email%>
-    <p>كلمة السر<%if @password==""%><span style = "color: red;"> * </span><%end%></p>
-    <%= f.password_field :password,:value => @password%>
     <p>الاسم<%if @fname==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :fname, :value => self.current_user.fname %>
     <p>اسم العائلة<%if @lname==""%><span style = "color: red;"> * </span><%end%></p>

@@ -5,15 +5,19 @@
 <%= link_to "حفظ الإعلان في الجراج", "/ads/bookmark/#{@ad.id}", method: :post%>
 <%else%>
 <%= link_to "إزالة الإعلان من الجراج", "/ads/unbookmark/#{@ad.id}", method: :post%>
-<%end%>
+<%end%><br>
 <%if @seller.id == self.current_user.id%>
-<%= link_to "إزالة الإعلان", "/ads/delete/#{@ad.id}", method: :post%>
+<%= link_to "إزالة الإعلان", "/ads/delete/#{@ad.id}", method: :post, :style=>'color: red;'%>
+<br>
 <%= link_to "تعديل الإعلان", "/ads/edit/#{@ad.id}"%>
 
 <%end%>
 <%end%>
 </div>
-
+<div class = "show_wrapper">
+<b>Seller</b>
+<br>
+<%=link_to  @seller.fname, "/users/#{@seller.id}"%><br>
 <b>Title</b>
 <br>
 <%=@ad.title%>
@@ -96,7 +100,5 @@ Automatic
 <%=@heavytruck.capacity%><br>
 <b>Mileage</b><br>
 <%=@heavytruck.mileage%><br>
-<b>social_share_button_tag</b><br>
-<%= social_share_button_tag("Site") %>
 <%end%>
-
+</div>

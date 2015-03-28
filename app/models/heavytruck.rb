@@ -1,4 +1,4 @@
 class Heavytruck < ActiveRecord::Base
-  belongs_to :vehicle, dependent: :destroy
-  
+  has_one :vehicle, as: :vehicable
+
 end
