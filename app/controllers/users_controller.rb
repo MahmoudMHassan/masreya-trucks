@@ -48,6 +48,9 @@ class UsersController < ApplicationController
     if  @user.save
       log_in(@user)
       redirect_to "/users/#{@user.id}"
+      #@buyer= Buyer.new(@user.id)
+      #@buyer.save
+      #render 'users/:id'
     else
       render 'new'
 
@@ -95,5 +98,10 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+  
+  def changetoseller
+    @seller.user_id = self.current_user.id
+    @seller.save
   end
 end
