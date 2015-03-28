@@ -23,9 +23,10 @@
 </li>
 <% end %>
 
-<%if self.current_user !=nil && Seller.exists?(self.current_user.id)%>
+<%if self.current_user !=nil && Buyer.exists?(self.current_user.id)%>
 <li>
-<%=link_to "تحويل الى بائع", :controller => :users, :action => :changetoseller%>
+
+<%= link_to( "تحويل الى بائع", :controller => "users", :action => "changetoseller", :id => self.current_user.id)%>
 </li>
 <%end%>
 				

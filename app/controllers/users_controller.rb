@@ -47,10 +47,10 @@ class UsersController < ApplicationController
     @user = User.new(params.require(:user).permit(:email, :password , :fname , :lname, :country, :phone, :validated, :avatar))
     if  @user.save
       log_in(@user)
-      redirect_to "/users/#{@user.id}"
-      #@buyer= Buyer.new(@user.id)
-      #@buyer.save
-      #render 'users/:id'
+ 
+      @buyer= Buyer.create(user_id: @user.id)
+      @buyer.save
+           redirect_to "/users/#{@user.id}"
     else
       render 'new'
 
@@ -101,7 +101,9 @@ class UsersController < ApplicationController
   end
   
   def changetoseller
-    @seller.user_id = self.current_user.id
+      Buyer.find_by_user_id(self.current_user.id).delete if Buyer.find_by_user_id(self.current_user.id)!=nil
+    @seller = Seller.create(user_id: self.current_user.id)
     @seller.save
+    redirect_to "/users/#{self.current_user.id}"
   end
 end
