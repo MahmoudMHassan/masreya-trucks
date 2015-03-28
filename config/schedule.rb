@@ -7,12 +7,12 @@
 #
 # set :output, "/path/to/my/cron_log.log"
 #
- every 3.days do
-   #command "/usr/bin/some_great_command"
+ every 1.day :at => '03:00' do
+   #command "0 8 * * * /bin/bash -l -c 'cd ~/Documents/workshop/masreya-trucks/lib/tasks/my_namespace.rake && RAILS_ENV=production rake my_namespace:delete 2>&1'"
    #runner "MyModel.some_method"
    rake "my_namespace:delete"
  end
-end 
+ 
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
