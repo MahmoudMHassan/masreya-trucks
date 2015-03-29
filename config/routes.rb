@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+resources :vehicles
   get 'vehicles/new'
 
   get 'vehicles/create'
@@ -62,7 +62,7 @@ Rails.application.routes.draw do
 
 
   get 'sessions/destroy'
-  
+
   get 'users/bookmark/:id' => 'users#bookmark'
   get 'users/new'
   post 'users/new'=> 'users#create'

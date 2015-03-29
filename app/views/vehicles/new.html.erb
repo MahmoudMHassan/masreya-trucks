@@ -1,2 +1,22 @@
 <h1>Vehicles#new</h1>
 <p>Find me in app/views/vehicles/new.html.erb</p>
+<%=form_for @vehicle do |f| %>
+<%= f.label :Make%>
+<br>
+<%=f.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
+<br>
+<%= f.label :Model%>
+<br>
+<%=f.select :model,([ "i10" , "w30" , "503"])%>
+<br>
+Manufacture Year
+<br>
+<%=f.number_field :manyear%>
+<br>
+<%=f.label :Country%>
+<br>
+<%=f.select :country ,(["Egypt" , "Saudi Arabia", "UAE", "Kuwait"])%>
+
+
+
+<%end%>
