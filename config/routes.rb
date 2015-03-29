@@ -16,31 +16,10 @@ resources :vehicles
 
   get 'vehicles/show'
 
+  post 'vehicles/new' => 'vehicles#create'
+
   root :to => 'ads#home'
-  #SEMITRAILERTRUCK
-  get 'semitrailertrucks/index'
-  get 'semitrailertrucks/new'
-  get 'semitrailertrucks/edit'
-  get 'semitrailertrucks/show'
-  post 'semitrailertrucks/new' => 'semitrailertrucks#create'
-  #HEAVYTRUCK
-  get 'heavytrucks/index'
-  get 'heavytrucks/new'
-  get 'heavytrucks/edit'
-  get 'heavytrucks/show'
-  post 'heavytrucks/new' => 'heavytrucks#create'
-  #SEMITRAILER
-  get 'semitrailers/index'
-  get 'semitrailers/new'
-  get 'semitrailers/edit'
-  get 'semitrailers/show'
-  post 'semitrailers/new' => 'semitrailers#create'
-  #VAN
-  get 'vans/index'
-  get 'vans/new'
-  get 'vans/edit'
-  get 'vans/show'
-  post 'vans/new' => 'vans#create'
+
   #AD
   get 'ads/home' => 'ads#home'
   get 'ads/new'
@@ -50,16 +29,6 @@ resources :vehicles
   post 'ads/delete/:id' => 'ads#delete'
   get 'ads/edit/:id' => 'ads#edit'
   post 'ads/edit/:id' => 'ads#update'
-   #resources :vehicles
-   #resources :vans
-   #resources :semitrailertrucks
-
-
-
-
-
-
-
 
   get 'sessions/destroy'
 

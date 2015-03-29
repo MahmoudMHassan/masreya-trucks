@@ -7,6 +7,7 @@ class VehiclesController < ApplicationController
 
     @vehicle = Vehicle.new(params.require(:vehicle).permit(:make, :model, :manyear, :country, :axles, :gearbox,:colour, :price, heavytruck_attributes: [:id,:capacity, :mileage]))
   @vehicle.save
+ 
   end
 
   def edit
