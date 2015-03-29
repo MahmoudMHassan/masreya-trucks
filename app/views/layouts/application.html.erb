@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html dir="rtl">
 <head>
+<%= javascript_include_tag "application" %>
   <title>MasreyaTrucks</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -32,7 +33,7 @@
   <% else %>
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
-</div> 
+</div>
 </div>
 <%= yield %>
 
