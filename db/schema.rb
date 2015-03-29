@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(version: 20150325151759) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_9387800d26", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_521dcdc929", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_447f90cfa2", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_6f717a3b16", using: :btree
 
   create_table "pictures", force: :cascade do |t|
     t.string   "image",      limit: 255

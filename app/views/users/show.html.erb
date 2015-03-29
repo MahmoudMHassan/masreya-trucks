@@ -1,3 +1,5 @@
+
+
 <b>الاسم: </b><%= @user.fname%><br>
 <br>
 <b> اسم العائلة: </b><%= @user.lname%>
@@ -8,7 +10,7 @@
 <br><br>
 <b>الهاتف: </b><%= @user.phone%>
 <br><br>
-
+<br>
 <br>
 <%if current_user.avatar_url != nil%>
 	<%= image_tag current_user.avatar_url.to_s%>
