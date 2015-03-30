@@ -6,7 +6,7 @@ class CreateVehicles < ActiveRecord::Migration
       t.integer :manyear
       t.string :country
       t.integer :axles
-      t.integer :gearbox
+      t.boolean :gearbox
       t.string :colour
       t.integer :price
 
