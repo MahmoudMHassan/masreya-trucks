@@ -14,6 +14,7 @@
 $(function(){
   if(window.location.href.indexOf("&make=")>-1){
     $('#header').css("height","250px");
+    $('#header').data('size','small');
   }else{
     $('#header').data('size','big');
     $('#searchwrapper').hide();
