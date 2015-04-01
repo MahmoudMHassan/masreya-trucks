@@ -2,6 +2,7 @@ class MakesController < ApplicationController
   def new
     @make = Make.new
     @make.ad = Ad.new
+    @make.vehicle = Vehicle.new
   end
 
   def edit
