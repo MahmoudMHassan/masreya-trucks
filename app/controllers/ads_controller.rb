@@ -1,5 +1,6 @@
 class AdsController < ApplicationController
   def new
+    @ad =Ad.new
   end
   def home
     @ads = Ad.all.order('created_at DESC').first(7)
