@@ -19,6 +19,7 @@
   color: red;
 }
 #header {
+		width:100%;
 		position: relative;
 		top: 0;
 		left: 0;
@@ -27,7 +28,7 @@
 		border-bottom: 1px solid #d6dce0;
 		background: #f5f7f9;
 		color: #9eafba;	
-		height: 200px;
+		height: 150px;
 	}
 	.show_wrapper {
 		width:500px;
@@ -49,8 +50,7 @@
 	#searchwrapper{
 	width:700px;
 	margin: 0 auto;
-	color: #000000;	
-
+	color: #000000;
 
 	}
 	#headerRight{
@@ -69,3 +69,11 @@
 	  width:70px;
 	  
 	}
+	#searchbutton{
+	width: 0px;
+	margin: 0 auto;
+	background-color:#000000;
+	color:#FFFFFF;
+	
+	}
+	

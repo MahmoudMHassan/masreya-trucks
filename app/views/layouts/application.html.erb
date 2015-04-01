@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html dir="rtl">
+
 <head>
   <title>MasreyaTrucks</title>
+ 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  
   <%= csrf_meta_tags %>
+ 
   <div id="header">
+
   <div id="headerRight">
   <%= link_to "home", root_path%><br>
   <%if self.current_user==nil %>
@@ -33,6 +37,10 @@
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div> 
+<div id="searchbutton">
+  <button style="border-radius:25px;border:2px solid;width:200px;">Search</button>
+  </div>
+  
 <div id="searchwrapper">
 <%=render 'ads/searchform'%>
 </div>
@@ -41,3 +49,4 @@
 
 </body>
 </html>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
