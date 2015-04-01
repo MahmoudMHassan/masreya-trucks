@@ -48,7 +48,10 @@ match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]
 match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
-
+map.resources :semitrailers, :belongs_to => :vehicles
+map.resources :heavytrucks, :belongs_to => :vehicles
+map.resources :vans, :belongs_to => :vehicles
+map.resources :semitrailertrucks, :belongs_to => :vehicles
 
 
 
