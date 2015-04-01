@@ -1,0 +1,38 @@
+<%=form_tag root_path, :method => 'get' do%>
+<%=label_tag :Make%>
+
+ <%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
+                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %>
+
+<%= label_tag :Model%>
+
+<%= select_tag(:model, options_for_select([['i10', 'i10'],
+                 ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%>
+
+Manufacture year
+<%=number_field_tag :manyear,params[:manyear]%>
+<%= label_tag :Country%>
+<%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
+                 ['madagascar', 'madagascar']], params[:country]), :include_blank => true) %>
+
+
+Number of Axels
+<%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]], params[:axles]), :include_blank => true) %>
+
+<%= label_tag :Gearbox%>
+
+<%= select_tag(:gearbox, options_for_select([['Automatic', 0],['Semi Automatic', 1],['Manual', 2]], params[:gearbox]), :include_blank => true) %>
+
+
+<%=label_tag :Colour%>
+
+<%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], params[:colour]), :include_blank => true) %>
+
+<%= label_tag :Price%>
+
+<%=number_field_tag :price,params[:price]%>
+<br><br>
+<div style="text-align:center;">
+<%= submit_tag "Search", :name => nil%>
+</div>
+<%end%>

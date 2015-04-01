@@ -2,7 +2,8 @@ class AdsController < ApplicationController
   def new
   end
   def home
-    @ads = Ad.all.order('created_at DESC').first(7)
+    #@ads = Ad.all.order('created_at DESC').first(7)
+    @ads = Ad.search(params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price])
   end
   def show
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
