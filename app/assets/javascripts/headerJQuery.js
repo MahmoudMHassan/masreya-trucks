@@ -15,6 +15,7 @@ $(function(){
   if(window.location.href.indexOf("&make=")>-1){
     $('#header').css("height","300px");
     $('#header').data('size','small');
+    $('#body').css("margin-top","300px");
   }else{
     $('#header').data('size','big');
     $('#searchwrapper').hide();
@@ -30,7 +31,9 @@ $('#searchbutton').click(function(){
                 height:'300px'
             },600);
 	    $('#searchwrapper').fadeIn();
-
+	    $('#body').stop().animate({
+                marginTop:'300px'
+            },600);
         }
     else{
         if($('#header').data('size') == 'small')
@@ -40,7 +43,9 @@ $('#searchbutton').click(function(){
                 height:'150px'
             },600);
 	    $('#searchwrapper').fadeOut();
-
+	    $('#body').stop().animate({
+                marginTop:'150px'
+            },600);
         }  
     }
 });

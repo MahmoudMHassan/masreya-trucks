@@ -20,7 +20,7 @@
 }
 #header {
 		width:100%;
-		position: relative;
+		position: fixed;
 		top: 0;
 		left: 0;
 		padding: 0em 2em;
@@ -82,4 +82,6 @@
 	 display:inline-block;
 	 white-space:nowrap;
 	}
-	
+	#body{
+	margin-top:150px;
+	}
