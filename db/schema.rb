@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150325151759) do
 
 
 
+
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
