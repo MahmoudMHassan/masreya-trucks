@@ -1,0 +1,19 @@
+<h1>Makes#new</h1>
+<p>Find me in app/views/makes/new.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <%= form_for @make do |f| %>
+  <%= f.fields_for :ad do |a| %>
+  <%= a.label :Title %>
+  <%= a.text_field :title %>
+  <br>
+  <br>
+  <%= a.label :Description %>
+  <%= a.text_area :description %>
+  <br>
+  <br>
+  <%= a.label :Phone %>
+  <%= a.text_area :phone %>
+  <%end%>
+
+  <%end%>
