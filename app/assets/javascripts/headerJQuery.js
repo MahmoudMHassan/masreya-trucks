@@ -13,19 +13,21 @@
 
 $(function(){
   if(window.location.href.indexOf("&make=")>-1){
+    $('#searchwrapper').css("visibility","visible");
     $('#header').css("height","300px");
     $('#header').data('size','small');
     $('#body').css("margin-top","300px");
   }else{
+    $('#searchwrapper').css("visibility","hidden");
     $('#header').data('size','big');
-    $('#searchwrapper').hide();
   }
 });
 
 $('#searchbutton').click(function(){
    
         if($('#header').data('size') == 'big')
-        {
+        {	
+	    $('#searchwrapper').css("visibility","visible");
             $('#header').data('size','small');
             $('#header').stop().animate({
                 height:'300px'
@@ -38,6 +40,7 @@ $('#searchbutton').click(function(){
     else{
         if($('#header').data('size') == 'small')
         {
+	    
             $('#header').data('size','big');
             $('#header').stop().animate({
                 height:'150px'
