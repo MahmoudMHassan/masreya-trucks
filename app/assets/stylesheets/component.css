@@ -27,7 +27,7 @@
 }
 
 .dl-menuwrapper button {
-	background: #CD5555;
+	background: #E8F1D4;
 	border: none;
 	width: 48px;
 	height: 45px;
@@ -41,7 +41,7 @@
 .dl-menuwrapper button:hover,
 .dl-menuwrapper button.dl-active,
 .dl-menuwrapper ul {
-	background: #CD5555;
+	background: #E8F1D4;
 }
 
 .dl-menuwrapper button:after {

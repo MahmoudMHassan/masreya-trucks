@@ -1,12 +1,14 @@
+
 <!DOCTYPE html>
 <html dir="rtl">
  <%#= javascript_include_tag '', 'application' %>
  <%= javascript_include_tag('script.js') %>
 </script>
 <head>
-<link rel="shortcut icon" href="../favicon.ico"> 
+<link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" type="text/css" href="./assets/stylesheets/default.css" />
     <link rel="stylesheet" type="text/css" href="./assets/stylesheets/component.css" />
+
   <title>MasreyaTrucks</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -17,7 +19,7 @@
 <%= link_to "تسجيل الدخول", "/users/signin"%>
 <%else%>
 <div style = "text-align: left">
-<%if self.current_user != nil && @user.id == self.current_user.id%>
+<%if self.current_user != nil%>
 <div id="dl-menu" class="dl-menuwrapper">
   <button class="dl-trigger">Open Menu</button>
   <ul class="dl-menu">
@@ -28,7 +30,7 @@
 :style=>'color: red', method: :post ,data: {confirm: 'Are you sure?'}%></li>
 
         <li> <%=link_to "صفحةك", "/users/#{self.current_user.id}"%></li>
-          <li><%= link_to "تسجيل الخروج", "/users/logout", method: :post%></li>
+          <li><%= link_to "تسجيل الخروج", "/users/logout", method: :get%></li>
     </ul>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -64,9 +66,10 @@
   <% else %>
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
-</div> 
+</div>
 </div>
 <%= yield %>
 
 </body>
 </html>
+
