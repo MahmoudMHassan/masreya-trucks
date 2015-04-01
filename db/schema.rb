@@ -69,7 +69,12 @@ ActiveRecord::Schema.define(version: 20150325151759) do
     t.datetime "updated_at",           null: false
   end
 
+<<<<<<< .merge_file_kNnIbP
   add_index "makes", ["ad_id"], name: "fk_rails_1629dda8dc", using: :btree
+=======
+
+  add_index "makes", ["ad_id"], name: "fk_rails_003d6ce40b", using: :btree
+>>>>>>> .merge_file_9NUn7O
   add_index "makes", ["user_id"], name: "user_id", using: :btree
   add_index "makes", ["vehicle_id"], name: "fk_rails_1b02f63e4c", using: :btree
 
@@ -79,6 +84,7 @@ ActiveRecord::Schema.define(version: 20150325151759) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false

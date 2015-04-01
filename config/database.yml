@@ -7,7 +7,11 @@
 default: &default
   adapter: mysql2
   username: root
+<<<<<<< .merge_file_AlUy2L
   password: Iloveallah90
+=======
+  password: Ahmed53
+>>>>>>> .merge_file_tvA3XL
   database: masreya
   encoding: utf8
 
