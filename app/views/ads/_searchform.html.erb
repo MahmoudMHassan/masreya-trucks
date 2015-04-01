@@ -1,38 +1,42 @@
 <%=form_tag root_path, :method => 'get' do%>
-<%=label_tag :Make%>
+<table>
+<tr>
+<td>انتاج</td>
 
- <%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
-                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %>
+ <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
+                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
 
-<%= label_tag :Model%>
+<td>موديل</td>
 
-<%= select_tag(:model, options_for_select([['i10', 'i10'],
-                 ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%>
+<td><%= select_tag(:model, options_for_select([['i10', 'i10'],
+                 ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
 
-Manufacture year
-<%=number_field_tag :manyear,params[:manyear]%>
-<%= label_tag :Country%>
-<%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
-                 ['madagascar', 'madagascar']], params[:country]), :include_blank => true) %>
+<td>سنة الانتاج</td>
+<td><%=number_field_tag :manyear,params[:manyear]%></td>
+<td>البلد</td>
+<td><%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
+                 ['madagascar', 'madagascar']], params[:country]), :include_blank => true) %></td>
+
+</tr>
+<tr>
+<td>المحاور</td>
+<td><%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]], params[:axles]), :include_blank => true) %></td>
+
+<td>عجلة السرعة</td>
+
+<td><%= select_tag(:gearbox, options_for_select([['Automatic', 0],['Semi Automatic', 1],['Manual', 2]], params[:gearbox]), :include_blank => true) %></td>
 
 
-Number of Axels
-<%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]], params[:axles]), :include_blank => true) %>
+<td>اللون</td>
 
-<%= label_tag :Gearbox%>
+<td><%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], params[:colour]), :include_blank => true) %></td>
 
-<%= select_tag(:gearbox, options_for_select([['Automatic', 0],['Semi Automatic', 1],['Manual', 2]], params[:gearbox]), :include_blank => true) %>
+<td>السعر</td>
 
-
-<%=label_tag :Colour%>
-
-<%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], params[:colour]), :include_blank => true) %>
-
-<%= label_tag :Price%>
-
-<%=number_field_tag :price,params[:price]%>
-<br><br>
+<td><%=number_field_tag :price,params[:price]%></td>
+</tr>
+</table><br>
 <div style="text-align:center;">
-<%= submit_tag "Search", :name => nil%>
+<%= submit_tag "بحث", :name => nil%>
 </div>
 <%end%>

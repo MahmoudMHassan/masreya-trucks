@@ -13,7 +13,7 @@
 
 $(function(){
   if(window.location.href.indexOf("&make=")>-1){
-    $('#header').css("height","250px");
+    $('#header').css("height","300px");
     $('#header').data('size','small');
   }else{
     $('#header').data('size','big');
@@ -27,7 +27,7 @@ $('#searchbutton').click(function(){
         {
             $('#header').data('size','small');
             $('#header').stop().animate({
-                height:'250px'
+                height:'300px'
             },600);
 	    $('#searchwrapper').fadeIn();
 
