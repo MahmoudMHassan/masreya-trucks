@@ -19,7 +19,7 @@ class AdsController < ApplicationController
     @bookmark.save
     redirect_to "/ads/#{params[:id]}"
   end
-  def unbookmark
+  def  unbookmark
     Bookmark.where(:user_id => self.current_user.id,:ad_id => params[:id]).destroy_all
     redirect_to "/ads/#{params[:id]}"
   end
@@ -48,7 +48,7 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
-    
+
     @vehicle.update(make: params[:make], model: params[:model], manyear: params[:manyear], country: params[:country], axles: params[:axles], gearbox: params[:gearbox], colour: params[:colour], price: params[:price])
     if @van !=nil
        @vehicle.van.update(vehicle_id: @vehicle.id,capacity: params[:capacity],mileage: params[:mileage])
@@ -71,5 +71,5 @@ class AdsController < ApplicationController
 redirect_to "/ads/#{@ad.id}"
   end
 
- 
+
 end
