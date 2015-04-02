@@ -14,9 +14,9 @@
 $(function(){
   if(window.location.href.indexOf("&make=")>-1){
     $('#searchwrapper').css("visibility","visible");
-    $('#header').css("height","300px");
+    $('#header').css("height","230px");
     $('#header').data('size','small');
-    $('#body').css("margin-top","300px");
+    $('#body').css("margin-top","230px");
   }else{
     $('#searchwrapper').css("visibility","hidden");
     $('#header').data('size','big');
@@ -30,11 +30,11 @@ $('#searchbutton').click(function(){
 	    $('#searchwrapper').css("visibility","visible");
             $('#header').data('size','small');
             $('#header').stop().animate({
-                height:'300px'
+                height:'230px'
             },600);
 	    $('#searchwrapper').fadeIn();
 	    $('#body').stop().animate({
-                marginTop:'300px'
+                marginTop:'230px'
             },600);
         }
     else{
@@ -43,11 +43,11 @@ $('#searchbutton').click(function(){
 	    
             $('#header').data('size','big');
             $('#header').stop().animate({
-                height:'150px'
+                height:'120px'
             },600);
 	    $('#searchwrapper').fadeOut();
 	    $('#body').stop().animate({
-                marginTop:'150px'
+                marginTop:'120px'
             },600);
         }  
     }
