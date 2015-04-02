@@ -71,6 +71,4 @@ class AdsController < ApplicationController
      # ActiveRecord::Base.connection.execute(sql)
 redirect_to "/ads/#{@ad.id}"
   end
-
-
 end
