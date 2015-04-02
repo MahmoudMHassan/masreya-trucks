@@ -26,9 +26,15 @@
 		padding: 0em 2em;
 		right: 0;
 		border-bottom: 1px solid #d6dce0;
-		background: #f5f7f9;
-		color: #9eafba;	
+		background: #2D882D;
+		color: #070F07;	
 		height: 120px;
+		a{
+		  color: #111F11;
+		&:hover {
+					color: #33F433;
+				}
+		}
 	}
 	.show_wrapper {
 		width:500px;
@@ -41,10 +47,10 @@
 				font-weight: 500;
 				text-decoration: none;
 				//color: #2a2f35;
-				color: #002186;
+				color: #2D882D;
 				font-size: 1.1em;
 				&:hover {
-					color: #33acb7;
+					color: #00E35C;
 				}
 			}
 	#searchwrapper{
@@ -84,4 +90,5 @@
 	}
 	#body{
 	margin-top:120px;
+	background:#D1FBD1;
 	}
