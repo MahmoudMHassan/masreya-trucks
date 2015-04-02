@@ -64,7 +64,7 @@
   <% if current_user && self.current_user.provider != nil%>
     مرحباٌ <strong><%= current_user.name %></strong>!
     <%= link_to "تسجيل الخروج", signout_path, id: "sign_out" %>
-  <% elsif self.current_user.provider != nil %>
+  <% else %>
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div>
