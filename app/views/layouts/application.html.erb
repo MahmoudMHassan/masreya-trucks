@@ -30,7 +30,7 @@
 <%= link_to "إضافة إعلان", "/ads/new"%>
 <%end%>
 </div><br><br>
-<div id="user-widget">
+<div id="headerRight">
   <% if current_user %>
     Welcome <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
@@ -38,7 +38,7 @@
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div> 
-<div style="margin-top:-70px;margin-left:400px;margin-right:400px;height:0px;">
+<div style="margin-top:-30px;margin-left:400px;margin-right:400px;height:0px;">
 <div id="searchbutton">
   <button style="border-radius:25px;border:2px solid;width:200px;background-color:#71C971;">Search</button>
   </div>

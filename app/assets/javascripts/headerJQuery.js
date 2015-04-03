@@ -14,9 +14,9 @@
 $(function(){
   if(window.location.href.indexOf("&make=")>-1){
     $('#searchwrapper').css("visibility","visible");
-    $('#header').css("height","230px");
+    $('#header').css("height","270px");
     $('#header').data('size','small');
-    $('#body').css("margin-top","230px");
+    $('#body').css("margin-top","270px");
   }else{
     $('#searchwrapper').css("visibility","hidden");
     $('#header').data('size','big');
@@ -30,11 +30,11 @@ $('#searchbutton').click(function(){
 	    $('#searchwrapper').css("visibility","visible");
             $('#header').data('size','small');
             $('#header').stop().animate({
-                height:'230px'
+                height:'270px'
             },600);
 	    $('#searchwrapper').fadeIn();
 	    $('#body').stop().animate({
-                marginTop:'230px'
+                marginTop:'270px'
             },600);
         }
     else{

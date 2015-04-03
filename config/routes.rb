@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'vans/show'
   post 'vans/new' => 'vans#create'
   #AD
+  get 'search/:page' => 'ads#search'
   get 'ads/home' => 'ads#home'
   get 'ads/new'
   get 'ads/:id' => 'ads#show'
