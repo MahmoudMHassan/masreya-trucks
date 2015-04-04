@@ -80,7 +80,7 @@ Automatic
 <%=@vehicle.colour%><br>
 <b>Price</b>
 <br>
-<%=@vehicle.price%><br>
+<%= number_with_delimiter(@vehicle.price, :delimiter => ',')%><br>
 
 <%if @van !=nil %>
 <b>Capacity</b><br>

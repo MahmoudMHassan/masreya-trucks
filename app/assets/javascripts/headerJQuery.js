@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
+$(document).ready(function() {
 $(function(){
   if(window.location.href.indexOf("&make=")>-1){
     $('#searchwrapper').css("visibility","visible");
@@ -20,10 +20,9 @@ $(function(){
     $('#searchwrapper').css("visibility","hidden");
   }
 });
-
-$('#searchbutton').click(function(){
+$('#searchbutton').click(function(e){
    
-        if($('#header').height() == 120)
+        if($('#header').outerHeight() == 121)
         {	
 	    $('#searchwrapper').css("visibility","visible");
             $('#header').stop().animate({
@@ -43,6 +42,6 @@ $('#searchbutton').click(function(){
                 marginTop:'120px'
             },400);
           
-    }
-});
+    }e.preventDefault();
+})});
  
