@@ -33,9 +33,9 @@ class Ad < ActiveRecord::Base
       makes = makes.order('price ASC')
        elsif sort == "1"
       makes = makes.order('price DESC')
-       elsif sort == "3"
+       elsif sort == "2"
       makes = makes.order('manyear ASC')
-       elsif sort == "4"
+       elsif sort == "3"
       makes = makes.order('manyear DESC')
        end
       
