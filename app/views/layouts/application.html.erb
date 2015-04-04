@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="rtl">
+<html dir="rtl" id="body">
 
 <head>
   <title>MasreyaTrucks</title>
@@ -25,7 +25,7 @@
 <%end%>
 <br>
 </head>
-<body id="body">
+<body>
 <%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
 <%= link_to "إضافة إعلان", "/ads/new"%>
 <%end%>

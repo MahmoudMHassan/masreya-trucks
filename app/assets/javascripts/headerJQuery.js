@@ -18,6 +18,8 @@ $(function(){
     $('#body').css("margin-top","270px");
   }else{
     $('#searchwrapper').css("visibility","hidden");
+    $('#header').css("height","120px");
+    $('#body').css("margin-top","120px");
   }
 });
 $('#searchbutton').click(function(e){
