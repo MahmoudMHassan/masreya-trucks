@@ -2,6 +2,9 @@
 <%if @blank%>
 <span class ="error">يوجد بيانات فارغة*</span>
 <%end%>
+<%if !@valid%>
+<span class = "unvalid">البيانات غير صحيحة</span>
+<%end%>
 <br>
     <p>البريد الالكتروني<%if @email==""%><span style = "color: red;"> * </span><%end%> </p>
     <%= f.email_field :email, :value => @email%>
