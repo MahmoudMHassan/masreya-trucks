@@ -71,4 +71,7 @@ class AdsController < ApplicationController
      # ActiveRecord::Base.connection.execute(sql)
 redirect_to "/ads/#{@ad.id}"
   end
+  def search_make
+    @ads = Ad.make_search(params[:purchase],params[:new],params[:importerd])
+  end 
 end
