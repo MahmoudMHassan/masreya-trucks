@@ -1,4 +1,5 @@
 class VehiclesController < ApplicationController
+
   def new
     @vehicle = Vehicle.new
   end
@@ -29,3 +30,4 @@ class VehiclesController < ApplicationController
   def show
   end
 end
+
