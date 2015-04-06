@@ -4,10 +4,10 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
-default: &default
+  default: &default
   adapter: mysql2
   username: root
-  password: Bloodhoof94
+  password: aa2991994
   database: masreya
   encoding: utf8
 
