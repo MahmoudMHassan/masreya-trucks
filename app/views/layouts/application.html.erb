@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html dir="rtl">
  <%#= javascript_include_tag '', 'application' %>
@@ -18,18 +19,17 @@
 <%= link_to "تسجيل الدخول", "/users/signin"%>
 <%else%>
 <div style = "text-align: left">
-<%if self.current_user != nil && @user.id == self.current_user.id%>
+<%if self.current_user != nil%>
 <div id="dl-menu" class="dl-menuwrapper">
   <button class="dl-trigger">Open Menu</button>
   <ul class="dl-menu">
        <li>
 <%= link_to "تعديل البيانات", "edit/#{@user.id}", method: :get%></li>
 
-<li><%= link_to "إلغاء الحساب", "destroy/#{@user.id}",
-:style=>'color: red', method: :post ,data: {confirm: 'Are you sure?'}%></li>
+<li><%= link_to "إلغاء الحساب", "destroy/#{@user.id}",method: :post ,data: {confirm: 'Are you sure?'}%></li>
 
-        <li> <%=link_to "صفحةك", "/users/#{self.current_user.id}"%></li>
-          <li><%= link_to "تسجيل الخروج", "/users/logout", method: :post%></li>
+        <li><%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%></li>
+        <li><%= link_to "صفحة الحساب", "/users/#{self.current_user.id}"%></li>
     </ul>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -44,11 +44,13 @@
     </script>
 <%end%>
 
-<%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%>
-</div>
-<%= link_to "صفحة الحساب", "/users/#{self.current_user.id}"%>
 
+</div>
+
+
+<% if self.current_user.email != nil%>
 <%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
+<%end%>
 <%end%>
 
 </head>
@@ -59,9 +61,9 @@
 </div>
 <%end%>
 <div id="user-widget">
-  <% if current_user %>
-    Welcome <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% if current_user && self.current_user.provider != nil%>
+    مرحباٌ <strong><%= current_user.name %></strong>!
+    <%= link_to "تسجيل الخروج", signout_path, id: "sign_out" %>
   <% else %>
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
@@ -71,3 +73,4 @@
 
 </body>
 </html>
+
