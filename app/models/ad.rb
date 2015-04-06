@@ -2,6 +2,12 @@ class Ad < ActiveRecord::Base
   has_many :users, through: :bookmark
   has_one :seller, through: :make
   has_many :vehicles, through: :make
+  has_one :van
+  has_one :semitrailer
+  has_one :semitrailertruck
+  has_one :heavytruck
+  has_one :make
+  accepts_nested_attributes_for :vehicles, :van, :semitrailer, :semitrailertruck, :heavytruck , :make
   
   def self.search(sort,make,model,manyear,country,axles,gearbox,colour,price)
     if make
