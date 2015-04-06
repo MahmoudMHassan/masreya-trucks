@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :makes
+ # resources :makes
   get 'makes/new'
 
   get 'makes/edit'
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'makes/destroy'
 
   get 'makes/index'
+
+  post 'makes/new'
 
 resources :vehicles
   get 'vehicles/new'
