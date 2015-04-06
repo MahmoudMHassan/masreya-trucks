@@ -10,6 +10,7 @@ class AdsController < ApplicationController
   end
   
   def new
+
     @ad = Ad.new
     @vehicle = Vehicle.new
     @make = Make.new
@@ -139,7 +140,9 @@ class AdsController < ApplicationController
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
 
-    @vehicle.update(vehicle_params)
+
+    @vehicle.update(make: params[:make], model: params[:model], manyear: params[:manyear], country: params[:country], axles: params[:axles], gearbox: params[:gearbox], colour: params[:colour], price: params[:price])
+
     if @van !=nil
       @vehicle.van.update(van_params)
     elsif @semitrailer!=nil

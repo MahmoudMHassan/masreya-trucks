@@ -1,3 +1,3 @@
 class Heavytruck < ActiveRecord::Base
-  has_one :vehicle, as: :vehicable
+  belongs_to :vehicle 
 end

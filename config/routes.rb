@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  resources :makes
+  get 'makes/new'
+
+  get 'makes/edit'
+
+  get 'makes/show'
+
+  get 'makes/update'
+
+  get 'makes/delete'
+
+  get 'makes/destroy'
+
+  get 'makes/index'
+
 resources :vehicles
   get 'vehicles/new'
 
