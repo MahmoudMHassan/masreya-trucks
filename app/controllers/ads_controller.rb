@@ -1,4 +1,14 @@
 class AdsController < ApplicationController
+  before_filter :authorize, :except => [:home, :search, :show]
+  
+  def authorize
+    if self.current_user != nil
+      true
+    else
+      redirect_to root_path
+    end
+  end
+  
   def new
     @ad = Ad.new
     @vehicle = Vehicle.new
@@ -42,6 +52,7 @@ class AdsController < ApplicationController
   semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
   semitrailertruck_params
   end
+  
   def create
     @ad = Ad.new(ad_params)
     @ad.save
@@ -69,6 +80,7 @@ class AdsController < ApplicationController
     end
     redirect_to "/ads/#{@ad.id}"
   end
+  
   def home
     @ads = Ad.first(10)
   end
@@ -76,36 +88,41 @@ class AdsController < ApplicationController
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price])
   end
+  
   def show
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
-    @vehicle = Vehicle.find(Make.find_by_ad_id(params[:id]).vehicle_id)
-    @seller = User.find(Make.find_by_ad_id(params[:id]).user_id)
+    @vehicle = Vehicle.find(@make.vehicle_id)
+    @seller = User.find(@make.user_id)
     @van = Van.find_by_vehicle_id(@vehicle.id)
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
   end
+  
   def bookmark
     @bookmark = Bookmark.new(user_id: self.current_user.id, ad_id: params[:id])
     @bookmark.save
     redirect_to "/ads/#{params[:id]}"
   end
+  
   def unbookmark
     Bookmark.where(:user_id => self.current_user.id,:ad_id => params[:id]).destroy_all
     redirect_to "/ads/#{params[:id]}"
   end
+  
   def delete
     Make.destroy_all(user_id: self.current_user.id, ad_id: params[:id])
     Bookmark.destroy_all(ad_id: params[:id])
     Ad.destroy(params[:id])
     redirect_to root_path
   end
+  
   def edit
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
-    @vehicle = Vehicle.find(Make.find_by_ad_id(params[:id]).vehicle_id)
-    @seller = User.find(Make.find_by_ad_id(params[:id]).user_id)
+    @vehicle = Vehicle.find(@make.vehicle_id)
+    @seller = self.current_user
     @van = Van.find_by_vehicle_id(@vehicle.id)
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
@@ -115,28 +132,28 @@ class AdsController < ApplicationController
   def update
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
-    @vehicle = Vehicle.find(Make.find_by_ad_id(params[:id]).vehicle_id)
-    @seller = User.find(Make.find_by_ad_id(params[:id]).user_id)
+    @vehicle = Vehicle.find(@make.vehicle_id)
+    @seller = self.current_user
     @van = Van.find_by_vehicle_id(@vehicle.id)
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
 
-    @vehicle.update(make: params[:make], model: params[:model], manyear: params[:manyear], country: params[:country], axles: params[:axles], gearbox: params[:gearbox], colour: params[:colour], price: params[:price])
+    @vehicle.update(vehicle_params)
     if @van !=nil
-      @vehicle.van.update(vehicle_id: @vehicle.id,capacity: params[:capacity],mileage: params[:mileage])
+      @vehicle.van.update(van_params)
     elsif @semitrailer!=nil
-      @vehicle.semitrailer.update(vehicle_id: @vehicle.id,capacity: params[:capacity])
+      @vehicle.semitrailer.update(semitrailer_params)
     elsif @semitrailertruck !=nil
-      @vehicle.semitrailertruck.update(vehicle_id: @vehicle.id,type: params[:type],mileage: params[:mileage])
+      @vehicle.semitrailertruck.update(semitrailertruck_params)
     elsif @heavytruck !=nil
-      @vehicle.heavytruck.update(vehicle_id: @vehicle.id,capacity: params[:capacity],mileage: params[:mileage])
+      @vehicle.heavytruck.update(heavytruck_params)
     end
     @vehicle.save
-    @ad.update(title: params[:title], description: params[:description])
+    @ad.update(ad_params)
     @ad.save
 
-    @make.update(new: params[:new],imported: params[:imported],purchase: params[:purchase])
+    @make.update(make_params)
     @make.save
     #connect = ActiveRecord::Base.connection();
     #connect.execute(ActiveRecord::Base.send(:sanitize_sql_array, ["Update makes SET new = %s, purchase = %s, imported =%s WHERE ad_id =%s",params[:new],params[:purchase],params[:imported],@ad.id]))
