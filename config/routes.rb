@@ -38,7 +38,8 @@ Rails.application.routes.draw do
    #resources :vehicles
    #resources :vans
    #resources :semitrailertrucks
-
+  post 'ads/new' => 'ads#create'
+    resources :ads
 
 
 
