@@ -1,6 +1,6 @@
 class AdsController < ApplicationController
   before_filter :authorize, :except => [:home, :search, :show]
-  
+
   def authorize
     if self.current_user != nil
       true
@@ -8,7 +8,7 @@ class AdsController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
   def new
     @ad = Ad.new
     @vehicle = Vehicle.new
@@ -27,32 +27,32 @@ class AdsController < ApplicationController
   vehicle_params = params.require(:vehicle).permit(:make,:model,:manyear,:country,:axles,:gearbox,:colour,:price)
   vehicle_params
   end
-  
+
   private def make_params
   make_params = params[:make].permit(:new,:imported,:purchase)
   make_params
   end
-  
+
   private def van_params
   van_params = params[:van].permit(:capacity,:mileage)
   van_params
   end
-  
+
   private def heavytruck_params
   heavytruck_params = params[:heavytruck].permit(:capacity,:mileage)
   heavytruck_params
   end
-  
+
   private def semitrailer_params
   semitrailer_params = params[:semitrailer].permit(:capacity)
   semitrailer_params
   end
-  
+
   private def semitrailertruck_params
   semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
   semitrailertruck_params
   end
-  
+
   def create
     @ad = Ad.new(ad_params)
     @ad.save
@@ -80,15 +80,15 @@ class AdsController < ApplicationController
     end
     redirect_to "/ads/#{@ad.id}"
   end
-  
+
   def home
     @ads = Ad.first(10)
   end
-  
+
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price])
   end
-  
+
   def show
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
@@ -99,29 +99,24 @@ class AdsController < ApplicationController
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
   end
-  
+
   def bookmark
     @bookmark = Bookmark.new(user_id: self.current_user.id, ad_id: params[:id])
     @bookmark.save
     redirect_to "/ads/#{params[:id]}"
   end
-<<<<<<< HEAD
   def  unbookmark
-=======
-  
-  def unbookmark
->>>>>>> 9de60f38bb5cb9c1301b7d307dd3750e42769559
     Bookmark.where(:user_id => self.current_user.id,:ad_id => params[:id]).destroy_all
     redirect_to "/ads/#{params[:id]}"
   end
-  
+
   def delete
     Make.destroy_all(user_id: self.current_user.id, ad_id: params[:id])
     Bookmark.destroy_all(ad_id: params[:id])
     Ad.destroy(params[:id])
     redirect_to root_path
   end
-  
+
   def edit
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
@@ -166,8 +161,4 @@ class AdsController < ApplicationController
 redirect_to "/ads/#{@ad.id}"
   end
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ff70f6c4cbbf9932d261816ea4087360fe749f15
 end
