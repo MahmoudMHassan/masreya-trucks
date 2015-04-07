@@ -42,6 +42,7 @@ resources :vehicles
 
   #AD
   get 'search/:page' => 'ads#search'
+  get 'vansearch/:page' => 'ads#vansearch'
   get 'ads/home' => 'ads#home'
   get 'ads/new'
   get 'ads/:id' => 'ads#show'
