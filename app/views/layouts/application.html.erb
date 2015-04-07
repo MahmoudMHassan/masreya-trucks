@@ -32,8 +32,8 @@
 </div><br><br>
 <div id="headerRight">
   <% if current_user %>
-    Welcome <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    مرحباً <strong><%= current_user.name %></strong>!
+    <%= link_to "تسجيل الخروج", signout_path, id: "sign_out" %>
   <% else %>
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
