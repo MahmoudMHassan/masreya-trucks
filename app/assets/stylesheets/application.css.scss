@@ -84,10 +84,14 @@ height: 300px;
 			}
 
 	#searchwrapper{
+	position: absolute;
 	width:700px;
 	margin: 0 auto;
 	color: #000000;
-	visibility:hidden;
+	//visibility:hidden;
+	}
+	#searchparent{
+	position: relative;
 	}
 	#headerRight{
 	position:relative;
@@ -130,6 +134,7 @@ height: 300px;
 	background:#CDEBCD;
 	}
 	#vanwrapper{
+	position: absolute;
 	width:700px;
 	margin: 0 auto;
 	color: #000000;
