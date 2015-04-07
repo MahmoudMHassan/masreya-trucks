@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331191230) do
+ActiveRecord::Schema.define(version: 20150404113755) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 20150331191230) do
 
   add_index "buyers", ["user_id"], name: "index_buyers_on_user_id", using: :btree
 
+  create_table "company_sellers", primary_key: "user_id", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "company_sellers", ["user_id"], name: "index_company_sellers_on_user_id", using: :btree
+
   create_table "heavytrucks", primary_key: "vehicle_id", force: :cascade do |t|
     t.boolean  "capacity",   limit: 1
     t.integer  "mileage",    limit: 4
@@ -69,9 +76,9 @@ ActiveRecord::Schema.define(version: 20150331191230) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_df07d4b55f", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_0912e26ab2", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_bc3550e904", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_8981222339", using: :btree
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -138,6 +145,7 @@ ActiveRecord::Schema.define(version: 20150331191230) do
   add_foreign_key "bookmarks", "ads"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "buyers", "users"
+  add_foreign_key "company_sellers", "users"
   add_foreign_key "heavytrucks", "vehicles"
   add_foreign_key "makes", "ads"
   add_foreign_key "makes", "sellers", column: "user_id", primary_key: "user_id", name: "makes_ibfk_1"

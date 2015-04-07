@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'ads/search/:page' => 'ads#search'
+  #get 'ads/search_make' => 'ads#search_make'
+  get 'ads/search_make'
   resources :makes
   get 'makes/new'
 
@@ -36,6 +39,7 @@ resources :vehicles
   root :to => 'ads#home'
 
   #AD
+  
   get 'ads/home' => 'ads#home'
   get 'ads/new'
   get 'ads/:id' => 'ads#show'

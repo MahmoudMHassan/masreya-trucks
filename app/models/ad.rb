@@ -4,11 +4,28 @@ class Ad < ActiveRecord::Base
   has_many :vehicles, through: :make
 
   def self.make_search (purchase, newV, imported) 
-  	if make 
   		@make = Make.joins(:ad)
-  		@make = @make.where('purchase LIKE ?',"%#{purchase}%") if purchase.present?
-        @make = @make.where('new LIKE ?',"%#{newV}%") if newV.present?
-        @make = @make.where('imported LIKE ?',"%#{imported}%") if imported.present?
-  	end 
+        if purchase.present?
+       if (purchase == "للبيع")
+  		@make = @make.where('purchase LIKE ?',"1") 
+        else 
+          @make = @make.where('purchase LIKE ?',"0") 
+        end 
+      end 
+      if (newV.present?)
+        if (newV == "جديدة")
+        @make = @make.where('new LIKE ?',"1") 
+      else 
+        @make = @make.where('new LIKE ?',"0")
+       end 
+       end 
+       if (imported.present?)
+          if imported == "مستوردة"  
+        @make = @make.where('imported LIKE ?',"1") 
+        else 
+          @make = @make.where('imported LIKE ?',"0") 
+        end 
+      end 
+      @make
   end 
 end

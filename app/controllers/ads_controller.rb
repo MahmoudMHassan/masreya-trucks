@@ -1,4 +1,12 @@
 class AdsController < ApplicationController
+  before_filter :authorize, :except => [:home, :search, :show]
+  def authorize
+    if self.current_user != nil
+      true
+    else
+      redirect_to root_path
+    end
+  end
   def new
     @ad =Ad.new
   end
@@ -71,7 +79,7 @@ class AdsController < ApplicationController
      # ActiveRecord::Base.connection.execute(sql)
 redirect_to "/ads/#{@ad.id}"
   end
-  def search_make
-    @ads = Ad.make_search(params[:purchase],params[:new],params[:importerd])
+  def search
+    @ads = Ad.make_search(params[:purchase],params[:new],params[:imported])
   end 
 end
