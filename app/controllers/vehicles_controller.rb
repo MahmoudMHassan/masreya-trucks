@@ -32,12 +32,4 @@ end
 
   def show
   end
-  
-# 
-# def find_vehicable
-#   params.each do |name, value|
-#     if name =~ /(.+)_id$/
-#       return $1.classify.constantize.find(value)
-#     end
-#   end
-# end
+end

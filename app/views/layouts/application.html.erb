@@ -22,7 +22,7 @@
 <body>
 <%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
 <div style="text-align: left">
-<%= link_to "إضافة إعلان", "/vehicles/new"%>
+<%= link_to "إضافة إعلان", "/makes/new"%>
 </div>
 <%end%>
 <div id="user-widget">

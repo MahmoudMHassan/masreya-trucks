@@ -1,4 +1,4 @@
 class Picture < ActiveRecord::Base
-  belongs_to :ad, dependent: :delete
+  belongs_to :make, dependent: :delete
    mount_uploader :image, ImageUploader
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325151759) do
+ActiveRecord::Schema.define(version: 20150331191230) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -69,16 +69,18 @@ ActiveRecord::Schema.define(version: 20150325151759) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_003d6ce40b", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_af0c056268", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_1b02f63e4c", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_bf27261f54", using: :btree
 
   create_table "pictures", force: :cascade do |t|
     t.string   "image",      limit: 255
-    t.integer  "ad_id",      limit: 4
+    t.integer  "make_id",    limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "pictures", ["make_id"], name: "fk_rails_d8d9096a4f", using: :btree
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -150,6 +152,7 @@ ActiveRecord::Schema.define(version: 20150325151759) do
   add_foreign_key "makes", "ads"
   add_foreign_key "makes", "sellers", column: "user_id", primary_key: "user_id", name: "makes_ibfk_1"
   add_foreign_key "makes", "vehicles"
+  add_foreign_key "pictures", "makes"
   add_foreign_key "sellers", "users"
   add_foreign_key "semitrailers", "vehicles"
   add_foreign_key "semitrailertrucks", "vehicles"

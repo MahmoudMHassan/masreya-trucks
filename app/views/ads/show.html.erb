@@ -81,24 +81,8 @@ Automatic
 <b>Price</b>
 <br>
 <%=@vehicle.price%><br>
-
-<%if @van !=nil %>
-<b>Capacity</b><br>
-<%=@van.capacity%><br>
-<b>Mileage</b><br>
-<%=@van.mileage%><br>
-<%elsif @semitrailer !=nil%>
-<b>Capacity</b><br>
-<%=@semitrailer.capacity%><br>
-<%elsif @semitrailertruck !=nil%>
-<b>Type</b><br>
-<%=@semitrailertruck.type%><br>
-<b>Mileage</b><br>
-<%=@semitrailertruck.mileage%><br>
-<%elsif @heavytruck !=nil%>
-<b>Capacity</b><br>
-<%=@heavytruck.capacity%><br>
-<b>Mileage</b><br>
-<%=@heavytruck.mileage%><br>
-<%end%>
+<br>
+<%= image_tag image_url.to_s%>
+<%= image_tag image_url.to_s%>
+<%= image_tag image_url.to_s%>
 </div>

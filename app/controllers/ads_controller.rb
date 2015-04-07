@@ -8,12 +8,12 @@ class AdsController < ApplicationController
   def show
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
-    @vehicle = Vehicle.find(Make.find_by_ad_id(params[:id]).vehicle_id)
-    @seller = User.find(Make.find_by_ad_id(params[:id]).user_id)
-    @van = Van.find_by_vehicle_id(@vehicle.id)
-    @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
-    @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
-    @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
+   @vehicle = Vehicle.find(Make.find_by_ad_id(params[:id]).vehicle_id)
+   @seller = User.find(Make.find_by_ad_id(params[:id]).user_id)
+   # @van = Van.find_by_vehicle_id(@vehicle.id)
+   # @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
+    #@semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
+   #@heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
   end
   def bookmark
     @bookmark = Bookmark.new(user_id: self.current_user.id, ad_id: params[:id])
@@ -73,5 +73,5 @@ class AdsController < ApplicationController
      # ActiveRecord::Base.connection.execute(sql)
 redirect_to "/ads/#{@ad.id}"
   end
-
+1
 end

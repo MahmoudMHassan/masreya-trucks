@@ -2,7 +2,8 @@
 <p>Find me in app/views/makes/new.html.erb</p>
 <!DOCTYPE html>
 <html>
-  <%= form_for @make do |f| %>
+  <%= form_for @make, :html => {:multipart => true} do |f| %>
+
   <%= f.fields_for :ad do |a| %>
   <%= a.label :Title %>
   <%= a.text_field :title %>
@@ -14,6 +15,56 @@
   <br>
   <%= a.label :Phone %>
   <%= a.text_area :phone %>
+  <br>
+  <br>
+  <%= a.label :Email %>
+  <%= a.text_field :email %>
+  <br>
+  <br>
+  <%end%>
+  
+  <%= f.fields_for :vehicle do |a| %>
+  <%= a.label :Make%>
+<br>
+<%=a.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
+<br>
+<%= a.label :Model%>
+<br>
+<%=a.select :model,([ "i10" , "w30" , "503"])%>
+<br>
+سنة الصنع
+<br>
+<%=a.number_field :manyear%>
+<br>
+المكان
+<br>
+<%=a.select :country ,(["مصر" , "المملكة العربية السعودية", "الامارات المتحدة", "الكويت"])%>
+<br>
+عدد المحاور
+<br>
+<%=a.select :axles, options_for_select([['1', 1],['2', 2],['3', 3],['3', 4]])%>
+<br>
+ناقل الحركة
+<br>
+يدوي
+<%=a.check_box :gearbox %>
+<br>
+اللون
+<br>
+<%=a.select :colour, options_for_select([["أبيض"],["أسود"]])%>
+<br>
+السعر
+<br>
+<%= a.number_field :price %>
+<br>
+<br>
   <%end%>
 
-  <%end%>
+<%= f.fields_for :picture do |a| %>
+<%= a.file_field :image %><br>
+<%end%>
+<br>
+<br>
+<%= f.submit "حفظ"%>
+<%end%>
+</html>
