@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get 'vans/show'
   post 'vans/new' => 'vans#create'
   #AD
+  get 'search/:page' => 'ads#search'
+  get 'vansearch/:page' => 'ads#vansearch'
   get 'ads/home' => 'ads#home'
   get 'ads/new'
   get 'ads/:id' => 'ads#show'
@@ -37,7 +39,8 @@ Rails.application.routes.draw do
    #resources :vehicles
    #resources :vans
    #resources :semitrailertrucks
-
+  post 'ads/new' => 'ads#create'
+    resources :ads
 
 
 
