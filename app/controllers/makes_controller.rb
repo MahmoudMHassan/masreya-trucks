@@ -22,6 +22,10 @@ class MakesController < ApplicationController
 
   def index
     @makes = Make.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @makes }
+    end
   end
 
   def create
