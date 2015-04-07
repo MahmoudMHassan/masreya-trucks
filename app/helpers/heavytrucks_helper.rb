@@ -1,2 +1,0 @@
-module HeavytrucksHelper
-end

@@ -1,31 +1,46 @@
 Rails.application.routes.draw do
+  
+  #get 'ads/search_make' => 'ads#search_make'
+  get 'ads/search_make'
+  get 'ads/search/:page' => 'ads#search'
+  resources :makes
+  get 'makes/new'
+
+  get 'makes/edit'
+
+  get 'makes/show'
+
+  get 'makes/update'
+
+  get 'makes/delete'
+
+  get 'makes/destroy'
+
+  get 'makes/index'
+
+resources :vehicles
+  get 'vehicles/new'
+
+  get 'vehicles/create'
+
+  get 'vehicles/edit'
+
+  get 'vehicles/delete'
+
+  get 'vehicles/destroy'
+
+  get 'vehicles/update'
+
+  get 'vehicles/index'
+
+  get 'vehicles/show'
+
+  post 'vehicles/new' => 'vehicles#create'
 
   root :to => 'ads#home'
-  #SEMITRAILERTRUCK
-  get 'semitrailertrucks/index'
-  get 'semitrailertrucks/new'
-  get 'semitrailertrucks/edit'
-  get 'semitrailertrucks/show'
-  post 'semitrailertrucks/new' => 'semitrailertrucks#create'
-  #HEAVYTRUCK
-  get 'heavytrucks/index'
-  get 'heavytrucks/new'
-  get 'heavytrucks/edit'
-  get 'heavytrucks/show'
-  post 'heavytrucks/new' => 'heavytrucks#create'
-  #SEMITRAILER
-  get 'semitrailers/index'
-  get 'semitrailers/new'
-  get 'semitrailers/edit'
-  get 'semitrailers/show'
-  post 'semitrailers/new' => 'semitrailers#create'
-  #VAN
-  get 'vans/index'
-  get 'vans/new'
-  get 'vans/edit'
-  get 'vans/show'
-  post 'vans/new' => 'vans#create'
+
   #AD
+  
   get 'ads/home' => 'ads#home'
   get 'ads/new'
   get 'ads/:id' => 'ads#show'
@@ -34,19 +49,9 @@ Rails.application.routes.draw do
   post 'ads/delete/:id' => 'ads#delete'
   get 'ads/edit/:id' => 'ads#edit'
   post 'ads/edit/:id' => 'ads#update'
-   #resources :vehicles
-   #resources :vans
-   #resources :semitrailertrucks
-
-
-
-
-
-
-
 
   get 'sessions/destroy'
-  
+
   get 'users/bookmark/:id' => 'users#bookmark'
   get 'users/new'
   post 'users/new'=> 'users#create'
