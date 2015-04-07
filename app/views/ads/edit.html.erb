@@ -1,12 +1,25 @@
-<%= form_tag do %>
+<%=form_for :ad do |a|%>
+<%= a.label :Title%>
+<br>
+<%= a.text_field :title%>
+<br><br>
 
-<%=label_tag :Title%>
+
+<%=fields_for :vehicle do |v|%>
+<%= v.label :Make%>
 <br>
- <%= text_field_tag :title, value=@ad.title%>
+<%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
+<br><br>
+<%= v.label :Model%>
 <br>
-<%=label_tag :Description%>
+<%=v.select :model,([ "i10" , "w30" , "503"])%>
+<br><br>
+
+<%if @van != nil%>
+<%=fields_for :van do |van|%>
+<%= van.label :Capacity%>
 <br>
- <%= text_area_tag :description , value=@ad.description,size: "35x7"%>
+<%=van.number_field :capacity%>
 <br>
 
 New
@@ -42,86 +55,94 @@ Imported
 <%else%>
 <%= hidden_field_tag 'imported', false %>
 
-<<<<<<< HEAD
+
 <!-- <input id="imported" name="imported" type="checkbox" value=true/> -->
-=======
+
 <input id="imported" name="imported" type="checkbox" value=true />
->>>>>>> 0f09e1b5c9a93ebbf167e96d28fe457f8fbbffce
+
+<%= van.label :Mileage%>
+<br>
+<%=van.number_field :mileage%>
+<br>
+
 <%end%>
-
-<br>
-<%=label_tag :Make%>
-<br>
- <%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
-                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], @vehicle.make)) %>
-<br>
-
-<%= label_tag :Model%>
-<br>
-<%= select_tag(:model, options_for_select([['i10', 'i10'],
-                 ['w30', 'w30'],['503','503']], @vehicle.model)) %>
-<br>
-<p>Manufacture year</p>
-<%=number_field_tag :manyear,value=@vehicle.manyear%>
-<br><%= label_tag :Country%><br>
-<%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
-                 ['madagascar', 'madagascar']], @vehicle.country))%>
-
-
-<br>
-
-<p>Number of Axels</p>
-<%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]], @vehicle.axles)) %>
-<br>
-
-<%if @van !=nil%>
-<%= label_tag :Capacity%>
-<br>
-<%= number_field_tag :capacity, value = @van.capacity%>
-<br>
-<%= label_tag :Mileage%>
-<br>
-<%= number_field_tag :mileage, value = @van.mileage%>
 <%elsif @semitrailer != nil%>
-<%= label_tag :Capacity%>
+<%=fields_for :semitrailer do |s|%>
+<%= s.label :Capacity%>
 <br>
-<%= number_field_tag :capacity, value = @semitrailer.capacity%>
-<%elsif @semitrailertruck !=nil %>
-<%= label_tag :Type%>
+<%=s.number_field :capacity%>
 <br>
-<%= text_field_tag :type,value = @semitrailertruck.type%>
-<br>
-<%= label_tag :Mileage%>
-<br>
-<%= number_field_tag :mileage,value=@semitrailertruck.mileage%>
-<%elsif @heavytruck !=nil %>
-<br>
-<%= number_field_tag :capacity, value = @heavytruck.capacity%>
-<br>
-<%= label_tag :Mileage%>
-<br>
-<%= number_field_tag :mileage, value = @heavytruck.mileage%>
 <%end%>
+<%elsif @semitrailertruck != nil%>
+<%=fields_for :semitrailertruck do |st|%>
+<%= st.label :Mileage%>
 <br>
-<%= label_tag :Gearbox%>
+<%=st.number_field :mileage%>
 <br>
-<%= select_tag(:gearbox, options_for_select([['Automatic', 0],['Semi Automatic', 1],['Manual', 2]], @vehicle.gearbox)) %>
-
-<br>
-
-<br>
-<%=label_tag :Colour%>
-<br>
-<%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], @vehicle.colour)) %>
-<br>
-
-<br>
-<%= label_tag :Price%>
-<br>
-<%=number_field_tag :price,value = @vehicle.price%>
-<br>
-
-
-<%=submit_tag%>
-
 <%end%>
+<%elsif @heavytruck != nil%>
+<%=fields_for :heavytruck do |h|%>
+<%= h.label :Capacity%>
+<br>
+<%=h.number_field :capacity%>
+<br>
+<%= h.label :Mileage%>
+<br>
+<%=h.number_field :mileage%>
+<br>
+<%end%>
+<%end%>
+
+Manufacture year<br>
+<%=v.number_field :manyear%>
+<br>
+<br>
+<%= v.label :Country%>
+<br>
+<%=v.select :country ,(["Egypt" , "madagascar"])%>
+
+<br>
+<br>
+Number of Axels<br>
+<%=v.select :axles, (["1","2","3","4","5","6","7","8"])%>
+<br><br>
+
+<%= v.label :Gearbox%>
+<br>
+<%=v.select :gearbox , (["Automatic", "semi Automatic" ,"Manual"])%>
+<br>
+
+<br>
+<%= v.label :Colour%>
+<br>
+<%=v.select :colour ,(["white","black","yellow","brown","green","red","orange","blue","grey"])%>
+<br>
+
+<br>
+<%= v.label :Price%>
+<br>
+<%=v.number_field :price%>
+<br><br>
+<%end%>
+<%=fields_for :make do |m|%>
+<%= m.label :New%>
+
+<%=m.check_box :new%>
+<br>
+<%= m.label :Imported%>
+
+<%=m.check_box :imported%>
+<br>
+<%= m.label :Purchase%>
+
+<%=m.check_box :purchase%>
+<br><br>
+<%end%>
+<%= a.label :Description%>
+<br>
+<%= a.text_area :description, size: "35x7"%>
+<br>
+
+<%=a.submit%>
+<%end%>
+

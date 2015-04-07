@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+    before_filter :authorize, :only => [:bookmark, :destroy, :edit]
+
+  def authorize
+    if self.current_user != nil
+      true
+    else
+      redirect_to root_path
+    end  
+  end
   def index
     @user = User.all
   end

@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20150331191230) do
     t.datetime "updated_at",           null: false
   end
 
+
   add_index "makes", ["ad_id"], name: "fk_rails_af0c056268", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
   add_index "makes", ["vehicle_id"], name: "fk_rails_bf27261f54", using: :btree
@@ -82,6 +83,10 @@ ActiveRecord::Schema.define(version: 20150331191230) do
 
   add_index "pictures", ["make_id"], name: "fk_rails_d8d9096a4f", using: :btree
 
+  add_index "makes", ["ad_id"], name: "fk_rails_4c11734c61", using: :btree
+
+  add_index "makes", ["user_id"], name: "user_id", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_9cbd68601e", using: :btree
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

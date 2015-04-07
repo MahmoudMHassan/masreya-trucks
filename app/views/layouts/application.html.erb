@@ -1,37 +1,55 @@
 <!DOCTYPE html>
-<html dir="rtl">
+<html dir="rtl" id="body">
+
 <head>
   <title>MasreyaTrucks</title>
+ 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %><div id="header">
-  <%= link_to "home", root_path%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+ 
+  <div id="header">
+
+  <div id="headerRight">
+  <%= link_to "home", root_path%><br>
   <%if self.current_user==nil %>
 <%= link_to "فتح حساب", "/users/new"%>
 <%= link_to "تسجيل الدخول", "/users/signin"%>
 <%else%>
-<div style = "text-align: left">
-<%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%>
-</div>
 <%= link_to "صفحة الحساب", "/users/#{self.current_user.id}"%>
-
 <%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
+</div><br>
+<div id="headerLeft">
+<%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%>
 <%end%>
-
+<br>
 </head>
 <body>
 <%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
 <div style="text-align: left">
 <%= link_to "إضافة إعلان", "/makes/new"%>
 </div>
+
 <%end%>
-<div id="user-widget">
+</div><br><br>
+<div id="headerRight">
   <% if current_user %>
     Welcome <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
   <% else %>
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
+
+</div> 
+<div style="margin-top:-30px;margin-left:400px;margin-right:400px;height:0px;">
+<button id="searchbutton" style="font-size:20px;color:#000000">
+<div style="margin-left:40px;"> البحث</div>
+  </button>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<div id="searchwrapper">
+<%=render 'ads/searchform'%>
+</div>
 </div>
 </div>
 <%= yield %>

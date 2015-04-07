@@ -1,3 +1,5 @@
+<html>
+ <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <br>
 <div style ="text-align: left">
 <%if self.current_user !=nil%>
@@ -14,75 +16,104 @@
 <%end%>
 <%end%>
 </div>
-<div class = "show_wrapper">
-<b>Seller</b>
+<div id = "contacts_stuff">
+<b>بيانات البائع</b>
 <br>
-<%=link_to  @seller.fname, "/users/#{@seller.id}"%><br>
-<b>Title</b>
+<%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%><br>
+<b> تليفون : </b>
+<br><%=@seller.phone%><br>
+<b> البريد الالكتروني : </b>
+<br> <%=@seller.email%>
+</div>
+<div id = "trucks_stuff">
+<br><b>العنوان</b>
 <br>
 <%=@ad.title%>
 <br>
-<b>Description</b>
+<b>الوصف</b>
 <br>
 <%=@ad.description%>
 <br>
-<b>Type</b>
+<b>النوع</b>
 <br>
 <%if @van!=nil%>
-Van
+<b>عربة</b>
 <%elsif @heavytruck !=nil%>
-Heavytruck
+<b> الشاحنات الثقيلة </b>
 <%elsif @semitrailer !=nil%>
-Semitrailer
+<b> شبه مقطورة </b>
 <%elsif @semitrailertruck !=nil%>
-Semitrailertruck
+<b> الشاحنات أشباه المقطورة </b>
 <%end%>
 <br>
-<b>Make</b>
+<b>انتاج</b>
 <br>
 <%=@vehicle.make%>
 <br>
-<b>Model</b>
+<b>الموديل</b>
 <br>
 <%=@vehicle.model%><br>
-<b>Vehicle Info</b><br>
+<b>معلومات عربة النقل</b><br>
 <%if @make.new%>
-|New
+|<b> جديد </b> <br>
 <%end%>
 <%if @make.imported%>
-| Imported
+| <b> مستورد </b> <br>
 <%end%>
 <%if @make.purchase%>
-| Purchase
+<b> مستعمل </b> <br>
 <%end%>
 <br>
 
-<b>Manyear</b>
+<b>سنة الانتاج</b>
 <br>
 <%=@vehicle.manyear%><br>
-<b>Country</b>
+<b>البلد</b>
 <br>
 <%=@vehicle.country%><br>
-<b>Axles</b>
+<b>المحاور (النقلات) </b>
 <br>
 <%=@vehicle.axles%><br>
-<b>Gearbox</b>
+<b>عجلة السرعة</b>
 <br>
 <%if @vehicle.gearbox == 1%>
 Semi Automatic
 <%elsif @vehicle.gearbox == 2%>
 Manual
 <%else%>
-Automatic
+<b> أتوماتيك </b>
 <%end%><br>
-<b>Colour</b>
+<b>اللون</b>
 <br>
 <%=@vehicle.colour%><br>
-<b>Price</b>
+<b>السعر</b>
 <br>
-<%=@vehicle.price%><br>
+<%= number_with_delimiter(@vehicle.price, :delimiter => ',')%><br>
+
 <br>
 <%= image_tag image_url.to_s%>
 <%= image_tag image_url.to_s%>
 <%= image_tag image_url.to_s%>
 </div>
+
+
+
+<%if @van !=nil %>
+<b>Capacity</b><br>
+<%=@van.capacity%><br>
+<b>Mileage</b><br>
+<%=@van.mileage%><br>
+<%elsif @semitrailer !=nil%>
+<b>Capacity</b><br>
+<%=@semitrailer.capacity%><br>
+<%elsif @semitrailertruck !=nil%>
+<b>Mileage</b><br>
+<%=@semitrailertruck.mileage%><br>
+<%elsif @heavytruck !=nil%>
+<b>Capacity</b><br>
+<%=@heavytruck.capacity%><br>
+<b>Mileage</b><br>
+<%=@heavytruck.mileage%><br>
+<%end%>
+</div>
+</html>
