@@ -105,8 +105,12 @@ class AdsController < ApplicationController
     @bookmark.save
     redirect_to "/ads/#{params[:id]}"
   end
+<<<<<<< HEAD
+  def  unbookmark
+=======
   
   def unbookmark
+>>>>>>> 9de60f38bb5cb9c1301b7d307dd3750e42769559
     Bookmark.where(:user_id => self.current_user.id,:ad_id => params[:id]).destroy_all
     redirect_to "/ads/#{params[:id]}"
   end
@@ -162,4 +166,8 @@ class AdsController < ApplicationController
 redirect_to "/ads/#{@ad.id}"
   end
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> ff70f6c4cbbf9932d261816ea4087360fe749f15
 end
