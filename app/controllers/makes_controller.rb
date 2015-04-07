@@ -21,6 +21,7 @@ class MakesController < ApplicationController
   end
 
   def index
+    @makes = Make.all
   end
 
   def create

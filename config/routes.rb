@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :makes
+  resources :makes do
+    resources :vehicles
+    resources :ads
+    resources :sellers
+  end
+    
   get 'makes/new'
 
   get 'makes/edit'
