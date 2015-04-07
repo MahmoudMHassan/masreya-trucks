@@ -80,7 +80,7 @@ Automatic
 <%=@vehicle.colour%><br>
 <b>Price</b>
 <br>
-<%=@vehicle.price%><br>
+<%= number_with_delimiter(@vehicle.price, :delimiter => ',')%><br>
 
 <%if @van !=nil %>
 <b>Capacity</b><br>
@@ -91,8 +91,6 @@ Automatic
 <b>Capacity</b><br>
 <%=@semitrailer.capacity%><br>
 <%elsif @semitrailertruck !=nil%>
-<b>Type</b><br>
-<%=@semitrailertruck.type%><br>
 <b>Mileage</b><br>
 <%=@semitrailertruck.mileage%><br>
 <%elsif @heavytruck !=nil%>
