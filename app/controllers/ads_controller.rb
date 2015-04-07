@@ -88,6 +88,10 @@ class AdsController < ApplicationController
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price])
   end
+  
+  def vansearch
+    @ads = Ad.vansearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity],params[:mileage])
+  end
 
   def show
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
