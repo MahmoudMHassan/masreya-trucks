@@ -1,4 +1,5 @@
 class VehiclesController < ApplicationController
+
   def new
     @vehicle = Vehicle.new
     @vehicle.heavytruck = Heavytruck.new
@@ -30,3 +31,4 @@ class VehiclesController < ApplicationController
   def show
   end
 end
+
