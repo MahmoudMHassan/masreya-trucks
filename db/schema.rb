@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20150307132021) do
     t.string   "title",       limit: 255
     t.text     "description", limit: 65535
     t.boolean  "validated",   limit: 1
+    t.string   "phone",       limit: 255
+    t.string   "email",       limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
   add_index "buyers", ["user_id"], name: "index_buyers_on_user_id", using: :btree
 
   create_table "heavytrucks", primary_key: "vehicle_id", force: :cascade do |t|
-    t.integer  "capacity",   limit: 4
+    t.boolean  "capacity",   limit: 1
     t.integer  "mileage",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
@@ -67,9 +69,11 @@ ActiveRecord::Schema.define(version: 20150307132021) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_9d3a4b7bcc", using: :btree
+
+  add_index "makes", ["ad_id"], name: "fk_rails_3d74e74548", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_3484ac4a25", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_2285262b58", using: :btree
+
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -79,7 +83,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
   add_index "sellers", ["user_id"], name: "index_sellers_on_user_id", using: :btree
 
   create_table "semitrailers", primary_key: "vehicle_id", force: :cascade do |t|
-    t.integer  "capacity",   limit: 4
+    t.boolean  "capacity",   limit: 1
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
@@ -87,10 +91,9 @@ ActiveRecord::Schema.define(version: 20150307132021) do
   add_index "semitrailers", ["vehicle_id"], name: "index_semitrailers_on_vehicle_id", using: :btree
 
   create_table "semitrailertrucks", primary_key: "vehicle_id", force: :cascade do |t|
-    t.string   "type",       limit: 255
     t.integer  "mileage",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   add_index "semitrailertrucks", ["vehicle_id"], name: "index_semitrailertrucks_on_vehicle_id", using: :btree
@@ -113,7 +116,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
   end
 
   create_table "vans", primary_key: "vehicle_id", force: :cascade do |t|
-    t.integer  "capacity",   limit: 4
+    t.boolean  "capacity",   limit: 1
     t.integer  "mileage",    limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
@@ -127,7 +130,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
     t.integer  "manyear",    limit: 4
     t.string   "country",    limit: 255
     t.integer  "axles",      limit: 4
-    t.integer  "gearbox",    limit: 4
+    t.boolean  "gearbox",    limit: 1
     t.string   "colour",     limit: 255
     t.integer  "price",      limit: 4
     t.datetime "created_at",             null: false

@@ -8,6 +8,54 @@
 <span class ="error">يوجد بيانات فارغة*</span>
 <%end%>
 <%= form_tag do %>
+
+
+<%=label_tag :Title%>
+<br>
+ <%= text_field_tag :title %>
+<br>
+<%=label_tag :Description%>
+<br>
+ <%= text_field_tag :description %>
+<br>
+<%= hidden_field_tag 'new', 0 %>
+New
+<%= check_box_tag(:new) %>
+<br>
+<%= hidden_field_tag 'purchase', 0 %>
+Purchase
+<%= check_box_tag(:purchase) %>
+<br>
+<%= hidden_field_tag 'imported', 0 %>
+Imported
+<%=check_box("post", "validated")%>
+
+<br>
+<%=label_tag :Make%>
+<br>
+ <%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
+                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], 'Mercedes')) %>
+<br>
+
+<%= label_tag :Model%>
+<br>
+<%= select_tag(:model, options_for_select([['i10', 'i10'],
+                 ['w30', 'w30'],['503','503']], 'i10')) %>
+<br>
+<p>Manufacture year</p>
+<%=number_field_tag :manyear%>
+<br>
+<%= label_tag :Country%>
+<br>
+<%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
+                 ['madagascar', 'madagascar']], 'Egypt')) %>
+<br>
+
+
+<p>Number of Axels</p>
+<%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]], 1)) %>
+<br>
+
 <%= render 'ads/adform'%>
 <%= label_tag :Capacity%>
 <br>
