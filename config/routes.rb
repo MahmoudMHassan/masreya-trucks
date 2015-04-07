@@ -40,7 +40,12 @@ resources :vehicles
   root :to => 'ads#home'
 
   #AD
+
   
+
+  get 'search/:page' => 'ads#search'
+  get 'vansearch/:page' => 'ads#vansearch'
+
   get 'ads/home' => 'ads#home'
   get 'ads/new'
   get 'ads/:id' => 'ads#show'
@@ -49,6 +54,20 @@ resources :vehicles
   post 'ads/delete/:id' => 'ads#delete'
   get 'ads/edit/:id' => 'ads#edit'
   post 'ads/edit/:id' => 'ads#update'
+
+
+   #resources :vehicles
+   #resources :vans
+   #resources :semitrailertrucks
+  post 'ads/new' => 'ads#create'
+    resources :ads
+
+
+
+
+
+
+
 
   get 'sessions/destroy'
 

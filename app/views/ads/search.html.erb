@@ -1,3 +1,4 @@
+
 <%adscount = @ads.count%>
 <br>
 وجد <%=adscount%> نتائج <br>
@@ -46,3 +47,6 @@ imported: <%= a.imported%>
 <%=link_to "↞", "/ads/search/#{(adscount / 10.0).ceil}?utf8=✓&make=#{params[:make]}&model=#{params[:model]}&manyear=#{params[:manyear]}&country=#{params[:country]}&axles=#{params[:axles]}&gearbox=#{params[:gearbox]}&colour=#{params[:colour]}&price=#{params[:price]}&sort=#{params[:sort]}", {:style => 'color:black;'}%>
 <%end%>
 <%end%>
+
+<%=render 'ads/results'%>
+
