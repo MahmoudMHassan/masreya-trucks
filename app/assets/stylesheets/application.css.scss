@@ -19,31 +19,37 @@
   color: red;
 }
 #header {
-		position: relative;
+		width:100%;
+		position: fixed;
 		top: 0;
 		left: 0;
-		padding: 0em 2em;
 		right: 0;
 		border-bottom: 1px solid #d6dce0;
-		background: #f5f7f9;
-		color: #9eafba;
-		height: 150px;
+		background: #2D882D;
+		color: #070F07;
+		height: 120px;
+		a{
+		  color: #111F11;
+		&:hover {
+					color: #33F433;
+				}
+		}
 	}
 	.show_wrapper {
 		width:500px;
 	}
 	.post_wrapper {
 		padding: 1em;
-		border-bottom: 1px solid #d6dce0;
+		border-bottom: 1px solid #97A797;
 	}
 	a {
 				font-weight: 500;
 				text-decoration: none;
 				//color: #2a2f35;
-				color: #002186;
+				color: #2D882D;
 				font-size: 1.1em;
 				&:hover {
-					color: #33acb7;
+					color: #00E35C;
 				}
 			}
                        /* #contacts_stuff  {
@@ -77,3 +83,49 @@ height: 300px;
 			  color : #0a6b60;
 			}
 
+	#searchwrapper{
+	width:700px;
+	margin: 0 auto;
+	color: #000000;
+	visibility:hidden;
+	}
+	#headerRight{
+	position:relative;
+	width:300px;
+	height:0px;
+	margin-right:50px;
+	}
+	#headerLeft{
+	position:relative;
+	margin-right:auto;
+	margin-left:0;
+	width:300px;
+	height:0px;
+	}
+	input[type="number"]{
+	  width:70px;
+
+	}
+	#searchbutton{
+	width: 110px;
+	height: 37px;
+	margin: 0 auto;
+	border-radius:10px;
+	border:2px solid;
+	background:#CDEBCD;
+	background-image:image-url('search-icon3.png');
+	background-position: 6px 1px;
+	background-repeat:no-repeat;
+	//color:#FFFFFF;
+
+	}
+	td{
+	 width:150px;
+	 overflow: hidden;
+	 display:inline-block;
+	 white-space:nowrap;
+	}
+	#body{
+	margin-top:120px;
+	background:#CDEBCD;
+	}

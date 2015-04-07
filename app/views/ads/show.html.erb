@@ -88,7 +88,7 @@ Manual
 <%=@vehicle.colour%><br>
 <b>السعر</b>
 <br>
-<%=@vehicle.price%><br>
+<%= number_with_delimiter(@vehicle.price, :delimiter => ',')%><br>
 
 <%if @van !=nil %>
 <b>Capacity</b><br>
@@ -99,8 +99,6 @@ Manual
 <b>Capacity</b><br>
 <%=@semitrailer.capacity%><br>
 <%elsif @semitrailertruck !=nil%>
-<b>Type</b><br>
-<%=@semitrailertruck.type%><br>
 <b>Mileage</b><br>
 <%=@semitrailertruck.mileage%><br>
 <%elsif @heavytruck !=nil%>
