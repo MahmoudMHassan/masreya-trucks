@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'ads/search/:page' => 'ads#search'
+  
   #get 'ads/search_make' => 'ads#search_make'
   get 'ads/search_make'
+  get 'ads/search/:page' => 'ads#search'
   resources :makes
   get 'makes/new'
 

@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_filter :authorize, :except => [:home, :search, :show]
+  before_filter :authorize, :except => [:home, :search,:search_make, :show]
   def authorize
     if self.current_user != nil
       true
@@ -81,5 +81,7 @@ redirect_to "/ads/#{@ad.id}"
   end
   def search
     @ads = Ad.make_search(params[:purchase],params[:new],params[:imported])
+  end 
+  def search_make
   end 
 end
