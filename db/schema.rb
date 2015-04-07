@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150307132021) do
   add_index "makes", ["user_id"], name: "user_id", using: :btree
   add_index "makes", ["vehicle_id"], name: "fk_rails_2285262b58", using: :btree
 
+
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
