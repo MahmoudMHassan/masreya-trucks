@@ -13,33 +13,34 @@ class Ad < ActiveRecord::Base
    mount_uploader :image2 ,Image2Uploader
    mount_uploader :image3 ,Image3Uploader
    mount_uploader :image4 ,Image4Uploader
-  accepts_nested_attributes_for :vehicles, :van, :semitrailer, :semitrailertruck, :heavytruck , :make 
-  
-  def self.make_search (purchase, newV, imported) 
+  accepts_nested_attributes_for :vehicles, :van, :semitrailer, :semitrailertruck, :heavytruck , :make
+
+  def self.make_search (purchase, newV, imported)
   		@make = Make.joins(:ad)
         if purchase.present?
        if (purchase == "للبيع")
-  		@make = @make.where('purchase LIKE ?',"1") 
-        else 
-          @make = @make.where('purchase LIKE ?',"0") 
-        end 
-      end 
+  		@make = @make.where('purchase LIKE ?',"1")
+        else
+          @make = @make.where('purchase LIKE ?',"0")
+        end
+      end
       if (newV.present?)
         if (newV == "جديدة")
-        @make = @make.where('new LIKE ?',"1") 
-      else 
+        @make = @make.where('new LIKE ?',"1")
+      else
         @make = @make.where('new LIKE ?',"0")
-       end 
-       end 
+       end
+       end
        if (imported.present?)
-          if imported == "مستوردة"  
-        @make = @make.where('imported LIKE ?',"1") 
-        else 
-          @make = @make.where('imported LIKE ?',"0") 
-        end 
-      end 
+          if imported == "مستوردة"
+        @make = @make.where('imported LIKE ?',"1")
+        else
+          @make = @make.where('imported LIKE ?',"0")
+        end
+      end
       @make
-  end 
+  end
+
 
 
 
@@ -62,7 +63,6 @@ class Ad < ActiveRecord::Base
       else
       makes = Make.joins(:ad, :vehicle)
       end
-
       makes = makes.where('make LIKE ?',"%#{make}%") if make.present?
       makes = makes.where('model LIKE ?',"%#{model}%") if model.present?
       makes = makes.where('manyear = ?',manyear) if manyear.present?
@@ -94,6 +94,7 @@ class Ad < ActiveRecord::Base
        elsif sort == "3"
       makes = makes.order('manyear DESC')
        end
+
 
       makes
   end
@@ -219,4 +220,5 @@ class Ad < ActiveRecord::Base
 # 
 # 
 #   end
+
 end

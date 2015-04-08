@@ -1,1 +1,51 @@
 
+Find me in app/views/vehicles/new.html.erb
+<%=form_for @vehicle do |f| %>
+<%= f.label :Make%>
+<br>
+<%=f.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
+<br>
+<%= f.label :Model%>
+<br>
+<%=f.select :model,([ "i10" , "w30" , "503"])%>
+<br>
+سنة الصنع
+<br>
+<%=f.number_field :manyear%>
+<br>
+المكان
+<br>
+<%=f.select :country ,(["مصر" , "المملكة العربية السعودية", "الأمرات المتحدة", "الكويت"])%>
+<br>
+عدد المحاور
+<br>
+<%=f.select :axles, options_for_select([['1', 1],['2', 2],['3', 3],['3', 4]])%>
+<br>
+ناقل الحركة
+<br>
+يدوي
+<%=f.check_box :gearbox %>
+<br>
+اللون
+<br>
+<%=f.select :colour, options_for_select([["أبيض"],["أسود"]])%>
+<br>
+السعر
+<br>
+<%= f.number_field :price %>
+<br>
+
+<%= f.fields_for :heavytruck do |h| %>
+
+<%= h.label :Capacity%>
+<br>
+<%= h.number_field :capacity%>
+<br>
+<%= h.label :Mileage%>
+<br>
+<%= h.number_field :mileage%>
+<% end %>
+<br>
+<br>
+<%=f.submit %>
+<%end%>

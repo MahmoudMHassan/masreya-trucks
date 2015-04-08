@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   get 'pictures/show'
 post 'pictures/new' => 'pictures#create'
 
-  
   #get 'ads/search_make' => 'ads#search_make'
   get 'ads/search_make'
   get 'ads/search/:page' => 'ads#search'
 
   resources :makes
+
   get 'makes/new'
 
   get 'makes/edit'
@@ -27,6 +27,7 @@ post 'pictures/new' => 'pictures#create'
 
   get 'makes/index'
   post 'makes/new' =>'makes#create'
+
 resources :vehicles
   get 'vehicles/new'
 
@@ -49,11 +50,7 @@ resources :vehicles
   root :to => 'ads#home'
 
   #AD
-
   get 'search/:page' => 'ads#search'
-
-
-  
 
   get 'search/:page' => 'ads#search'
   get 'vansearch/:page' => 'ads#vansearch'
@@ -74,8 +71,6 @@ resources :vehicles
    #resources :semitrailertrucks
   post 'ads/new' => 'ads#create'
     resources :ads
-
-
 
   get 'sessions/destroy'
 
