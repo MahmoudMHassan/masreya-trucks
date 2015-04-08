@@ -181,13 +181,18 @@ redirect_to "/ads/#{@ad.id}"
 
 
   def search
-    @ads = Ad.make_search(params[:purchase],params[:new],params[:imported])
+    @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:mileage],params[:capacity],params[:type])
   end 
 
   def search_make
   end 
+  
   def sttsearch
   @ads = Ad.sttsearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:mileage])
+  end
+  
+  def semisearch
+  @ads = Ad.semisearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity])
   end
 
 
