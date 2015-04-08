@@ -14,7 +14,9 @@
 <span><%= link_to "HEAVYTRUCK", "/ads/new?type=heavytruck",{:style=>request.original_fullpath == "/ads/new?type=heavytruck" ? 'color: grey': 'color: black'}%></span> |
 <span><%= link_to "SEMITRAILERTRUCK", "/ads/new?type=semitrailertruck",{:style=>request.original_fullpath == "/ads/new?type=semitrailertruck" ? 'color: grey': 'color: black'}%></span> |
 </div>
-<%=form_for :ad do |a|%>
+
+<%=form_for :ad, :html => {:multipart => true} do |a|%>
+
 <%= a.label :Title%>
 <br>
 <%= a.text_field :title%>
@@ -128,18 +130,26 @@
 	<%end%>
 	<%end%>
 
-<<<<<<< HEAD
-</html>
-=======
+
 <%=m.check_box :purchase%>
 <br><br>
 <%end%>
+
+
+<%= a.file_field :image %><br>
+<%= a.file_field :image1 %><br>
+<%= a.file_field :image2 %><br>
+<%= a.file_field :image3 %><br>
+<%= a.file_field :image4 %><br>
+
+
 <%= a.label :Description%>
 <br>
 <%= a.text_area :description, size: "35x7"%>
+
 <br>
 <%=a.submit%>
 <%end%>
 <%end%>
 
->>>>>>> master
+

@@ -22,6 +22,39 @@ class AdsController < ApplicationController
     @heavytruck = Heavytruck.new
     @semitrailer = Semitrailer.new
     @semitrailertruck = Semitrailertruck.new
+
+  end
+
+  private def ad_params
+  ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4)
+  ad_params
+  end
+
+  private def vehicle_params
+  vehicle_params = params.require(:vehicle).permit(:make,:model,:manyear,:country,:axles,:gearbox,:colour,:price)
+  vehicle_params
+  end
+
+  private def make_params
+  make_params = params[:make].permit(:new,:imported,:purchase)
+  make_params
+  end
+
+  private def van_params
+  van_params = params[:van].permit(:capacity,:mileage)
+  van_params
+  end
+
+  private def heavytruck_params
+  heavytruck_params = params[:heavytruck].permit(:capacity,:mileage)
+  heavytruck_params
+  end
+
+  private def semitrailer_params
+  semitrailer_params = params[:semitrailer].permit(:capacity)
+  semitrailer_params
+
+
   end
 
 
@@ -34,6 +67,12 @@ class AdsController < ApplicationController
     @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
     @make.update(make_params)
     @make.save
+
+  # @picture = Picture.new(ad_id: @ad.id)
+   #@picture.update(picture_params)
+#     @picture = @ad.pictures.create!(params[:picture])
+#    @picture.save
+
     if params[:van]
       @van = Van.new(vehicle_id: @vehicle.id)
       @van.update(van_params)
@@ -63,6 +102,7 @@ class AdsController < ApplicationController
   def vansearch
     @ads = Ad.vansearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity],params[:mileage])
   end
+
 
   def show
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
@@ -95,6 +135,7 @@ class AdsController < ApplicationController
   def edit
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
+
     @vehicle = Vehicle.find(@make.vehicle_id)
     @seller = self.current_user
     @van = Van.find_by_vehicle_id(@vehicle.id)
@@ -106,6 +147,7 @@ class AdsController < ApplicationController
   def update
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
+
     @vehicle = Vehicle.find(@make.vehicle_id)
     @seller = self.current_user
     @van = Van.find_by_vehicle_id(@vehicle.id)
@@ -121,6 +163,7 @@ class AdsController < ApplicationController
       @vehicle.semitrailertruck.update(semitrailertruck_params)
     elsif @heavytruck !=nil
       @vehicle.heavytruck.update(heavytruck_params)
+
     end
     @vehicle.save
     @ad.update(ad_params)
@@ -135,6 +178,7 @@ class AdsController < ApplicationController
 redirect_to "/ads/#{@ad.id}"
   end
 
+
   def search
     @ads = Ad.make_search(params[:purchase],params[:new],params[:imported])
   end
@@ -144,7 +188,8 @@ redirect_to "/ads/#{@ad.id}"
   def sttsearch
   @ads = Ad.sttsearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:mileage])
   end
-private
+
+  private
   def ad_params
   ad_params = params.require(:ad).permit(:title,:description)
   ad_params
@@ -186,6 +231,7 @@ private
   semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
   semitrailertruck_params
   end
+
 
 
 end

@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'pictures/new'
+
+  get 'pictures/create'
+
+  get 'pictures/show'
+post 'pictures/new' => 'pictures#create'
+
   #get 'ads/search_make' => 'ads#search_make'
   get 'ads/search_make'
   get 'ads/search/:page' => 'ads#search'
+
   resources :makes
 
   get 'makes/new'
@@ -18,8 +26,7 @@ Rails.application.routes.draw do
   get 'makes/destroy'
 
   get 'makes/index'
-
-  post 'makes/new'
+  post 'makes/new' =>'makes#create'
 
 resources :vehicles
   get 'vehicles/new'
@@ -43,8 +50,7 @@ resources :vehicles
   root :to => 'ads#home'
 
   #AD
-
-
+  get 'search/:page' => 'ads#search'
 
   get 'search/:page' => 'ads#search'
   get 'vansearch/:page' => 'ads#vansearch'
@@ -74,6 +80,9 @@ resources :vehicles
   get 'users/show'
   get 'users/:id' => 'users#show'
   get 'users/edit/:id' => 'users#edit'
+  get 'users/changetoseller/:id' => 'users#changetoseller'
+  #get 'makes/new'
+
   post 'users/destroy/:id' => 'users#destroy'
   post 'users/logout' => 'users#logout'
   post 'users/signin' => 'users#login'
@@ -81,9 +90,6 @@ resources :vehicles
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]
 match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
-
-
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.
