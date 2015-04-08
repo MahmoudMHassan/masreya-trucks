@@ -21,16 +21,15 @@
 <%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
 </div><br>
 <div id="headerLeft">
-<%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%>
+<%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%><br>
+<%= link_to "إضافة إعلان", "/ads/new"%>
 <%end%>
 <br>
 </head>
 <body>
 <%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
 
-<div style="text-align: left">
-<%= link_to "إضافة إعلان", "/ads/new"%>
-</div>
+
 
 <%= link_to "إضافة إعلان", "/ads/new"%>
 <%end%>
@@ -49,20 +48,25 @@
 <button id="searchbutton" style="font-size:20px;color:#000000">
 <div style="margin-left:40px;"> البحث</div>
   </button>
+  <button id="vanbutton" style="font-size:20px;color:#000000">
+<div style="margin-left:40px;">VAN</div>
+  </button>
+  <button id="semibutton" style="font-size:20px;color:#000000">
+<div style="margin-left:40px;">SEMI</div>
+  </button>
+  <button id="sttbutton" style="font-size:20px;color:#000000">
+<div style="margin-left:40px;">STT</div>
+  </button>
+  <button id="heavybutton" style="font-size:20px;color:#000000">
+<div style="margin-left:40px;">HEAVY</div>
+  </button>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
-<div id="searchparent">
 <div id="searchwrapper">
 <%=render 'ads/searchform'%>
 </div>
 
-<div id="vanwrapper">
-<%=render 'ads/vanform'%>
-</div>
-<div id = "sttwrapper">
-<%= render 'ads/sttform'%>
-</div>
-</div>
+
 
 </div>
 </div>

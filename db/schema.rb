@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20150408003426) do
     t.datetime "updated_at",           null: false
   end
 
+
   add_index "makes", ["ad_id"], name: "fk_rails_4ce8bef6c4", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
   add_index "makes", ["vehicle_id"], name: "fk_rails_9ef948efa5", using: :btree

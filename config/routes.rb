@@ -55,6 +55,7 @@ resources :vehicles
   get 'search/:page' => 'ads#search'
   get 'vansearch/:page' => 'ads#vansearch'
   get 'ads/sttsearch/:page' => 'ads#sttsearch'
+  get 'ads/semisearch/:page' => 'ads#semisearch'
   get 'ads/home' => 'ads#home'
   get 'ads/new'
   get 'ads/:id' => 'ads#show'

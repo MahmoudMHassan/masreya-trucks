@@ -36,8 +36,24 @@
 
 <td>الترتيب</td>
 <td><%= select_tag(:sort, options_for_select([['↑ price', '0'],['↓ price', '1'],['↑ manyear', '2'],['↓ manyear', '3']], params[:sort])) %></td>
+
+
 </tr>
-</table><br>
+</table>
+<div id="atrrparent">
+<div id="vanwrapper">
+<%=render 'ads/vanform'%>
+</div>
+<div id = "sttwrapper">
+<%= render 'ads/sttform'%>
+</div>
+<div id = "semiwrapper">
+<%= render 'ads/semiform'%>
+</div>
+<div id = "heavywrapper">
+<%= render 'ads/heavyform'%>
+</div>
+</div>
 <div style="text-align:center;">
 <%= submit_tag "بحث", :name => nil%>
 </div>
