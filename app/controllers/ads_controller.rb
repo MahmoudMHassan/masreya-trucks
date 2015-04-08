@@ -9,7 +9,7 @@ class AdsController < ApplicationController
   end
 
   def home
-    @ads = Ad.first(10)
+    @ads = Make.joins(:ad,:vehicle).limit(10).order('created_at DESC')
   end
 
 

@@ -1,13 +1,18 @@
-<br>
-<%if @ads.empty?%>
-<div style="text-align:center;">NO RESULTS FOUND</div>
-<%else%>
+
 <%@ads.each do |a|%>
 <div class = "post_wrapper">
-<%=link_to a.title, "/ads/#{a.id}"%><br>
+<%=link_to a.ad.title, "/ads/#{a.ad.id}"%><br>
+<%= link_to("/ads/#{a.ad.id}") do %>
+  <%= image_tag a.ad.image_url.to_s,size:"100x100" %>
+<% end %>
+<br>
+<%= a.vehicle.make%> | <%=a.vehicle.model%><br>
+السعر:<%= number_with_delimiter(a.vehicle.price, :delimiter => ',')%>
+السنة: <%= a.vehicle.manyear%>
 <div style ="width: 400px;">
-<%=a.description%><br>
+<%=a.ad.description%><br>
 </div>
+
 </div>
 <%end%>
-<%end%>
+
