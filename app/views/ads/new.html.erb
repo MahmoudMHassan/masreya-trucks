@@ -85,7 +85,11 @@
 	<br>
 	Number of Axels
 	<br>
-	<%= v.select :axles, (["1","2","3","4","5","6","7","8"])%>
+	<%= v.select(:axles) do %>
+      <% [['1', '1'], ['2', '2'], ['3', '3'], ['3>', '4']].each do |c| -%>
+	<%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+      <% end %>
 	<br>
 	<br>
 

@@ -60,7 +60,12 @@
 <%=@vehicle.country%><br>
 <b>المحاور النقلات :</b>
 <br>
-<%=@vehicle.axles%><br>
+<%if @vehicle.axles > 3%>
+>3
+<%else%>
+<%=@vehicle.axles%>
+<%end%>
+<br>
 <b>عجلة السرعة :</b>
 <br>
 <%if @vehicle.gearbox%>

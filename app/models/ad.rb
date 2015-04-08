@@ -7,6 +7,7 @@ class Ad < ActiveRecord::Base
   has_one :semitrailertruck
   has_one :heavytruck
   has_one :make
+  validates_presence_of(:title)
 
    mount_uploader :image , ImageUploader
    mount_uploader :image1 , Image1Uploader
