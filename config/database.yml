@@ -9,6 +9,7 @@ default: &default
   username: root
   password: Iloveallah90
 
+
   database: masreya
   encoding: utf8
 

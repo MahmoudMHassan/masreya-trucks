@@ -21,49 +21,12 @@
 <br>
 <%=van.number_field :capacity%>
 <br>
-<%end%>
-New
-<%= check_box_tag(:new) %>
-<%if @make.new%>
-<%= hidden_field_tag 'new', false %>
-<!-- <input id="new" name="new" type="checkbox" value=true checked/> -->
-<%else%>
-<%= hidden_field_tag 'new', false %>
-<!-- <input id="new" name="new" type="checkbox" value=true /> -->
-<%end%>
-<br>
-Purchase
-<%= check_box_tag(:purchase) %>
-<%if @make.purchase%>
-<!-- <%= hidden_field_tag 'purchase', false %> -->
-<%= check_box_tag(:purchase) %>
-<!--<input id="purchase" name="purchase" type="checkbox" value=true checked/> -->
-<%else%>
-<%= hidden_field_tag 'purchase', false %>
 
-<!-- <input id="purchase" name="purchase" type="checkbox" value=true/> -->
-
-<input id="purchase" name="purchase" type="checkbox" value=true />
-
-<%end%>
-<br>
-Imported
-<%= check_box_tag(:imported) %>
-<%if @make.imported%>
-<%= hidden_field_tag 'imported', false %>
-<!-- <input id="imported" name="imported" type="checkbox" value=true checked/> -->
-<%else%>
-<%= hidden_field_tag 'imported', false %>
-
-
-<!-- <input id="imported" name="imported" type="checkbox" value=true/> -->
-
-<input id="imported" name="imported" type="checkbox" value=true />
-<%end%>
 <%= van.label :Mileage%>
 <br>
 <%=van.number_field :mileage%>
 <br>
+<%end%>
 <%elsif @semitrailer != nil%>
 <%=fields_for :semitrailer do |s|%>
 <%= s.label :Capacity%>
@@ -89,6 +52,8 @@ Imported
 <%=h.number_field :mileage%>
 <br>
 <%end%>
+<%end%>
+
 Manufacture year<br>
 <%=v.number_field :manyear%>
 <br>
@@ -115,6 +80,31 @@ Number of Axels<br>
 <br>
 
 <br>
+<%= v.label :Price%>
+<br>
+<%=v.number_field :price%>
+<br><br>
+<%end%>
+<%=fields_for :make do |m|%>
+<%= m.label :New%>
+
+<%=m.check_box :new%>
+
+<br>
+<%= m.label :Imported%>
+
+<%=m.check_box :imported%>
+<br>
+
+<%= m.label :Purchase%>
+
+
+<%=m.check_box :purchase%>
+<br><br>
+<%end%>
+<%= a.label :Description%>
+<br>
+
 <%= v.label :Price%>
 <br>
 <%=v.number_field :price%>
@@ -160,5 +150,6 @@ Change Image1
 		<br>
 		<%end%>
                 <%end%>
+
 <%=a.submit%>
 <%end%>
