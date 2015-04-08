@@ -6,6 +6,12 @@ class Vehicle < ActiveRecord::Base
   has_one :seller, through: :make
   has_many :ads, through: :make, dependent: :destroy
   has_one :heavytruck
-  accepts_nested_attributes_for :heavytruck, :allow_destroy => true
-
+  validates_presence_of(:make)
+  validates_presence_of(:model)
+  validates_presence_of(:manyear)
+  validates_presence_of(:country)
+  validates_presence_of(:axles)
+  #validates_presence_of(:gearbox)
+  validates_presence_of(:colour)
+  validates_presence_of(:price)
 end

@@ -38,7 +38,7 @@
 	<%=fields_for :van do |van|%>
 	<%= van.label :Capacity%>
 	<br>
-	<%= van.number_field :capacity%>
+	<%= van.check_box :capacity%>
 	<br>
 	<%= van.label :Mileage%>
 	<br>
@@ -49,7 +49,7 @@
 	<%=fields_for :semitrailer do |s|%>
 	<%= s.label :Capacity%>
 	<br>
-	<%= s.number_field :capacity%>
+	<%= s.check_box :capacity%>
 	<br>
 	<%end%>
 	<%elsif request.original_fullpath == "/ads/new?type=semitrailertruck"%>
@@ -63,7 +63,7 @@
 	<%=fields_for :heavytruck do |h|%>
 	<%= h.label :Capacity%>
 	<br>
-	<%= h.number_field :capacity%>
+	<%= h.check_box :capacity%>
 	<br>
 	<%= h.label :Mileage%>
 	<br>
@@ -91,7 +91,11 @@
 
 	<%= v.label :Gearbox%>
 	<br>
-	<%= v.select :gearbox , (["Automatic", "semi Automatic" ,"Manual"])%>
+	<%= v.select(:gearbox) do %>
+      <% [['Automatic', true], ['Manual', false]].each do |c| -%>
+	<%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+      <% end %>
 	<br>
 
 	<br>
