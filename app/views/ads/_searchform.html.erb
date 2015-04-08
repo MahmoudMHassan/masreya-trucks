@@ -20,11 +20,11 @@
 </tr>
 <tr>
 <td>المحاور</td>
-<td><%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['4', 4],['5', 5],['6', 6],['7', 7],['8', 8]], params[:axles]), :include_blank => true) %></td>
+<td><%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['3>', 4]], params[:axles]), :include_blank => true) %></td>
 
 <td>عجلة السرعة</td>
 
-<td><%= select_tag(:gearbox, options_for_select([['Automatic', 0],['Semi Automatic', 1],['Manual', 2]], params[:gearbox]), :include_blank => true) %></td>
+<td><%= select_tag(:gearbox, options_for_select([['Automatic', true],['Manual', false]], params[:gearbox]), :include_blank => true) %></td>
 
 
 <td>اللون</td>
@@ -36,8 +36,36 @@
 
 <td>الترتيب</td>
 <td><%= select_tag(:sort, options_for_select([['↑ price', '0'],['↓ price', '1'],['↑ manyear', '2'],['↓ manyear', '3']], params[:sort])) %></td>
+
+
 </tr>
-</table><br>
+</table>
+ للبيع
+<%= radio_button_tag(:purchase, "للبيع") %>
+ للإيجار
+<%= radio_button_tag(:purchase, "للإيجار") %>
+ جديدة
+<%= radio_button_tag(:new, "جديدة") %>
+ مستعملة
+<%= radio_button_tag(:new, "مستعملة") %>
+ مستوردة
+<%= radio_button_tag(:imported, "مستوردة") %>
+ محلية
+<%= radio_button_tag(:imported, "محلية") %>
+<div id="atrrparent">
+<div id="vanwrapper">
+<%=render 'ads/vanform'%>
+</div>
+<div id = "sttwrapper">
+<%= render 'ads/sttform'%>
+</div>
+<div id = "semiwrapper">
+<%= render 'ads/semiform'%>
+</div>
+<div id = "heavywrapper">
+<%= render 'ads/heavyform'%>
+</div>
+</div>
 <div style="text-align:center;">
 <%= submit_tag "بحث", :name => nil%>
 </div>

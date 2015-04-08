@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
-  
+
+  get 'pictures/new'
+
+  get 'pictures/create'
+
+  get 'pictures/show'
+post 'pictures/new' => 'pictures#create'
+
   #get 'ads/search_make' => 'ads#search_make'
   get 'ads/search_make'
   get 'ads/search/:page' => 'ads#search'
+
   resources :makes
+
+
   get 'makes/new'
 
   get 'makes/edit'
@@ -17,6 +27,7 @@ Rails.application.routes.draw do
   get 'makes/destroy'
 
   get 'makes/index'
+  post 'makes/new' =>'makes#create'
 
 resources :vehicles
   get 'vehicles/new'
@@ -40,12 +51,12 @@ resources :vehicles
   root :to => 'ads#home'
 
   #AD
-
-  
+  get 'search/:page' => 'ads#search'
 
   get 'search/:page' => 'ads#search'
   get 'vansearch/:page' => 'ads#vansearch'
-
+  get 'ads/sttsearch/:page' => 'ads#sttsearch'
+  get 'ads/semisearch/:page' => 'ads#semisearch'
   get 'ads/home' => 'ads#home'
   get 'ads/new'
   get 'ads/:id' => 'ads#show'
@@ -62,13 +73,6 @@ resources :vehicles
   post 'ads/new' => 'ads#create'
     resources :ads
 
-
-
-
-
-
-
-
   get 'sessions/destroy'
 
   get 'users/bookmark/:id' => 'users#bookmark'
@@ -77,7 +81,10 @@ resources :vehicles
   get 'users/signin'
   get 'users/show'
   get 'users/:id' => 'users#show'
-  get 'users/edit/:id' => 'users#edit'
+  get 'ROOT_PATH/edit/:id' => 'users#edit'
+  get 'users/changetoseller/:id' => 'users#changetoseller'
+  #get 'makes/new'
+
   post 'users/destroy/:id' => 'users#destroy'
   post 'users/logout' => 'users#logout'
   post 'users/signin' => 'users#login'
@@ -85,9 +92,6 @@ resources :vehicles
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]
 match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
-
-
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

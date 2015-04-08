@@ -3,7 +3,10 @@
 <br>
 <%= a.text_field :title%>
 <br><br>
-
+<%= a.label :Description%>
+<br>
+<%= a.text_area :description, size: "35x7"%>
+<br>
 
 <%=fields_for :vehicle do |v|%>
 <%= v.label :Make%>
@@ -21,6 +24,7 @@
 <br>
 <%=van.number_field :capacity%>
 <br>
+
 <%= van.label :Mileage%>
 <br>
 <%=van.number_field :mileage%>
@@ -83,24 +87,47 @@ Number of Axels<br>
 <br>
 <%=v.number_field :price%>
 <br><br>
-<%end%>
 <%=fields_for :make do |m|%>
 <%= m.label :New%>
 
 <%=m.check_box :new%>
+
 <br>
 <%= m.label :Imported%>
 
 <%=m.check_box :imported%>
 <br>
+
 <%= m.label :Purchase%>
+
 
 <%=m.check_box :purchase%>
 <br><br>
 <%end%>
-<%= a.label :Description%>
-<br>
-<%= a.text_area :description, size: "35x7"%>
-<br>
+
+
+
+Change Image
+		<br>
+		<%= a.file_field :image %>
+		<br>
+Change Image1
+		<br>
+		<%= a.file_field :image1 %>
+		<br>
+		Change Image2
+		<br>
+		<%= a.file_field :image2 %>
+		<br>
+		Change Image3
+		<br>
+		<%= a.file_field :image3%>
+		<br>
+		Change Image4
+		<br>
+		<%= a.file_field :image4 %>
+		<br>
+		<%end%>
+
 <%=a.submit%>
 <%end%>
