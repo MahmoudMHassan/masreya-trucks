@@ -64,8 +64,6 @@ Imported
 <br>
 <%=van.number_field :mileage%>
 <br>
-
-<%end%>
 <%elsif @semitrailer != nil%>
 <%=fields_for :semitrailer do |s|%>
 <%= s.label :Capacity%>
@@ -92,7 +90,6 @@ Imported
 <br>
 <%end%>
 <%end%>
-
 Manufacture year<br>
 <%=v.number_field :manyear%>
 <br>
@@ -142,7 +139,26 @@ Number of Axels<br>
 <br>
 <%= a.text_area :description, size: "35x7"%>
 <br>
-
+Change Image
+		<br>
+		<%= a.file_field :image %>
+		<br>
+Change Image1
+		<br>
+		<%= a.file_field :image1 %>
+		<br>
+		Change Image2
+		<br>
+		<%= a.file_field :image2 %>
+		<br>
+		Change Image3
+		<br>
+		<%= a.file_field :image3%>
+		<br>
+		Change Image4
+		<br>
+		<%= a.file_field :image4 %>
+		<br>
+		<%end%>
 <%=a.submit%>
 <%end%>
-

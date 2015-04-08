@@ -59,12 +59,6 @@ resources :vehicles
     resources :ads
 
 
-
-
-
-
->>>>>>> origin
-
   get 'sessions/destroy'
 
   get 'users/bookmark/:id' => 'users#bookmark'

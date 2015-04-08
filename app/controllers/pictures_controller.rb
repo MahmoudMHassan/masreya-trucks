@@ -7,10 +7,13 @@ class PicturesController < ApplicationController
   end
 
   def create
-     @picture = Picture.new(params.require(:picture).permit(:image))
-      @picture.save
+   #  @picture = Picture.new(params.require(:picture).permit(:image))
+    #@picture = Picture.find(params
+     # @picture.save
      
-    # @make = Make.find(params[:make_id])
+    @ad = Ad.find(params[:ad_id])
+    @picture = @ad.pictures.create!(params[:picture])
+    redirect_to @post
 
     # For URL like /orders/1/items
     # Populate an item associate with order 1 with form data

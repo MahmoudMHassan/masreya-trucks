@@ -7,7 +7,13 @@ class Ad < ActiveRecord::Base
   has_one :semitrailertruck
   has_one :heavytruck
   has_one :make
-  accepts_nested_attributes_for :vehicles, :van, :semitrailer, :semitrailertruck, :heavytruck , :make
+
+   mount_uploader :image , ImageUploader
+   mount_uploader :image1 , Image1Uploader
+   mount_uploader :image2 ,Image2Uploader
+   mount_uploader :image3 ,Image3Uploader
+   mount_uploader :image4 ,Image4Uploader
+  accepts_nested_attributes_for :vehicles, :van, :semitrailer, :semitrailertruck, :heavytruck , :make 
   
   def self.search(sort,make,model,manyear,country,axles,gearbox,colour,price)
     if make

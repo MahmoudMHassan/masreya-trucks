@@ -17,9 +17,13 @@ class AdsController < ApplicationController
     @heavytruck = Heavytruck.new
     @semitrailer = Semitrailer.new
     @semitrailertruck = Semitrailertruck.new
+#     @picture = Picture.new
+#   3.times do
+#   picture = @ad.pictures.build
+#    end 
   end
   private def ad_params
-  ad_params = params.require(:ad).permit(:title,:description)
+  ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4)
   ad_params
   end
 
@@ -38,6 +42,11 @@ class AdsController < ApplicationController
   van_params
   end
 
+#   private def picture_params
+#   picture_params = params[:picture].permit(:image)
+#   picture_params
+#   end
+  
   private def heavytruck_params
   heavytruck_params = params[:heavytruck].permit(:capacity,:mileage)
   heavytruck_params
@@ -61,6 +70,10 @@ class AdsController < ApplicationController
     @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
     @make.update(make_params)
     @make.save
+  # @picture = Picture.new(ad_id: @ad.id)
+   #@picture.update(picture_params)
+#     @picture = @ad.pictures.create!(params[:picture])
+#    @picture.save
     if params[:van]
       @van = Van.new(vehicle_id: @vehicle.id)
       @van.update(van_params)
@@ -87,7 +100,6 @@ class AdsController < ApplicationController
 
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price])
->>>>>>> origin
   end
 
   def show
