@@ -1,0 +1,151 @@
+
+
+<%if request.original_fullpath == "/ads/new"%>
+<div style="text-align: center">
+|<span><%= link_to "VAN", "/ads/new?type=van",:style=>'color: black'%></span> |
+<span><%= link_to "SEMITRAILER", "/ads/new?type=semitrailer",:style=>'color: black'%></span> |
+<span><%= link_to "HEAVYTRUCK", "/ads/new?type=heavytruck",:style=>'color: black'%></span> |
+<span><%= link_to "SEMITRAILERTRUCK", "/ads/new?type=semitrailertruck",:style=>'color: black'%></span> |
+</div>
+<%elsif ["/ads/new?type=van","/ads/new?type=semitrailer","/ads/new?type=heavytruck","/ads/new?type=semitrailertruck"].include? request.original_fullpath%>
+<div style="text-align: center">
+|<span><%= link_to "VAN", "/ads/new?type=van",{:style=>request.original_fullpath == "/ads/new?type=van" ? 'color: grey': 'color: black'}%></span> |
+<span><%= link_to "SEMITRAILER", "/ads/new?type=semitrailer",{:style=>request.original_fullpath == "/ads/new?type=semitrailer" ? 'color: grey': 'color: black'}%></span> |
+<span><%= link_to "HEAVYTRUCK", "/ads/new?type=heavytruck",{:style=>request.original_fullpath == "/ads/new?type=heavytruck" ? 'color: grey': 'color: black'}%></span> |
+<span><%= link_to "SEMITRAILERTRUCK", "/ads/new?type=semitrailertruck",{:style=>request.original_fullpath == "/ads/new?type=semitrailertruck" ? 'color: grey': 'color: black'}%></span> |
+</div>
+
+<%=form_for :ad, :html => {:multipart => true} do |a|%>
+
+<%= a.label :Title%>
+<br>
+<%= a.text_field :title%>
+<br><br>
+
+	<%=fields_for :vehicle do |v|%>
+	<%= v.label :Make%>
+	<br>
+	<%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
+	<br>
+	<br>
+	<%= v.label :Model%>
+	<br>
+	<%= v.select :model,([ "i10" , "w30" , "503"])%>
+	<br>
+	<br>
+
+	<%if request.original_fullpath == "/ads/new?type=van"%>
+	<%=fields_for :van do |van|%>
+	<%= van.label :Capacity%>
+	<br>
+	<%= van.check_box :capacity%>
+	<br>
+	<%= van.label :Mileage%>
+	<br>
+	<%= van.number_field :mileage%>
+	<br>
+	<%end%>
+	<%elsif request.original_fullpath == "/ads/new?type=semitrailer"%>
+	<%=fields_for :semitrailer do |s|%>
+	<%= s.label :Capacity%>
+	<br>
+	<%= s.check_box :capacity%>
+	<br>
+	<%end%>
+	<%elsif request.original_fullpath == "/ads/new?type=semitrailertruck"%>
+	<%=fields_for :semitrailertruck do |st|%>
+	<%= st.label :Mileage%>
+	<br>
+	<%= st.number_field :mileage%>
+	<br>
+	<%end%>
+	<%elsif request.original_fullpath == "/ads/new?type=heavytruck"%>
+	<%=fields_for :heavytruck do |h|%>
+	<%= h.label :Capacity%>
+	<br>
+	<%= h.check_box :capacity%>
+	<br>
+	<%= h.label :Mileage%>
+	<br>
+	<%= h.number_field :mileage%>
+	<br>
+	<%end%>
+	<%end%>
+
+	Manufacture year
+	<br>
+	<%= v.number_field :manyear%>
+	<br>
+	<br>
+	<%= v.label :Country%>
+	<br>
+	<%= v.select :country ,(["Egypt" , "madagascar"])%>
+
+	<br>
+	<br>
+	Number of Axels
+	<br>
+	<%= v.select(:axles) do %>
+      <% [['1', '1'], ['2', '2'], ['3', '3'], ['3>', '4']].each do |c| -%>
+	<%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+      <% end %>
+	<br>
+	<br>
+
+	<%= v.label :Gearbox%>
+	<br>
+	<%= v.select(:gearbox) do %>
+      <% [['Automatic', true], ['Manual', false]].each do |c| -%>
+	<%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+      <% end %>
+	<br>
+
+	<br>
+	<%= v.label :Colour%>
+	<br>
+	<%= v.select :colour ,(["white","black","yellow","brown","green","red","orange","blue","grey"])%>
+	<br>
+
+	<br>
+	<%= v.label :Price%>
+	<br>
+	<%= v.number_field :price%>
+	<br>
+	<br>
+	<%end%>
+	<%=fields_for :make do |m|%>
+	<%= m.label :New%>
+
+	<%= m.check_box :new%>
+	<br>
+	<%= m.label :Imported%>
+
+	<%= m.check_box :imported%>
+	<br>
+	<%= m.label :Purchase%>
+
+	<%= m.check_box :purchase%>
+	<br>
+	<br>
+	<%end%>
+	<%= a.label :Description%>
+	<br>
+	<%= a.text_area :description, size: "35x7"%>
+	<br>
+	<%= a.file_field :image %><br>
+	<%= a.file_field :image1 %><br>
+	<%= a.file_field :image2 %><br>
+	<%= a.file_field :image3 %><br>
+	<%= a.file_field :image4 %><br>
+
+	<%= a.submit%>
+	<%end%>
+	<%end%>
+
+
+
+
+
+

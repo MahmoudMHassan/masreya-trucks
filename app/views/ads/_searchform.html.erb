@@ -1,0 +1,72 @@
+<%=form_tag "/search/1", :method => 'get' do%>
+<table>
+<tr>
+<td>انتاج</td>
+
+ <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
+                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
+
+<td>موديل</td>
+
+<td><%= select_tag(:model, options_for_select([['i10', 'i10'],
+                 ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
+
+<td>سنة الانتاج</td>
+<td><%=number_field_tag :manyear,params[:manyear]%></td>
+<td>البلد</td>
+<td><%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
+                 ['madagascar', 'madagascar']], params[:country]), :include_blank => true) %></td>
+
+</tr>
+<tr>
+<td>المحاور</td>
+<td><%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['3>', 4]], params[:axles]), :include_blank => true) %></td>
+
+<td>عجلة السرعة</td>
+
+<td><%= select_tag(:gearbox, options_for_select([['Automatic', true],['Manual', false]], params[:gearbox]), :include_blank => true) %></td>
+
+
+<td>اللون</td>
+
+<td><%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], params[:colour]), :include_blank => true) %></td>
+
+<td>السعر</td>
+<td><%= select_tag(:price, options_for_select([['< 120,000', '0'],['120,000 - 160,000', '1'],['160,000 - 200,000', '2'],['200,000 - 240,000', '3'],['240,000 - 280,000', '4'],['> 280,000', '5']], params[:price]), :include_blank => true) %></td>
+
+<td>الترتيب</td>
+<td><%= select_tag(:sort, options_for_select([['↑ price', '0'],['↓ price', '1'],['↑ manyear', '2'],['↓ manyear', '3']], params[:sort])) %></td>
+
+
+</tr>
+</table>
+ للبيع
+<%= radio_button_tag(:purchase, "للبيع") %>
+ للإيجار
+<%= radio_button_tag(:purchase, "للإيجار") %>
+ جديدة
+<%= radio_button_tag(:new, "جديدة") %>
+ مستعملة
+<%= radio_button_tag(:new, "مستعملة") %>
+ مستوردة
+<%= radio_button_tag(:imported, "مستوردة") %>
+ محلية
+<%= radio_button_tag(:imported, "محلية") %>
+<div id="atrrparent">
+<div id="vanwrapper">
+<%=render 'ads/vanform'%>
+</div>
+<div id = "sttwrapper">
+<%= render 'ads/sttform'%>
+</div>
+<div id = "semiwrapper">
+<%= render 'ads/semiform'%>
+</div>
+<div id = "heavywrapper">
+<%= render 'ads/heavyform'%>
+</div>
+</div>
+<div style="text-align:center;">
+<%= submit_tag "بحث", :name => nil%>
+</div>
+<%end%>

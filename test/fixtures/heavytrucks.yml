@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  capacity: false
+  mileage: 1
+  vehicle_id: 
+  vehicle_type: Vehicle
+
+two:
+  capacity: false
+  mileage: 1
+  vehicle_id: 
+  vehicle_type: Vehicle

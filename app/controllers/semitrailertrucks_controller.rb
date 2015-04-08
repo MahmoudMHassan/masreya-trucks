@@ -1,0 +1,3 @@
+class SemitrailertrucksController < ApplicationController
+
+end
