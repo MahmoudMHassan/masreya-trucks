@@ -13,7 +13,6 @@ post 'pictures/new' => 'pictures#create'
 
   resources :makes
 
-
   get 'makes/new'
 
   get 'makes/edit'
@@ -81,7 +80,7 @@ resources :vehicles
   get 'users/signin'
   get 'users/show'
   get 'users/:id' => 'users#show'
-  get 'ROOT_PATH/edit/:id' => 'users#edit'
+  get 'users/edit/:id' => 'users#edit'
   get 'users/changetoseller/:id' => 'users#changetoseller'
   #get 'makes/new'
 
