@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20150408003426) do
-
 
   create_table "ads", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -83,9 +81,9 @@ ActiveRecord::Schema.define(version: 20150408003426) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_a83ffb1611", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_6d6ecd41d7", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_dd568d2954", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_3f33d5b502", using: :btree
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
