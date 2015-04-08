@@ -22,18 +22,26 @@ $(function(){
      $('#vanwrapper').children().prop('disabled', true);
   if(window.location.href.indexOf("&make=")>-1){
     if(window.location.href.indexOf("&type=van")>-1){
+      $('#allbutton').css("border","2px solid");
+      $('#vanbutton').css("border","4px solid");
       $('#vanwrapper').children().prop('disabled', false);
       $('#vanwrapper').css('visibility', 'visible');
     }else{
       if(window.location.href.indexOf("&type=heavy")>-1){
+      $('#allbutton').css("border","2px solid");
+      $('#heavybutton').css("border","4px solid");
       $('#heavywrapper').css('visibility', 'visible');
       $('#heavywrapper').children().prop('disabled', false);
     }else{
       if(window.location.href.indexOf("&type=stt")>-1){
+      $('#allbutton').css("border","2px solid");
+      $('#sttbutton').css("border","4px solid");
       $('#sttwrapper').css('visibility', 'visible');
       $('#sttwrapper').children().prop('disabled', false);
       }else{
 	if(window.location.href.indexOf("&type=semi")>-1){
+      $('#allbutton').css("border","2px solid");
+      $('#semibutton').css("border","4px solid");
       $('#semiwrapper').css('visibility', 'visible');
       $('#semiwrapper').children().prop('disabled', false);
 	}
