@@ -1,11 +1,12 @@
 class VansController < ApplicationController
+
     def new
         if self.current_user==nil || !Seller.exists?(self.current_user.id)
 	  redirect_to root_path
 	  return
 	end
     @vehicle = Vehicle.new
-	
+
   end
 
   def create
@@ -24,4 +25,5 @@ class VansController < ApplicationController
     @make.save
 redirect_to "/ads/#{@ad.id}"
   end
+
 end

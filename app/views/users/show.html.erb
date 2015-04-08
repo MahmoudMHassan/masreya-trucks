@@ -23,6 +23,27 @@
 <li>
 <%= link_to( "تحويل الى بائع", :controller => "users", :action => "changetoseller", :id => self.current_user.id)%>
 </li>
-<%end%>				
+<%end%>
 </div>
 </h3>
+
+<%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
+<li>
+	<%= link_to "اضافة اعلان", '/ads/new'%>
+</li>
+<% end %>
+
+<%if self.current_user !=nil && !Seller.exists?(self.current_user.id)%>
+<li>
+<%= link_to( "تحويل الى بائع", :controller => "users", :action => "changetoseller", :id => self.current_user.id)%>
+</li>
+<%end%>
+
+<%if self.current_user != nil && @user.id == self.current_user.id%>
+<li><%= link_to "تعديل البيانات", "edit/#{@user.id}", method: :get%></li>
+<div style="color: red">
+<li><%= link_to "إلغاء الحساب", "destroy/#{@user.id}",
+:style=>'color: red', method: :post ,data: {confirm: 'Are you sure?'}%></li>
+</div>
+<%end%>
+</ul>

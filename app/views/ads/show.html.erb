@@ -1,5 +1,5 @@
-<br>
-<div style ="text-align: left">
+<div class = "postwrapper">
+<div style ="text-align: left;">
 <%if self.current_user !=nil%>
 <%if !Bookmark.exists?(user_id: self.current_user, ad_id: @ad.id)%>
 <%= link_to "حفظ الإعلان في الجراج", "/ads/bookmark/#{@ad.id}", method: :post%>
@@ -14,74 +14,92 @@
 <%end%>
 <%end%>
 </div>
-<div class = "show_wrapper">
-<b>Seller</b>
-<br>
-<%=link_to  @seller.fname, "/users/#{@seller.id}"%><br>
-<b>Title</b>
-<br>
+<div style= "font-size:150%;">
 <%=@ad.title%>
+</div>
 <br>
-<b>Description</b>
+<%if @ad.description != ""%>
+<b>الوصف:</b>
 <br>
 <%=@ad.description%>
 <br>
-<b>Type</b>
+<%end%>
+<b>النوع:</b>
 <br>
 <%if @van!=nil%>
-Van
+عربة
 <%elsif @heavytruck !=nil%>
-Heavytruck
+ الشاحنات الثقيلة
 <%elsif @semitrailer !=nil%>
-Semitrailer
+ شبه مقطورة 
 <%elsif @semitrailertruck !=nil%>
-Semitrailertruck
+ الشاحنات أشباه المقطورة
 <%end%>
 <br>
-<b>Make</b>
+<b>انتاج :</b>
 <br>
 <%=@vehicle.make%>
 <br>
-<b>Model</b>
+<b>الموديل :</b>
 <br>
 <%=@vehicle.model%><br>
-<b>Vehicle Info</b><br>
+<b>معلومات عربة النقل :</b><br>
 <%if @make.new%>
-|New
-<%end%>
+جديدة
+<%else%>
+مستعملة
+<%end%> <br>
 <%if @make.imported%>
-| Imported
-<%end%>
+مستوردة
+<%else%>
+محلية
+<%end%> <br>
 <%if @make.purchase%>
-| Purchase
-<%end%>
+للبيع
+<%else%>
+للإيجار
+<%end%><br>
 <br>
 
-<b>Manyear</b>
+<b>سنة الانتاج :</b>
 <br>
 <%=@vehicle.manyear%><br>
-<b>Country</b>
+<b>البلد :</b>
 <br>
 <%=@vehicle.country%><br>
-<b>Axles</b>
+<b>المحاور النقلات :</b>
 <br>
-<%=@vehicle.axles%><br>
-<b>Gearbox</b>
-<br>
-<%if @vehicle.gearbox == 1%>
-Semi Automatic
-<%elsif @vehicle.gearbox == 2%>
-Manual
+<%if @vehicle.axles > 3%>
+>3
 <%else%>
-Automatic
+<%=@vehicle.axles%>
+<%end%>
+<br>
+<b>عجلة السرعة :</b>
+<br>
+<%if @vehicle.gearbox%>
+أتوماتيك
+<%else%>
+مانيوال
+
 <%end%><br>
-<b>Colour</b>
+<div id ="sellerinfo">
+<b>بيانات البائع :</b>
+<br>
+<%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%><br>
+ تليفون : 
+<br><%=@seller.phone%><br>
+ البريد الالكتروني : 
+<br> <%=@seller.email%>
+<br>العنوان :<br>
+</div>
+<b>اللون :</b>
 <br>
 <%=@vehicle.colour%><br>
-<b>Price</b>
-<br>
-<%=@vehicle.price%><br>
+<b>السعر :</b>
 
+<br>
+<%= number_with_delimiter(@vehicle.price, :delimiter => ',')%><br>
 <%if @van !=nil %>
 <b>Capacity</b><br>
 <%=@van.capacity%><br>
@@ -91,8 +109,6 @@ Automatic
 <b>Capacity</b><br>
 <%=@semitrailer.capacity%><br>
 <%elsif @semitrailertruck !=nil%>
-<b>Type</b><br>
-<%=@semitrailertruck.type%><br>
 <b>Mileage</b><br>
 <%=@semitrailertruck.mileage%><br>
 <%elsif @heavytruck !=nil%>
@@ -100,5 +116,40 @@ Automatic
 <%=@heavytruck.capacity%><br>
 <b>Mileage</b><br>
 <%=@heavytruck.mileage%><br>
+<br>
 <%end%>
+
+<%if @ad.image_url.to_s != ""%>
+<%= link_to(@ad.image_url.to_s) do %>
+  <%= image_tag @ad.image_url.to_s,size:"400x300" %>
+<% end %>
+<%end%>
+
+<%if @ad.image1_url.to_s != ""%>
+<%= link_to(@ad.image1_url.to_s) do %>
+  <%= image_tag @ad.image1_url.to_s,size:"400x300" %>
+<% end %><br>
+<%end%>
+
+<%if @ad.image2_url.to_s != ""%>
+<%= link_to(@ad.image2_url.to_s) do %>
+  <%= image_tag @ad.image2_url.to_s,size:"400x300" %>
+<% end %>
+<%end%>
+
+<%if @ad.image3_url.to_s != ""%>
+<%= link_to(@ad.image3_url.to_s) do %>
+  <%= image_tag @ad.image3_url.to_s,size:"400x300" %>
+<% end %><br>
+<%end%>
+
+<%if @ad.image4_url.to_s != ""%>
+<%= link_to(@ad.image4_url.to_s) do %>
+  <%= image_tag @ad.image4_url.to_s,size:"400x300" %>
+<% end %>
+<%end%>
+
+
+
 </div>
+
