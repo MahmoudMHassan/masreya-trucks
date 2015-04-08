@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_filter :authorize, :except => [:home, :search,:search_make, :show]
+ before_filter :authorize, :except => [:home, :search,:search_make, :show,:vansearch,:sttsearch]
   def authorize
     if self.current_user != nil
       true
@@ -8,8 +8,9 @@ class AdsController < ApplicationController
     end
   end
 
-  def new
-    @ad =Ad.new
+  def home
+    @ads = Ad.first(10)
+  end
 
 
   def new
@@ -21,41 +22,8 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.new
     @semitrailertruck = Semitrailertruck.new
   end
-  private def ad_params
-  ad_params = params.require(:ad).permit(:title,:description)
-  ad_params
-  end
 
-  private def vehicle_params
-  vehicle_params = params.require(:vehicle).permit(:make,:model,:manyear,:country,:axles,:gearbox,:colour,:price)
-  vehicle_params
-  end
 
-  private def make_params
-  make_params = params[:make].permit(:new,:imported,:purchase)
-  make_params
-  end
-
-  private def van_params
-  van_params = params[:van].permit(:capacity,:mileage)
-  van_params
-  end
-
-  private def heavytruck_params
-  heavytruck_params = params[:heavytruck].permit(:capacity,:mileage)
-  heavytruck_params
-  end
-
-  private def semitrailer_params
-  semitrailer_params = params[:semitrailer].permit(:capacity)
-  semitrailer_params
-
-  end
-
-  private def semitrailertruck_params
-  semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
-  semitrailertruck_params
-  end
 
   def create
     @ad = Ad.new(ad_params)
@@ -85,9 +53,7 @@ class AdsController < ApplicationController
     redirect_to "/ads/#{@ad.id}"
   end
 
-  def home
-    @ads = Ad.first(10)
-  end
+  
 
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price])
@@ -172,9 +138,54 @@ redirect_to "/ads/#{@ad.id}"
   def search
     @ads = Ad.make_search(params[:purchase],params[:new],params[:imported])
   end 
+
   def search_make
   end 
+  def sttsearch
+  @ads = Ad.sttsearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:mileage])
+  end
+private 
+  def ad_params
+  ad_params = params.require(:ad).permit(:title,:description)
+  ad_params
+  end
 
+  private 
+  def vehicle_params
+  vehicle_params = params.require(:vehicle).permit(:make,:model,:manyear,:country,:axles,:gearbox,:colour,:price)
+  vehicle_params
+  end
+
+  private 
+  def make_params
+  make_params = params[:make].permit(:new,:imported,:purchase)
+  make_params
+  end
+
+  private 
+  def van_params
+  van_params = params[:van].permit(:capacity,:mileage)
+  van_params
+  end
+
+  private 
+  def heavytruck_params
+  heavytruck_params = params[:heavytruck].permit(:capacity,:mileage)
+  heavytruck_params
+  end
+
+  private 
+  def semitrailer_params
+  semitrailer_params = params[:semitrailer].permit(:capacity)
+  semitrailer_params
+
+  end
+
+  private 
+  def semitrailertruck_params
+  semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
+  semitrailertruck_params
+  end
 
 
 end
