@@ -24,14 +24,14 @@ class Ad < ActiveRecord::Base
           @make = @make.where('purchase LIKE ?',"0")
         end
       end
-      if (newV.present?)
-        if (newV == "جديدة")
+      if new.present?
+        if new == "جديدة"
         @make = @make.where('new LIKE ?',"1")
       else
         @make = @make.where('new LIKE ?',"0")
        end
        end
-       if (imported.present?)
+       if imported.present?
           if imported == "مستوردة"
         @make = @make.where('imported LIKE ?',"1")
         else
@@ -45,7 +45,7 @@ class Ad < ActiveRecord::Base
 
 
  
-  def self.search(sort,make,model,manyear,country,axles,gearbox,colour,price,capacity,mileage,type)
+  def self.search(sort,make,model,manyear,country,axles,gearbox,colour,price,capacity,mileage,type,new,imported,purchase)
       if type == "van"
       makes = Make.joins(:ad, vehicle: :van)
       makes = makes.where('capacity = ?', capacity) if capacity.present?
@@ -94,7 +94,27 @@ class Ad < ActiveRecord::Base
        elsif sort == "3"
       makes = makes.order('manyear DESC')
        end
-
+if purchase.present?
+       if purchase == "للبيع"
+  		makes = makes.where('purchase LIKE ?',"1")
+        else
+          makes = makes.where('purchase LIKE ?',"0")
+        end
+      end
+      if new.present?
+        if (new == "جديدة")
+        makes = makes.where('new LIKE ?',"1")
+      else
+        makes = makes.where('new LIKE ?',"0")
+       end
+       end
+       if imported.present?
+          if imported == "مستوردة"
+       makes = makes.where('imported LIKE ?',"1")
+        else
+          makes = makes.where('imported LIKE ?',"0")
+        end
+      end
 
       makes
   end

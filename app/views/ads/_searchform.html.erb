@@ -40,6 +40,18 @@
 
 </tr>
 </table>
+ للبيع
+<%= radio_button_tag(:purchase, "للبيع") %>
+ للإيجار
+<%= radio_button_tag(:purchase, "للإيجار") %>
+ جديدة
+<%= radio_button_tag(:new, "جديدة") %>
+ مستعملة
+<%= radio_button_tag(:new, "مستعملة") %>
+ مستوردة
+<%= radio_button_tag(:imported, "مستوردة") %>
+ محلية
+<%= radio_button_tag(:imported, "محلية") %>
 <div id="atrrparent">
 <div id="vanwrapper">
 <%=render 'ads/vanform'%>

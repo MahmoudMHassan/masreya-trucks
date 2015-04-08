@@ -54,7 +54,7 @@ class AdsController < ApplicationController
   semitrailer_params = params[:semitrailer].permit(:capacity)
   semitrailer_params
   end
-  
+
   private def semitrailertruck_params
   semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
   semitrailertruck_params
@@ -99,12 +99,10 @@ class AdsController < ApplicationController
   
 
   def search
-    @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price])
+    @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity],params[:mileage],params[:type],params[:new],params[:imported],params[:purchase])
   end
 
-  def vansearch
-    @ads = Ad.vansearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity],params[:mileage])
-  end
+
 
 
   def show
@@ -183,20 +181,7 @@ redirect_to "/ads/#{@ad.id}"
   end
 
 
-  def search
-    @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:mileage],params[:capacity],params[:type])
-  end 
 
-  def search_make
-  end 
-  
-  def sttsearch
-  @ads = Ad.sttsearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:mileage])
-  end
-  
-  def semisearch
-  @ads = Ad.semisearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity])
-  end
 
 
 end
