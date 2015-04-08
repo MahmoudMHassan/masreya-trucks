@@ -53,8 +53,11 @@ class AdsController < ApplicationController
   private def semitrailer_params
   semitrailer_params = params[:semitrailer].permit(:capacity)
   semitrailer_params
-
-
+  end
+  
+  private def semitrailertruck_params
+  semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
+  semitrailertruck_params
   end
 
 
