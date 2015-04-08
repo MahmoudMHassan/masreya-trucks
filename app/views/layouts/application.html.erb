@@ -22,11 +22,10 @@
 </div><br>
 <div id="headerLeft">
 <%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%><br>
-<%= link_to "إضافة إعلان", "/ads/new"%>
 <%end%>
-<br>
+
 </head>
-<body>
+<body style="background:#CDEBCD;">
 <%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
 
 
