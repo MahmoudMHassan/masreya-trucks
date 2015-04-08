@@ -84,11 +84,120 @@ height: 300px;
 			}
 
 	#searchwrapper{
+	width:1000px;
+	position:center;
+	margin: 0 auto;
+	color: #000000;
+	visibility:hidden;
+	}
+	#searchpanel{
+	position:relative;
+	}
+
+	#trialbutton{
+	width: 120px;
+	height: 90px;
+	margin: 0 auto;
+	border-radius:10px;
+	border:2px solid;
+	position:absolute;
+	top: 20%;
+	left: 62%;
+	background:#CDEBCD;
+	background-image:image-url('truck.png');
+	background-position: 0px 0px;
+	background-repeat:no-repeat;
+	}
+	#trialbutton1{
+	width: 120px;
+	height: 90px;
+	margin: 0 auto;
+	border-radius:10px;
+	border:2px solid;
+	position:absolute;
+	top: 20%;
+	left: 52%;
+	background:#CDEBCD;
+	background-image:image-url('truck.png');
+	background-position: 0px 0px;
+	background-repeat:no-repeat;
+	}
+	#trialbutton2{
+	width: 120px;
+	height: 90px;
+	margin: 0 auto;
+	border-radius:10px;
+	border:2px solid;
+	position:absolute;
+	top: 20%;
+	left: 42%;
+	background:#CDEBCD;
+	background-image:image-url('truck.png');
+	background-position: 0px 0px;
+	background-repeat:no-repeat;
+	}
+	#trialbutton3{
+	width: 120px;
+	height: 90px;
+	margin: 0 auto;
+	border-radius:10px;
+	border:2px solid;
+	position:absolute;
+	top: 20%;
+	left: 32%;
+	background:#CDEBCD;
+	background-image:image-url('truck.png');
+	background-position: 0px 0px;
+	background-repeat:no-repeat;
+	}
+	#trialbutton4{
+	width: 120px;
+	height: 90px;
+	margin: 0 auto;
+	border-radius:10px;
+	border:2px solid;
+	position:absolute;
+	top: 20%;
+	left: 22%;
+	background:#CDEBCD;
+	background-image:image-url('truck.png');
+	background-position: 0px 0px;
+	background-repeat:no-repeat;
+	}
+
+
+	#heavytruck{
+	position:absolute;
 	width:700px;
 	margin: 0 auto;
 	color: #000000;
 	visibility:hidden;
 	}
+
+	#semitrailer{
+	position:absolute;
+	width:700px;
+	margin: 0 auto;
+	color: #000000;
+	visibility:hidden;
+	}
+
+	#semitrailertruck{
+	position:absolute;
+	width:700px;
+	margin: 0 auto;
+	color: #000000;
+	visibility:hidden;
+	}
+
+	#van{
+	position:absolute;
+	width:700px;
+	margin: 0 auto;
+	color: #000000;
+	visibility:hidden;
+	}
+
 	#headerRight{
 	position:relative;
 	width:300px;
@@ -117,9 +226,9 @@ height: 300px;
 	background-position: 6px 1px;
 	background-repeat:no-repeat;
 	//color:#FFFFFF;
-
 	}
-	td{
+
+	#td{
 	 width:150px;
 	 overflow: hidden;
 	 display:inline-block;

@@ -3,26 +3,27 @@
 
 <head>
   <title>MasreyaTrucks</title>
- 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
- 
+
   <div id="header">
 
-  <div id="headerRight">
-  <%= link_to "home", root_path%><br>
+ <div id="headerRight">
+  <%= link_to "home", root_path%>
+  <br>
   <%if self.current_user==nil %>
-<%= link_to "فتح حساب", "/users/new"%>
-<%= link_to "تسجيل الدخول", "/users/signin"%>
-<%else%>
-<%= link_to "صفحة الحساب", "/users/#{self.current_user.id}"%>
-<%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
-</div><br>
-<div id="headerLeft">
-<%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%>
-<%end%>
+    <%= link_to "فتح حساب", "/users/new"%>
+    <%= link_to "تسجيل الدخول", "/users/signin"%>
+  <%else%>
+    <%= link_to "صفحة الحساب", "/users/#{self.current_user.id}"%>
+    <%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
+ </div>
+<br>
+ <div id="headerLeft">
+    <%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%>
+    <%end%>
 <br>
 </head>
 <body>
@@ -37,15 +38,71 @@
   <% else %>
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
-</div> 
+</div>
+
 <div style="margin-top:-30px;margin-left:400px;margin-right:400px;height:0px;">
 <button id="searchbutton" style="font-size:20px;color:#000000">
 <div style="margin-left:40px;"> البحث</div>
   </button>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<!--
+  </button>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<!--
 <div id="searchwrapper">
-<%=render 'ads/searchform'%>
+  <%=render 'ads/searchform'%>
 </div>
+-->
+
+<br>
+
+<button id="trialbutton">ALL</button>
+<button id="trialbutton1">heavy truck</button>
+<button id="trialbutton2">semi trailer</button>
+<button id="trialbutton3">semi trailer truck</button>
+<button id="trialbutton4">van</button>
+
+<div id="searchpanel">
+
+<div id="searchwrapper">
+ <%=render 'ads/searchform'%>
+ </div>
+
+
+<div id=heavytruck>
+<%=render 'ads/searchheavytruck'%>
+</div>
+
+
+<div id=semitrailer>
+<%=render 'ads/searchsemitrailer'%>
+</div>
+
+
+<div id=semitrailertruck>
+<%=render 'ads/searchsemitrailertruck'%>
+</div>
+
+<div id=van>
+<%=render 'ads/searchvan'%>
+</div>
+
+</div>
+<br>
+<!--
+<div id="heavytruck">
+  <%=render 'ads/searchheavytruck'%>
+</div>
+<div id="semitrailer">
+  <%=render 'ads/searchsemitrailer'%>
+</div>
+<div id="semitrailertruck">
+  <%=render 'ads/searchsemitrailertruck'%>
+</div>
+<div id="van">
+  <%=render 'ads/searchvan'%>
+</div>
+-->
 </div>
 </div>
 <%= yield %>

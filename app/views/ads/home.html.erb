@@ -1,7 +1,4 @@
 <br>
-<%if @ads.empty?%>
-<div style="text-align:center;">NO RESULTS FOUND</div>
-<%else%>
 <%@ads.each do |a|%>
 <div class = "post_wrapper">
 <%=link_to a.title, "/ads/#{a.id}"%><br>
@@ -9,5 +6,4 @@
 <%=a.description%><br>
 </div>
 </div>
-<%end%>
 <%end%>
