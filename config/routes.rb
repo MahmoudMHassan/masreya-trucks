@@ -13,6 +13,7 @@ post 'pictures/new' => 'pictures#create'
 
   resources :makes
 
+
   get 'makes/new'
 
   get 'makes/edit'
