@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'ads/search/:page' => 'ads#search'
   resources :makes
 
+
   get 'makes/new'
 
   get 'makes/edit'
