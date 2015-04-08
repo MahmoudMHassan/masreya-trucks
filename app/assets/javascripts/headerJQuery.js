@@ -22,16 +22,20 @@ $(function(){
      $('#vanwrapper').children().prop('disabled', true);
   if(window.location.href.indexOf("&make=")>-1){
     if(window.location.href.indexOf("&type=van")>-1){
-      $('#vanwrapper').prop('disabled', false);
+      $('#vanwrapper').children().prop('disabled', false);
+      $('#vanwrapper').css('visibility', 'visible');
     }else{
       if(window.location.href.indexOf("&type=heavy")>-1){
-      $('#heavywrapper').attr('disabled', false);
+      $('#heavywrapper').css('visibility', 'visible');
+      $('#heavywrapper').children().prop('disabled', false);
     }else{
       if(window.location.href.indexOf("&type=stt")>-1){
-      $('#sttwrapper').attr('disabled', false);
+      $('#sttwrapper').css('visibility', 'visible');
+      $('#sttwrapper').children().prop('disabled', false);
       }else{
 	if(window.location.href.indexOf("&type=semi")>-1){
-      $('#semiwrapper').attr('disabled', false);
+      $('#semiwrapper').css('visibility', 'visible');
+      $('#semiwrapper').children().prop('disabled', false);
 	}
 	
       }
