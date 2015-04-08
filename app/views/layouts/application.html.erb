@@ -32,15 +32,20 @@
 <%= link_to "إضافة إعلان", "/vehicles/new"%>
 </div>
 
+
+<%= link_to "إضافة إعلان", "/ads/new"%>
+
 <%end%>
 </div><br><br>
 <div id="headerRight">
   <% if current_user %>
-    Welcome <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    مرحباً <strong><%= current_user.name %></strong>!
+    <%= link_to "تسجيل الخروج", signout_path, id: "sign_out" %>
   <% else %>
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
+
+
 
 </div>
 <div style="margin-top:-30px;margin-left:400px;margin-right:400px;height:0px;">
@@ -48,12 +53,18 @@
 <div style="margin-left:40px;"> البحث</div>
   </button>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<div id="searchparent">
 <div id="searchwrapper">
 <%=render 'ads/searchform'%>
 </div>
 
-<div id
-
+<div id="vanwrapper">
+<%=render 'ads/vanform'%>
+</div>
+<div id = "sttwrapper">
+<%= render 'ads/sttform'%>
+</div>
+</div>
 </div>
 </div>
 <%= yield %>

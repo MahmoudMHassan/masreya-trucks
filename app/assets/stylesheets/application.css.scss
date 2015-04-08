@@ -26,7 +26,7 @@
 		right: 0;
 		border-bottom: 1px solid #d6dce0;
 		background: #2D882D;
-		color: #070F07;	
+		color: #070F07;
 		height: 120px;
 		a{
 		  color: #111F11;
@@ -52,11 +52,46 @@
 					color: #00E35C;
 				}
 			}
+                       /* #contacts_stuff  {
+			 text-align : right;
+			 margin-right : 1200px;
+			 width: 300px;
+			 height: 300px;
+
+			}
+			#trucks_stuff {
+			margin-right : 600px;
+			margin-bottom: 1000px;
+height: 300px;
+			width: 300px;
+			}
+			*/
+			#contacts_stuff{
+			position:relative;
+			width:300px;
+			height:0px;
+			margin-right:1px;
+			}
+			#trucks_stuff{
+			position:relative;
+			margin-right:auto;
+			margin-left:300px;
+			width:300px;
+			height:0px;
+			}
+			b {
+			  color : #0a6b60;
+			}
+
 	#searchwrapper{
+	position: absolute;
 	width:700px;
 	margin: 0 auto;
 	color: #000000;
-	visibility:hidden;
+	//visibility:hidden;
+	}
+	#searchparent{
+	position: relative;
 	}
 	#headerRight{
 	position:relative;
@@ -73,7 +108,7 @@
 	}
 	input[type="number"]{
 	  width:70px;
-	  
+
 	}
 	#searchbutton{
 	width: 110px;
@@ -86,7 +121,7 @@
 	background-position: 6px 1px;
 	background-repeat:no-repeat;
 	//color:#FFFFFF;
-	
+
 	}
 	td{
 	 width:150px;
@@ -97,4 +132,11 @@
 	#body{
 	margin-top:120px;
 	background:#CDEBCD;
+	}
+	#vanwrapper{
+	position: absolute;
+	width:700px;
+	margin: 0 auto;
+	color: #000000;
+	visibility:hidden;
 	}

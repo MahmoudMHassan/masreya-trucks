@@ -1,3 +1,0 @@
-class HeavytrucksController < ApplicationController
-
-end
