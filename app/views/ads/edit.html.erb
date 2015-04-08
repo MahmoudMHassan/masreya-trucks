@@ -21,7 +21,7 @@
 <br>
 <%=van.number_field :capacity%>
 <br>
-
+<%end%>
 New
 <%= check_box_tag(:new) %>
 <%if @make.new%>
@@ -59,7 +59,7 @@ Imported
 <!-- <input id="imported" name="imported" type="checkbox" value=true/> -->
 
 <input id="imported" name="imported" type="checkbox" value=true />
-
+<%end%>
 <%= van.label :Mileage%>
 <br>
 <%=van.number_field :mileage%>
@@ -88,7 +88,6 @@ Imported
 <br>
 <%=h.number_field :mileage%>
 <br>
-<%end%>
 <%end%>
 Manufacture year<br>
 <%=v.number_field :manyear%>
@@ -120,7 +119,7 @@ Number of Axels<br>
 <br>
 <%=v.number_field :price%>
 <br><br>
-<%end%>
+
 <%=fields_for :make do |m|%>
 <%= m.label :New%>
 
@@ -160,5 +159,6 @@ Change Image1
 		<%= a.file_field :image4 %>
 		<br>
 		<%end%>
+                <%end%>
 <%=a.submit%>
 <%end%>
