@@ -9,9 +9,12 @@
 <%= a.vehicle.make%> | <%=a.vehicle.model%><br>
 السعر:<%= number_with_delimiter(a.vehicle.price, :delimiter => ',')%>
 السنة: <%= a.vehicle.manyear%>
+<<<<<<< HEAD
+=======
 imported: <%= a.imported%>
      new: <%= a.new%>
      purchase: <%= a.purchase%>
+>>>>>>> origin
 <div style ="width: 400px;">
 <%=a.ad.description%><br>
 </div>
@@ -19,8 +22,10 @@ imported: <%= a.imported%>
 <%end%>
 <%if adscount > 10 %>
 <%if params[:page] != "1"%>
+
 <%=link_to "↠", "/ads/search/1?utf8=✓&make=#{params[:make]}&model=#{params[:model]}&manyear=#{params[:manyear]}&country=#{params[:country]}&axles=#{params[:axles]}&gearbox=#{params[:gearbox]}&colour=#{params[:colour]}&price=#{params[:price]}&sort=#{params[:sort]}", {:style => 'color:black;'}%>
 <%=link_to "→", "/ads/search/#{params[:page].to_i-1}?utf8=✓&make=#{params[:make]}&model=#{params[:model]}&manyear=#{params[:manyear]}&country=#{params[:country]}&axles=#{params[:axles]}&gearbox=#{params[:gearbox]}&colour=#{params[:colour]}&price=#{params[:price]}&sort=#{params[:sort]}", {:style => 'color:black;'}%>
+
 <%end%>
 <%i=1%>
 <%count = 4%>
@@ -28,9 +33,11 @@ imported: <%= a.imported%>
 <%if (params[:page].to_i)+i-count > 0%>
 <%if adscount>((params[:page].to_i)+i-count-1)*10%>
 <%if i == count %>
+
 <%=link_to "#{(params[:page].to_i)+i-count}", "/ads/search/#{params[:page].to_i+i-count}?utf8=✓&make=#{params[:make]}&model=#{params[:model]}&manyear=#{params[:manyear]}&country=#{params[:country]}&axles=#{params[:axles]}&gearbox=#{params[:gearbox]}&colour=#{params[:colour]}&price=#{params[:price]}&sort=#{params[:sort]}", {:style => 'color:black;'}%>
 <%else%>
 <%=link_to "#{(params[:page].to_i)+i-count}", "/ads/search/#{params[:page].to_i+i-count}?utf8=✓&make=#{params[:make]}&model=#{params[:model]}&manyear=#{params[:manyear]}&country=#{params[:country]}&axles=#{params[:axles]}&gearbox=#{params[:gearbox]}&colour=#{params[:colour]}&price=#{params[:price]}&sort=#{params[:sort]}"%>
+
 <%end%>
 <%end%>
 <%else%>
@@ -43,6 +50,7 @@ imported: <%= a.imported%>
 ...
 <%end%>
 <%if (adscount > ((params[:page].to_i))*10)%>
+
 <%=link_to "←", "/ads/search/#{params[:page].to_i+1}?utf8=✓&make=#{params[:make]}&model=#{params[:model]}&manyear=#{params[:manyear]}&country=#{params[:country]}&axles=#{params[:axles]}&gearbox=#{params[:gearbox]}&colour=#{params[:colour]}&price=#{params[:price]}&sort=#{params[:sort]}", {:style => 'color:black;'}%>
 <%=link_to "↞", "/ads/search/#{(adscount / 10.0).ceil}?utf8=✓&make=#{params[:make]}&model=#{params[:model]}&manyear=#{params[:manyear]}&country=#{params[:country]}&axles=#{params[:axles]}&gearbox=#{params[:gearbox]}&colour=#{params[:colour]}&price=#{params[:price]}&sort=#{params[:sort]}", {:style => 'color:black;'}%>
 <%end%>

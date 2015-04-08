@@ -2,8 +2,19 @@ class Ad < ActiveRecord::Base
   has_many :users, through: :bookmark
   has_one :seller, through: :make
   has_many :vehicles, through: :make
+  has_one :van
+  has_one :semitrailer
+  has_one :semitrailertruck
+  has_one :heavytruck
+  has_one :make
 
-
+   mount_uploader :image , ImageUploader
+   mount_uploader :image1 , Image1Uploader
+   mount_uploader :image2 ,Image2Uploader
+   mount_uploader :image3 ,Image3Uploader
+   mount_uploader :image4 ,Image4Uploader
+  accepts_nested_attributes_for :vehicles, :van, :semitrailer, :semitrailertruck, :heavytruck , :make 
+  
   def self.make_search (purchase, newV, imported) 
   		@make = Make.joins(:ad)
         if purchase.present?
@@ -30,14 +41,11 @@ class Ad < ActiveRecord::Base
       @make
   end 
 
-  has_one :van
-  has_one :semitrailer
-  has_one :semitrailertruck
-  has_one :heavytruck
-  has_one :make
-  accepts_nested_attributes_for :vehicles, :van, :semitrailer, :semitrailertruck, :heavytruck , :make
-  
+
+
+ 
   def self.search(sort,make,model,manyear,country,axles,gearbox,colour,price)
+
       makes = Make.joins(:ad, :vehicle)
       makes = makes.where('make LIKE ?',"%#{make}%") if make.present?
       makes = makes.where('model LIKE ?',"%#{model}%") if model.present?
@@ -113,6 +121,7 @@ class Ad < ActiveRecord::Base
       makes = makes.where('mileage = ?', mileage) if mileage.present?
     
       makes
+
 
   end
   def self.sttsearch(sort,make,model,manyear,country,axles,gearbox,colour,price,mileage)

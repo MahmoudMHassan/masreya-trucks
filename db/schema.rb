@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404113755) do
+ActiveRecord::Schema.define(version: 20150408003426) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 20150404113755) do
     t.string   "email",       limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "image1",      limit: 255
+    t.string   "image2",      limit: 255
+    t.string   "image3",      limit: 255
+    t.string   "image4",      limit: 255
+    t.string   "image",       limit: 255
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -76,9 +81,10 @@ ActiveRecord::Schema.define(version: 20150404113755) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_3e32cd9a0f", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_3da4fe274e", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_8894d3de94", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_aea695421a", using: :btree
+
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -118,6 +124,7 @@ ActiveRecord::Schema.define(version: 20150404113755) do
     t.boolean  "validated",        limit: 1
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.string   "avatar",           limit: 255
   end
 
   create_table "vans", primary_key: "vehicle_id", force: :cascade do |t|

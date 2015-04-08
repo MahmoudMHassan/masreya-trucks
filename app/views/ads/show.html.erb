@@ -87,8 +87,19 @@ Manual
 <br>
 <%=@vehicle.colour%><br>
 <b>السعر</b>
+
 <br>
 <%= number_with_delimiter(@vehicle.price, :delimiter => ',')%><br>
+
+<br>
+<%= image_tag @ad.image_url.to_s%>
+<%= image_tag @ad.image1_url.to_s%>
+<br>
+<%= image_tag @ad.image2_url.to_s%>
+<%= image_tag @ad.image3_url.to_s%>
+<br>
+<%= image_tag @ad.image4_url.to_s%>
+</div>
 
 <%if @van !=nil %>
 <b>Capacity</b><br>
@@ -108,4 +119,6 @@ Manual
 <%=@heavytruck.mileage%><br>
 <%end%>
 </div>
+
 </html>
+

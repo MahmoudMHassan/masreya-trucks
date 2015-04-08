@@ -29,10 +29,9 @@
 <%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
 
 <div style="text-align: left">
-<%= link_to "إضافة إعلان", "/vehicles/new"%>
+<%= link_to "إضافة إعلان", "/ads/new"%>
 </div>
 
-<%= link_to "إضافة إعلان", "/ads/new"%>
 <%end%>
 </div><br><br>
 <div id="headerRight">
@@ -43,13 +42,13 @@
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 
-
 </div> 
 <div style="margin-top:-30px;margin-left:400px;margin-right:400px;height:0px;">
 <button id="searchbutton" style="font-size:20px;color:#000000">
 <div style="margin-left:40px;"> البحث</div>
   </button>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
 <div id="searchparent">
 <div id="searchwrapper">
 <%=render 'ads/searchform'%>
@@ -61,6 +60,7 @@
 <%= render 'ads/sttform'%>
 </div>
 </div>
+
 </div>
 </div>
 <%= yield %>

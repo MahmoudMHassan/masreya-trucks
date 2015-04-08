@@ -1,5 +1,6 @@
 class Vehicle < ActiveRecord::Base
 
+
    has_one :semitrailertruck, dependent: :destroy
    has_one :semitrailer, dependent: :destroy
    has_one :heavytruck, dependent: :destroy
