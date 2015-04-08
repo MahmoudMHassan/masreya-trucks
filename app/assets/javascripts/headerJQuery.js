@@ -48,6 +48,7 @@ $(function(){
      $('#sttbutton').css('visibility', 'visible');
      $('#heavybutton').css('visibility', 'visible');
      $('#vanbutton').css('visibility', 'visible');
+     $('#allbutton').css('visibility', 'visible');
   }else{
     $('#searchwrapper').css("visibility","hidden");
     $('#header').css("height","120px");
@@ -62,6 +63,8 @@ $('#searchbutton').click(function(e){
 	  $('#sttbutton').css('visibility', 'visible');
 	  $('#heavybutton').css('visibility', 'visible');
 	  $('#vanbutton').css('visibility', 'visible');
+	  $('#allbutton').css('visibility', 'visible');
+
 	    $('#searchwrapper').css("visibility","visible");
 	    
             $('#header').stop().animate({
@@ -96,6 +99,11 @@ $('#searchbutton').click(function(e){
     $('#sttwrapper').css("visibility","hidden");
     $('#semiwrapper').css("visibility","hidden");
     $('#heavywrapper').css("visibility","hidden");
+    $('#sttbutton').css("border","2px solid");
+    $('#heavybutton').css("border","2px solid");
+    $('#semibutton').css("border","2px solid");
+    $('#allbutton').css("border","2px solid");
+    $('#vanbutton').css("border","4px solid");
     
   
 });  
@@ -108,7 +116,11 @@ $('#searchbutton').click(function(e){
     $('#semiwrapper').css("visibility","hidden");
     $('#vanwrapper').css("visibility","hidden");
     $('#sttwrapper').css("visibility","hidden");
-    
+    $('#sttbutton').css("border","2px solid");
+    $('#heavybutton').css("border","4px solid");
+    $('#semibutton').css("border","2px solid");
+    $('#allbutton').css("border","2px solid");
+    $('#vanbutton').css("border","2px solid");
   
 }); 
  $('#semibutton').click(function(e){
@@ -120,7 +132,11 @@ $('#searchbutton').click(function(e){
     $('#sttwrapper').css("visibility","hidden");
     $('#vanwrapper').css("visibility","hidden");
     $('#heavywrapper').css("visibility","hidden");
-    
+    $('#sttbutton').css("border","2px solid");
+    $('#heavybutton').css("border","2px solid");
+    $('#semibutton').css("border","4px solid");
+    $('#allbutton').css("border","2px solid");
+    $('#vanbutton').css("border","2px solid");
   
 }); 
   $('#sttbutton').click(function(e){
@@ -132,7 +148,27 @@ $('#searchbutton').click(function(e){
     $('#semiwrapper').css("visibility","hidden");
     $('#heavywrapper').css("visibility","hidden");
     $('#vanwrapper').css("visibility","hidden");
-    
+    $('#sttbutton').css("border","4px solid");
+    $('#heavybutton').css("border","2px solid");
+    $('#semibutton').css("border","2px solid");
+    $('#allbutton').css("border","2px solid");
+    $('#vanbutton').css("border","2px solid");
+  
+}); 
+  $('#allbutton').click(function(e){
+    $('#sttwrapper').children().prop('disabled', true);
+    $('#heavywrapper').children().prop('disabled', true);
+    $('#vanwrapper').children().prop('disabled', true);
+    $('#semiwrapper').children().prop('disabled', true);
+    $('#sttwrapper').css("visibility","hidden");
+    $('#semiwrapper').css("visibility","hidden");
+    $('#heavywrapper').css("visibility","hidden");
+    $('#vanwrapper').css("visibility","hidden");
+    $('#sttbutton').css("border","2px solid");
+    $('#heavybutton').css("border","2px solid");
+    $('#semibutton').css("border","2px solid");
+    $('#allbutton').css("border","4px solid");
+    $('#vanbutton').css("border","2px solid");
   
 }); 
 
