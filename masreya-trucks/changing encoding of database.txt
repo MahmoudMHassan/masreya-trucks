@@ -1,0 +1,5 @@
+alter database DATABASE_NAME charset=utf8;
+use DATABASE_NAME;
+alter table TABLE_NAME charset utf8;
+alter table TABLE_NAME modify FIELD_NAME varchar(255) character set utf8;
+**PROCESS MUST BE REPEATED FOR EACH FIELD**

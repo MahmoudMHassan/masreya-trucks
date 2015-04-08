@@ -1,0 +1,22 @@
+<%= form_for :user, :html => {:multipart => true} do |f|%>
+<%if @blank%>
+<span class ="error">يوجد بيانات فارغة*</span>
+<%end%>
+<br>
+    <p>البريد الالكتروني<%if @email==""%><span style = "color: red;"> * </span><%end%> </p>
+    <%= f.email_field :email, :value => @email%>
+    <p>كلمة السر<%if @password==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.password_field :password%>
+    <p>الاسم<%if @fname==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.text_field :fname, :value => @fname %>
+    <p>اسم العائلة<%if @lname==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.text_field :lname, :value => @lname%>
+     <p>البلد<%if @country==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.text_field :country, :value => @country %>
+    <p>الهاتف<%if @phone==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.text_field :phone , :value => @phone%><br>
+    <%= f.file_field :avatar%>
+    <%= f.submit "حفظ"%>
+<% end %>
+
+

@@ -1,0 +1,19 @@
+<%= form_for :login do |f|%>
+<%if @wrong%>
+<span class ="error">البريد الالكتروني او كلمة السر غير صحيح*</span>
+<%end%>
+<%if @blank %>
+<span class ="error">يوجد مسافات فارغة*</span>
+<%end%>
+<br>
+  <p>البريد الالكتروني <%if @email==""%><span style = "color: red;"> * </span><%end%></p>
+  
+    <%= f.email_field :email, :value => @email%>
+
+<p>كلمة السر<%if @password==""%><span style = "color: red;"> * </span><%end%></p>  
+
+    <%= f.password_field :password %>
+  </p>
+    <%= f.submit "حفظ"%>
+  </p>
+<% end %>

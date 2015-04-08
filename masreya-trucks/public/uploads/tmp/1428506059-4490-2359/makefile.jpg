@@ -1,0 +1,42 @@
+# THIS IS A COMMENT
+# Run this with make utility in linux
+# YOU CAN WRITE ANY linux TERMINAL COMMAND HERE AND IT WILL BE EXECUTED 
+# THIS IS USED TO EXECUTE MULTIPLE TERMINAL COMMANDS WHEN ($make all) is entered in terminal (REMEMBER YOU HAVE TO BE IN THE DIRECTORY OF THIS # FILE TO BE ABLE TO RUN IT
+# CUSTOMIZE THIS FILE TO UR NEEDS
+
+
+
+
+JC = javac		#variable holding javac (java compiler)
+CLASSPATH = ./bin/  #variable holding a path to your classes
+class = ./src/UserTable
+class1 = ./src/Table
+class2 = ./src/Index
+class3 = ./src/Page
+class4 = ./src/DBAppException
+class5 = ./src/BTree
+class6 = ./src/DBEngineException
+class7 = ./src/BTreeNode
+class8 = ./src/BTreeLeafNode
+class9 = ./src/BTreeInnerNode
+TESTPATH = ./src/DB
+
+
+
+test:                
+		   $(JC) -d $(CLASSPATH) $(class3)*.java ; 
+		   $(JC) -d $(CLASSPATH) $(class7)*.java ;
+		   $(JC) -d $(CLASSPATH) $(class9)*.java ;
+		   $(JC) -d $(CLASSPATH) $(class8)*.java ;
+		   $(JC) -d $(CLASSPATH) $(class5)*.java ;
+		   $(JC) -d $(CLASSPATH) $(class4)*.java ;
+		   $(JC) -d $(CLASSPATH) $(class6)*.java ;
+		   $(JC) -d $(CLASSPATH) $(class2)*.java ;
+		   $(JC) -d $(CLASSPATH) $(class1)*.java ;
+		   $(JC) -d $(CLASSPATH) $(class)*.java ;         
+		   $(JC) -d $(CLASSPATH) $(TESTPATH)*.java ;  
+
+all: test 
+
+clean:	 
+	   rm $(CLASSPATH)*                   
