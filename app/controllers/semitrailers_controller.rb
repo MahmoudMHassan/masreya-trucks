@@ -1,3 +1,0 @@
-class SemitrailersController < ApplicationController
-
-end

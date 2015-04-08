@@ -1,9 +1,0 @@
-<br>
-<%@bookmarks.each do |b|%><br>
-<div class = "post_wrapper">
-<%=link_to Ad.find(b.ad_id).title, "/ads/#{b.ad_id}"%><br>
-<div style ="width: 400px;">
-<%=Ad.find(b.ad_id).description%><br>
-</div>
-</div>
-<%end%>

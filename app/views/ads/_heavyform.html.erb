@@ -1,9 +1,0 @@
-<%=hidden_field_tag 'type','heavy'%>
-حمولة
-<%if params[:capacity]%>
-<%=check_box_tag :capacity, "1", checked = true%>
-<%else%>
-<%=check_box_tag :capacity%>
-<%end%>
-مسافة
-<%=number_field_tag :mileage, params[:mileage]%> 
