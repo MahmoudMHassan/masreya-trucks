@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  
+
   #get 'ads/search_make' => 'ads#search_make'
   get 'ads/search_make'
   get 'ads/search/:page' => 'ads#search'
   resources :makes
+
   get 'makes/new'
 
   get 'makes/edit'
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
   get 'makes/destroy'
 
   get 'makes/index'
+
+  post 'makes/new'
 
 resources :vehicles
   get 'vehicles/new'
@@ -41,7 +44,7 @@ resources :vehicles
 
   #AD
 
-  
+
 
   get 'search/:page' => 'ads#search'
   get 'vansearch/:page' => 'ads#vansearch'
@@ -61,13 +64,6 @@ resources :vehicles
    #resources :semitrailertrucks
   post 'ads/new' => 'ads#create'
     resources :ads
-
-
-
-
-
-
-
 
   get 'sessions/destroy'
 

@@ -14,6 +14,7 @@ class AdsController < ApplicationController
 
 
   def new
+
     @ad = Ad.new
     @vehicle = Vehicle.new
     @make = Make.new
@@ -53,12 +54,12 @@ class AdsController < ApplicationController
     redirect_to "/ads/#{@ad.id}"
   end
 
-  
+
 
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price])
   end
-  
+
   def vansearch
     @ads = Ad.vansearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity],params[:mileage])
   end
@@ -111,7 +112,6 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
-
     @vehicle.update(vehicle_params)
     if @van !=nil
       @vehicle.van.update(van_params)
@@ -137,51 +137,51 @@ redirect_to "/ads/#{@ad.id}"
 
   def search
     @ads = Ad.make_search(params[:purchase],params[:new],params[:imported])
-  end 
+  end
 
   def search_make
-  end 
+  end
   def sttsearch
   @ads = Ad.sttsearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:mileage])
   end
-private 
+private
   def ad_params
   ad_params = params.require(:ad).permit(:title,:description)
   ad_params
   end
 
-  private 
+  private
   def vehicle_params
   vehicle_params = params.require(:vehicle).permit(:make,:model,:manyear,:country,:axles,:gearbox,:colour,:price)
   vehicle_params
   end
 
-  private 
+  private
   def make_params
   make_params = params[:make].permit(:new,:imported,:purchase)
   make_params
   end
 
-  private 
+  private
   def van_params
   van_params = params[:van].permit(:capacity,:mileage)
   van_params
   end
 
-  private 
+  private
   def heavytruck_params
   heavytruck_params = params[:heavytruck].permit(:capacity,:mileage)
   heavytruck_params
   end
 
-  private 
+  private
   def semitrailer_params
   semitrailer_params = params[:semitrailer].permit(:capacity)
   semitrailer_params
 
   end
 
-  private 
+  private
   def semitrailertruck_params
   semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
   semitrailertruck_params
