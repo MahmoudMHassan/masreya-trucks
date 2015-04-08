@@ -1,7 +1,5 @@
 class AdsController < ApplicationController
-
-  before_filter :authorize, :except => [:home, :search,:search_make, :show]
-
+ before_filter :authorize, :except => [:home, :search,:search_make, :show,:vansearch,:sttsearch]
   def authorize
     if self.current_user != nil
       true
@@ -10,6 +8,9 @@ class AdsController < ApplicationController
     end
   end
 
+  def home
+    @ads = Ad.first(10)
+  end
 
 
   def new
@@ -23,6 +24,7 @@ class AdsController < ApplicationController
     @semitrailertruck = Semitrailertruck.new
 
   end
+
   private def ad_params
   ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4)
   ad_params
@@ -55,10 +57,7 @@ class AdsController < ApplicationController
 
   end
 
-  private def semitrailertruck_params
-  semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
-  semitrailertruck_params
-  end
+
 
   def create
     @ad = Ad.new(ad_params)
@@ -94,9 +93,7 @@ class AdsController < ApplicationController
     redirect_to "/ads/#{@ad.id}"
   end
 
-  def home
-    @ads = Ad.first(10)
-  end
+  
 
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price])
@@ -186,7 +183,12 @@ redirect_to "/ads/#{@ad.id}"
   def search
     @ads = Ad.make_search(params[:purchase],params[:new],params[:imported])
   end 
+
   def search_make
   end 
+  def sttsearch
+  @ads = Ad.sttsearch(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:mileage])
+  end
+
 
 end
