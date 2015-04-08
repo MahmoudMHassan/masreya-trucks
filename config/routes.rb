@@ -80,7 +80,7 @@ resources :vehicles
   get 'users/signin'
   get 'users/show'
   get 'users/:id' => 'users#show'
-  get 'users/edit/:id' => 'users#edit'
+  get 'ROOT_PATH/edit/:id' => 'users#edit'
   get 'users/changetoseller/:id' => 'users#changetoseller'
   #get 'makes/new'
 
