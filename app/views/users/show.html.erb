@@ -1,13 +1,5 @@
 
-<head>
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-<script src="http://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="./assets/javascripts/jquery.bootstrap-growl.js"></script>
-
-</head>
 <b>الاسم: </b><%= @user.fname%><br>
 <br>
 <b> اسم العائلة: </b><%= @user.lname%>
@@ -18,12 +10,32 @@
 <br><br>
 <b>الهاتف: </b><%= @user.phone%>
 <br><br>
+
 <br>
+<%if current_user.avatar_url != nil%>
+	<%= image_tag current_user.avatar_url.to_s%>
+	<%else%>
+	<%= image_tag "user.png"%>
+	<%end%>
+<br>
+
+<%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
+<li>
+	<%= link_to "اضافة اعلان", '/ads/new'%>
+</li>
+<% end %>
+
+<%if self.current_user !=nil && !Seller.exists?(self.current_user.id)%>
+<li>
+<%= link_to( "تحويل الى بائع", :controller => "users", :action => "changetoseller", :id => self.current_user.id)%>
+</li>
+<%end%>
+				
 <%if self.current_user != nil && @user.id == self.current_user.id%>
-<%= link_to "تعديل البيانات", "edit/#{@user.id}", method: :get%>
+<li><%= link_to "تعديل البيانات", "edit/#{@user.id}", method: :get%></li>
 <div style="color: red">
-<%= link_to "إلغاء الحساب", "destroy/#{@user.id}",
-:style=>'color: red', method: :post ,data: {confirm: 'Are you sure?'}%>
+<li><%= link_to "إلغاء الحساب", "destroy/#{@user.id}",
+:style=>'color: red', method: :post ,data: {confirm: 'Are you sure?'}%></li>
 </div>
 <%end%>
-</h3>
+</ul>
