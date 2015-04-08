@@ -44,6 +44,7 @@ class UsersController < ApplicationController
     @fname = params[:user][:fname]
     @lname = params[:user][:lname]
     @country = params[:user][:country]
+    @avatar = params[:user][:avatar]
     @blank = false
     @usedemail = false
     if @email.blank? || @password.blank? || @phone.blank? || @fname.blank? || @lname.blank? || @country.blank?
@@ -52,10 +53,13 @@ class UsersController < ApplicationController
       return
     end
 
-    @user = User.new(params.require(:user).permit(:email, :password , :fname , :lname, :country, :phone ,:validated))
+    @user = User.new(params.require(:user).permit(:email, :password , :fname , :lname, :country, :phone, :validated, :avatar))
     if  @user.save
       log_in(@user)
-      redirect_to "/users/#{@user.id}"
+ 
+      @buyer= Buyer.create(user_id: @user.id)
+      @buyer.save
+           redirect_to "/users/#{@user.id}"
     else
       render 'new'
 
@@ -98,10 +102,17 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(params[:user].permit(:email,:password,:fname,:lname,:country,:phone,:validated))
+    if @user.update(params[:user].permit(:email,:password,:fname,:lname,:country,:phone,:validated, :avatar))
       redirect_to "/users/#{@user.id}"
     else
       render 'edit'
     end
+  end
+  
+  def changetoseller
+      Buyer.find_by_user_id(self.current_user.id).delete if Buyer.find_by_user_id(self.current_user.id)!=nil
+    @seller = Seller.create(user_id: self.current_user.id)
+    @seller.save
+    redirect_to "/users/#{self.current_user.id}"
   end
 end

@@ -1,4 +1,4 @@
-<%= form_for :user do |f|%>
+<%= form_for :user, :html => {:multipart => true} do |f|%>
 <%if @blank%>
 <span class ="error">يوجد بيانات فارغة*</span>
 <%end%>
@@ -15,29 +15,8 @@
     <%= f.text_field :country, :value => @country %>
     <p>الهاتف<%if @phone==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :phone , :value => @phone%><br>
+    <%= f.file_field :avatar%>
     <%= f.submit "حفظ"%>
 <% end %>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '330412343823436',
-      xfbml      : true,
-      version    : 'v2.2'
-    });
-  };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-<div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
 
