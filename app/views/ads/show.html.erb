@@ -14,13 +14,16 @@
 <%end%>
 <%end%>
 </div>
-
+<div style= "font-size:150%;">
 <%=@ad.title%>
+</div>
 <br>
+<%if @ad.description != ""%>
 <b>الوصف:</b>
 <br>
 <%=@ad.description%>
 <br>
+<%end%>
 <b>النوع:</b>
 <br>
 <%if @van!=nil%>
@@ -42,14 +45,20 @@
 <%=@vehicle.model%><br>
 <b>معلومات عربة النقل :</b><br>
 <%if @make.new%>
-|<b> جديد </b> <br>
-<%end%>
+جديدة
+<%else%>
+مستعملة
+<%end%> <br>
 <%if @make.imported%>
-| <b> مستورد </b> <br>
-<%end%>
+مستوردة
+<%else%>
+محلية
+<%end%> <br>
 <%if @make.purchase%>
-<b> مستعمل </b> <br>
-<%end%>
+للبيع
+<%else%>
+للإيجار
+<%end%><br>
 <br>
 
 <b>سنة الانتاج :</b>
