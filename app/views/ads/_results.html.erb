@@ -15,7 +15,7 @@
 <%end%>
 <%if adscount > 10 %>
 <%if params[:page] != "1"%>
-<%=link_to "↠", "/search/1?utf8=✓&make=#{params[:make]}&model=#{params[:model]}&manyear=#{params[:manyear]}&country=#{params[:country]}&axles=#{params[:axles]}&gearbox=#{params[:gearbox]}&colour=#{params[:colour]}&price=#{params[:price]}&sort=#{params[:sort]}&capacity=#{params[:capacity]}&mileage=#{params[:mileage]}&type=#{params[:type]}", {:style => 'color:black;'}%>
+<%=link_to "↠", "/search/1?utf8=✓&make=#{params[:make]}&model=#{params[:model]}&manyear=#{params[:manyear]}&country=#{params[:country]}&axles=#{params[:axles]}&gearbox=#{params[:gearbox]}&colour=#{params[:colour]}&price=#{params[:price]}&sort=#{params[:sort]}&capacity=#{params[:capacity]}&mileage=#{params[:mileage]}&type=#{params[:type]}&new=#{params[:new]}&imported=#{params[:imported]}&purchase=#{params[:purchase]}", {:style => 'color:black;'}%>
 <%=link_to "→", "/search/#{params[:page].to_i-1}?utf8=✓&make=#{params[:make]}&model=#{params[:model]}&manyear=#{params[:manyear]}&country=#{params[:country]}&axles=#{params[:axles]}&gearbox=#{params[:gearbox]}&colour=#{params[:colour]}&price=#{params[:price]}&sort=#{params[:sort]}&capacity=#{params[:capacity]}&mileage=#{params[:mileage]}&type=#{params[:type]}", {:style => 'color:black;'}%>
 <%end%>
 <%i=1%>

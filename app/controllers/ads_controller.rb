@@ -64,9 +64,9 @@ class AdsController < ApplicationController
 
   def create
     @ad = Ad.new(ad_params)
-    @ad.save
+    
     @vehicle = Vehicle.new(vehicle_params)
-    @vehicle.save
+   if @ad.save and @vehicle.save
     @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
     @make.update(make_params)
     @make.save
@@ -94,7 +94,12 @@ class AdsController < ApplicationController
       @semitrailertruck.save
     end
     redirect_to "/ads/#{@ad.id}"
-  end
+   else
+     flash[:error] = "*خطأ فى إضافة اﻹعلان"
+     render 'new'
+
+   end
+   end
 
   
 

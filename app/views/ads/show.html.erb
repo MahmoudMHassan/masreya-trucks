@@ -63,12 +63,11 @@
 <%=@vehicle.axles%><br>
 <b>عجلة السرعة :</b>
 <br>
-<%if @vehicle.gearbox == 1%>
---
-<%elsif @vehicle.gearbox == 2%>
-مانيوال
+<%if @vehicle.gearbox%>
+أتوماتيك
 <%else%>
- أتوماتيك
+مانيوال
+
 <%end%><br>
 <div id ="sellerinfo">
 <b>بيانات البائع :</b>
