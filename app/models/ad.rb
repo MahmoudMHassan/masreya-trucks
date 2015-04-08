@@ -115,7 +115,7 @@ class Ad < ActiveRecord::Base
       makes
 
   end
-  def self.sttsearch
+  def self.sttsearch(sort,make,model,manyear,country,axles,gearbox,colour,price,mileage)
      makes = Make.joins(:ad, vehicle: :semitrailertruck)
       
       makes = makes.where('make LIKE ?',"%#{make}%") if make.present?
@@ -150,7 +150,6 @@ class Ad < ActiveRecord::Base
       makes = makes.order('manyear DESC')
        end
       makes = makes.where('mileage = ?', mileage) if mileage.present?
-    
       makes
 
   end 
