@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   def new
     if self.current_user == nil
       @user = User.new
+      @buyer = Buyer.new 
     else redirect_to "/users/#{self.current_user.id}"
     end
   end
@@ -46,18 +47,23 @@ class UsersController < ApplicationController
     @country = params[:user][:country]
     @avatar = params[:user][:avatar]
     @blank = false
+    @valid = true
     @usedemail = false
-    if @email.blank? || @password.blank? || @phone.blank? || @fname.blank? || @lname.blank? || @country.blank?
+    if @email.blank? || @password.blank? || @phone.blank? || @fname.blank? || @lname.blank? || @country.blank? 
       @blank = true
       render 'new'
       return
     end
 
     @user = User.new(params.require(:user).permit(:email, :password , :fname , :lname, :country, :phone, :validated, :avatar))
+    if !inputValidation @user
+      @valid = false
+      render 'new'
+      return 
+    end 
     if  @user.save
       log_in(@user)
- 
-      @buyer= Buyer.create(user_id: @user.id)
+      @buyer= Buyer.new(:user_id => @user.id)
       @buyer.save
            redirect_to "/users/#{@user.id}"
     else
@@ -114,5 +120,8 @@ class UsersController < ApplicationController
     @seller = Seller.create(user_id: self.current_user.id)
     @seller.save
     redirect_to "/users/#{self.current_user.id}"
+  end
+  def inputValidation user
+  return user.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) && user.fname.match(/^[[:alpha:]]+$/) && user.lname.match(/^[[:alpha:]]+$/) && user.country.match(/^[[:alpha:]]+$/) && user.phone.match(/^\+?+[[:digit:]]{,20}$/)
   end
 end
