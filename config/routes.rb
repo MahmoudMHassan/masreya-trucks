@@ -1,33 +1,64 @@
 Rails.application.routes.draw do
 
+  get 'pictures/new'
+
+  get 'pictures/create'
+
+  get 'pictures/show'
+post 'pictures/new' => 'pictures#create'
+
+  
+  #get 'ads/search_make' => 'ads#search_make'
+  get 'ads/search_make'
+  get 'ads/search/:page' => 'ads#search'
+
+  resources :makes
+  get 'makes/new'
+
+  get 'makes/edit'
+
+  get 'makes/show'
+
+  get 'makes/update'
+
+  get 'makes/delete'
+
+  get 'makes/destroy'
+
+  get 'makes/index'
+  post 'makes/new' =>'makes#create'
+resources :vehicles
+  get 'vehicles/new'
+
+  get 'vehicles/create'
+
+  get 'vehicles/edit'
+
+  get 'vehicles/delete'
+
+  get 'vehicles/destroy'
+
+  get 'vehicles/update'
+
+  get 'vehicles/index'
+
+  get 'vehicles/show'
+
+  post 'vehicles/new' => 'vehicles#create'
+
   root :to => 'ads#home'
-  #SEMITRAILERTRUCK
-  get 'semitrailertrucks/index'
-  get 'semitrailertrucks/new'
-  get 'semitrailertrucks/edit'
-  get 'semitrailertrucks/show'
-  post 'semitrailertrucks/new' => 'semitrailertrucks#create'
-  #HEAVYTRUCK
-  get 'heavytrucks/index'
-  get 'heavytrucks/new'
-  get 'heavytrucks/edit'
-  get 'heavytrucks/show'
-  post 'heavytrucks/new' => 'heavytrucks#create'
-  #SEMITRAILER
-  get 'semitrailers/index'
-  get 'semitrailers/new'
-  get 'semitrailers/edit'
-  get 'semitrailers/show'
-  post 'semitrailers/new' => 'semitrailers#create'
-  #VAN
-  get 'vans/index'
-  get 'vans/new'
-  get 'vans/edit'
-  get 'vans/show'
-  post 'vans/new' => 'vans#create'
+
   #AD
+
+  get 'search/:page' => 'ads#search'
+
+
+  
+
   get 'search/:page' => 'ads#search'
   get 'vansearch/:page' => 'ads#vansearch'
+  get 'ads/sttsearch/:page' => 'ads#sttsearch'
+  get 'ads/semisearch/:page' => 'ads#semisearch'
   get 'ads/home' => 'ads#home'
   get 'ads/new'
   get 'ads/:id' => 'ads#show'
@@ -36,6 +67,8 @@ Rails.application.routes.draw do
   post 'ads/delete/:id' => 'ads#delete'
   get 'ads/edit/:id' => 'ads#edit'
   post 'ads/edit/:id' => 'ads#update'
+
+
    #resources :vehicles
    #resources :vans
    #resources :semitrailertrucks
@@ -44,12 +77,8 @@ Rails.application.routes.draw do
 
 
 
-
-
-
-
   get 'sessions/destroy'
-  
+
   get 'users/bookmark/:id' => 'users#bookmark'
   get 'users/new'
   post 'users/new'=> 'users#create'
@@ -57,6 +86,9 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/:id' => 'users#show'
   get 'users/edit/:id' => 'users#edit'
+  get 'users/changetoseller/:id' => 'users#changetoseller'
+  #get 'makes/new'
+
   post 'users/destroy/:id' => 'users#destroy'
   post 'users/logout' => 'users#logout'
   post 'users/signin' => 'users#login'
@@ -64,9 +96,6 @@ Rails.application.routes.draw do
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 match 'auth/failure', to: redirect('/'), via: [:get, :post]
 match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
-
-
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.
