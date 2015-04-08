@@ -88,6 +88,7 @@ $('#searchbutton').click(function(e){
      $('#sttbutton').css('visibility', 'hidden');
      $('#heavybutton').css('visibility', 'hidden');
      $('#vanbutton').css('visibility', 'hidden');
+     	  $('#allbutton').css('visibility', 'hidden');
             $('#header').stop().animate({
                 height:'120px'
             },400);
