@@ -40,6 +40,10 @@ $(function(){
     $('#searchwrapper').css("visibility","visible");
     $('#header').css("height","300px");
     $('#body').css("margin-top","300px");
+    $('#semibutton').css('visibility', 'visible');
+     $('#sttbutton').css('visibility', 'visible');
+     $('#heavybutton').css('visibility', 'visible');
+     $('#vanbutton').css('visibility', 'visible');
   }else{
     $('#searchwrapper').css("visibility","hidden");
     $('#header').css("height","120px");
@@ -50,7 +54,12 @@ $('#searchbutton').click(function(e){
    
         if($('#header').outerHeight() == 121)
         {	
+	  $('#semibutton').css('visibility', 'visible');
+	  $('#sttbutton').css('visibility', 'visible');
+	  $('#heavybutton').css('visibility', 'visible');
+	  $('#vanbutton').css('visibility', 'visible');
 	    $('#searchwrapper').css("visibility","visible");
+	    
             $('#header').stop().animate({
                 height:'300px'
             },400);
@@ -60,6 +69,10 @@ $('#searchbutton').click(function(e){
             },400);
         }
     else{
+	    $('#semibutton').css('visibility', 'hidden');
+     $('#sttbutton').css('visibility', 'hidden');
+     $('#heavybutton').css('visibility', 'hidden');
+     $('#vanbutton').css('visibility', 'hidden');
             $('#header').stop().animate({
                 height:'120px'
             },400);
