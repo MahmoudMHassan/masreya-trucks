@@ -1,5 +1,6 @@
 <div id = "adwrapper">
-<div style ="text-align: left;">
+<div style ="overflow:hidden;">
+<div style ="text-align: left;float:left;">
 <%if self.current_user !=nil%>
 <%if !Bookmark.exists?(user_id: self.current_user, ad_id: @ad.id)%>
 <%= link_to "حفظ الإعلان في الجراج", "/ads/bookmark/#{@ad.id}", method: :post%>
@@ -13,6 +14,11 @@
 
 <%end%>
 <%end%>
+</div>
+<div style ="float:right;">
+<div class="fb-share-button" data-href="<%=request.original_url%>" data-layout="box_count"></div>
+
+</div>
 </div>
 <div id="showadwrapper">
 <div style= "font-size:150%;">
