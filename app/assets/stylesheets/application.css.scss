@@ -18,6 +18,10 @@
 .error {
   color: red;
 }
+.errorform{
+  border:2px solid red;
+  
+}
 #header {
 		width:100%;
 		position: fixed;
@@ -42,6 +46,17 @@
 		padding: 1em;
 		border-bottom: 1px solid #97A797;
 	}
+	#adwrapper {
+		border:2px solid #008809;
+		box-shadow: 5px 5px 5px #888888;
+		overflow: hidden;
+		background:#FAFAFA;
+		margin-right:15%;
+		margin-left:15%;
+		padding:3em;
+		//border-bottom: 1px solid #97A797;
+	}
+
 	a {
 				font-weight: 500;
 				text-decoration: none;
@@ -53,10 +68,13 @@
 				}
 			}
 			#sellerinfo{
-			position: relative;
 			width: 300px;
-			margin-right:80%;
-			height:0px;
+			float:left;
+			
+			}
+			#showadwrapper{
+			width:400px;
+			float:right;
 			
 			}
 			
@@ -112,7 +130,7 @@
 	}
 	#body{
 	margin-top:120px;
-	background:#CDEBCD;
+	background:#E3E3E3;
 	}
 
 	#vanwrapper{
@@ -188,4 +206,9 @@
 	background:#CDEBCD;
 	
 	}
+	
+	/**{
+	  font-family:"Droid Arabic Kufi", "Lateef", "Al Bayan", "DecoType Naskh", "DejaVu Serif", "STFangsong", "STHeiti", "STKaiti", "STSong", "AB AlBayan", "AB Geeza", "AB Kufi", "DecoType Naskh", "Aldhabi", "Andalus", "Sakkal Majalla", "Simplified Arabic", "Traditional Arabic", "Arabic Typesetting", "Urdu Typesetting", "Droid Naskh", "Droid Kufi", "Roboto", "Tahoma", "Times New Roman", "Arial", serif;
+	  
+	}*/
 

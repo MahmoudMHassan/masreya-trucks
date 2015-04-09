@@ -1,109 +1,90 @@
+<div id="adwrapper">
 <%=form_for :ad do |a|%>
-<%= a.label :Title%>
-<br>
-<%= a.text_field :title%>
-<br><br>
-<%= a.label :Description%>
-<br>
-<%= a.text_area :description, size: "35x7"%>
-<br>
 
-<%=fields_for :vehicle do |v|%>
-<%= v.label :Make%>
+
 <br>
-<%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
+العنوان: <%= a.text_field :title%>
 <br><br>
-<%= v.label :Model%>
-<br>
-<%=v.select :model,([ "i10" , "w30" , "503"])%>
-<br><br>
+
+	<%=fields_for :vehicle do |v|%>
+انتاج: <%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
+	<br><br>
+	الموديل: <%= v.select :model,([ "i10" , "w30" , "503"])%>
+	<br><br>
+
 
 <%if @van != nil%>
 <%=fields_for :van do |van|%>
-<%= van.label :Capacity%>
-<br>
-<%=van.number_field :capacity%>
-<br>
-
-<%= van.label :Mileage%>
-<br>
-<%=van.number_field :mileage%>
-<br>
-<%end%>
+	حمولة: <%= van.check_box :capacity%>
+	<br><br>
+مسافة: <%= van.number_field :mileage%>
+	<br><br>
+	<%end%>
 <%elsif @semitrailer != nil%>
 <%=fields_for :semitrailer do |s|%>
-<%= s.label :Capacity%>
-<br>
-<%=s.number_field :capacity%>
-<br>
-<%end%>
+	حمولة: <%= s.check_box :capacity%>
+	<br><br>
+	<%end%>
 <%elsif @semitrailertruck != nil%>
 <%=fields_for :semitrailertruck do |st|%>
-<%= st.label :Mileage%>
-<br>
-<%=st.number_field :mileage%>
-<br>
-<%end%>
+	مسافة: <%= st.number_field :mileage%>
+	<br><br>
+	<%end%>
 <%elsif @heavytruck != nil%>
 <%=fields_for :heavytruck do |h|%>
-<%= h.label :Capacity%>
-<br>
-<%=h.number_field :capacity%>
-<br>
-<%= h.label :Mileage%>
-<br>
-<%=h.number_field :mileage%>
-<br>
-<%end%>
+	حمولة: <%= h.check_box :capacity%>
+	<br><br>
+	مسافة:  <%= h.number_field :mileage%>
+	<br><br>
+	<%end%>
 <%end%>
 
-Manufacture year<br>
-<%=v.number_field :manyear%>
-<br>
-<br>
-<%= v.label :Country%>
-<br>
-<%=v.select :country ,(["Egypt" , "madagascar"])%>
 
-<br>
-<br>
-Number of Axels<br>
-<%=v.select :axles, (["1","2","3","4","5","6","7","8"])%>
-<br><br>
+	سنة الانتاج: <%= v.number_field :manyear%>
+	<br><br>
+	البلد: <%= v.select :country ,(["Egypt" , "madagascar"])%>
 
-<%= v.label :Gearbox%>
-<br>
-<%=v.select :gearbox , (["Automatic", "semi Automatic" ,"Manual"])%>
-<br>
+	<br><br>
+	
+	المحاور النقلات: <%= v.select(:axles) do %>
+      <% [['1', '1'], ['2', '2'], ['3', '3'], ['3>', '4']].each do |c| -%>
+	<%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+      <% end %>
+	<br>
+	<br>
 
-<br>
-<%= v.label :Colour%>
-<br>
-<%=v.select :colour ,(["white","black","yellow","brown","green","red","orange","blue","grey"])%>
-<br>
+	عجلة السرعة: <%= v.select(:gearbox) do %>
+      <% [['Automatic', true], ['Manual', false]].each do |c| -%>
+	<%= content_tag(:option, c.first, value: c.last) %>
+      <% end %>
+      <% end %>
+	<br>
+	<br>
+	اللون: <%= v.select :colour ,(["white","black","yellow","brown","green","red","orange","blue","grey"])%>
+	<br>
 
-<br>
-<%= v.label :Price%>
-<br>
-<%=v.number_field :price%>
-<br><br>
-<%=fields_for :make do |m|%>
-<%= m.label :New%>
+	<br>
+	السعر: <%= v.number_field :price%>
+	<br>
+	<br>
+	<%end%>
+	<%=fields_for :make do |m|%>
 
-<%=m.check_box :new%>
+	جديدة؟ <%= m.check_box :new%>
+	<br><br>
+	مستوردة؟ <%= m.check_box :imported%>
+	<br><br>
+	للبيع؟ <%= m.check_box :purchase%>
+	<br>
+	<br>
+	<%end%>
+	الوصف: (اختياري)
+	<br>
+	<%= a.text_area :description, size: "35x7"%>
+	
+	<br>
 
-<br>
-<%= m.label :Imported%>
-
-<%=m.check_box :imported%>
-<br>
-
-<%= m.label :Purchase%>
-
-
-<%=m.check_box :purchase%>
-<br><br>
-<%end%>
 
 
 
@@ -127,7 +108,9 @@ Change Image1
 		<br>
 		<%= a.file_field :image4 %>
 		<br>
-		<%end%>
 
-<%=a.submit%>
+<div style="margin-right:50%">
+	<%= a.submit "إضافة الإعلان"%>
+	</div>
 <%end%>
+</div>

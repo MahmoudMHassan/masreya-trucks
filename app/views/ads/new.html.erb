@@ -14,78 +14,53 @@
 <span><%= link_to "HEAVYTRUCK", "/ads/new?type=heavytruck",{:style=>request.original_fullpath == "/ads/new?type=heavytruck" ? 'color: grey': 'color: black'}%></span> |
 <span><%= link_to "SEMITRAILERTRUCK", "/ads/new?type=semitrailertruck",{:style=>request.original_fullpath == "/ads/new?type=semitrailertruck" ? 'color: grey': 'color: black'}%></span> |
 </div>
+<div id = "adwrapper">
+<%=form_for :ad do |a|%>
 
-<%=form_for :ad, :html => {:multipart => true} do |a|%>
 
-<%= a.label :Title%>
 <br>
-<%= a.text_field :title%>
+العنوان: <%= a.text_field :title%>
 <br><br>
 
 	<%=fields_for :vehicle do |v|%>
-	<%= v.label :Make%>
-	<br>
-	<%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
-	<br>
-	<br>
-	<%= v.label :Model%>
-	<br>
-	<%= v.select :model,([ "i10" , "w30" , "503"])%>
-	<br>
-	<br>
+انتاج: <%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
+	<br><br>
+	الموديل: <%= v.select :model,([ "i10" , "w30" , "503"])%>
+	<br><br>
 
 	<%if request.original_fullpath == "/ads/new?type=van"%>
 	<%=fields_for :van do |van|%>
-	<%= van.label :Capacity%>
-	<br>
-	<%= van.check_box :capacity%>
-	<br>
-	<%= van.label :Mileage%>
-	<br>
-	<%= van.number_field :mileage%>
-	<br>
+	حمولة: <%= van.check_box :capacity%>
+	<br><br>
+مسافة: <%= van.number_field :mileage%>
+	<br><br>
 	<%end%>
 	<%elsif request.original_fullpath == "/ads/new?type=semitrailer"%>
 	<%=fields_for :semitrailer do |s|%>
-	<%= s.label :Capacity%>
-	<br>
-	<%= s.check_box :capacity%>
-	<br>
+	حمولة: <%= s.check_box :capacity%>
+	<br><br>
 	<%end%>
 	<%elsif request.original_fullpath == "/ads/new?type=semitrailertruck"%>
 	<%=fields_for :semitrailertruck do |st|%>
-	<%= st.label :Mileage%>
-	<br>
-	<%= st.number_field :mileage%>
-	<br>
+	مسافة: <%= st.number_field :mileage%>
+	<br><br>
 	<%end%>
 	<%elsif request.original_fullpath == "/ads/new?type=heavytruck"%>
 	<%=fields_for :heavytruck do |h|%>
-	<%= h.label :Capacity%>
-	<br>
-	<%= h.check_box :capacity%>
-	<br>
-	<%= h.label :Mileage%>
-	<br>
-	<%= h.number_field :mileage%>
-	<br>
+	حمولة: <%= h.check_box :capacity%>
+	<br><br>
+	مسافة:  <%= h.number_field :mileage%>
+	<br><br>
 	<%end%>
 	<%end%>
 
-	Manufacture year
-	<br>
-	<%= v.number_field :manyear%>
-	<br>
-	<br>
-	<%= v.label :Country%>
-	<br>
-	<%= v.select :country ,(["Egypt" , "madagascar"])%>
+	سنة الانتاج: <%= v.number_field :manyear%>
+	<br><br>
+	البلد: <%= v.select :country ,(["Egypt" , "madagascar"])%>
 
-	<br>
-	<br>
-	Number of Axels
-	<br>
-	<%= v.select(:axles) do %>
+	<br><br>
+	
+	المحاور النقلات: <%= v.select(:axles) do %>
       <% [['1', '1'], ['2', '2'], ['3', '3'], ['3>', '4']].each do |c| -%>
 	<%= content_tag(:option, c.first, value: c.last) %>
       <% end %>
@@ -93,58 +68,48 @@
 	<br>
 	<br>
 
-	<%= v.label :Gearbox%>
-	<br>
-	<%= v.select(:gearbox) do %>
+	عجلة السرعة: <%= v.select(:gearbox) do %>
       <% [['Automatic', true], ['Manual', false]].each do |c| -%>
 	<%= content_tag(:option, c.first, value: c.last) %>
       <% end %>
       <% end %>
 	<br>
-
 	<br>
-	<%= v.label :Colour%>
-	<br>
-	<%= v.select :colour ,(["white","black","yellow","brown","green","red","orange","blue","grey"])%>
+	اللون: <%= v.select :colour ,(["white","black","yellow","brown","green","red","orange","blue","grey"])%>
 	<br>
 
 	<br>
-	<%= v.label :Price%>
-	<br>
-	<%= v.number_field :price%>
+	السعر: <%= v.number_field :price%>
 	<br>
 	<br>
 	<%end%>
 	<%=fields_for :make do |m|%>
-	<%= m.label :New%>
 
-	<%= m.check_box :new%>
-	<br>
-	<%= m.label :Imported%>
-
-	<%= m.check_box :imported%>
-	<br>
-	<%= m.label :Purchase%>
-
-	<%= m.check_box :purchase%>
+	جديدة؟ <%= m.check_box :new%>
+	<br><br>
+	مستوردة؟ <%= m.check_box :imported%>
+	<br><br>
+	للبيع؟ <%= m.check_box :purchase%>
 	<br>
 	<br>
 	<%end%>
-	<%= a.label :Description%>
+	الوصف: (اختياري)
 	<br>
 	<%= a.text_area :description, size: "35x7"%>
+	
 	<br>
-	<%= a.file_field :image %><br>
+	<%= a.file_field :image%><br>
 	<%= a.file_field :image1 %><br>
 	<%= a.file_field :image2 %><br>
 	<%= a.file_field :image3 %><br>
 	<%= a.file_field :image4 %><br>
-
-	<%= a.submit%>
+<div style="margin-right:50%">
+	<%= a.submit "إضافة الإعلان"%>
+	</div>
 	<%end%>
 	<%end%>
 
-
+</div>
 
 
 

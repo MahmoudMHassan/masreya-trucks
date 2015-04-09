@@ -1,4 +1,4 @@
-<div class = "postwrapper">
+<div id = "adwrapper">
 <div style ="text-align: left;">
 <%if self.current_user !=nil%>
 <%if !Bookmark.exists?(user_id: self.current_user, ad_id: @ad.id)%>
@@ -14,6 +14,7 @@
 <%end%>
 <%end%>
 </div>
+<div id="showadwrapper">
 <div style= "font-size:150%;">
 <%=@ad.title%>
 </div>
@@ -83,16 +84,7 @@
 مانيوال
 
 <%end%><br>
-<div id ="sellerinfo">
-<b>بيانات البائع :</b>
-<br>
-<%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%><br>
- تليفون : 
-<br><%=@seller.phone%><br>
- البريد الالكتروني : 
-<br> <%=@seller.email%>
-<br>العنوان :<br>
-</div>
+
 <b>اللون :</b>
 <br>
 <%=@vehicle.colour%><br>
@@ -118,38 +110,46 @@
 <%=@heavytruck.mileage%><br>
 <br>
 <%end%>
-
+</div>
+<div id ="sellerinfo">
+<b>بيانات البائع :</b>
+<br>
+<%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%><br>
+ تليفون : 
+<br><%=@seller.phone%><br>
+ البريد الالكتروني : 
+<br> <%=@seller.email%>
+<br><br>
 <%if @ad.image_url.to_s != ""%>
 <%= link_to(@ad.image_url.to_s) do %>
-  <%= image_tag @ad.image_url.to_s,size:"400x300" %>
+  <%= image_tag @ad.image_url.to_s,size:"300x180" %>
 <% end %>
 <%end%>
-
+<br>
 <%if @ad.image1_url.to_s != ""%>
 <%= link_to(@ad.image1_url.to_s) do %>
-  <%= image_tag @ad.image1_url.to_s,size:"400x300" %>
+  <%= image_tag @ad.image1_url.to_s,size:"300x180" %>
 <% end %><br>
 <%end%>
-
+<br>
 <%if @ad.image2_url.to_s != ""%>
 <%= link_to(@ad.image2_url.to_s) do %>
-  <%= image_tag @ad.image2_url.to_s,size:"400x300" %>
+  <%= image_tag @ad.image2_url.to_s,size:"300x180" %>
 <% end %>
 <%end%>
-
+<br>
 <%if @ad.image3_url.to_s != ""%>
 <%= link_to(@ad.image3_url.to_s) do %>
-  <%= image_tag @ad.image3_url.to_s,size:"400x300" %>
+  <%= image_tag @ad.image3_url.to_s,size:"300x180" %>
 <% end %><br>
 <%end%>
-
+<br>
 <%if @ad.image4_url.to_s != ""%>
 <%= link_to(@ad.image4_url.to_s) do %>
-  <%= image_tag @ad.image4_url.to_s,size:"400x300" %>
+  <%= image_tag @ad.image4_url.to_s,size:"300x180" %>
 <% end %>
 <%end%>
-
-
+</div>
 
 </div>
 

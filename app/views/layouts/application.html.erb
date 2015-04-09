@@ -25,7 +25,7 @@
 <%end%>
 
 </head>
-<body style="background:#CDEBCD;">
+<body style="background:#E3E3E3;">
 <%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
 
 
@@ -75,6 +75,7 @@
 <div style="color:red;">
 <%= flash[:error] %>
 </div>
+<%=flash[:notice]%>
 <%= yield %>
 
 </body>
