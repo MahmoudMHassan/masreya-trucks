@@ -160,37 +160,37 @@ redirect_to "/ads/#{@ad.id}"
      render 'edit'
    end
   end
-private def ad_params
+ def ad_params
   ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4)
   ad_params
   end
 
-  private def vehicle_params
+   def vehicle_params
   vehicle_params = params.require(:vehicle).permit(:make,:model,:manyear,:country,:axles,:gearbox,:colour,:price)
   vehicle_params
   end
 
-  private def make_params
+   def make_params
   make_params = params[:make].permit(:new,:imported,:purchase)
   make_params
   end
 
-  private def van_params
+   def van_params
   van_params = params[:van].permit(:capacity,:mileage)
   van_params
   end
 
-  private def heavytruck_params
+   def heavytruck_params
   heavytruck_params = params[:heavytruck].permit(:capacity,:mileage)
   heavytruck_params
   end
 
-  private def semitrailer_params
+   def semitrailer_params
   semitrailer_params = params[:semitrailer].permit(:capacity)
   semitrailer_params
   end
 
-  private def semitrailertruck_params
+   def semitrailertruck_params
   semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
   semitrailertruck_params
   end
