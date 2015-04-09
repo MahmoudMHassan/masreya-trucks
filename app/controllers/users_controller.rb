@@ -20,8 +20,7 @@ class UsersController < ApplicationController
     end
   end
   def bookmark
-    @bookmarks = Bookmark.where(user_id: self.current_user.id).first(10)
-    
+    @ads = Make.joins(:ad,:vehicle,:user).where('ad_id IN (?)',Bookmark.where('user_id = ?',self.current_user.id).select(:ad_id))
   end
 
   def destroy

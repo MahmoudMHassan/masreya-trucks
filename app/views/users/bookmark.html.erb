@@ -1,9 +1,19 @@
-<br>
-<%@bookmarks.each do |b|%><br>
+<div id ="adwrapper">
+<%@ads.each do |a|%>
 <div class = "post_wrapper">
-<%=link_to Ad.find(b.ad_id).title, "/ads/#{b.ad_id}"%><br>
-<div style ="width: 400px;">
-<%=Ad.find(b.ad_id).description%><br>
+<div style="float:right;width:200px;">
+<%= link_to("/ads/#{a.ad.id}") do %>
+  <%= image_tag a.ad.image_url.to_s,size:"150x150" %>
+<% end %>
+</div>
+<div style="float:center;">
+<%=link_to a.ad.title, "/ads/#{a.ad.id}"%><br>
+<%= a.vehicle.make%> | <%=a.vehicle.model%><br>
+السعر:<%= number_with_delimiter(a.vehicle.price, :delimiter => ',')%>
+السنة: <%= a.vehicle.manyear%>
+<%=a.ad.description%><br>
 </div>
 </div>
 <%end%>
+
+</div>
