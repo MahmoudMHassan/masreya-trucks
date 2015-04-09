@@ -160,6 +160,9 @@ redirect_to "/ads/#{@ad.id}"
      render 'edit'
    end
   end
+  
+  private
+  
  def ad_params
   ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4)
   ad_params
