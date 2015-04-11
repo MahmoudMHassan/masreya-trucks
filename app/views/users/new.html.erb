@@ -1,3 +1,5 @@
+<div id = "adwrapper">
+
 <%= form_for :user, :html => {:multipart => true} do |f|%>
 <%if @blank%>
 <span class ="error">يوجد بيانات فارغة*</span>
@@ -18,5 +20,5 @@
     <%= f.file_field :avatar%>
     <%= f.submit "حفظ"%>
 <% end %>
-
+</div>
 

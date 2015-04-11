@@ -1,3 +1,4 @@
+<div id = "adwrapper">
 <%= form_for :user do |f|%>
 <%if @blank%>
 <span class ="error">يوجد مسافات فارغة*</span>
@@ -16,3 +17,4 @@
     <%=f.file_field :avatar%>
     <%= f.submit "حفظ"%>
 <% end %>
+</div>
