@@ -16,8 +16,7 @@
 <%end%>
 </div>
 <div style ="float:right;">
-<div class="fb-share-button" data-href="<%=request.original_url%>" data-layout="box_count"></div>
-
+<div class="fb-share-button" data-href="<%=request.original_url%>" data-layout="button"></div>
 </div>
 </div>
 <div id="showadwrapper">
@@ -25,14 +24,7 @@
 <%=@ad.title%>
 </div>
 <br>
-<%if @ad.description != ""%>
-<b>الوصف:</b>
-<br>
-<%=@ad.description%>
-<br>
-<%end%>
 <b>النوع:</b>
-<br>
 <%if @van!=nil%>
 عربة
 <%elsif @heavytruck !=nil%>
@@ -42,14 +34,12 @@
 <%elsif @semitrailertruck !=nil%>
  الشاحنات أشباه المقطورة
 <%end%>
-<br>
+<br><br>
 <b>انتاج :</b>
-<br>
 <%=@vehicle.make%>
-<br>
+<br><br>
 <b>الموديل :</b>
-<br>
-<%=@vehicle.model%><br>
+<%=@vehicle.model%><br><br>
 <b>معلومات عربة النقل :</b><br>
 <%if @make.new%>
 جديدة
@@ -69,40 +59,33 @@
 <br>
 
 <b>سنة الانتاج :</b>
-<br>
-<%=@vehicle.manyear%><br>
+<%=@vehicle.manyear%><br><br>
 <b>البلد :</b>
-<br>
-<%=@vehicle.country%><br>
+<%=@vehicle.country%><br><br>
 <b>المحاور النقلات :</b>
-<br>
 <%if @vehicle.axles > 3%>
 >3
 <%else%>
 <%=@vehicle.axles%>
 <%end%>
-<br>
+<br><br>
 <b>عجلة السرعة :</b>
-<br>
 <%if @vehicle.gearbox%>
 أتوماتيك
 <%else%>
 مانيوال
 
-<%end%><br>
+<%end%><br><br>
 
 <b>اللون :</b>
-<br>
-<%=@vehicle.colour%><br>
+<%=@vehicle.colour%><br><br>
 <b>السعر :</b>
-
-<br>
-<%= number_with_delimiter(@vehicle.price, :delimiter => ',')%><br>
+<%= number_with_delimiter(@vehicle.price, :delimiter => ',')%><br><br>
 <%if @van !=nil %>
-<b>Capacity</b><br>
-<%=@van.capacity%><br>
-<b>Mileage</b><br>
-<%=@van.mileage%><br>
+<b>حمولة: </b>
+<%=@van.capacity%><br><br>
+<b>مسافة: </b>
+<%=@van.mileage%><br><br>
 <%elsif @semitrailer !=nil%>
 <b>Capacity</b><br>
 <%=@semitrailer.capacity%><br>
@@ -114,6 +97,11 @@
 <%=@heavytruck.capacity%><br>
 <b>Mileage</b><br>
 <%=@heavytruck.mileage%><br>
+<br>
+<%end%>
+<%if @ad.description != ""%>
+<b>الوصف:</b>
+<%=@ad.description%>
 <br>
 <%end%>
 </div>

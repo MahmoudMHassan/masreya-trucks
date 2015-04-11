@@ -27,36 +27,41 @@ $(function(){
       $('#vanwrapper').children().prop('disabled', false);
       $('#vanwrapper').css('visibility', 'visible');
     }else{
-      if(window.location.href.indexOf("&type=heavy")>-1){
-      $('#allbutton').css("border","2px solid");
-      $('#heavybutton').css("border","4px solid");
-      $('#heavywrapper').css('visibility', 'visible');
-      $('#heavywrapper').children().prop('disabled', false);
-    }else{
-      if(window.location.href.indexOf("&type=stt")>-1){
-      $('#allbutton').css("border","2px solid");
-      $('#sttbutton').css("border","4px solid");
-      $('#sttwrapper').css('visibility', 'visible');
-      $('#sttwrapper').children().prop('disabled', false);
-      }else{
-	if(window.location.href.indexOf("&type=semi")>-1){
-      $('#allbutton').css("border","2px solid");
-      $('#semibutton').css("border","4px solid");
-      $('#semiwrapper').css('visibility', 'visible');
-      $('#semiwrapper').children().prop('disabled', false);
-	}
+	  if(window.location.href.indexOf("&type=heavy")>-1){
+	    $('#allbutton').css("border","2px solid");
+	    $('#heavybutton').css("border","4px solid");
+	    $('#heavywrapper').css('visibility', 'visible');
+	    $('#heavywrapper').children().prop('disabled', false);
+	     }else{
+	      if(window.location.href.indexOf("&type=stt")>-1){
+		$('#allbutton').css("border","2px solid");
+		$('#sttbutton').css("border","4px solid");
+		$('#sttwrapper').css('visibility', 'visible');
+		$('#sttwrapper').children().prop('disabled', false);
+		 }else{
+		  if(window.location.href.indexOf("&type=semi")>-1){
+		    $('#allbutton').css("border","2px solid");
+		    $('#semibutton').css("border","4px solid");
+		    $('#semiwrapper').css('visibility', 'visible');
+		    $('#semiwrapper').children().prop('disabled', false);
+		    }
 	
-      }
-    }
-    }
+		  }
+	      }
+	 }
     $('#searchwrapper').css("visibility","visible");
     $('#header').css("height","300px");
     $('#body').css("margin-top","300px");
     $('#semibutton').css('visibility', 'visible');
-     $('#sttbutton').css('visibility', 'visible');
-     $('#heavybutton').css('visibility', 'visible');
-     $('#vanbutton').css('visibility', 'visible');
-     $('#allbutton').css('visibility', 'visible');
+    $('#semibutton').fadeIn();
+    $('#sttbutton').css('visibility', 'visible');
+    $('#sttbutton').fadeIn();
+    $('#heavybutton').css('visibility', 'visible');
+    $('#heavybutton').fadeIn();
+    $('#vanbutton').css('visibility', 'visible');
+    $('#vanbutton').fadeIn();
+    $('#allbutton').css('visibility', 'visible');
+    $('#allbutton').fadeIn();
   }else{
     $('#searchwrapper').css("visibility","hidden");
     $('#header').css("height","120px");
@@ -65,35 +70,39 @@ $(function(){
 });
 $('#searchbutton').click(function(e){
    
-        if($('#header').outerHeight() == 121)
+        if($('#header').outerHeight() == 122)
         {	
 	  $('#semibutton').css('visibility', 'visible');
+	  $('#semibutton').fadeIn();
 	  $('#sttbutton').css('visibility', 'visible');
+	  $('#sttbutton').fadeIn();
 	  $('#heavybutton').css('visibility', 'visible');
+	  $('#heavybutton').fadeIn();
 	  $('#vanbutton').css('visibility', 'visible');
+	  $('#vanbutton').fadeIn();
 	  $('#allbutton').css('visibility', 'visible');
-
-	    $('#searchwrapper').css("visibility","visible");
-	    
-            $('#header').stop().animate({
+	  $('#allbutton').fadeIn();
+	  
+	  $('#searchwrapper').css("visibility","visible");
+          $('#header').stop().animate({
                 height:'300px'
             },400);
-	    $('#searchwrapper').fadeIn();
-	    $('#body').stop().animate({
+	  $('#searchwrapper').fadeIn();
+	  $('#body').stop().animate({
                 marginTop:'300px'
             },400);
         }
     else{
-	    $('#semibutton').css('visibility', 'hidden');
-     $('#sttbutton').css('visibility', 'hidden');
-     $('#heavybutton').css('visibility', 'hidden');
-     $('#vanbutton').css('visibility', 'hidden');
-     	  $('#allbutton').css('visibility', 'hidden');
-            $('#header').stop().animate({
+	  $('#semibutton').fadeOut();
+	  $('#sttbutton').fadeOut();
+	  $('#heavybutton').fadeOut();
+	  $('#vanbutton').fadeOut();
+	  $('#allbutton').fadeOut();
+          $('#header').stop().animate({
                 height:'120px'
             },400);
-	    $('#searchwrapper').fadeOut();
-	    $('#body').stop().animate({
+	  $('#searchwrapper').fadeOut();
+	  $('#body').stop().animate({
                 marginTop:'120px'
             },400);
           
@@ -180,11 +189,5 @@ $('#searchbutton').click(function(e){
     $('#vanbutton').css("border","2px solid");
   
 }); 
-
-
-
-
-
-
 });
 

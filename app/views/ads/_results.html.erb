@@ -1,7 +1,7 @@
 <div id ="adwrapper">
 <%adscount = @ads.count%>
 <br>
-وجد <%=adscount%> نتائج <br>
+وجد <%=adscount%> نتيجة <br>
 <% pageads = @ads.limit(10).offset((params[:page].to_i-1)*10)%>
 <%pageads.each do |a|%>
 <div class = "post_wrapper">
@@ -15,8 +15,12 @@
 <%= a.vehicle.make%> | <%=a.vehicle.model%><br>
 السعر:<%= number_with_delimiter(a.vehicle.price, :delimiter => ',')%>
 السنة: <%= a.vehicle.manyear%>
-
+<br>
+<%if a.ad.description.length > 300%>
+<%=a.ad.description.first(300)%> ... <br>
+<%else%>
 <%=a.ad.description%><br>
+<%end%>
 </div>
 </div>
 <%end%>

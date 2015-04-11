@@ -28,10 +28,11 @@
 		top: 0;
 		left: 0;
 		right: 0;
-		border-bottom: 1px solid #d6dce0;
+		border-bottom: 2px solid #000;
 		background: #2D882D;
 		color: #070F07;
 		height: 120px;
+		z-index:1000;
 		a{
 		  color: #111F11;
 		&:hover {
@@ -48,7 +49,8 @@
 		overflow:hidden;
 	}
 	#adwrapper {
-		border:2px solid #008809;
+		border-radius:5px;
+		border:1px solid #000;
 		box-shadow: 5px 5px 5px #888888;
 		overflow: hidden;
 		background:#FAFAFA;
