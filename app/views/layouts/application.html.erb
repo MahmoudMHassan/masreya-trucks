@@ -23,14 +23,7 @@
 <div id="headerLeft">
 <%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%><br>
 <%end%>
-
-
-
-
 <%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
-
-
-
 <%= link_to "إضافة إعلان", "/ads/new"%>
 <%end%>
 </div><br><br>
@@ -44,24 +37,29 @@
 
 
 </div>
-<div style="margin-top:-30px;margin-left:400px;margin-right:400px;height:0px;">
+<div style="width:70%;margin-top:-30px;margin-right:350px;height:0px;">
 <button id="searchbutton" style="font-size:20px;color:#000000">
-<div style="margin-left:40px;"> البحث</div>
+
+<div style="margin-right:40px;width:0px;height:0px;"> البحث</div>
+<div id="arrowwrapper">
+<div id="downarrow"></div>
+<div id="uparrow"></div>
+</div>
   </button>
-  <button id="allbutton" style="font-size:20px;color:#000000">
-<div style="margin-left:40px;">ALL</div>
+  <button id="allbutton">
+<div style="position:relative; top:15px;">ALL</div>
   </button>
-  <button id="vanbutton" style="font-size:20px;color:#000000">
-<div style="margin-left:40px;">VAN</div>
+  <button id="vanbutton">
+<div style="position:relative; top:15px;">عربة</div>
   </button>
-  <button id="semibutton" style="font-size:20px;color:#000000">
-<div style="margin-left:40px;">SEMI</div>
+  <button id="semibutton">
+<div style="position:relative; top:15px;">شبه مقطورة</div>
   </button>
-  <button id="sttbutton" style="font-size:20px;color:#000000">
-<div style="margin-left:40px;">STT</div>
+  <button id="sttbutton">
+<div style="position:relative; top:15px;">شاحنة شبه مقطورة</div>
   </button>
-  <button id="heavybutton" style="font-size:20px;color:#000000">
-<div style="margin-left:40px;">HEAVY</div>
+  <button id="heavybutton">
+<div style="position:relative; top:15px;">شاحنة ثقيلة</div>
   </button>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
