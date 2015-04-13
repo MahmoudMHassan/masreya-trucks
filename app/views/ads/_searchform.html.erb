@@ -32,7 +32,7 @@
 <td><%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], params[:colour]), :include_blank => true) %></td>
 
 <td>السعر</td>
-<td><%= select_tag(:price, options_for_select([['< 120,000', '0'],['120,000 - 160,000', '1'],['160,000 - 200,000', '2'],['200,000 - 240,000', '3'],['240,000 - 280,000', '4'],['> 280,000', '5']], params[:price]), :include_blank => true) %></td>
+<td style="width:200px;"><%= select_tag(:price, options_for_select([['< 120,000', '0'],['120,000 - 160,000', '1'],['160,000 - 200,000', '2'],['200,000 - 240,000', '3'],['240,000 - 280,000', '4'],['> 280,000', '5']], params[:price]), :include_blank => true) %></td>
 
 <td>الترتيب</td>
 <td><%= select_tag(:sort, options_for_select([['↑ price', '0'],['↓ price', '1'],['↑ manyear', '2'],['↓ manyear', '3']], params[:sort])) %></td>
