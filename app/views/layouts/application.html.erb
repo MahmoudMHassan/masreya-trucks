@@ -9,35 +9,68 @@
 
   <%= csrf_meta_tags %>
 
-  <div id="header">
 
-  <div id="headerRight">
-  <%= link_to "home", root_path%><br>
+
+<div id="sidebar">
+<br>
+<div style="width:50%;margin:0 auto;">
+<%= link_to(root_path) do %>
+  <%= image_tag 'truck-green-icon1.png'%>
+<% end %><br>
+<br><br>
+</div>
   <%if self.current_user==nil %>
-<%= link_to "فتح حساب", "/users/new"%>
-<%= link_to "تسجيل الدخول", "/users/signin"%>
+  <%= link_to"/users/new", method: :post do %>
+	  <%= image_tag "signup.png", size:"30x30"%>
+	<% end %>
+<%= link_to "فتح حساب", "/users/new"%><br><br>
+<%= link_to"/users/signin", method: :post do %>
+	  <%= image_tag "login.png", size:"30x30"%>
+	<% end %>
+<%= link_to "تسجيل الدخول", "/users/signin"%><br>
 <%else%>
+<%if current_user.avatar_url != nil%>
+	<%= link_to"/users/#{self.current_user.id}" do %>
+	  <%= image_tag self.current_user.avatar_url.to_s, size:"30x30"%>
+	<% end %>
+	<%else%>
+	<%= link_to"/users/#{self.current_user.id}" do %>
+      <%= image_tag "user.png", size:"40x40"%>
+      <% end %>
+	<%end%>
 <%= link_to "صفحة الحساب", "/users/#{self.current_user.id}"%>
-<%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
-</div><br>
-<div id="headerLeft">
-<%= link_to "صفحة الإعلانات المحفوظة", "/users/bookmark/#{self.current_user.id}"%><br>
-<%end%>
+
+<br>
+<br>
+<%= link_to"/users/bookmark/#{self.current_user.id}" do %>
+	  <%= image_tag "save-icon.png", size:"30x30"%>
+	<% end %>
+<%= link_to "صفحة الجراج", "/users/bookmark/#{self.current_user.id}"%><br>
+<%end%><br>
 <%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
-<%= link_to "إضافة إعلان", "/ads/new"%>
-<%end%>
-</div><br><br>
-<div id="headerRight">
+<%= link_to"/ads/new" do %>
+	  <%= image_tag "add-icon.png", size:"30x30"%>
+	<% end %>
+<%= link_to "إضافة إعلان", "/ads/new"%><br>
+<%end%><br>
+<%if self.current_user!=nil %>
+<%= link_to"/users/logout", method: :post do %>
+	  <%= image_tag "logout.png", size:"30x30"%>
+	<% end %>
+<%= link_to "تسجيل الخروج", "/users/logout", method: :post%><br>
+<%end%><br><br>
   <% if current_user %>
     مرحباً <strong><%= current_user.name %></strong>!
-    <%= link_to "تسجيل الخروج", signout_path, id: "sign_out" %>
+    
+    <%= link_to "تسجيل الخروج عن طريق Facebook", signout_path, id: "sign_out" %>
   <% else %>
     <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 
 
 </div>
-<div style="width:70%;margin-top:-30px;margin-right:350px;height:0px;">
+  <div id="header">
+<div style="width:84%;margin-top:1%;margin-right:10%;height:0px;">
 <button id="searchbutton" style="font-size:20px;color:#000000">
 
 <div style="margin-right:40px;width:0px;height:0px;"> البحث</div>
