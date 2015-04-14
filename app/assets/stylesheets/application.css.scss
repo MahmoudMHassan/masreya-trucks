@@ -34,17 +34,18 @@ background-color:#CDEBCD;
  
   
 }
+
 #header {
-		width:84%;
-		position: fixed;
-		margin-right:15%;
-		margin-left:1%;
 		border-radius:5px;
+		border-bottom: 2px solid #000;
+		background: #2D882D;
+		min-width:1068px;
+		width:77%;
+		position: fixed;
+		margin-right:16%;
 		top: 0;
 		left: 0;
 		right: 0;
-		border-bottom: 2px solid #000;
-		background: #2D882D;
 		color: #070F07;
 		height: 120px;
 		z-index:999;
@@ -58,14 +59,15 @@ background-color:#CDEBCD;
 	#sidebar {
 	font-size:18px;
 	width: 13%;
+	margin-right:1%;
 	position: fixed;
 	right: 0;
 	top: 0;
-	height: 97.5%;
-	border-radius:5px;
+	height: 99.5%;
+	border-radius:2px;
 	background: #FAFAFA;
 	padding: 0 1em 0 0;
-	border: 1px solid #000;
+	border: 1px solid #808F7E;
 	z-index:1000;
 	}
 	.show_wrapper {
@@ -78,15 +80,18 @@ background-color:#CDEBCD;
 	}
 	#adwrapper {
 		border-radius:5px;
-		border:1px solid #000;
+		border:1px solid #808F7E;
 		//box-shadow: 5px 5px 5px #888888;
 		overflow: hidden;
 		background:#FAFAFA;
-		margin-right:15%;
+		min-width:1039px;
+		width: 75%;
+		//max-width: 1039px;
+		margin-right:16%;
 		margin-left:1%;
 		margin-top:1%;
 		margin-bottom:1%;
-		padding:3em;
+		padding:1%;
 		//border-bottom: 1px solid #97A797;
 	}
 
@@ -184,7 +189,7 @@ background-color:#CDEBCD;
 	}
 	#body{
 	margin-top:120px;
-	background:#E3E3E3;
+	background:#F2F2F2;
 	}
 
 	#vanwrapper{
@@ -211,84 +216,178 @@ background-color:#CDEBCD;
 	position: relative;
 	}
 	#semibutton{
-	height:60px;
-	width:130px;
+	outline: none;
+	height:70px;
+	width:150px;
 	color:#000;
-	background-image:image-url('truck-placeholder.svg');
-	background-size: 80px 30px;
+	background-image:image-url('semitrailer.svg');
+	background-size: 80px 80px;
 	background-repeat:no-repeat;
-	background-position: 10px 4px;
-	font-size:12px;
+	background-position: 50% 90%;
+	font-size:15px;
 	visibility:hidden;
 	margin: 0 auto;
 	border-radius:10px;
-	border:2px solid;
 	background-color:#CDEBCD;
+	border-top: none !important;
+	border-bottom:3px solid;
+	border-right:3px solid;
+	border-left:none !important;
 	
 	}
 	#vanbutton{
-	height:60px;
-	width:130px;
+	outline: none;
+	height:70px;
+	width:150px;
 	color:#000;
-	background-image:image-url('truck-placeholder.svg');
-	background-size: 80px 30px;
+	background-image:image-url('van.svg');
+	background-size: 80px 80px;
 	background-repeat:no-repeat;
-	background-position: 10px 4px;
-	font-size:12px;
+	background-position:50% 60%;
+	font-size:15px;
 	visibility:hidden;
 	margin: 0 auto;
 	border-radius:10px;
-	border:2px solid;
 	background-color:#CDEBCD;
-	
+	border-top: none !important;
+	border-bottom:3px solid;
+	border-right:3px solid;
+	border-left:none !important;
 	}
 	#sttbutton{
-	height:60px;
-	width:130px;
+	outline: none;
+	height:70px;
+	width:150px;
 	color:#000;
-	background-image:image-url('truck-placeholder.svg');
-	background-size: 80px 30px;
+	background-image:image-url('semitruck.svg');
+	background-size: 80px 80px;
 	background-repeat:no-repeat;
-	background-position: 10px 4px;
-	font-size:12px;
+	background-position:50% 100%;
+	font-size:15px;
 	visibility:hidden;
 	margin: 0 auto;
 	border-radius:10px;
-	border:2px solid;
 	background-color:#CDEBCD;
+	border-top: none !important;
+	border-bottom:3px solid;
+	border-right:3px solid;
+	border-left:none !important;
 	
 	}
 	#heavybutton{
-	height:60px;
-	width:130px;
+	outline: none;
+	height:70px;
+	width:150px;
 	color:#000;
-	background-image:image-url('truck-placeholder.svg');
-	background-size: 80px 30px;
+	background-image:image-url('heavytruck.svg');
+	background-size: 80px 80px;
 	background-repeat:no-repeat;
-	background-position: 10px 4px;
-	font-size:12px;
+	background-position:50% 90%;
+	font-size:15px;
 	visibility:hidden;
 	margin: 0 auto;
 	border-radius:10px;
-	border:2px solid;
 	background-color:#CDEBCD;
+	border-top: none !important;
+	border-bottom:3px solid;
+	border-right:3px solid;
+	border-left:none !important;
 
 	}
 	#allbutton{
-	height:60px;
-	width:130px;
+	outline: none;
+	height:70px;
+	width:150px;
 	color:#000;
-	background-image:image-url('truck-placeholder.svg');
-	background-size: 80px 30px;
-	background-repeat:no-repeat;
-	background-position: 10px 4px;
-	font-size:12px;
+	//background-image:image-url('truck-placeholder.svg');
+	//background-size: 80px 80px;
+	//background-repeat:no-repeat;
+	//background-position: 50% 60%;
+	font-size:20px;
 	visibility:hidden;
 	margin: 0 auto;
 	border-radius:10px;
-	border:2px solid;
 	background-color:#9DE56A;
+	border-top: none !important;
+	border-bottom:3px solid;
+	border-right:3px solid;
+	border-left:none !important;
 	
+	}
+	#newsemibutton{
+	outline: none;
+	height:70px;
+	width:150px;
+	color:#000;
+	background-image:image-url('semitrailer.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position: 50% 90%;
+	font-size:15px;
+	margin: 0 auto;
+	border-radius:10px;
+	background-color:#CDEBCD;
+	border-top: none !important;
+	border-bottom:3px solid;
+	border-right:3px solid;
+	border-left:none !important;
+	
+	}
+	#newvanbutton{
+	outline: none;
+	height:70px;
+	width:150px;
+	color:#000;
+	background-image:image-url('van.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position:50% 60%;
+	font-size:15px;
+	margin: 0 auto;
+	border-radius:10px;
+	background-color:#CDEBCD;
+	border-top: none !important;
+	border-bottom:3px solid;
+	border-right:3px solid;
+	border-left:none !important;
+	}
+	#newsttbutton{
+	outline: none;
+	height:70px;
+	width:150px;
+	color:#000;
+	background-image:image-url('semitruck.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position:50% 100%;
+	font-size:15px;
+	margin: 0 auto;
+	border-radius:10px;
+	background-color:#CDEBCD;
+	border-top: none !important;
+	border-bottom:3px solid;
+	border-right:3px solid;
+	border-left:none !important;
+	
+	}
+	#newheavybutton{
+	outline: none;
+	height:70px;
+	width:150px;
+	color:#000;
+	background-image:image-url('heavytruck.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position:50% 90%;
+	font-size:15px;
+	margin: 0 auto;
+	border-radius:10px;
+	background-color:#CDEBCD;
+	border-top: none !important;
+	border-bottom:3px solid;
+	border-right:3px solid;
+	border-left:none !important;
+
 	}
 	
 	/**{

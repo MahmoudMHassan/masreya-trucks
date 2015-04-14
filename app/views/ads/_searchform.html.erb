@@ -41,17 +41,41 @@
 </tr>
 </table>
  للبيع
+ <%if params[:purchase] == "للبيع"%>
+<%= radio_button_tag(:purchase, "للبيع", checked = true) %>
+<%else%>
 <%= radio_button_tag(:purchase, "للبيع") %>
+<%end%>
  للإيجار
+  <%if params[:purchase] == "للإيجار"%>
+<%= radio_button_tag(:purchase, "للإيجار", checked = true) %>
+<%else%>
 <%= radio_button_tag(:purchase, "للإيجار") %>
+<%end%>
  جديدة
+ <%if params[:new] == "جديدة"%>
+<%= radio_button_tag(:new, "جديدة", checked = true) %>
+<%else%>
 <%= radio_button_tag(:new, "جديدة") %>
+<%end%>
  مستعملة
+ <%if params[:new] == "مستعملة"%>
+<%= radio_button_tag(:new, "مستعملة", checked = true) %>
+<%else%>
 <%= radio_button_tag(:new, "مستعملة") %>
+<%end%>
  مستوردة
+ <%if params[:imported] == "مستوردة"%>
+<%= radio_button_tag(:imported, "مستوردة", checked = true) %>
+<%else%>
 <%= radio_button_tag(:imported, "مستوردة") %>
+<%end%>
  محلية
+ <%if params[:imported] == "محلية"%>
+<%= radio_button_tag(:imported, "محلية", checked = true) %>
+<%else%>
 <%= radio_button_tag(:imported, "محلية") %>
+<%end%>
 <div id="atrrparent">
 <div id="vanwrapper">
 <%=render 'ads/vanform'%>
