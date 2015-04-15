@@ -66,13 +66,13 @@ $(function(){
   }else{
     $('#downarrow').css('visibility', 'visible');
     $('#searchwrapper').css("visibility","hidden");
-    $('#header').css("height","120px");
-    $('#body').css("margin-top","120px");
+    $('#header').css("height","90px");
+    $('#body').css("margin-top","90px");
   }
 });
 $('#searchbutton').click(function(e){
    
-        if($('#header').outerHeight() == 122)
+        if($('#header').outerHeight() == 92)
         {
 	  $('#downarrow').css('visibility', 'hidden');
 	  $('#uparrow').css('visibility', 'visible');
@@ -105,11 +105,11 @@ $('#searchbutton').click(function(e){
 	  $('#vanbutton').fadeOut();
 	  $('#allbutton').fadeOut();
           $('#header').stop().animate({
-                height:'120px'
+                height:'90px'
             },400);
 	  $('#searchwrapper').fadeOut();
 	  $('#body').stop().animate({
-                marginTop:'120px'
+                marginTop:'90px'
             },400);
           
     }

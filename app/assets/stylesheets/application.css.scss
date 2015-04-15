@@ -35,11 +35,11 @@ background-color:#CDEBCD;
   
 }
 
-#header {
-		border-radius:5px;
+#header {	
+		border-radius:2px;
 		border-bottom: 2px solid #000;
 		background: #2D882D;
-		min-width:1068px;
+		//min-width:1068px;
 		width:77%;
 		position: fixed;
 		margin-left:7%;
@@ -79,13 +79,13 @@ background-color:#CDEBCD;
 		overflow:hidden;
 	}
 	#adwrapper {
-		border-radius:5px;
+		border-radius:2px;
 		border:1px solid #808F7E;
 		//box-shadow: 5px 5px 5px #888888;
 		overflow: hidden;
 		background:#FAFAFA;
 		min-width:1039px;
-		width: 75%;
+		width: 74.9%;
 		//max-width: 1039px;
 		margin-right:16%;
 		margin-left:1%;
@@ -147,6 +147,7 @@ background-color:#CDEBCD;
 
 	}
 	#searchbutton{
+	outline: none;
 	width: 150px;
 	height: 60px;
 	margin: 0 auto;
