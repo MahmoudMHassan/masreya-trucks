@@ -11,75 +11,25 @@
 
 
 
-<div id="sidebar">
-<br>
-<div style="width:50%;margin:0 auto;">
-<%= link_to(root_path) do %>
-  <%= image_tag 'truck-green-icon1.png'%>
-<% end %><br>
-<br><br>
-</div>
-  <%if self.current_user==nil %>
-  <%= link_to"/users/new", method: :post do %>
-	  <%= image_tag "signup.png", size:"30x30"%>
-	<% end %>
-<%= link_to "فتح حساب", "/users/new"%><br><br>
-<%= link_to"/users/signin", method: :post do %>
-	  <%= image_tag "login.png", size:"30x30"%>
-	<% end %>
-<%= link_to "تسجيل الدخول", "/users/signin"%><br>
-<%else%>
-<%if current_user.avatar_url != nil%>
-	<%= link_to"/users/#{self.current_user.id}" do %>
-	  <%= image_tag self.current_user.avatar_url.to_s, size:"30x30"%>
-	<% end %>
-	<%else%>
-	<%= link_to"/users/#{self.current_user.id}" do %>
-      <%= image_tag "user.png", size:"40x40"%>
-      <% end %>
-	<%end%>
-<%= link_to "صفحة الحساب", "/users/#{self.current_user.id}"%>
 
-<br>
-<br>
-<%= link_to"/users/bookmark/#{self.current_user.id}" do %>
-	  <%= image_tag "save-icon.png", size:"30x30"%>
-	<% end %>
-<%= link_to "صفحة الجراج", "/users/bookmark/#{self.current_user.id}"%><br>
-<%end%><br>
-<%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
-<%= link_to"/ads/new" do %>
-	  <%= image_tag "add-icon.png", size:"30x30"%>
-	<% end %>
-<%= link_to "إضافة إعلان", "/ads/new"%><br>
-<%end%><br>
-<%if self.current_user!=nil %>
-<%= link_to"/users/logout", method: :post do %>
-	  <%= image_tag "logout.png", size:"30x30"%>
-	<% end %>
-<%= link_to "تسجيل الخروج", "/users/logout", method: :post%><br>
-<%end%><br><br>
-  <% if current_user %>
-    مرحباً <strong><%= current_user.name %></strong>!
-    
-    <%= link_to "تسجيل الخروج عن طريق Facebook", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "تسجيل الدخول عن طريق Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-
-
-</div>
 
   <div id="header">
-<div style="width:1000px;margin-top:1%;margin-right:10%;height:0px;z-index:1500">
+  <div id="headerRight">
+  <%= link_to(root_path) do %>
+  <%= image_tag 'truck-green-icon1.png'%>
+<% end %>
+  </div>
+<div style="width:1000px;margin-top:0.5%;margin-right:10%;height:0px;z-index:1500">
+
 <button id="searchbutton" style="font-size:20px;color:#000000">
 
-<div style="margin-right:40px;width:0px;height:0px;"> البحث</div>
+<div id = "searchtext" style="margin-right:40px;width:0px;height:0px;"> البحث</div>
 <div id="arrowwrapper">
 <div id="downarrow"></div>
 <div id="uparrow"></div>
 </div>
   </button>
+  
   <button id="allbutton">
 <div style="position:relative; top:-2px;">جميع الشاحنات</div>
   </button>
@@ -95,15 +45,54 @@
   <button id="heavybutton">
 <div style="position:relative; top:20px;">شاحنة ثقيلة</div>
   </button>
+  
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 <div id="searchwrapper">
 <%=render 'ads/searchform'%>
 </div>
-
-
+</div>
+<div id="headerLeft">
+<table>
+  <%if self.current_user==nil %>
+  <tr><td>
+	<%= link_to"/users/new" do %>
+	  <%= image_tag "signup.png", size:"30x30"%>
+	<% end %>
+  </td><td>
+  <%= link_to"/users/signin" do %>
+	    <%= image_tag "login.png", size:"35x40"%>
+	  <% end %>
+  </td></tr>
+  <tr><td>
+	<%= link_to "فتح حساب", "/users/new"%>
+  </td><td>
+	  <%= link_to "تسجيل الدخول", "/users/signin"%>
+  </td>
+  </table>
+<%else%>
+  <table><tr><td>
+	<%= link_to"/users/#{self.current_user.id}" do %>
+	  <%= image_tag "user.png", size:"40x40"%>
+	<% end %>
+	</td><td>
+  <%= link_to"/users/logout", method: :post do %>
+	  <%= image_tag "logout.png", size:"40x40"%>
+	<% end %>
+	</td></tr>
+	<tr>
+	<td>
+    <%= link_to "صفحة الحساب", "/users/#{self.current_user.id}"%>
+  </td><td>
+	<%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
+  </td></tr></table>
+<%end%>
 
 </div>
+
+
+ 
+
 </div>
 
 <div id="fb-root"></div>

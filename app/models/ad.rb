@@ -45,7 +45,7 @@ class Ad < ActiveRecord::Base
 
 
 
- 
+
   def self.search(sort,make,model,manyear,country,axles,gearbox,colour,price,capacity,mileage,type,new,imported,purchase)
       if type == "van"
       makes = Make.joins(:ad, vehicle: :van)

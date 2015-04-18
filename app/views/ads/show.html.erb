@@ -19,12 +19,14 @@
 <div class="fb-share-button" data-href="<%=request.original_url%>" data-layout="button"></div>
 </div>
 </div>
+<ul>
 <div id="showadwrapper">
 <div style= "font-size:150%;">
-<%=@ad.title%>
+<li><%=@ad.title%></li>
 </div>
-<br>
-<b>النوع:</b>
+
+<li><b>النوع:</b>
+
 <%if @van!=nil%>
 عربة
 <%elsif @heavytruck !=nil%>
@@ -34,110 +36,121 @@
 <%elsif @semitrailertruck !=nil%>
  الشاحنات أشباه المقطورة
 <%end%>
-<br><br>
+</li>
+<li>
 <b>انتاج :</b>
 <%=@vehicle.make%>
-<br><br>
+</li>
+<li>
 <b>الموديل :</b>
-<%=@vehicle.model%><br><br>
-<b>معلومات عربة النقل :</b><br>
+<%=@vehicle.model%><li>
+<li>
+<b>معلومات عربة النقل :</b>
 <%if @make.new%>
-جديدة
+جديدة 
 <%else%>
-مستعملة
-<%end%> <br>
+مستعملة 
+<%end%>
 <%if @make.imported%>
-مستوردة
+مستوردة 
 <%else%>
-محلية
-<%end%> <br>
+محلية 
+<%end%>
 <%if @make.purchase%>
-للبيع
+للبيع 
 <%else%>
-للإيجار
-<%end%><br>
-<br>
-
+للإيجار 
+<%end%>
+</li>
+<li>
 <b>سنة الانتاج :</b>
-<%=@vehicle.manyear%><br><br>
+<%=@vehicle.manyear%>
+</li><li>
 <b>البلد :</b>
-<%=@vehicle.country%><br><br>
+<%=@vehicle.country%>
+</li><li>
 <b>المحاور النقلات :</b>
 <%if @vehicle.axles > 3%>
 >3
 <%else%>
 <%=@vehicle.axles%>
 <%end%>
-<br><br>
+</li><li>
 <b>عجلة السرعة :</b>
 <%if @vehicle.gearbox%>
 أتوماتيك
 <%else%>
 مانيوال
 
-<%end%><br><br>
-
+<%end%>
+</li>
+<li>
 <b>اللون :</b>
-<%=@vehicle.colour%><br><br>
+<%=@vehicle.colour%>
+</li><li>
 <b>السعر :</b>
-<%= number_with_delimiter(@vehicle.price, :delimiter => ',')%><br><br>
+<%= number_with_delimiter(@vehicle.price, :delimiter => ',')%>
+</li>
 <%if @van !=nil %>
-<b>حمولة: </b>
-<%=@van.capacity%><br><br>
-<b>مسافة: </b>
-<%=@van.mileage%><br><br>
+<li><b>حمولة: </b>
+<%=@van.capacity%></li>
+<li><b>مسافة: </b>
+<%=@van.mileage%></li>
 <%elsif @semitrailer !=nil%>
-<b>Capacity</b><br>
-<%=@semitrailer.capacity%><br>
+<li><b>حمولة :</b>
+<%=@semitrailer.capacity%></li>
 <%elsif @semitrailertruck !=nil%>
-<b>Mileage</b><br>
-<%=@semitrailertruck.mileage%><br>
+<li><b>مسافة :</b>
+<%=@semitrailertruck.mileage%></li>
 <%elsif @heavytruck !=nil%>
-<b>Capacity</b><br>
-<%=@heavytruck.capacity%><br>
-<b>Mileage</b><br>
-<%=@heavytruck.mileage%><br>
-<br>
+<li><b>حمولة :</b>
+<%=@heavytruck.capacity%></li>
+<li><b>مسافة :</b>
+<%=@heavytruck.mileage%></li>
 <%end%>
 <%if @ad.description != ""%>
-<b>الوصف:</b>
-<%=@ad.description%>
-<br>
+<li><b>الوصف:</b></li>
+<li><%=@ad.description%></li>
 <%end%>
 </div>
 <div id ="sellerinfo">
-<b>بيانات البائع :</b>
-<br>
-<%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%><br>
- تليفون : 
-<br><%=@seller.phone%><br>
- البريد الالكتروني : 
-<br> <%=@seller.email%>
-<br><br>
+<li><b>اسم البائع :</b></li>
+
+<li><%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%></li>
+<li>
+ <b>تليفون : </b>
+</li><li>
+<%=@seller.phone%>
+</li><li>
+ <b>البريد الالكتروني : </b>
+</li><li>
+<%=@seller.email%>
+</li>
+
 <%if @ad.image_url.to_s != ""%>
 <%= link_to(@ad.image_url.to_s) do %>
   <%= image_tag @ad.image_url.to_s,size:"300x180" %>
 <% end %>
 <%end%>
-<br>
+
 <%if @ad.image1_url.to_s != ""%>
 <%= link_to(@ad.image1_url.to_s) do %>
   <%= image_tag @ad.image1_url.to_s,size:"300x180" %>
-<% end %><br>
+<% end %>
 <%end%>
-<br>
+
 <%if @ad.image2_url.to_s != ""%>
 <%= link_to(@ad.image2_url.to_s) do %>
   <%= image_tag @ad.image2_url.to_s,size:"300x180" %>
 <% end %>
 <%end%>
-<br>
+
 <%if @ad.image3_url.to_s != ""%>
 <%= link_to(@ad.image3_url.to_s) do %>
   <%= image_tag @ad.image3_url.to_s,size:"300x180" %>
-<% end %><br>
+<% end %>
 <%end%>
-<br>
+
 <%if @ad.image4_url.to_s != ""%>
 <%= link_to(@ad.image4_url.to_s) do %>
   <%= image_tag @ad.image4_url.to_s,size:"300x180" %>
