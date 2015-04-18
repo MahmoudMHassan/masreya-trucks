@@ -256,12 +256,13 @@ $searchbutton.click(function(e){
 	$semibutton.css("font-size","15px");
 	$('#searchtext').css('visibility','visible');
 	$('#searchtext').children().prop('disabled',false);
-	
-	
-	
-	
       }
 });
+    $window.scroll(function(){
+      if($window.scrollLeft() > -500){
+	$header.css('right',-$window.scrollLeft());
+      }
+    });
     
 });
 

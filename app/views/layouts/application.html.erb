@@ -104,12 +104,13 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<body style="background:#F2F2F2;">
+<body style="background:#F2F2F2;overflow-x:scroll;direction:rtl;">
 
 <div style="color:red;">
 <%= flash[:error] %>
 </div>
 <%=flash[:notice]%>
+
 <%= yield %>
 
 </body>
