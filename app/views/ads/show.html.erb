@@ -1,19 +1,31 @@
 <div id = "adwrapper">
 <div style ="overflow:hidden;">
-<div style ="text-align: left;float:left;">
+<div id="adactions">
+<ul>
 <%if self.current_user !=nil%>
 <%if !Bookmark.exists?(user_id: self.current_user, ad_id: @ad.id)%>
-<%= link_to "حفظ الإعلان في الجراج", "/ads/bookmark/#{@ad.id}", method: :post%>
+<li><%= link_to"/ads/bookmark/#{@ad.id}", method: :post do %>
+	  <%= image_tag "save-icon.png", size:"20x20"%>
+	<% end %>
+<%= link_to "حفظ الإعلان في الجراج", "/ads/bookmark/#{@ad.id}", method: :post%></li>
 <%else%>
-<%= link_to "إزالة الإعلان من الجراج", "/ads/unbookmark/#{@ad.id}", method: :post%>
-<%end%><br>
+<li><%= link_to"/ads/unbookmark/#{@ad.id}", method: :post do %>
+	  <%= image_tag "save-icon.png", size:"20x20"%>
+	<% end %>
+<%= link_to "إزالة الإعلان من الجراج", "/ads/unbookmark/#{@ad.id}", method: :post%></li>
+<%end%>
 <%if @seller.id == self.current_user.id%>
-<%= link_to "إزالة الإعلان", "/ads/delete/#{@ad.id}", method: :post, :style=>'color: red;'%>
-<br>
-<%= link_to "تعديل الإعلان", "/ads/edit/#{@ad.id}"%>
-
+<li><%= link_to "/ads/edit/#{@ad.id}" do %>
+	  <%= image_tag "edit.png", size:"20x20"%>
+	<% end %>
+<%= link_to "تعديل الإعلان", "/ads/edit/#{@ad.id}"%></li>
+<li><%= link_to "/ads/delete/#{@ad.id}", method: :post,data: {confirm: 'Are you sure?'} do %>
+	  <%= image_tag "delete.png", size:"16x16"%>
+	<% end %>
+<%= link_to "إزالة الإعلان", "/ads/delete/#{@ad.id}", :style=>'color: red', method: :post,data: {confirm: 'Are you sure?'}%></li>
 <%end%>
 <%end%>
+</ul>
 </div>
 <div style ="float:right;">
 <div class="fb-share-button" data-href="<%=request.original_url%>" data-layout="button"></div>

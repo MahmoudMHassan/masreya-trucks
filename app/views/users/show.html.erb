@@ -18,11 +18,11 @@
 </ul>
 <%if self.current_user != nil && @user.id == self.current_user.id%>
 <li><%= link_to "edit/#{self.current_user.id}" do %>
-	  <%= image_tag "edit.png", size:"30x30"%>
+	  <%= image_tag "edit.png", size:"20x20"%>
 	<% end %>
 <%= link_to "تعديل البيانات", "/ads/new"%></li>
 <li><%= link_to "destroy/#{self.current_user.id}", method: :post,data: {confirm: 'Are you sure?'} do %>
-	  <%= image_tag "delete.png", size:"30x30"%>
+	  <%= image_tag "delete.png", size:"16x16"%>
 	<% end %>
 <%= link_to "إلغاء الحساب", "destroy/#{self.current_user.id}", :style=>'color: red', method: :post,data: {confirm: 'Are you sure?'}%></li>
 <%end%>
