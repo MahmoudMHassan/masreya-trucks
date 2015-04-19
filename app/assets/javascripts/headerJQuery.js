@@ -25,10 +25,13 @@ $(document).ready(function() {
   var $searchbutton = $('#searchbutton');
   var $body = $('#body');
   var $window = $(window);
+  var $listButton = $('#listButton');
+  var $buttonList = $('#buttonList');
+  var $buttonwrapper = $('#buttonwrapper');
   
   
 $(function(){
-      if ($window.width() < 1300) {
+      if ($window.width() < 1430) {
 	$searchbutton.css("width","100px");
 	$vanbutton.css("width","100px");
 	$semibutton.css("width","100px");
@@ -42,7 +45,8 @@ $(function(){
 	$semibutton.css("font-size","10px");
 	$('#searchtext').css('visibility','hidden');
 	$('#searchtext').children().prop('disabled',true);
-	
+	$buttonwrapper.css('visibility','hidden');
+	$listButton.css('visibility','visible');
       }
      $semiwrapper.css('visibility', 'hidden');
      $sttwrapper.css('visibility', 'hidden');
@@ -228,7 +232,7 @@ $searchbutton.click(function(e){
   
 }); 
     $window.on('resize', function(){
-      if ($window.width() < 1300) { 
+      if ($window.width() < 1430) { 
 	$searchbutton.css("width","100px");
 	$vanbutton.css("width","100px");
 	$semibutton.css("width","100px");
@@ -242,6 +246,8 @@ $searchbutton.click(function(e){
 	$semibutton.css("font-size","10px");
 	$('#searchtext').css('visibility','hidden');
 	$('#searchtext').children().prop('disabled',true);
+	$buttonwrapper.css('visibility','hidden');
+	$listButton.css('visibility','visible');
       }else{
 	$searchbutton.css("width","150px");
 	$vanbutton.css("width","150px");
@@ -256,6 +262,8 @@ $searchbutton.click(function(e){
 	$semibutton.css("font-size","15px");
 	$('#searchtext').css('visibility','visible');
 	$('#searchtext').children().prop('disabled',false);
+	$buttonwrapper.css('visibility','visible');
+	$listButton.css('visibility','hidden');
       }
 });
     $window.scroll(function(){
@@ -263,6 +271,21 @@ $searchbutton.click(function(e){
 	$header.css('right',-$window.scrollLeft());
       }
     });
+
+    $listButton.hover(
+  function() {
+    $buttonList.css('visibility','visible');
+  }, function() {
+      $buttonList.css('visibility','hidden');
+  }
+);
+    $buttonList.hover(
+  function() {
+    $buttonList.css('visibility','visible');
+  }, function() {
+    $buttonList.css('visibility','hidden');
+  }
+);
     
 });
 

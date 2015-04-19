@@ -52,40 +52,45 @@
 <%=render 'ads/searchform'%>
 </div>
 </div>
-<div id="headerLeft">
-<table>
-  <%if self.current_user==nil %>
-  <tr><td>
-	<%= link_to"/users/new" do %>
-	  <%= image_tag "signup.png", size:"30x30"%>
-	<% end %>
-  </td><td>
-  <%= link_to"/users/signin" do %>
-	    <%= image_tag "login.png", size:"35x40"%>
-	  <% end %>
-  </td></tr>
-  <tr><td>
-	<%= link_to "فتح حساب", "/users/new"%>
-  </td><td>
-	  <%= link_to "تسجيل الدخول", "/users/signin"%>
-  </td>
-  </table>
+<%if self.current_user==nil %>
+<div id="headerLeftOut">
+  <ul>
+    <li> 
+      <%=button_to "فتح حساب", "/users/new",id: "signupbutton", method: :get%> 
+    </li>
+    <li> 
+     <%=button_to "تسجيل الدخول", "/users/signin",id: "loginbutton", method: :get%>
+    </li>
+  </ul>
 <%else%>
-  <table><tr><td>
-	<%= link_to"/users/#{self.current_user.id}" do %>
-	  <%= image_tag "user.png", size:"40x40"%>
-	<% end %>
-	</td><td>
-  <%= link_to"/users/logout", method: :post do %>
-	  <%= image_tag "logout.png", size:"40x40"%>
-	<% end %>
-	</td></tr>
+<div id="headerLeftIn">
+	
+	<div id="buttonwrapper">
+	<table>
 	<tr>
 	<td>
-    <%= link_to "صفحة الحساب", "/users/#{self.current_user.id}"%>
-  </td><td>
-	<%= link_to "تسجيل الخروج", "/users/logout", method: :post%>
-  </td></tr></table>
+	<%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", method: :get%>
+	</td><td>
+	<%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", method: :get%>
+	</td></tr>
+	<tr><td>
+	<%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", method: :get%>
+      </td><td>
+        <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", method: :post%>
+      </td></tr>
+      </table>
+      </div>
+      <div id="listButton">
+      
+      </div>
+      <div id="buttonList">
+      <ul>
+     <li> <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", method: :get%> </li>
+     <li> <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", method: :get%> </li>
+     <li> <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", method: :get%> </li>
+     <li> <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", method: :post%> </li>
+      <ul>
+      </div>
 <%end%>
 
 </div>
@@ -104,7 +109,7 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<body style="background:#F2F2F2;overflow-x:scroll;direction:rtl;">
+<body style="background:#F2F2F2;">
 
 <div style="color:red;">
 <%= flash[:error] %>
