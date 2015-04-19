@@ -39,15 +39,17 @@ background-color:#CDEBCD;
 		border-radius:2px;
 		border-bottom: 2px solid #000;
 		background: #2D882D;
+		width:100%;
+		//overflow:hidden;
 		//min-width:1068px;
-		width:77%;
-		position: fixed;
-		margin-left:7%;
+		//width:77%;
+		position: absolute;
+		//margin-right:15%;
 		top: 0;
 		left: 0;
 		right: 0;
 		color: #070F07;
-		height: 120px;
+		height: 90px;
 		z-index:999;
 		a{
 		  color: #111F11;
@@ -55,6 +57,7 @@ background-color:#CDEBCD;
 					color: #33F433;
 				}
 		}
+		
 	}
 	#sidebar {
 	font-size:18px;
@@ -84,16 +87,26 @@ background-color:#CDEBCD;
 		//box-shadow: 5px 5px 5px #888888;
 		overflow: hidden;
 		background:#FAFAFA;
-		min-width:1039px;
-		width: 74.9%;
+		//width:1200px;
+		min-width:320px;
+		width:70%;
+		//overflow-x:scroll;
+		//direction:rtl;
+		//min-width:1039px;
+		//width: 74.9%;
 		//max-width: 1039px;
-		margin-right:16%;
-		margin-left:1%;
-		margin-top:1%;
-		margin-bottom:1%;
+		margin: 1% auto;
 		padding:1%;
 		//border-bottom: 1px solid #97A797;
+		
+		
 	}
+	li{
+	  word-wrap: break-word;
+	  display:block;
+	  padding:7px;
+	}
+	
 
 	a {
 				font-weight: 500;
@@ -116,7 +129,15 @@ background-color:#CDEBCD;
 			
 			}
 			
-			
+	#adactions{
+	text-align: left;
+	float:left;
+	
+	li{
+	  font-size:16px;
+	  padding:2px; 
+	}
+	}
 
 	#searchwrapper{
 	position: absolute;
@@ -131,31 +152,219 @@ background-color:#CDEBCD;
 	}
 	#headerRight{
 	position:relative;
-	width:300px;
+	width:100px;
+	float:right;
 	height:0px;
-	margin-right:50px;
+	margin-right:2%;
 	}
-	#headerLeft{
+	#headerLeftIn{
 	position:relative;
-	margin-right:auto;
-	margin-left:0;
-	width:300px;
+	float:left;
+	width:280px;
+	font-size:13px;
 	height:0px;
+	
+		td{
+		    width:130px;
+		    height:30px;
+		    padding:2px;
+		    overflow: hidden;
+		    display:inline-block;
+		    white-space:nowrap;
+		    //text-align:center;
+		   
+		  }
+		  
+	}
+	#headerLeftOut{
+	position:relative;
+	float:left;
+	width:200px;
+	font-size:13px;
+	height:0px;
+	margin-top:-10px;
+	
+		li{
+		   padding:1px;
+		  }
 	}
 	input[type="number"]{
 	  width:70px;
 
 	}
+	#profilebutton{
+	//float:left;
+	outline: none;
+	width: 130px;
+	height: 30px;
+	border-radius:5px;
+	text-align:left;
+	font-size:15px;
+	color:#000;
+	border:2px solid #000;
+	background-color:#CDEBCD;
+	background-image:image-url('user.png');
+	background-size:25px 25px;
+	background-position: 100px 1px;
+	background-repeat:no-repeat;
+		    
+		    &:hover{
+			background-color:#9DE56A;
+		    }
+	}
+	#garagebutton{
+	//float:left;
+	outline: none;
+	width: 130px;
+	height: 30px;
+	border-radius:5px;
+	text-align:left;
+	font-size:15px;
+	border:2px solid #000;
+	color:#000;
+	background-color:#CDEBCD;
+	background-image:image-url('save-icon.png');
+	background-size:20px 20px;
+	background-position: 100px 5px;
+	background-repeat:no-repeat;
+	
+			&:hover{
+			background-color:#9DE56A;
+			}
+	}
+	#createAdbutton{
+	//float:left;
+	outline: none;
+	width: 130px;
+	height: 30px;
+	border-radius:5px;
+	text-align:left;
+	font-size:15px;
+	color:#000;
+	border:2px solid #000;
+	background-color:#CDEBCD;
+	background-image:image-url('add-icon.png');
+	background-size:23px 23px;
+	background-position: 100px 2px;
+	background-repeat:no-repeat;
+	
+			&:hover{
+			background-color:#9DE56A;
+			}
+	}
+	#logoutbutton{
+	//float:left;
+	outline: none;
+	width: 130px;
+	height: 30px;
+	border-radius:5px;
+	text-align:left;
+	font-size:15px;
+	color:#000;
+	border:2px solid #000;
+	
+	background-color:#CDEBCD;
+	background-image:image-url('logoutc.png');
+	background-size:24px 23px;
+	background-position: 101px 2px;
+	background-repeat:no-repeat;
+	
+			  &:hover{
+			    background-image:image-url('logoutg.png');
+			background-color:#9DE56A;
+			  }
+	}
+	#loginbutton{
+	//float:left;
+	outline: none;
+	width: 130px;
+	height: 30px;
+	border-radius:5px;
+	text-align:left;
+	font-size:15px;
+	color:#000;
+	border:2px solid #000;
+	
+	background-color:#CDEBCD;
+	background-image:image-url('loginc.png');
+	background-size:21px 24px;
+	background-position: 104px 1px;
+	background-repeat:no-repeat;
+	
+			  &:hover{
+			    background-image:image-url('loging.png');
+			background-color:#9DE56A;
+			  }
+	}
+	#signupbutton{
+	//float:left;
+	outline: none;
+	width: 130px;
+	height: 30px;
+	border-radius:5px;
+	text-align:left;
+	color:#000;
+	font-size:15px;
+	border:2px solid #000;
+	
+	background-color:#CDEBCD;
+	background-image:image-url('signup.png');
+	background-size:25px 25px;
+	background-position: 100px 1px;
+	background-repeat:no-repeat;
+	  
+			  &:hover{
+			background-color:#9DE56A;
+			  }
+	}
+	#buttonwrapper{
+	position:absolute;
+	}
+	#buttonList{
+	position:absolute;
+	margin-right:80px;
+	margin-top:50px;
+	visibility:hidden;
+	
+		li{
+		    width:130px;
+		    padding:0px;
+		    
+		  }
+		  ul{
+		    //border: 1px solid #CDEBCD;
+		    
+		  }
+	}
+	#listButton{
+	position:absolute;
+	height:70px;
+	width:70px;
+	background-image:image-url('list-icon1.png');
+	background-size:40px 35px;
+	background-repeat:no-repeat;
+	margin-right:170px;
+	margin-top:20px;
+	visibility:hidden;
+	      
+	      &:hover{
+		background-image:image-url('list-icon2.png');
+	      }
+	}
 	#searchbutton{
 	outline: none;
 	width: 150px;
-	height: 60px;
+	height: 70px;
 	margin: 0 auto;
 	border-radius:10px;
-	border:2px solid;
+	//font-size:15px;
+	border-top: none !important;
+	border-bottom:3px solid;
+	border-right:3px solid;
+	border-left:none !important;
 	background:#CDEBCD;
 	background-image:image-url('search-icon3.png');
-	background-position: 6px 7px;
+	background-position: 6px 16px;
 	background-repeat:no-repeat;
 	//color:#FFFFFF;
 

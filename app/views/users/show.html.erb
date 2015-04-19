@@ -1,42 +1,57 @@
 
 <div id="adwrapper">
-<b>الاسم: </b><%= @user.fname%><br>
-<br>
-<b> اسم العائلة: </b><%= @user.lname%>
-<br><br>
-<b>البريد الالكتروني: </b><%= @user.email%>
-<br><br>
-<b>البلد: </b><%= @user.country%>
-<br><br>
-<b>الهاتف: </b><%= @user.phone%>
-<br><br>
-
-<br>
-<%if current_user.avatar_url != nil%>
-	<%= image_tag current_user.avatar_url.to_s%>
-	<%else%>
-	<%= image_tag "user.png"%>
-	<%end%>
-<br>
-
-<%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
+<div id="showadwrapper">
+<ul>
 <li>
-	<%= link_to "اضافة اعلان", '/ads/new'%>
-</li>
-<% end %>
+	<%if @user.avatar_url != nil%>
+	  <%= link_to(@user.avatar_url.to_s) do %>
+	    <%= image_tag @user.avatar_url.to_s,size:"100x100" %>
+	  <% end %>
+	<%else%>
+	  <%= image_tag "user.png", size: "100x100"%>
+	<%end%></li>
+<li><b>الاسم: </b><%= @user.fname%></li>
+<li><b> اسم العائلة: </b><%= @user.lname%></li>
+<li><b>البريد الالكتروني: </b><%= @user.email%></li>
+<li><b>البلد: </b><%= @user.country%></li>
+<li><b>الهاتف: </b><%= @user.phone%></li>
+</ul>
+<%if self.current_user != nil && @user.id == self.current_user.id%>
+<li><%= link_to "edit/#{self.current_user.id}" do %>
+	  <%= image_tag "edit.png", size:"20x20"%>
+	<% end %>
+<%= link_to "تعديل البيانات", "/ads/new"%></li>
+<li><%= link_to "destroy/#{self.current_user.id}", method: :post,data: {confirm: 'Are you sure?'} do %>
+	  <%= image_tag "delete.png", size:"16x16"%>
+	<% end %>
+<%= link_to "إلغاء الحساب", "destroy/#{self.current_user.id}", :style=>'color: red', method: :post,data: {confirm: 'Are you sure?'}%></li>
+<%end%>
+</div>
+<div id ="sellerinfo" style="text-align:right;">
+<ul>
+<%if self.current_user!=nil && Seller.exists?(self.current_user.id) && self.current_user.id == @user.id%>
+<li><%= link_to"/users/bookmark/#{self.current_user.id}" do %>
+	  <%= image_tag "save-icon.png", size:"30x30"%>
+	<% end %>
+<%= link_to "صفحة الجراج", "/users/bookmark/#{self.current_user.id}"%>
+<%end%></li>
+<%if self.current_user!=nil && Seller.exists?(self.current_user.id)%>
+<li><%= link_to"/ads/new" do %>
+	  <%= image_tag "add-icon.png", size:"30x30"%>
+	<% end %>
+<%= link_to "إضافة إعلان", "/ads/new"%></li>
+<%end%>
 
-<%if self.current_user !=nil && !Seller.exists?(self.current_user.id)%>
+
+<%if self.current_user !=nil && !Seller.exists?(self.current_user.id) && @user.id == self.current_user.id%>
 <li>
 <%= link_to( "تحويل الى بائع", :controller => "users", :action => "changetoseller", :id => self.current_user.id)%>
 </li>
 <%end%>
 				
-<%if self.current_user != nil && @user.id == self.current_user.id%>
-<li><%= link_to "تعديل البيانات", "edit/#{@user.id}", method: :get%></li>
-<div style="color: red">
-<li><%= link_to "إلغاء الحساب", "destroy/#{@user.id}",
-:style=>'color: red', method: :post ,data: {confirm: 'Are you sure?'}%></li>
-</div>
-<%end%>
+
 </ul>
+
+
+</div>
 </div>
