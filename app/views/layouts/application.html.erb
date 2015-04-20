@@ -5,99 +5,98 @@
   <title>MasreyaTrucks</title>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
+    <div id="header">
+        <div id="headerRight">
+        <%= link_to(root_path) do %>
+            <%= image_tag 'truck-green-icon1.png'%>
+        <% end %>
+        </div>
 
+        <div style="width:1000px;margin-top:0.5%;margin-right:10%;height:0px;z-index:1500">
 
+        <button id="searchbutton" style="font-size:20px;color:#000000">
 
-
-  <div id="header">
-  <div id="headerRight">
-  <%= link_to(root_path) do %>
-  <%= image_tag 'truck-green-icon1.png'%>
-<% end %>
-  </div>
-<div style="width:1000px;margin-top:0.5%;margin-right:10%;height:0px;z-index:1500">
-
-<button id="searchbutton" style="font-size:20px;color:#000000">
-
-<div id = "searchtext" style="margin-right:40px;width:0px;height:0px;"> البحث</div>
-<div id="arrowwrapper">
-<div id="downarrow"></div>
-<div id="uparrow"></div>
-</div>
-  </button>
+            <div id = "searchtext" style="margin-right:40px;width:0px;height:0px;"> البحث</div>
+            <div id="arrowwrapper">
+            <div id="downarrow"></div>
+            <div id="uparrow"></div>
+            </div>
+        </button>
   
-  <button id="allbutton">
-<div style="position:relative; top:-2px;">جميع الشاحنات</div>
-  </button>
-  <button id="vanbutton">
-<div style="position:relative; top:20px;">عربة</div>
-  </button>
-  <button id="semibutton">
-<div style="position:relative; top:20px;">شبه مقطورة</div>
-  </button>
-  <button id="sttbutton">
-<div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
-  </button>
-  <button id="heavybutton">
-<div style="position:relative; top:20px;">شاحنة ثقيلة</div>
-  </button>
-  
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <button id="allbutton">
+            <div style="position:relative; top:-2px;">جميع الشاحنات</div>
+        </button>
 
-<div id="searchwrapper">
-<%=render 'ads/searchform'%>
-</div>
-</div>
-<%if self.current_user==nil %>
-<div id="headerLeftOut">
-  <ul>
-    <li> 
-      <%=button_to "فتح حساب", "/users/new",id: "signupbutton", method: :get%> 
-    </li>
-    <li> 
-     <%=button_to "تسجيل الدخول", "/users/signin",id: "loginbutton", method: :get%>
-    </li>
-  </ul>
-<%else%>
-<div id="headerLeftIn">
-	
-	<div id="buttonwrapper">
-	<table>
-	<tr>
-	<td>
-	<%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", method: :get%>
-	</td><td>
-	<%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", method: :get%>
-	</td></tr>
-	<tr><td>
-	<%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", method: :get%>
-      </td><td>
+        <button id="vanbutton">
+            <div style="position:relative; top:20px;">عربة</div>
+        </button>
+        <button id="semibutton">
+            <div style="position:relative; top:20px;">شبه مقطورة</div>
+        </button>
+        <button id="sttbutton">
+            <div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
+        </button>
+        <button id="heavybutton">
+            <div style="position:relative; top:20px;">شاحنة ثقيلة</div>
+        </button>
+
+
+        <div id="searchwrapper">
+            <%=render 'ads/searchform'%>
+        </div>
+        </div>
+    <%if self.current_user==nil %>
+    <div id="headerLeftOut">
+    <ul>
+        <li> 
+        <%=button_to "فتح حساب", "/users/new",id: "signupbutton", method: :get%> 
+        </li>
+        <li> 
+        <%=button_to "تسجيل الدخول", "/users/signin",id: "loginbutton", method: :get%>
+        </li>
+    </ul>
+    <%else%>
+    <div id="headerLeftIn">
+        <div id="buttonwrapper">
+        <table>
+        <tr>
+        <td>
+            <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", method: :get%>
+        </td><td>
+            <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", method: :get%>
+        </td>
+        </tr>
+        <tr>
+        <td>
+            <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", method: :get%>
+        </td><td>
+            <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", method: :post%>
+        </td></tr>
+        </table>
+        </div>
+        <div id="listButton"></div>
+        <div id="buttonList">
+        <ul>
+        <li>
+        <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", method: :get%>
+        </li>
+        <li>
+        <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", method: :get%>
+        </li>
+        <li>
+        <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", method: :get%>
+        </li>
+        <li>
         <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", method: :post%>
-      </td></tr>
-      </table>
-      </div>
-      <div id="listButton">
-      
-      </div>
-      <div id="buttonList">
-      <ul>
-     <li> <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", method: :get%> </li>
-     <li> <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", method: :get%> </li>
-     <li> <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", method: :get%> </li>
-     <li> <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", method: :post%> </li>
-      <ul>
-      </div>
-<%end%>
+        </li>
+        <ul>
+        </div>
+    <%end%>
 
-</div>
-
-
- 
-
+    </div>
 </div>
 
 <div id="fb-root"></div>
@@ -112,7 +111,7 @@
 <body style="background:#F2F2F2;">
 
 <div style="color:red;">
-<%= flash[:error] %>
+    <%= flash[:error] %>
 </div>
 <%=flash[:notice]%>
 
