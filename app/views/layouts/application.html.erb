@@ -26,20 +26,20 @@
             </div>
         </button>
   
-        <button id="allbutton">
+        <button id="allbutton" class="vehicleButtons">
             <div style="position:relative; top:-2px;">جميع الشاحنات</div>
         </button>
 
-        <button id="vanbutton">
+        <button id="vanbutton" class="vehicleButtons">
             <div style="position:relative; top:20px;">عربة</div>
         </button>
-        <button id="semibutton">
+        <button id="semibutton" class="vehicleButtons">
             <div style="position:relative; top:20px;">شبه مقطورة</div>
         </button>
-        <button id="sttbutton">
+        <button id="sttbutton" class="vehicleButtons">
             <div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
         </button>
-        <button id="heavybutton">
+        <button id="heavybutton" class="vehicleButtons">
             <div style="position:relative; top:20px;">شاحنة ثقيلة</div>
         </button>
 
@@ -52,10 +52,10 @@
     <div id="headerLeftOut">
     <ul>
         <li> 
-        <%=button_to "فتح حساب", "/users/new",id: "signupbutton", method: :get%> 
+        <%=button_to "فتح حساب", "/users/new",id: "signupbutton", class: "listButtons", method: :get%> 
         </li>
         <li> 
-        <%=button_to "تسجيل الدخول", "/users/signin",id: "loginbutton", method: :get%>
+        <%=button_to "تسجيل الدخول", "/users/signin",id: "loginbutton", class: "listButtons", method: :get%>
         </li>
     </ul>
     <%else%>
@@ -64,16 +64,16 @@
         <table>
         <tr>
         <td>
-            <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", method: :get%>
+            <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton",class: "listButtons",  method: :get%>
         </td><td>
-            <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", method: :get%>
+            <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
         </td>
         </tr>
         <tr>
         <td>
-            <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", method: :get%>
+            <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
         </td><td>
-            <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", method: :post%>
+            <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
         </td></tr>
         </table>
         </div>
@@ -81,16 +81,16 @@
         <div id="buttonList">
         <ul>
         <li>
-        <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", method: :get%>
+        <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", class: "listButtons", method: :get%>
         </li>
         <li>
-        <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", method: :get%>
+        <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
         </li>
         <li>
-        <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", method: :get%>
+        <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
         </li>
         <li>
-        <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", method: :post%>
+        <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
         </li>
         <ul>
         </div>
