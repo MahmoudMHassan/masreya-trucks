@@ -2,47 +2,47 @@
 
 <%if request.original_fullpath == "/ads/new"%>
 <div style="text-align:center;width:700px;margin: 10px auto;">
-  <button onclick="location.href='/ads/new?type=van'" id="newvanbutton" class="newVehicleButtons">
+  <button onclick="location.href='/ads/new/van'" id="newvanbutton" class="newVehicleButtons">
 <div style="position:relative; top:20px;">عربة</div>
   </button>
-  <button onclick="location.href='/ads/new?type=semitrailer'" id="newsemibutton" class="newVehicleButtons">
+  <button onclick="location.href='/ads/new/semitrailer'" id="newsemibutton" class="newVehicleButtons">
 <div style="position:relative; top:20px;">شبه مقطورة</div>
   </button>
-  <button onclick="location.href='/ads/new?type=semitrailertruck'" id="newsttbutton" class="newVehicleButtons">
+  <button onclick="location.href='/ads/new/semitrailertruck'" id="newsttbutton" class="newVehicleButtons">
 <div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
   </button>
-  <button onclick="location.href='/ads/new?type=heavytruck'" id="newheavybutton" class="newVehicleButtons">
+  <button onclick="location.href='/ads/new/heavytruck'" id="newheavybutton" class="newVehicleButtons">
 <div style="position:relative; top:20px;">شاحنة ثقيلة</div>
   </button><br><br><br><br>
   اختر نوع الشاحنة لإضافة
 </div>
-<%elsif ["/ads/new?type=van","/ads/new?type=semitrailer","/ads/new?type=heavytruck","/ads/new?type=semitrailertruck"].include? request.original_fullpath%>
+<%elsif ["/ads/new/van","/ads/new/semitrailer","/ads/new/heavytruck","/ads/new/semitrailertruck"].include? request.original_fullpath%>
 <div style="width:700px;margin: 10px auto;">
-<%if request.original_fullpath == "/ads/new?type=van"%>
-  <button onclick="location.href='/ads/new?type=van'" id="newvanbutton" class="newVehicleButtons" style="background-color:#9DE56A">
+<%if request.original_fullpath == "/ads/new/van"%>
+  <button onclick="location.href='/ads/new/van'" id="newvanbutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
-  <button onclick="location.href='/ads/new?type=van'" id="newvanbutton" class="newVehicleButtons">
+  <button onclick="location.href='/ads/new/van'" id="newvanbutton" class="newVehicleButtons">
   <%end%>
 <div style="position:relative; top:20px;">عربة</div>
   </button>
-  <%if request.original_fullpath == "/ads/new?type=semitrailer"%>
-  <button onclick="location.href='/ads/new?type=semitrailer'" id="newsemibutton" class="newVehicleButtons" style="background-color:#9DE56A">
+  <%if request.original_fullpath == "/ads/new/semitrailer"%>
+  <button onclick="location.href='/ads/new/semitrailer'" id="newsemibutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
-  <button onclick="location.href='/ads/new?type=semitrailer'" id="newsemibutton" class="newVehicleButtons">
+  <button onclick="location.href='/ads/new/semitrailer'" id="newsemibutton" class="newVehicleButtons">
   <%end%>
 <div style="position:relative; top:20px;">شبه مقطورة</div>
   </button>
-  <%if request.original_fullpath == "/ads/new?type=semitrailertruck"%>
-  <button onclick="location.href='/ads/new?type=semitrailertruck'" id="newsttbutton" class="newVehicleButtons" style="background-color:#9DE56A">
+  <%if request.original_fullpath == "/ads/new/semitrailertruck"%>
+  <button onclick="location.href='/ads/new/semitrailertruck'" id="newsttbutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
-  <button onclick="location.href='/ads/new?type=semitrailertruck'" id="newsttbutton" class="newVehicleButtons">
+  <button onclick="location.href='/ads/new/semitrailertruck'" id="newsttbutton" class="newVehicleButtons">
   <%end%>
 <div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
   </button>
-  <%if request.original_fullpath == "/ads/new?type=heavytruck"%>
-  <button onclick="location.href='/ads/new?type=heavytruck'" id="newheavybutton" class="newVehicleButtons" style="background-color:#9DE56A">
+  <%if request.original_fullpath == "/ads/new/heavytruck"%>
+  <button onclick="location.href='/ads/new/heavytruck'" id="newheavybutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
-  <button onclick="location.href='/ads/new?type=heavytruck'" id="newheavybutton" class="newVehicleButtons">
+  <button onclick="location.href='/ads/new/heavytruck'" id="newheavybutton" class="newVehicleButtons">
   <%end%>
 <div style="position:relative; top:20px;">شاحنة ثقيلة</div>
   </button>
@@ -52,7 +52,7 @@
 
 <ul>
 <li>
-العنوان: <%= a.text_field :title%>
+العنوان: <%= a.text_field :title, :class => find_errors(@ad, :title)%>
 </li>
 
 	<%=fields_for :vehicle do |v|%>
@@ -61,37 +61,37 @@
 </li><li>
 	الموديل: <%= v.select :model,([ "i10" , "w30" , "503"])%>
 </li>
-	<%if request.original_fullpath == "/ads/new?type=van"%>
+	<%if request.original_fullpath == "/ads/new/van"%>
 	<%=fields_for :van do |van|%>
 	<li>
 	حمولة: <%= van.check_box :capacity%>
 	</li><li>
-مسافة: <%= van.number_field :mileage%>
+مسافة: <%= van.number_field :mileage, :class => find_errors(@van, :mileage)%>
 </li>
 	<%end%>
-	<%elsif request.original_fullpath == "/ads/new?type=semitrailer"%>
+	<%elsif request.original_fullpath == "/ads/new/semitrailer"%>
 	<%=fields_for :semitrailer do |s|%>
 	<li>
 	حمولة: <%= s.check_box :capacity%>
 	</li>
 	<%end%>
-	<%elsif request.original_fullpath == "/ads/new?type=semitrailertruck"%>
+	<%elsif request.original_fullpath == "/ads/new/semitrailertruck"%>
 	<%=fields_for :semitrailertruck do |st|%>
 	<li>
-	مسافة: <%= st.number_field :mileage%>
+	مسافة: <%= st.number_field :mileage, :class => find_errors(@semitrailertruck, :mileage)%>
 	</li>
 	<%end%>
-	<%elsif request.original_fullpath == "/ads/new?type=heavytruck"%>
+	<%elsif request.original_fullpath == "/ads/new/heavytruck"%>
 	<%=fields_for :heavytruck do |h|%>
 	<li>
 	حمولة: <%= h.check_box :capacity%>
 	</li><li>
-	مسافة:  <%= h.number_field :mileage%>
+	مسافة: <%= h.number_field :mileage, :class => find_errors(@heavytruck, :mileage)%>
 	</li>
 	<%end%>
 	<%end%>
 	<li>
-	سنة الانتاج: <%= v.number_field :manyear%>
+	سنة الانتاج: <%= v.number_field :manyear, :class => find_errors(@vehicle, :manyear)%>
 	</li><li>
 	البلد: <%= v.select :country ,(["Egypt" , "madagascar"])%>
 	</li><li>
@@ -113,7 +113,7 @@
 	</li>
 
 	<li>
-	السعر: <%= v.number_field :price%>
+	السعر: <%= v.number_field :price, :class => find_errors(@vehicle, :price)%>
 	</li>
 	<%end%>
 	<%=fields_for :make do |m|%>

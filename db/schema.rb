@@ -81,6 +81,10 @@ ActiveRecord::Schema.define(version: 20150408003426) do
     t.datetime "updated_at",           null: false
   end
 
+  add_index "makes", ["ad_id"], name: "fk_rails_8dbdaac95a", using: :btree
+  add_index "makes", ["user_id"], name: "user_id", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_b2480a9452", using: :btree
+
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -149,6 +153,9 @@ ActiveRecord::Schema.define(version: 20150408003426) do
   add_foreign_key "buyers", "users"
   add_foreign_key "company_sellers", "users"
   add_foreign_key "heavytrucks", "vehicles"
+  add_foreign_key "makes", "ads"
+  add_foreign_key "makes", "sellers", column: "user_id", primary_key: "user_id", name: "makes_ibfk_1"
+  add_foreign_key "makes", "vehicles"
   add_foreign_key "sellers", "users"
   add_foreign_key "semitrailers", "vehicles"
   add_foreign_key "semitrailertrucks", "vehicles"

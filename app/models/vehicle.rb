@@ -4,7 +4,7 @@ class Vehicle < ActiveRecord::Base
   has_one :heavytruck, dependent: :destroy
   has_one :van, dependent: :destroy
   has_one :seller, through: :make
-  has_many :ads, through: :make, dependent: :destroy
+  has_many :ads, through: :make
   has_one :heavytruck
   validates_presence_of(:make)
   validates_presence_of(:model)
