@@ -70,11 +70,11 @@
 	<%end%>
 	<%=fields_for :make do |m|%>
 	<li>
-	جديدة؟ <%= m.check_box :new%>
+	جديدة: <%= m.check_box :new%>
 	</li><li>
-	مستوردة؟ <%= m.check_box :imported%>
+	مستوردة: <%= m.check_box :imported%>
 	</li><li>
-	للبيع؟ <%= m.check_box :purchase%>
+	للبيع: <%= m.check_box :purchase%>
 	</li><li>
 	<%end%>
 	الوصف: (اختياري)

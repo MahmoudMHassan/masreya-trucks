@@ -2,16 +2,16 @@
 
 <%if request.original_fullpath == "/ads/new"%>
 <div style="text-align:center;width:700px;margin: 10px auto;">
-  <button onclick="location.href='/ads/new?type=van'" id="newvanbutton">
+  <button onclick="location.href='/ads/new?type=van'" id="newvanbutton" class="newVehicleButtons">
 <div style="position:relative; top:20px;">عربة</div>
   </button>
-  <button onclick="location.href='/ads/new?type=semitrailer'" id="newsemibutton">
+  <button onclick="location.href='/ads/new?type=semitrailer'" id="newsemibutton" class="newVehicleButtons">
 <div style="position:relative; top:20px;">شبه مقطورة</div>
   </button>
-  <button onclick="location.href='/ads/new?type=semitrailertruck'" id="newsttbutton">
+  <button onclick="location.href='/ads/new?type=semitrailertruck'" id="newsttbutton" class="newVehicleButtons">
 <div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
   </button>
-  <button onclick="location.href='/ads/new?type=heavytruck'" id="newheavybutton">
+  <button onclick="location.href='/ads/new?type=heavytruck'" id="newheavybutton" class="newVehicleButtons">
 <div style="position:relative; top:20px;">شاحنة ثقيلة</div>
   </button><br><br><br><br>
   اختر نوع الشاحنة لإضافة
@@ -19,30 +19,30 @@
 <%elsif ["/ads/new?type=van","/ads/new?type=semitrailer","/ads/new?type=heavytruck","/ads/new?type=semitrailertruck"].include? request.original_fullpath%>
 <div style="width:700px;margin: 10px auto;">
 <%if request.original_fullpath == "/ads/new?type=van"%>
-  <button onclick="location.href='/ads/new?type=van'" id="newvanbutton" style="background-color:#9DE56A">
+  <button onclick="location.href='/ads/new?type=van'" id="newvanbutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
-  <button onclick="location.href='/ads/new?type=van'" id="newvanbutton">
+  <button onclick="location.href='/ads/new?type=van'" id="newvanbutton" class="newVehicleButtons">
   <%end%>
 <div style="position:relative; top:20px;">عربة</div>
   </button>
   <%if request.original_fullpath == "/ads/new?type=semitrailer"%>
-  <button onclick="location.href='/ads/new?type=semitrailer'" id="newsemibutton" style="background-color:#9DE56A">
+  <button onclick="location.href='/ads/new?type=semitrailer'" id="newsemibutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
-  <button onclick="location.href='/ads/new?type=semitrailer'" id="newsemibutton">
+  <button onclick="location.href='/ads/new?type=semitrailer'" id="newsemibutton" class="newVehicleButtons">
   <%end%>
 <div style="position:relative; top:20px;">شبه مقطورة</div>
   </button>
   <%if request.original_fullpath == "/ads/new?type=semitrailertruck"%>
-  <button onclick="location.href='/ads/new?type=semitrailertruck'" id="newsttbutton" style="background-color:#9DE56A">
+  <button onclick="location.href='/ads/new?type=semitrailertruck'" id="newsttbutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
-  <button onclick="location.href='/ads/new?type=semitrailertruck'" id="newsttbutton">
+  <button onclick="location.href='/ads/new?type=semitrailertruck'" id="newsttbutton" class="newVehicleButtons">
   <%end%>
 <div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
   </button>
   <%if request.original_fullpath == "/ads/new?type=heavytruck"%>
-  <button onclick="location.href='/ads/new?type=heavytruck'" id="newheavybutton" style="background-color:#9DE56A">
+  <button onclick="location.href='/ads/new?type=heavytruck'" id="newheavybutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
-  <button onclick="location.href='/ads/new?type=heavytruck'" id="newheavybutton">
+  <button onclick="location.href='/ads/new?type=heavytruck'" id="newheavybutton" class="newVehicleButtons">
   <%end%>
 <div style="position:relative; top:20px;">شاحنة ثقيلة</div>
   </button>
@@ -118,19 +118,19 @@
 	<%end%>
 	<%=fields_for :make do |m|%>
 	<li>
-	جديدة؟ <%= m.check_box :new%>
+	جديدة: <%= m.check_box :new%>
 	</li><li>
-	مستوردة؟ <%= m.check_box :imported%>
+	مستوردة: <%= m.check_box :imported%>
 	</li><li>
-	للبيع؟ <%= m.check_box :purchase%>
+	للبيع: <%= m.check_box :purchase%>
 	</li><li>
 	<%end%>
 	الوصف: (اختياري)
 	</li><li>
-	<%= a.text_area :description, size: "35x7"%>
+	<%= a.text_area :description, size: "100x20"%>
 	
 	</li>
-	<li><%= a.file_field :image%></li>
+	<li><%= a.file_field :image %></li>
 	<li><%= a.file_field :image1 %></li>
 	<li><%= a.file_field :image2 %></li>
 	<li><%= a.file_field :image3 %></li>

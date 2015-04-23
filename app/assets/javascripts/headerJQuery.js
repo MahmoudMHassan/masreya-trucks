@@ -153,8 +153,6 @@ $vanbutton.click(function(e){
     $semibutton.css("background-color","#CDEBCD");
     $allbutton.css("background-color","#CDEBCD");
     $vanbutton.css("background-color","#9DE56A");
-    
-  
 });
 
 $heavybutton.click(function(e){
