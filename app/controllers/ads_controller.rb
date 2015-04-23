@@ -24,43 +24,53 @@ class AdsController < ApplicationController
 
   def create
     @ad = Ad.new(ad_params)
-    if @ad.save
-        @vehicle = Vehicle.new(vehicle_params)
-        if @vehicle.save
-            @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
-            @make.update(make_params)
-            @make.save
-
-            if params[:van]
-            @van = Van.new(vehicle_id: @vehicle.id)
-            @van.update(van_params)
-            @van.save
-            elsif params[:heavytruck]
-            @heavytruck = Heavytruck.new(vehicle_id: @vehicle.id)
-            @heavytruck.update(heavytruck_params)
-            @heavytruck.save
-            elsif params[:semitrailer]
-            @semitrailer = Semitrailer.new(vehicle_id: @vehicle.id)
-            @semitrailer.update(semitrailer_params)
-            @semitrailer.save
-            elsif params[:semitrailertruck]
-            @semitrailertruck = Semitrailertruck.new(vehicle_id: @vehicle.id)
-            @semitrailertruck.update(semitrailertruck_params)
-            @semitrailertruck.save
-            end
-            redirect_to "/ads/#{@ad.id}"
-
-        else
-            flash.now[:error] = "*خطأ فى إضافة اﻹعلان"
-            render 'new'
-
-        end
-    else 
-        flash.now[:error] = "*خطأ فى إضافة اﻹعلان"
-        render 'new'
+    @vehicle = Vehicle.new(vehicle_params)
+    @vehicle.save
+    #subclassvalid check if params of subclasses are valid
+    subclassvalid = false
+    if params[:van]
+      @van = Van.new(vehicle_id: @vehicle.id)
+      @van.assign_attributes(van_params)
+      subclassvalid = true if @van.valid?
+    elsif params[:heavytruck]
+      @heavytruck = Heavytruck.new(vehicle_id: @vehicle.id)
+      @heavytruck.assign_attributes(heavytruck_params)
+      subclassvalid = true if @heavytruck.valid?
+    elsif params[:semitrailer]
+      @semitrailer = Semitrailer.new(vehicle_id: @vehicle.id)
+      @semitrailer.assign_attributes(semitrailer_params)
+      subclassvalid = true if @semitrailer.valid?
+    elsif params[:semitrailertruck]
+      @semitrailertruck = Semitrailertruck.new(vehicle_id: @vehicle.id)
+      @semitrailertruck.assign_attributes(semitrailertruck_params)
+      subclassvalid = true if @semitrailertruck.valid?
+    end
+    #check if ad, vehicle and subclass params are all valid before saving
+    if @ad.valid? & @vehicle.valid? & subclassvalid
+      @ad.save
+      @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
+      @make.update(make_params)
+      @make.save
+      
+      if params[:van]
+	@van.save
+      elsif params[:heavytruck]
+	@heavytruck.save
+      elsif params[:semitrailer]
+	@semitrailer.save
+      elsif params[:semitrailertruck]
+	@semitrailertruck.save
+      end
+      
+      redirect_to "/ads/#{@ad.id}"
+    else
+      #delete saved record of vehicle and display error message
+      @vehicle.destroy
+      flash.now[:error] = "*خطأ فى إضافة اﻹعلان"
+      render 'new'
     end
   end
-
+  
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity],params[:mileage],params[:type],params[:new],params[:imported],params[:purchase])
   end
@@ -117,32 +127,31 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
-
-    @vehicle.update(vehicle_params)
+    
+    subclassvalid = false
+    @vehicle.assign_attributes(vehicle_params)
     if @van !=nil
-      @vehicle.van.update(van_params)
+      subclassvalid = true if @van.update(van_params)
     elsif @semitrailer!=nil
-      @vehicle.semitrailer.update(semitrailer_params)
+      subclassvalid = true if @semitrailer.update(semitrailer_params)
     elsif @semitrailertruck !=nil
-      @vehicle.semitrailertruck.update(semitrailertruck_params)
+      subclassvalid = true if @semitrailertruck.update(semitrailertruck_params)
     elsif @heavytruck !=nil
-      @vehicle.heavytruck.update(heavytruck_params)
+      subclassvalid = true if @heavytruck.update(heavytruck_params)
     end
-
-    if @vehicle.save
-        @ad.update(ad_params)
-        if @ad.save
-            @make.update(make_params)
-            @make.save
-            redirect_to "/ads/#{@ad.id}"
-        else 
-            flash.now[:error] = "*خطأ فى إضافة اﻹعلان"
-            render 'edit'
-        end
-   else 
-        flash.now[:error] = "*خطأ فى إضافة اﻹعلان"
-        render 'edit'
-   end
+    
+    @ad.assign_attributes(ad_params)
+    
+    if @ad.valid? & @vehicle.valid? & subclassvalid
+      @ad.save
+      @vehicle.save
+      @make.update(make_params)
+      @make.save
+      redirect_to "/ads/#{@ad.id}"
+    else
+      flash.now[:error] = "*خطأ فى تعديل اﻹعلان"
+      render 'edit'
+    end
   end
 
  private
