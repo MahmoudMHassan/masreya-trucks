@@ -37,7 +37,7 @@
 	  <%if @companyseller.lat !=nil%>
 	    var lng = <%=@companyseller.lng%>;
 	    var lat = <%=@companyseller.lat%>;
-	    marker = handler.addMarker({"lat": lat,"lng": lng});
+	    marker = handler.addMarker({"lat": lat,"lng": lng},{opacity: 0.5});
 	    handler.map.centerOn([lat, lng]);
 	    handler.getMap().setZoom(16);
 	  <%else%>
