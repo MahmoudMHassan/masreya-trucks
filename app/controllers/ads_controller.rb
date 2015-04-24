@@ -153,7 +153,9 @@ class AdsController < ApplicationController
       render 'edit'
     end
   end
-
+  def inputValidation ad
+return ad.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) && ad.phone.match(/^\+?+[[:digit:]]{,20}$/)
+end
  private
 
  def ad_params
