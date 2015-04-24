@@ -90,6 +90,9 @@ class UsersController < ApplicationController
     @wrong = false
 
     user = User.where(:email => @email.downcase).first
+    if user == nil 
+      user = User.where(:phone => @email).first
+    end 
     if ((@email.blank?) || (@password.blank?) || (!validateLogin @email))
 
       @blank = true
