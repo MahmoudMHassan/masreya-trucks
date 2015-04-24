@@ -103,12 +103,12 @@ class UsersController < ApplicationController
 
   end
    def edit
-    @user = User.find(params[:id])
-    @companyseller = CompanySeller.find_by_user_id(params[:id])
-  end 
+    @user = self.current_user
+    @companyseller = CompanySeller.find_by_user_id(self.current_user.id)
+  end
 
   def update
-    @user = User.find(params[:id])
+    @user = self.current_user
     @user.company_seller.update(params[:company_seller].permit(:lng,:lat)) if CompanySeller.find_by_user_id(@user.id) != nil
     if @user.update(params[:user].permit(:email,:password,:fname,:lname,:country,:phone,:validated, :avatar))
       redirect_to "/users/#{@user.id}"
