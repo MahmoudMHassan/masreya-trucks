@@ -4,6 +4,7 @@
 <span class ="error">يوجد مسافات فارغة*</span>
 <%end%>
 <br>
+<div style = "float:right;">
     <p>البريد الالكتروني<%if @email==""%><span style = "color: red;"> * </span><%end%> </p>
     <%= f.email_field :email, :value => self.current_user.email%>
     <p>الاسم<%if @fname==""%><span style = "color: red;"> * </span><%end%></p>
@@ -13,8 +14,59 @@
      <p>البلد<%if @country==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :country,:value => self.current_user.country %>
     <p>الهاتف<%if @phone==""%><span style = "color: red;"> * </span><%end%></p>
-    <%= f.text_field :phone ,:value => self.current_user.phone%><br>
-    <%=f.file_field :avatar%>
+    <%= f.text_field :phone ,:value => self.current_user.phone%><br><br>
+    <%=f.file_field :avatar%><br><br>
+    
+    <%if @companyseller != nil%>
+    <%=fields_for :company_seller do |cs|%>
+        <%=cs.hidden_field :lat, id: 'map_lat', value: @companyseller.lat%>
+        <%=cs.hidden_field :lng, id: 'map_lng', value: @companyseller.lng%>
+    <%end%>
+    <%end%>
     <%= f.submit "حفظ"%>
+    </div>
 <% end %>
+<%if @companyseller != nil%>
+<div style='width:50%;height: 420px;float:left;'>
+انقر على الخريطة لتغيير مكان شركتك
+  <div id="map" style='height: 400px;border:1px solid #000;'>
+  
+        <script>
+	  handler = Gmaps.build('Google');
+	  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+	  <%if @companyseller.lat !=nil%>
+	    var lng = <%=@companyseller.lng%>;
+	    var lat = <%=@companyseller.lat%>;
+	    marker = handler.addMarker({"lat": lat,"lng": lng});
+	    handler.map.centerOn([lat, lng]);
+	    handler.getMap().setZoom(16);
+	  <%else%>
+	    handler.map.centerOn([29.00, 30.00]);
+	    handler.getMap().setZoom(6);
+	  <%end%>
+	  handler.fitMapToBounds();
+	});
+	var markerOnMap;
+
+	function placeMarker(location) {
+	  if (markerOnMap) {
+	    markerOnMap.setPosition(location);
+	  }
+	  else {
+	    markerOnMap = new google.maps.Marker({
+	    position: location,
+	    map: handler.getMap()
+	  });
+	  }
+	}
+
+	google.maps.event.addListener(handler.getMap(), 'click', function(event) {
+	placeMarker(event.latLng);
+	document.getElementById("map_lat").value = event.latLng.lat();
+	document.getElementById("map_lng").value = event.latLng.lng();
+	});
+	</script>
+  </div>
+  </div>
+<%end%>
 </div>

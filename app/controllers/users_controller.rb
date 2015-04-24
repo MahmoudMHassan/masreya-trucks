@@ -15,6 +15,13 @@ class UsersController < ApplicationController
   def show
     if User.exists?(params[:id])
       @user = User.find(params[:id])
+      @companyseller = CompanySeller.find_by_user_id(params[:id])
+#       if @companyseller != nil
+# 	  @hash = Gmaps4rails.build_markers(@companyseller) do |companyseller, marker|
+# 	  marker.lat companyseller.lat
+# 	  marker.lng companyseller.lng
+# 	end
+#       end
     else
       redirect_to root_path
     end
@@ -56,8 +63,8 @@ class UsersController < ApplicationController
     if  @user.save
       log_in(@user)
  
-      @buyer= Buyer.create(user_id: @user.id)
-      @buyer.save
+      @seller= Seller.create(user_id: @user.id)
+      @seller.save
            redirect_to "/users/#{@user.id}"
     else
       render 'new'
@@ -97,10 +104,12 @@ class UsersController < ApplicationController
   end
    def edit
     @user = User.find(params[:id])
+    @companyseller = CompanySeller.find_by_user_id(params[:id])
   end 
 
   def update
     @user = User.find(params[:id])
+    @user.company_seller.update(params[:company_seller].permit(:lng,:lat)) if CompanySeller.find_by_user_id(@user.id) != nil
     if @user.update(params[:user].permit(:email,:password,:fname,:lname,:country,:phone,:validated, :avatar))
       redirect_to "/users/#{@user.id}"
     else
