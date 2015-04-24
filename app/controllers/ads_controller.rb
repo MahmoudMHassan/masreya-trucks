@@ -46,7 +46,7 @@ class AdsController < ApplicationController
       subclassvalid = true if @semitrailertruck.valid?
     end
     #check if ad, vehicle and subclass params are all valid before saving
-    if @ad.valid? & @vehicle.valid? & subclassvalid
+    if ((@ad.valid?) & (@vehicle.valid?) & (subclassvalid))
       @ad.save
       @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
       @make.update(make_params)

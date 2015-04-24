@@ -53,6 +53,7 @@ class UsersController < ApplicationController
     @avatar = params[:user][:avatar]
     @blank = false
     @usedemail = false
+    @valid = true
     if @email.blank? || @password.blank? || @phone.blank? || @fname.blank? || @lname.blank? || @country.blank?
       @blank = true
       render 'new'
@@ -89,7 +90,7 @@ class UsersController < ApplicationController
     @wrong = false
 
     user = User.where(:email => @email.downcase).first
-    if @email.blank? || @password.blank?
+    if ((@email.blank?) || (@password.blank?) || (!validateLogin @email))
 
       @blank = true
       render 'signin'
@@ -132,5 +133,8 @@ class UsersController < ApplicationController
   end
   def inputValidation user
 return user.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) && user.fname.match(/^[[:alpha:]]+$/) && user.lname.match(/^[[:alpha:]]+$/) && user.country.match(/^[[:alpha:]]+$/) && user.phone.match(/^\+?+[[:digit:]]{,20}$/)
+end
+ def validateLogin param
+return param.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) || param.match(/^\+?+[[:digit:]]{,20}$/)
 end
 end
