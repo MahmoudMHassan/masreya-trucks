@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gmap: MyString
+  user_id: 
+
+two:
+  gmap: MyString
+  user_id: 

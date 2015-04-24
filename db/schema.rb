@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150408003426) do
+ActiveRecord::Schema.define(version: 20150423215159) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -47,16 +47,11 @@ ActiveRecord::Schema.define(version: 20150408003426) do
   add_index "bookmarks", ["ad_id"], name: "index_bookmarks_on_ad_id", using: :btree
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
-  create_table "buyers", primary_key: "user_id", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "buyers", ["user_id"], name: "index_buyers_on_user_id", using: :btree
-
   create_table "company_sellers", primary_key: "user_id", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.float    "lng",        limit: 24
+    t.float    "lat",        limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_index "company_sellers", ["user_id"], name: "index_company_sellers_on_user_id", using: :btree
@@ -81,9 +76,9 @@ ActiveRecord::Schema.define(version: 20150408003426) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_8dbdaac95a", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_a1052fd88a", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_b2480a9452", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_ee2fd378e6", using: :btree
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -150,7 +145,6 @@ ActiveRecord::Schema.define(version: 20150408003426) do
 
   add_foreign_key "bookmarks", "ads"
   add_foreign_key "bookmarks", "users"
-  add_foreign_key "buyers", "users"
   add_foreign_key "company_sellers", "users"
   add_foreign_key "heavytrucks", "vehicles"
   add_foreign_key "makes", "ads"

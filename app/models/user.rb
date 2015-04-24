@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 	has_many :authentications, :dependent => :delete_all
 	has_one :seller, dependent: :destroy
 	has_one :buyer, dependent: :destroy
+	has_one :company_seller, dependent: :destroy
+	accepts_nested_attributes_for :company_seller
 	mount_uploader :avatar, AvatarUploader
  def apply_omniauth(auth)
   # In previous omniauth, 'user_info' was used in place of 'raw_info'
