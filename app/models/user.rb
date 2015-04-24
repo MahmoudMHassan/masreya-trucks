@@ -28,7 +28,14 @@ end
       if member.password == password
       return true
       end
+    else 
+      member = User.where(phone: email).take
+      if member != nil 
+        if member.password == password
+          return true
+        end 
     end
+  end 
     return false
   end
 end 
