@@ -7,7 +7,7 @@
 #
 # set :output, "/path/to/my/cron_log.log"
 #
- every 1.minute do
+ every 1.days do
    #command "0 8 * * * /bin/bash -l -c 'cd ~/Documents/workshop/masreya-trucks/lib/tasks/my_namespace.rake && RAILS_ENV=production rake my_namespace:delete 2>&1'"
    #runner "MyModel.some_method"
    rake "my_namespace:delete"
