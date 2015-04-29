@@ -20,6 +20,7 @@ class AdsController < ApplicationController
     @heavytruck = Heavytruck.new
     @semitrailer = Semitrailer.new
     @semitrailertruck = Semitrailertruck.new
+  
   end
 
   def create
@@ -48,6 +49,10 @@ class AdsController < ApplicationController
     #check if ad, vehicle and subclass params are all valid before saving
     if ((@ad.valid?) & (@vehicle.valid?) & (subclassvalid))
       @ad.save
+       if @ad.save
+       params[:pictures]['image'].each do |a|
+          @pictures = @ad.pictures.create!(:image => a, :ad_id => @ad.id)
+       end
       @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
       @make.update(make_params)
       @make.save
@@ -70,7 +75,7 @@ class AdsController < ApplicationController
       render 'new'
     end
   end
-  
+  end
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity],params[:mileage],params[:type],params[:new],params[:imported],params[:purchase])
   end
@@ -87,6 +92,7 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
+    @pictures = @ad.pictures.all
   end
 
   def bookmark
@@ -99,6 +105,16 @@ class AdsController < ApplicationController
     Bookmark.where(:user_id => self.current_user.id,:ad_id => params[:id]).destroy_all
     redirect_to "/ads/#{params[:id]}"
   end
+ def index
+ @ads= Make.where('user_id = ?', self.current_user.id)
+   #@seller= User.find(params[:id])
+ # @ads = @seller.ads
+end
+# 
+ def view
+  # @seller = User.find(params[:id])
+@seller = User.find(params[:id])
+end
 
   def delete
     Make.destroy_all(user_id: self.current_user.id, ad_id: params[:id])
@@ -159,7 +175,7 @@ end
  private
 
  def ad_params
-  ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4)
+  ad_params = params.require(:ad).permit(:title,:description, pictures_attributes: [:id, :ad_id, :image])
   ad_params
  end
 
@@ -192,9 +208,4 @@ end
   semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
   semitrailertruck_params
  end
-
-
-
-
-
 end

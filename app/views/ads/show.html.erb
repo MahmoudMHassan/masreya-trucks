@@ -139,35 +139,9 @@
 <%=@seller.email%>
 </li>
 
-<%if @ad.image_url.to_s != ""%>
-<%= link_to(@ad.image_url.to_s) do %>
-  <%= image_tag @ad.image_url.to_s,size:"300x180" %>
+<% @pictures.each do |p| %>
+  <%= image_tag p.image_url %>
 <% end %>
-<%end%>
-
-<%if @ad.image1_url.to_s != ""%>
-<%= link_to(@ad.image1_url.to_s) do %>
-  <%= image_tag @ad.image1_url.to_s,size:"300x180" %>
-<% end %>
-<%end%>
-
-<%if @ad.image2_url.to_s != ""%>
-<%= link_to(@ad.image2_url.to_s) do %>
-  <%= image_tag @ad.image2_url.to_s,size:"300x180" %>
-<% end %>
-<%end%>
-
-<%if @ad.image3_url.to_s != ""%>
-<%= link_to(@ad.image3_url.to_s) do %>
-  <%= image_tag @ad.image3_url.to_s,size:"300x180" %>
-<% end %>
-<%end%>
-
-<%if @ad.image4_url.to_s != ""%>
-<%= link_to(@ad.image4_url.to_s) do %>
-  <%= image_tag @ad.image4_url.to_s,size:"300x180" %>
-<% end %>
-<%end%>
 </div>
 
 </div>

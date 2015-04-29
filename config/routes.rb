@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   
+  get 'sellers/new'
+
+  get 'sellers/edit'
+
+  get 'pictures/edit'
+
+  get 'pictures/delete'
+
   get 'pictures/new'
   
   get 'pictures/create'
@@ -58,12 +66,15 @@ Rails.application.routes.draw do
   get 'ads/sttsearch/:page' => 'ads#sttsearch'
   get 'ads/semisearch/:page' => 'ads#semisearch'
   get 'ads/home' => 'ads#home'
+  get 'ads/index'
   get 'ads/:id' => 'ads#show'
+ #match 'ads/view/:id' => 'ads#index', via: :all
   post 'ads/bookmark/:id' => 'ads#bookmark'
   post 'ads/unbookmark/:id' => 'ads#unbookmark'
   post 'ads/delete/:id' => 'ads#delete'
   get 'ads/edit/:id' => 'ads#edit'
   post 'ads/edit/:id' => 'ads#update'
+  
   
   
   #resources :vehicles
@@ -81,7 +92,9 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/edit'
   get 'users/:id' => 'users#show'
+
   get 'users/changetoseller/:id' => 'users#changetoseller'
+
   #get 'makes/new'
   
   post 'users/destroy/:id' => 'users#destroy'
