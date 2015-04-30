@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+
+
   get 'contact_us' => 'ads#contact_us' 
+
   get 'pictures/new'
 
   get 'pictures/create'
