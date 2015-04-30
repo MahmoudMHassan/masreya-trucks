@@ -159,7 +159,7 @@ end
  private
 
  def ad_params
-  ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4)
+  ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4,:phone)
   ad_params
  end
 

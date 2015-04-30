@@ -126,7 +126,10 @@
 	</li><li>
 	<%end%>
 	الوصف: (اختياري)
-	</li><li>
+	</li>
+	<li><b>تليفون بديل:</b></li>
+	<li><%=a.number_field :phone%></li>
+	<li>
 	<%= a.text_area :description, size: "100x20"%>
 	
 	</li>

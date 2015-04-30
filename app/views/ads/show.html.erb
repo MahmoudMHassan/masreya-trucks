@@ -123,12 +123,12 @@
 <%if @ad.description != ""%>
 <li><b>الوصف:</b></li>
 <li><%=@ad.description%></li>
-<li><b>التليفون:</b></li>
-<li><%=@ad.phone%></li>
-
 <%end%>
 </div>
 <div id ="sellerinfo">
+<li><b>تليفون الإعلان:</b></li>
+<li><%=@ad.phone%></li>
+
 <li><b>اسم البائع :</b></li>
 
 <li><%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%></li>
