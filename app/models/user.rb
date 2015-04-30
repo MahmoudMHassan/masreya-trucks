@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
     has_secure_password
+    validates_presence_of :password, :on => :create
     has_many :authentications, :dependent => :delete_all
     has_one :seller, dependent: :destroy
     has_one :buyer, dependent: :destroy
@@ -26,13 +27,13 @@ class User < ActiveRecord::Base
 
         member = User.where(email: email).take
         if member != nil
-            if member.password == password
+            if member.authenticate(password)
                 return true
             end
         else
             member = User.where(phone: email).take
             if member != nil
-                if member.password == password
+                if member.authenticate(password)
                     return true
                 end
             end
