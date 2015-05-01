@@ -85,6 +85,7 @@ class UsersController < ApplicationController
     def signin
 
     end
+
     def login
         @email = params[:login][:email]
         @password = params[:login][:password]
@@ -130,6 +131,7 @@ class UsersController < ApplicationController
         end
     end
 
+
     def changetoseller
         Buyer.find_by_user_id(self.current_user.id).delete if Buyer.find_by_user_id(self.current_user.id)!=nil
         @seller = Seller.create(user_id: self.current_user.id)
@@ -137,9 +139,10 @@ class UsersController < ApplicationController
         redirect_to "/users/#{self.current_user.id}"
     end
     def inputValidation user
-        return user.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) && user.fname.match(/^[[:alpha:]]+$/) && user.lname.match(/^[[:alpha:]]+$/) && user.country.match(/^[[:alpha:]]+$/) && user.phone.match(/^\+?+[[:digit:]]{,20}$/)
+        return user.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@([[:alpha:]]+.[[:alpha:]]+){,5}$/) && user.fname.match(/^[[:alpha:]]+$/) && user.lname.match(/^[[:alpha:]]+$/) && user.country.match(/^[[:alpha:]]+$/) && user.phone.match(/^\+?+[[:digit:]]{,20}$/)
     end
     def validateLogin param
-        return param.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) || param.match(/^\+?+[[:digit:]]{,20}$/)
+        return param.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@([[:alpha:]]+.[[:alpha:]]+){,5}$/) || param.match(/^\+?+[[:digit:]]{,20}$/)
     end
+
 end

@@ -7,9 +7,9 @@
 <span class ="error">يوجد مسافات فارغة*</span>
 <%end%>
 <br>
-  <p>البريد الالكتروني <%if @email==""%><span style = "color: red;"> * </span><%end%></p>
+  <p>البريد الالكتروني او الهاتف <%if @email==""%><span style = "color: red;"> * </span><%end%></p>
   
-    <%= f.email_field :email, :value => @email%>
+    <%= f.text_field :email, :value => @email%>
 
 <p>كلمة السر<%if @password==""%><span style = "color: red;"> * </span><%end%></p>  
 
