@@ -155,12 +155,12 @@ class AdsController < ApplicationController
     end
   end
   def inputValidation ad
-    return ad.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@([[:alpha:]]+.[[:alpha:]]+){,5}$/) && ad.phone.match(/^\+?+[[:digit:]]{,20}$/)
+    return ad.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) && ad.phone.match(/^\+?+[[:digit:]]{,20}$/)
   end
   private
   
   def ad_params
-    ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4)
+    ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4,:phone)
     ad_params
   end
   
@@ -170,7 +170,7 @@ class AdsController < ApplicationController
   end
   
   def make_params
-    make_params = params[:make].permit(:new,:sale)
+    make_params = params[:make].permit(:new,:imported,:purchase)
     make_params
   end
   
@@ -193,4 +193,10 @@ class AdsController < ApplicationController
     semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
     semitrailertruck_params
   end
+  
+  
+  
+  
+  
+  
 end

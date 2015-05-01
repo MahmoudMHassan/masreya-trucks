@@ -44,7 +44,7 @@
 <%elsif @heavytruck !=nil%>
  الشاحنات الثقيلة
 <%elsif @semitrailer !=nil%>
- شبه مقطورة 
+ شبه مقطورة
 <%elsif @semitrailertruck !=nil%>
  الشاحنات أشباه المقطورة
 <%end%>
@@ -123,6 +123,9 @@
 <%end%>
 </div>
 <div id ="sellerinfo">
+<li><b>تليفون الإعلان:</b></li>
+<li><%=@ad.phone%></li>
+
 <li><b>اسم البائع :</b></li>
 
 <li><%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%></li>

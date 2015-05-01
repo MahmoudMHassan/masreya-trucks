@@ -129,9 +129,13 @@
 	للإيجار: <%=m.check_box :sale%>
 	</li>
 	<%end%>
+	
+	<li><b>تليفون بديل:</b></li>
+	<li><%=a.number_field :phone%></li>
 	<li>
 	الوصف: (اختياري)
-	</li><li>
+	</li>
+	<li>
 	<%= a.text_area :description, size: "100x20"%>
 	
 	</li>
