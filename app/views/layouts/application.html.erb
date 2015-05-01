@@ -11,91 +11,97 @@
   <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 
     <div id="header">
-        <div id="headerRight">
-        <%= link_to(root_path) do %>
-            <%= image_tag 'truck-green-icon1.png'%>
-        <% end %>
-        </div>
+	<div id="headerRight">
+	<%= link_to(root_path) do %>
+	    <%= image_tag 'truck-green-icon1.png'%>
+	<% end %>
+	</div>
+<!--header simple search does not appear in the advancedsearch page-->
+<%if request.original_fullpath != "/advancedsearch"%>
+	<div style="width:1000px;margin-top:0.5%;margin-right:10%;height:0px;z-index:1500">
 
-        <div style="width:1000px;margin-top:0.5%;margin-right:10%;height:0px;z-index:1500">
+	<button id="searchbutton" style="font-size:20px;color:#000000">
 
-        <button id="searchbutton" style="font-size:20px;color:#000000">
-
-            <div id = "searchtext" style="margin-right:40px;width:0px;height:0px;"> البحث</div>
-            <div id="arrowwrapper">
-            <div id="downarrow"></div>
-            <div id="uparrow"></div>
-            </div>
-        </button>
+	    <div id = "searchtext" style="margin-right:40px;width:0px;height:0px;"> البحث</div>
+	    <div id="arrowwrapper">
+	    <div id="downarrow"></div>
+	    <div id="uparrow"></div>
+	    </div>
+	</button>
   
-        <button id="allbutton" class="vehicleButtons">
-            <div style="position:relative; top:-2px;">جميع الشاحنات</div>
-        </button>
+	<button id="allbutton" class="vehicleButtons">
+	    <div style="position:relative; top:-2px;">جميع الشاحنات</div>
+	</button>
 
-        <button id="vanbutton" class="vehicleButtons">
-            <div style="position:relative; top:20px;">عربة</div>
-        </button>
-        <button id="semibutton" class="vehicleButtons">
-            <div style="position:relative; top:20px;">شبه مقطورة</div>
-        </button>
-        <button id="sttbutton" class="vehicleButtons">
-            <div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
-        </button>
-        <button id="heavybutton" class="vehicleButtons">
-            <div style="position:relative; top:20px;">شاحنة ثقيلة</div>
-        </button>
+	<button id="vanbutton" class="vehicleButtons">
+	    <div style="position:relative; top:20px;">عربة</div>
+	</button>
+	<button id="semibutton" class="vehicleButtons">
+	    <div style="position:relative; top:20px;">شبه مقطورة</div>
+	</button>
+	<button id="sttbutton" class="vehicleButtons">
+	    <div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
+	</button>
+	<button id="heavybutton" class="vehicleButtons">
+	    <div style="position:relative; top:20px;">شاحنة ثقيلة</div>
+	</button>
 
 
-        <div id="searchwrapper">
-            <%=render 'ads/searchform'%>
-        </div>
-        </div>
+	<div id="searchwrapper">
+	    <%=render 'ads/simplesearch'%>
+	    <div style="float:left;margin-top:-20px;font-size:16px;">
+	    <%=link_to "بحث متقدم...", "/advancedsearch"%>
+	    </div>
+	</div>
+	
+	</div>
+	<%end%>
     <%if self.current_user==nil %>
     <div id="headerLeftOut">
     <ul>
-        <li> 
-        <%=button_to "فتح حساب", "/users/new",id: "signupbutton", class: "listButtons", method: :get%> 
-        </li>
-        <li> 
-        <%=button_to "تسجيل الدخول", "/users/signin",id: "loginbutton", class: "listButtons", method: :get%>
-        </li>
+	<li> 
+	<%=button_to "فتح حساب", "/users/new",id: "signupbutton", class: "listButtons", method: :get%> 
+	</li>
+	<li> 
+	<%=button_to "تسجيل الدخول", "/users/signin",id: "loginbutton", class: "listButtons", method: :get%>
+	</li>
     </ul>
     <%else%>
     <div id="headerLeftIn">
-        <div id="buttonwrapper">
-        <table>
-        <tr>
-        <td>
-            <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton",class: "listButtons",  method: :get%>
-        </td><td>
-            <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
-        </td>
-        </tr>
-        <tr>
-        <td>
-            <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
-        </td><td>
-            <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
-        </td></tr>
-        </table>
-        </div>
-        <div id="listButton"></div>
-        <div id="buttonList">
-        <ul>
-        <li>
-        <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", class: "listButtons", method: :get%>
-        </li>
-        <li>
-        <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
-        </li>
-        <li>
-        <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
-        </li>
-        <li>
-        <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
-        </li>
-        <ul>
-        </div>
+	<div id="buttonwrapper">
+	<table>
+	<tr>
+	<td>
+	    <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton",class: "listButtons",  method: :get%>
+	</td><td>
+	    <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	    <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
+	</td><td>
+	    <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
+	</td></tr>
+	</table>
+	</div>
+	<div id="listButton"></div>
+	<div id="buttonList">
+	<ul>
+	<li>
+	<%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", class: "listButtons", method: :get%>
+	</li>
+	<li>
+	<%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
+	</li>
+	<li>
+	<%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
+	</li>
+	<li>
+	<%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
+	</li>
+	<ul>
+	</div>
     <%end%>
 
     </div>
