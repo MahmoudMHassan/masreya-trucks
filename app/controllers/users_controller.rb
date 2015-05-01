@@ -135,9 +135,9 @@ class UsersController < ApplicationController
     redirect_to "/users/#{self.current_user.id}"
   end
   def inputValidation user
-return user.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@([[:alpha:]]+.[[:alpha:]]+){,5}$/) && user.fname.match(/^[[:alpha:]]+$/) && user.lname.match(/^[[:alpha:]]+$/) && user.country.match(/^[[:alpha:]]+$/) && user.phone.match(/^\+?+[[:digit:]]{,20}$/)
-end
- def validateLogin param
-return param.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@([[:alpha:]]+.[[:alpha:]]+){,5}$/) || param.match(/^\+?+[[:digit:]]{,20}$/)
-end
+    return user.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@[[:alpha:]]+(.[[:alpha:]]+){,5}$/) && user.fname.match(/^[[:alpha:]]+$/) && user.lname.match(/^[[:alpha:]]+$/) && user.country.match(/^[[:alpha:]]+$/) && user.phone.match(/^\+?+[[:digit:]]{,20}$/)
+  end
+  def validateLogin param
+    return param.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@[[:alpha:]]+(.[[:alpha:]]+){,5}$/) || param.match(/^\+?+[[:digit:]]{,20}$/)
+  end
 end

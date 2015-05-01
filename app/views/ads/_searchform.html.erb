@@ -3,19 +3,19 @@
 <tr>
 <td>الماركة</td>
 
- <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
-                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
+<td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
+		['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
 
 <td>الموديل</td>
 
 <td><%= select_tag(:model, options_for_select([['i10', 'i10'],
-                 ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
+		['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
 
 <td>سنة الصنع</td>
 <td><%=number_field_tag :manyear,params[:manyear]%></td>
 <td>البلد</td>
 <td><%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
-                 ['madagascar', 'madagascar']], params[:country]), :include_blank => true) %></td>
+		['madagascar', 'madagascar']], params[:country]), :include_blank => true) %></td>
 
 </tr>
 <tr>
@@ -43,27 +43,27 @@
 </table>
 
 
- جديدة
- <%if params[:new] == "0"%>
+جديدة
+<%if params[:new] == "0"%>
 <%= radio_button_tag(:new, "0", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "0") %>
 <%end%>
 استيراد
- <%if params[:new] == "1"%>
+<%if params[:new] == "1"%>
 <%= radio_button_tag(:new, "1", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "1") %>
 <%end%>
- مستعملة
- <%if params[:new] == "2"%>
+مستعملة
+<%if params[:new] == "2"%>
 <%= radio_button_tag(:new, "2", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "2") %>
 <%end%>
- 
 
- 
+
+
 <div id="atrrparent">
 <div id="vanwrapper">
 <%=render 'ads/vanform'%>
