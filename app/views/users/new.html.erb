@@ -9,6 +9,8 @@
     <%= f.email_field :email, :value => @email%>
     <p>كلمة السر<%if @password==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.password_field :password%>
+     <p>تأكيد كلمة السر<%if @password==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.password_field :password_confirmation%>
     <p>الاسم<%if @fname==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :fname, :value => @fname %>
     <p>اسم العائلة<%if @lname==""%><span style = "color: red;"> * </span><%end%></p>
@@ -17,8 +19,11 @@
     <%= f.text_field :country, :value => @country %>
     <p>الهاتف<%if @phone==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :phone , :value => @phone%><br>
+    <p> الصورة الشخصية </p>
     <%= f.file_field :avatar%>
-    <%= f.submit "حفظ"%>
+    <br>
+    <br>
+    <%= f.submit "تسجيل"%>
 <% end %>
 </div>
 
