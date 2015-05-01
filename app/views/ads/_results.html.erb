@@ -1,6 +1,7 @@
 <div id ="adwrapper">
 الترتيب
 <%sortpath = request.original_fullpath.split("&sort=")[0]%>
+<!--select tag for sorting method (change default depending on params[:sort])  -->
 <select id="sortlist">
     <%if params[:sort] == "0"%>
     <option selected="selected" value=<%="#{sortpath}&sort=0"%>>↑ سعر</option>
