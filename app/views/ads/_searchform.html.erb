@@ -4,7 +4,7 @@
 <<<<<<< HEAD
 <td><%= t("ad.manu")%></td>
 =======
-<td>الماركة</td>
+<td><%= t("ad.manu")%></td>
 >>>>>>> 08fa0e3024119ba8ac60df3c9c05837253ee9936
 
  <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
@@ -13,7 +13,7 @@
 <<<<<<< HEAD
 <td><%=t("ad.model")%></td>
 =======
-<td>الموديل</td>
+<td><%= t("ad.model")%></td>
 >>>>>>> 08fa0e3024119ba8ac60df3c9c05837253ee9936
 
 <td><%= select_tag(:model, options_for_select([['i10', 'i10'],
@@ -22,7 +22,7 @@
 <<<<<<< HEAD
 <td><%= t("ad.man_year")%></td>
 =======
-<td>سنة الصنع</td>
+<td><%= t("ad.man_year")%></td>
 >>>>>>> 08fa0e3024119ba8ac60df3c9c05837253ee9936
 <td><%=number_field_tag :manyear,params[:manyear]%></td>
 <td><%= t("ad.manu")%></td>
@@ -50,7 +50,7 @@
 <td><%=t("ad.order")%></td>
 <td><%= select_tag(:sort, options_for_select([['↑ price', '0'],['↓ price', '1'],['↑ manyear', '2'],['↓ manyear', '3']], params[:sort])) %></td>
 =======
-<td>السعر من</td>
+<td><%= t("ad.price")%>  من</td>
 <td><%= number_field_tag :price_from, params[:price_from]%></td>
 <td>إلى</td>
 <td><%= number_field_tag :price_to, params[:price_to]%></td>
@@ -99,28 +99,28 @@
 =======
 
 
- جديدة
+ <%= t("ad.new")%>
  <%if params[:new] == "0"%>
 <%= radio_button_tag(:new, "0", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "0") %>
 <%end%>
-استيراد
+<%= t("ad.imported")%>
  <%if params[:new] == "1"%>
 <%= radio_button_tag(:new, "1", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "1") %>
 <%end%>
- مستعملة
+ <%= t("ad.used")%>
  <%if params[:new] == "2"%>
 <%= radio_button_tag(:new, "2", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "2") %>
 >>>>>>> 08fa0e3024119ba8ac60df3c9c05837253ee9936
 <%end%>
- 
 
- 
+
+
 <div id="atrrparent">
 <div id="vanwrapper">
 <%=render 'ads/vanform'%>

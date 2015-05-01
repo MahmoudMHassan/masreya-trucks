@@ -75,6 +75,7 @@ en:
     map: "Click on the map to change your location"
     info: "Information about the vehicle"
     order: "Order"
+    type: "Type"
   users:
     edit: "Edit Profile"
     rm: "Delete Account"

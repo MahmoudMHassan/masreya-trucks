@@ -1,18 +1,18 @@
- 
+
 <%=form_tag "/search/1", :method => 'get' do%>
 <table>
 <tr>
-<td>الماركة</td>
+<td><%= t("ad.manu")%></td>
 
  <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
                  ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
 
-<td>الموديل</td>
+<td><%= t("ad.model")%></td>
 
 <td><%= select_tag(:model, options_for_select([['i10', 'i10'],
                  ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
 
-<td>سنة الصنع</td>
+<td><%= t("ad.man_year")%></td>
 <td><%=number_field_tag :manyear,params[:manyear]%></td>
 
 
@@ -20,11 +20,11 @@
 <tr>
 
 
-<td>عجلة السرعة</td>
+<td><%= t("ad.transmission")%> </td>
 
 <td><%= select_tag(:gearbox, options_for_select([['Automatic', 1],['Manual', 0]], params[:gearbox]), :include_blank => true) %></td>
 
-<td>السعر من</td>
+<td><%= t("ad.price")%>  من</td>
 <td><%= number_field_tag :price_from, params[:price_from]%></td>
 <td>إلى</td>
 <td><%= number_field_tag :price_to, params[:price_to]%></td>
@@ -33,9 +33,9 @@
 
 
 
- 
 
- 
+
+
 <div id="atrrparent">
 <td id="vanwrapper">
 <%=render 'ads/vanform'%>

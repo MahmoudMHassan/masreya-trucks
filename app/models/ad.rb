@@ -26,7 +26,7 @@ class Ad < ActiveRecord::Base
             end
         end
         if new.present?
-            if new == "جديدة"
+            if new == "<%= t("ad.new")%>"
                 @make = @make.where('new LIKE ?',"1")
             else
                 @make = @make.where('new LIKE ?',"0")
