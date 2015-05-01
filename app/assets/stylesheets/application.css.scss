@@ -141,10 +141,29 @@ background-color:#CDEBCD;
 
 	#searchwrapper{
 	position: absolute;
-	width:700px;
+	width:350px;
 	margin: 0 auto;
 	color: #000000;
 	visibility:hidden;
+	
+	}
+	#advancedwrapper{
+	border-radius:2px;
+	border:1px solid #808F7E;
+	overflow: hidden;
+	background:#FAFAFA;
+	width:1000px;
+	//overflow-x:scroll;
+	//direction:rtl;
+	//min-width:1039px;
+	//width: 74.9%;
+	//max-width: 1039px;
+	margin: 1% auto;
+	padding:1%;
+	
+	}
+	#sortlist{
+	  padding:2px;
 	}
 	#searchparent{
 	position: relative;

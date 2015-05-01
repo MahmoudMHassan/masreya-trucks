@@ -69,9 +69,7 @@ ActiveRecord::Schema.define(version: 20150423215159) do
     t.integer  "user_id",    limit: 4
     t.integer  "vehicle_id", limit: 4
     t.integer  "ad_id",      limit: 4
-    t.boolean  "new",        limit: 1
-    t.boolean  "purchase",   limit: 1
-    t.boolean  "imported",   limit: 1
+    t.integer  "new",        limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
@@ -79,6 +77,7 @@ ActiveRecord::Schema.define(version: 20150423215159) do
   add_index "makes", ["ad_id"], name: "fk_rails_802727e423", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
   add_index "makes", ["vehicle_id"], name: "fk_rails_768613ffee", using: :btree
+
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -148,7 +147,7 @@ ActiveRecord::Schema.define(version: 20150423215159) do
   add_foreign_key "company_sellers", "users"
   add_foreign_key "heavytrucks", "vehicles"
   add_foreign_key "makes", "ads"
-  add_foreign_key "makes", "sellers", column: "user_id", primary_key: "user_id", name: "makes_ibfk_1"
+  add_foreign_key "makes", "users", name: "makes_ibfk_1"
   add_foreign_key "makes", "vehicles"
   add_foreign_key "sellers", "users"
   add_foreign_key "semitrailers", "vehicles"

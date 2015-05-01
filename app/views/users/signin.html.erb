@@ -7,6 +7,7 @@
 <span class ="error">  <%= t("signup_page.error")%></span>
 <%end%>
 <br>
+
   <p><%= t("signup_page.email")%> <%if @email==""%><span style = "color: red;"> * </span><%end%></p>
 
     <%= f.email_field :email, :value => @email%>

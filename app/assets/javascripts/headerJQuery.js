@@ -268,7 +268,9 @@ $listButton.hover(function() {$buttonList.css('visibility','visible');}
 $buttonList.hover(function() {$buttonList.css('visibility','visible');}
                  , function() {$buttonList.css('visibility','hidden');}
 );
-
+$('#sortlist').bind('change', function() {
+  window.location.href = $(this).val() 
+});
 });
 
 

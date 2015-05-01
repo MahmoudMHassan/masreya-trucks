@@ -15,8 +15,12 @@
 /log/*
 !/log/.keep
 /tmp
+<<<<<<< HEAD
 
 config/database.yml
+=======
+/config/database.yml
+>>>>>>> 08fa0e3024119ba8ac60df3c9c05837253ee9936
 
 
 

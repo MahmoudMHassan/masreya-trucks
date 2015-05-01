@@ -7,22 +7,22 @@
 <li><%= link_to"/ads/bookmark/#{@ad.id}", method: :post do %>
 	  <%= image_tag "save-icon.png", size:"20x20"%>
 	<% end %>
-<%= link_to t("ad.bookmark"), "/ads/bookmark/#{@ad.id}", method: :post%></li>
+<%= link_to "حفظ الإعلان في الجراج", "/ads/bookmark/#{@ad.id}", method: :post%></li>
 <%else%>
 <li><%= link_to"/ads/unbookmark/#{@ad.id}", method: :post do %>
 	  <%= image_tag "save-icon.png", size:"20x20"%>
 	<% end %>
-<%= link_to t("ad.rm_bookmark"), "/ads/unbookmark/#{@ad.id}", method: :post%></li>
+<%= link_to "إزالة الإعلان من الجراج", "/ads/unbookmark/#{@ad.id}", method: :post%></li>
 <%end%>
 <%if @seller.id == self.current_user.id%>
 <li><%= link_to "/ads/edit/#{@ad.id}" do %>
 	  <%= image_tag "edit.png", size:"20x20"%>
 	<% end %>
-<%= link_to t("ad.edit"), "/ads/edit/#{@ad.id}"%></li>
+<%= link_to "تعديل الإعلان", "/ads/edit/#{@ad.id}"%></li>
 <li><%= link_to "/ads/delete/#{@ad.id}", method: :post,data: {confirm: 'Are you sure?'} do %>
 	  <%= image_tag "delete.png", size:"16x16"%>
 	<% end %>
-<%= link_to t("ad.rm_ad"), "/ads/delete/#{@ad.id}", :style=>'color: red', method: :post,data: {confirm: 'Are you sure?'}%></li>
+<%= link_to "إزالة الإعلان", "/ads/delete/#{@ad.id}", :style=>'color: red', method: :post,data: {confirm: 'Are you sure?'}%></li>
 <%end%>
 <%end%>
 </ul>
@@ -37,110 +37,97 @@
 <li><%=@ad.title%></li>
 </div>
 
-<li><b><%= t("ad.manu") %>:</b>
+<li><b>النوع:</b>
 
 <%if @van!=nil%>
-rm_bookmark
+عربة
 <%elsif @heavytruck !=nil%>
-<%= t("header.heavy_truck") %>
+ الشاحنات الثقيلة
 <%elsif @semitrailer !=nil%>
- <%= t("header.semi_trailer") %>
+ شبه مقطورة
 <%elsif @semitrailertruck !=nil%>
- <%= t("header.semi_trailer_truck") %>
+ الشاحنات أشباه المقطورة
 <%end%>
 </li>
 <li>
-<b><%= t("ad.manu")%> :</b>
+<b>الماركة :</b>
 <%=@vehicle.make%>
 </li>
 <li>
-<b><%= t("ad.model") %> :</b>
+<b>الموديل :</b>
 <%=@vehicle.model%><li>
 <li>
-<b><%= t("ad.info") %>:</b>
-<%if @make.new%>
-<%= t("ad.new") %>
-<br>
-<%else%>
-<%=t("ad.used")%>
-<br>
+<b>معلومات عربة النقل :</b>
+<%if @make.new == 0%>
+جديدة
+<%elsif @make.new == 1%>
+استيراد
+<%elsif @make.new == 2%>
+مستعملة
 <%end%>
-<%if @make.imported%>
-<%= t("ad.imported")  %>
-<br>
-<%else%>
-<%=t("ad.local")%>
-<br>
-<%end%>
-<%if @make.purchase%>
-<%=t("ad.for_sale") %>
-<br>
-<%else%>
-<%= t("ad.rent") %>
-<br>
-<%end%>
+
 </li>
 <li>
-<b><%= t("ad.man_year")%> :</b>
+<b>سنة الصنع :</b>
 <%=@vehicle.manyear%>
 </li><li>
-<b><%= t("signup_page.country")%> :</b>
+<b>البلد :</b>
 <%=@vehicle.country%>
 </li><li>
-<b><%= t("ad.axles")%> :</b>
+<b>المحاور النقلات :</b>
 <%if @vehicle.axles > 3%>
 >3
 <%else%>
 <%=@vehicle.axles%>
 <%end%>
 </li><li>
-<b><%= t("ad.transmission")%> :</b>
+<b>عجلة السرعة :</b>
 <%if @vehicle.gearbox%>
-<%= t("ad.auto") %>
+أتوماتيك
 <%else%>
-<%= t("ad.manual") %>
+مانيوال
 
 <%end%>
 </li>
 <li>
-<b><%= t("ad.colour")%> :</b>
-<%=@vehicle.colour.capitalize%>
+<b>اللون :</b>
+<%=@vehicle.colour%>
 </li><li>
-<b><%= t("ad.price")%> :</b>
+<b>السعر :</b>
 <%= number_with_delimiter(@vehicle.price, :delimiter => ',')%>
 </li>
 <%if @van !=nil %>
-<li><b><%= t("ad.capacity")%>: </b>
-<%=@van.capacity.capitalize%></li>
-<li><b><%= t("ad.mileage")%>: </b>
+<li><b>حمولة: </b>
+<%=@van.capacity%></li>
+<li><b>مسافة: </b>
 <%=@van.mileage%></li>
 <%elsif @semitrailer !=nil%>
-<li><b><%= t("ad.capacity")%> :</b>
+<li><b>حمولة :</b>
 <%=@semitrailer.capacity%></li>
 <%elsif @semitrailertruck !=nil%>
-<li><b><%= t("ad.mileage")%> :</b>
+<li><b>مسافة :</b>
 <%=@semitrailertruck.mileage%></li>
 <%elsif @heavytruck !=nil%>
-<li><b><%= t("ad.capacity")%> :</b>
+<li><b>حمولة :</b>
 <%=@heavytruck.capacity%></li>
-<li><b><%= t("ad.mileage")%> :</b>
+<li><b>مسافة :</b>
 <%=@heavytruck.mileage%></li>
 <%end%>
 <%if @ad.description != ""%>
-<li><b><%= t("ad.description")%>:</b></li>
+<li><b>الوصف:</b></li>
 <li><%=@ad.description%></li>
 <%end%>
 </div>
 <div id ="sellerinfo">
-<li><b><%= t("ad.seller")%> :</b></li>
+<li><b>اسم البائع :</b></li>
 
 <li><%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%></li>
 <li>
- <b><%= t("signup_page.phone")%> : </b>
+ <b>تليفون : </b>
 </li><li>
 <%=@seller.phone%>
 </li><li>
- <b><%= t("signup_page.email")%> : </b>
+ <b>البريد الالكتروني : </b>
 </li><li>
 <%=@seller.email%>
 </li>

@@ -1,17 +1,29 @@
 <%=form_tag "/search/1", :method => 'get' do%>
 <table>
 <tr>
+<<<<<<< HEAD
 <td><%= t("ad.manu")%></td>
+=======
+<td>الماركة</td>
+>>>>>>> 08fa0e3024119ba8ac60df3c9c05837253ee9936
 
  <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
                  ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
 
+<<<<<<< HEAD
 <td><%=t("ad.model")%></td>
+=======
+<td>الموديل</td>
+>>>>>>> 08fa0e3024119ba8ac60df3c9c05837253ee9936
 
 <td><%= select_tag(:model, options_for_select([['i10', 'i10'],
                  ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
 
+<<<<<<< HEAD
 <td><%= t("ad.man_year")%></td>
+=======
+<td>سنة الصنع</td>
+>>>>>>> 08fa0e3024119ba8ac60df3c9c05837253ee9936
 <td><%=number_field_tag :manyear,params[:manyear]%></td>
 <td><%= t("ad.manu")%></td>
 <td><%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
@@ -24,22 +36,31 @@
 
 <td><%= t("ad.transmission")%></td>
 
-<td><%= select_tag(:gearbox, options_for_select([['Automatic', true],['Manual', false]], params[:gearbox]), :include_blank => true) %></td>
+<td><%= select_tag(:gearbox, options_for_select([['Automatic', 1],['Manual', 0]], params[:gearbox]), :include_blank => true) %></td>
 
 
 <td><%= t("ad.colour")%></td>
 
 <td><%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], params[:colour]), :include_blank => true) %></td>
 
+<<<<<<< HEAD
 <td><%= t("ad.price")%></td>
 <td style="width:200px;"><%= select_tag(:price, options_for_select([['< 120,000', '0'],['120,000 - 160,000', '1'],['160,000 - 200,000', '2'],['200,000 - 240,000', '3'],['240,000 - 280,000', '4'],['> 280,000', '5']], params[:price]), :include_blank => true) %></td>
 
 <td><%=t("ad.order")%></td>
 <td><%= select_tag(:sort, options_for_select([['↑ price', '0'],['↓ price', '1'],['↑ manyear', '2'],['↓ manyear', '3']], params[:sort])) %></td>
+=======
+<td>السعر من</td>
+<td><%= number_field_tag :price_from, params[:price_from]%></td>
+<td>إلى</td>
+<td><%= number_field_tag :price_to, params[:price_to]%></td>
+
+>>>>>>> 08fa0e3024119ba8ac60df3c9c05837253ee9936
 
 
 </tr>
 </table>
+<<<<<<< HEAD
  <%=t("ad.for_sale") %>
  <%if params[:purchase] == t("ad.for_sale")%>
 <%= radio_button_tag(:purchase, t("ad.for_sale"), checked = true) %>
@@ -75,7 +96,31 @@
 <%= radio_button_tag(:imported, t("ad.local"), checked = true) %>
 <%else%>
 <%= radio_button_tag(:imported, t("ad.local")) %>
+=======
+
+
+ جديدة
+ <%if params[:new] == "0"%>
+<%= radio_button_tag(:new, "0", checked = true) %>
+<%else%>
+<%= radio_button_tag(:new, "0") %>
 <%end%>
+استيراد
+ <%if params[:new] == "1"%>
+<%= radio_button_tag(:new, "1", checked = true) %>
+<%else%>
+<%= radio_button_tag(:new, "1") %>
+<%end%>
+ مستعملة
+ <%if params[:new] == "2"%>
+<%= radio_button_tag(:new, "2", checked = true) %>
+<%else%>
+<%= radio_button_tag(:new, "2") %>
+>>>>>>> 08fa0e3024119ba8ac60df3c9c05837253ee9936
+<%end%>
+ 
+
+ 
 <div id="atrrparent">
 <div id="vanwrapper">
 <%=render 'ads/vanform'%>
@@ -90,7 +135,7 @@
 <%= render 'ads/heavyform'%>
 </div>
 </div>
-<div style="text-align:center;margin-top:15px;">
+<div style="float:left;margin-top:50px;">
 <%= submit_tag "بحث", :name => nil,:class => 'submit_button'%>
 </div>
 <%end%>
