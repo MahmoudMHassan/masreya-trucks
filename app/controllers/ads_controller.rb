@@ -20,7 +20,7 @@ class AdsController < ApplicationController
     @heavytruck = Heavytruck.new
     @semitrailer = Semitrailer.new
     @semitrailertruck = Semitrailertruck.new
-  
+    
   end
   
   def create
@@ -49,37 +49,39 @@ class AdsController < ApplicationController
     #check if ad, vehicle and subclass params are all valid before saving
     if ((@ad.valid?) & (@vehicle.valid?) & (subclassvalid))
       @ad.save
-       if @ad.save
-	 unless params[:pictures].nil?
-       params[:pictures]['image'].each do |a|
-          @pictures = @ad.pictures.create!(:image => a, :ad_id => @ad.id)
-
-       end
-	 end
+      if @ad.save
+	unless params[:pictures].nil?
+	  params[:pictures]['image'].each do |a|
+	    @pictures = @ad.pictures.create!(:image => a, :ad_id => @ad.id)
+	    
+	  end
+	end
 	
-      @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
-      @make.update(make_params)
-      @make.save
-      
-      if params[:van]
-	@van.save
-      elsif params[:heavytruck]
-	@heavytruck.save
-      elsif params[:semitrailer]
-	@semitrailer.save
-      elsif params[:semitrailertruck]
-	@semitrailertruck.save
+	@make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
+	@make.update(make_params)
+	@make.save
+	
+	if params[:van]
+	  @van.save
+	elsif params[:heavytruck]
+	  @heavytruck.save
+	elsif params[:semitrailer]
+	  @semitrailer.save
+	elsif params[:semitrailertruck]
+	  @semitrailertruck.save
+	end
+	
+	redirect_to "/ads/#{@ad.id}"
+      else
+	#delete saved record of vehicle and display error message
+	@vehicle.destroy
+	flash.now[:error] = t("signup_page.error")
+	render 'new'
       end
-      
-      redirect_to "/ads/#{@ad.id}"
-    else
-      #delete saved record of vehicle and display error message
-      @vehicle.destroy
-      flash.now[:error] = "*خطأ فى إضافة اﻹعلان"
-      render 'new'
     end
+    
   end
-  end
+  
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price_from],params[:price_to],params[:capacity],params[:mileage],params[:type],params[:new],params[:sale])
   end
@@ -157,15 +159,15 @@ class AdsController < ApplicationController
     if @ad.valid? & @vehicle.valid? & subclassvalid
       @ad.save
       if @ad.save
-	    if @ad.update(ad_params)
-	      
-	     Picture.where(:ad_id => @ad.id).destroy_all
-	      
-	      
-          unless params[:pictures].nil?
-            params[:pictures]['image'].each do |k|
-              @picture = @ad.pictures.create!(:image => k, :ad_id => @ad.id)
-            end
+	if @ad.update(ad_params)
+	  
+	  Picture.where(:ad_id => @ad.id).destroy_all
+	  
+	  
+	  unless params[:pictures].nil?
+	    params[:pictures]['image'].each do |k|
+	      @picture = @ad.pictures.create!(:image => k, :ad_id => @ad.id)
+	    end
 	  end
 	end
       end
@@ -174,11 +176,11 @@ class AdsController < ApplicationController
       @make.save
       redirect_to "/ads/#{@ad.id}"
     else
-      flash.now[:error] = "*خطأ فى تعديل اﻹعلان"
+      flash.now[:error] =  t("ad.error")
       render 'edit'
     end
     
-
+    
   end
   def inputValidation ad
     return ad.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) && ad.phone.match(/^\+?+[[:digit:]]{,20}$/)

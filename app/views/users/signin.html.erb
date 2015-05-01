@@ -1,21 +1,22 @@
 <div id = "adwrapper">
 <%= form_for :login do |f|%>
 <%if @wrong%>
-<span class ="error">البريد الالكتروني او كلمة السر غير صحيح*</span>
+<span class ="error"><%= t("signup_page.pass_error")%> </span>
 <%end%>
 <%if @blank %>
-<span class ="error">يوجد مسافات فارغة*</span>
+<span class ="error">  <%= t("signup_page.error")%></span>
 <%end%>
 <br>
-  <p>البريد الالكتروني او الهاتف <%if @email==""%><span style = "color: red;"> * </span><%end%></p>
-  
+
+  <p><%= t("signup_page.email")%> <%if @email==""%><span style = "color: red;"> * </span><%end%></p>
+
     <%= f.text_field :email, :value => @email%>
 
-<p>كلمة السر<%if @password==""%><span style = "color: red;"> * </span><%end%></p>  
+<p><%= t("signup_page.password")%> <%if @password==""%><span style = "color: red;"> * </span><%end%></p>
 
     <%= f.password_field :password %>
   </p>
-    <%= f.submit "حفظ"%>
+    <%= f.submit  t("ad.save")%>
   </p>
 <% end %>
 </div>

@@ -203,6 +203,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.1.0)
   gmaps4rails
+  i18n
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick

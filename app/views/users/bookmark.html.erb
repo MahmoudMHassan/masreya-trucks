@@ -23,8 +23,10 @@
 <div style="float:center;">
 <%=link_to a.ad.title, "/ads/#{a.ad.id}"%><br>
 <%= a.vehicle.make%> | <%=a.vehicle.model%><br>
-السعر:<%= number_with_delimiter(a.vehicle.price, :delimiter => ',')%>
-السنة: <%= a.vehicle.manyear%>
+<%= t("ad.price")%>:<%= number_with_delimiter(a.vehicle.price, :delimiter => ',')%>
+<br>
+<%= t("ad.man_year")%>: <%= a.vehicle.manyear%>
+<br>
 <%if a.ad.description.length > 300%>
 <%=a.ad.description.first(300)%> ... <br>
 <%else%>

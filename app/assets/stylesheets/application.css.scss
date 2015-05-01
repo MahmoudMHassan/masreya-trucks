@@ -491,8 +491,103 @@ background-position:50% 90%;
 font-size:15px;
 }
 
-/**{
- *	  font-family:"Droid Arabic Kufi", "Lateef", "Al Bayan", "DecoType Naskh", "DejaVu Serif", "STFangsong", "STHeiti", "STKaiti", "STSong", "AB AlBayan", "AB Geeza", "AB Kufi", "DecoType Naskh", "Aldhabi", "Andalus", "Sakkal Majalla", "Simplified Arabic", "Traditional Arabic", "Arabic Typesetting", "Urdu Typesetting", "Droid Naskh", "Droid Kufi", "Roboto", "Tahoma", "Times New Roman", "Arial", serif;
- *	  
- *	}*/
+	#vanwrapper{
+	width :500px;
+	position: absolute;
+	color: #000000;
+	}
+	#sttwrapper{
+	width :500px;
+	position: absolute;
+	color: #000000;
+	}
+	#semiwrapper{
+	width :500px;
+	position: absolute;
+	color: #000000;
+	}
+	#heavywrapper{
+	width :500px;
+	position: absolute;
+	color: #000000;
+	}
+	#atrrparent{
+	position: relative;
+	}
+	#semibutton{
+	background-color:#CDEBCD;
+	background-image:image-url('semitrailer.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position: 50% 90%;
+	font-size:15px;
+	visibility:hidden;
+	
+	}
+	#vanbutton{
+	background-color:#CDEBCD;
+	background-image:image-url('van.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position:50% 60%;
+	font-size:15px;
+	visibility:hidden;
+	}
+	#sttbutton{
+	background-color:#CDEBCD;
+	background-image:image-url('semitruck.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position:50% 100%;
+	font-size:15px;
+	visibility:hidden;
+	}
+	#heavybutton{
+	background-color:#CDEBCD;
+	background-image:image-url('heavytruck.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position:50% 90%;
+	font-size:15px;
+	visibility:hidden;
+	}
+	#allbutton{
+	font-size:20px;
+	visibility:hidden;
+	background-color:#9DE56A;
+	}
+	#newsemibutton{
+	background-image:image-url('semitrailer.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position: 50% 90%;
+	font-size:15px;
+	}
+	#newvanbutton{
+	background-image:image-url('van.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position:50% 60%;
+	font-size:15px;
+	}
+	#newsttbutton{
+	background-image:image-url('semitruck.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position:50% 100%;
+	font-size:15px;
+	}
+	#newheavybutton{
+	background-image:image-url('heavytruck.svg');
+	background-size: 80px 80px;
+	background-repeat:no-repeat;
+	background-position:50% 90%;
+	font-size:15px;
+	}
+	
+	/**{
+	  font-family:"Droid Arabic Kufi", "Lateef", "Al Bayan", "DecoType Naskh", "DejaVu Serif", "STFangsong", "STHeiti", "STKaiti", "STSong", "AB AlBayan", "AB Geeza", "AB Kufi", "DecoType Naskh", "Aldhabi", "Andalus", "Sakkal Majalla", "Simplified Arabic", "Traditional Arabic", "Arabic Typesetting", "Urdu Typesetting", "Droid Naskh", "Droid Kufi", "Roboto", "Tahoma", "Times New Roman", "Arial", serif;
+	  
+	}*/
+
 
