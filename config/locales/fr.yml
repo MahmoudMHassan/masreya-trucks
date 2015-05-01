@@ -1,0 +1,80 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+fr:
+  header:
+    signup: "Inscription"
+    login: "Connexion"
+    all_vehicles: "Tous Les Véhicules"
+    van: "Fourgonnettes/Fourgons"
+    semi_trailer: "Semi-Remorque"
+    semi_trailer_truck: "Camions Semi-Remorques"
+    heavy_truck: "Lourd Camions"
+    search: "Recherche"
+    logout: "Se Déconnecter"
+    bookmarks: "Le Favori"
+    place_ad: "Fair Une Annonce"
+    profile: "Vérifer Profil"
+  signup_page:
+    email: "Email"
+    password: "Mot De Passe"
+    password_confirmation: "Mot De Passe Confirmation"
+    name: "Nom"
+    surname: "Nom De Famille"
+    country: "Pays"
+    phone: "Téléphone"
+    profile_picture: "Photo De Profil"
+    error: "Il ya des champs vides *"
+    pass_error: "Email ou mot de passe n'est pas correcte *"
+  ad:
+    title: "Titre"
+    manu: "Fabricant"
+    model: "Modèle"
+    capacity: "Poids Lourds"
+    mileage: "Kilométrage"
+    man_year: "Année De Fabrication "
+    transmission: "Transmission"
+    price: "Prix"
+    new: "Nouveau"
+    imported: "Importé"
+    for_sale: "En Vente"
+    description: "Description (Optionnel)"
+    create_ad: "Fair Une Annonce"
+    axles: "Essieux"
+    colour: "Couleur"
+    select: "Sélectionnez le véhicule pour créer une annonce"
+    bookmark: "Favori"
+    rm_bookmark: "Unfavourite"
+    edit: "Modifier Las Annonce"
+    rm_ad: "Effacer Las Annonce"
+    used: "D'Occasion"
+    local: "N'est pas Importé"
+    rent: "A Louer"
+    auto: "Automatique"
+    manual: "Manuel"
+    seller: "Nom du vendeur"
+    save: "Sauvegarder Les Changements"
+    map: "Changer De Lieu"
+    info: "Informations Sur Le Véhicule"
+    order: "Ordre"
+  users:
+    edit: "Modifier Le Profil"
+    rm: "Effacer Le Compte"

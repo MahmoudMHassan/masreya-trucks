@@ -1,80 +1,80 @@
 <%=form_tag "/search/1", :method => 'get' do%>
 <table>
 <tr>
-<td>انتاج</td>
+<td><%= t("ad.manu")%></td>
 
  <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
                  ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
 
-<td>موديل</td>
+<td><%=t("ad.model")%></td>
 
 <td><%= select_tag(:model, options_for_select([['i10', 'i10'],
                  ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
 
-<td>سنة الانتاج</td>
+<td><%= t("ad.man_year")%></td>
 <td><%=number_field_tag :manyear,params[:manyear]%></td>
-<td>البلد</td>
+<td><%= t("ad.manu")%></td>
 <td><%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
                  ['madagascar', 'madagascar']], params[:country]), :include_blank => true) %></td>
 
 </tr>
 <tr>
-<td>المحاور</td>
+<td><%=t("ad.axles")%></td>
 <td><%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['3>', 4]], params[:axles]), :include_blank => true) %></td>
 
-<td>عجلة السرعة</td>
+<td><%= t("ad.transmission")%></td>
 
 <td><%= select_tag(:gearbox, options_for_select([['Automatic', true],['Manual', false]], params[:gearbox]), :include_blank => true) %></td>
 
 
-<td>اللون</td>
+<td><%= t("ad.colour")%></td>
 
 <td><%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], params[:colour]), :include_blank => true) %></td>
 
-<td>السعر</td>
+<td><%= t("ad.price")%></td>
 <td style="width:200px;"><%= select_tag(:price, options_for_select([['< 120,000', '0'],['120,000 - 160,000', '1'],['160,000 - 200,000', '2'],['200,000 - 240,000', '3'],['240,000 - 280,000', '4'],['> 280,000', '5']], params[:price]), :include_blank => true) %></td>
 
-<td>الترتيب</td>
+<td><%=t("ad.order")%></td>
 <td><%= select_tag(:sort, options_for_select([['↑ price', '0'],['↓ price', '1'],['↑ manyear', '2'],['↓ manyear', '3']], params[:sort])) %></td>
 
 
 </tr>
 </table>
- للبيع
- <%if params[:purchase] == "للبيع"%>
-<%= radio_button_tag(:purchase, "للبيع", checked = true) %>
+ <%=t("ad.for_sale") %>
+ <%if params[:purchase] == t("ad.for_sale")%>
+<%= radio_button_tag(:purchase, t("ad.for_sale"), checked = true) %>
 <%else%>
-<%= radio_button_tag(:purchase, "للبيع") %>
+<%= radio_button_tag(:purchase, t("ad.for_sale")) %>
 <%end%>
- للإيجار
+ <%=t("ad.rent")%>
   <%if params[:purchase] == "للإيجار"%>
 <%= radio_button_tag(:purchase, "للإيجار", checked = true) %>
 <%else%>
 <%= radio_button_tag(:purchase, "للإيجار") %>
 <%end%>
- جديدة
- <%if params[:new] == "جديدة"%>
-<%= radio_button_tag(:new, "جديدة", checked = true) %>
+ <%= t("ad.new") %>
+ <%if params[:new] == t("ad.new")%>
+<%= radio_button_tag(:new, t("ad.new"), checked = true) %>
 <%else%>
-<%= radio_button_tag(:new, "جديدة") %>
+<%= radio_button_tag(:new, t("ad.new")) %>
 <%end%>
- مستعملة
- <%if params[:new] == "مستعملة"%>
-<%= radio_button_tag(:new, "مستعملة", checked = true) %>
+ <%=t("ad.used")%>
+ <%if params[:new] == t("ad.used")%>
+<%= radio_button_tag(:new, t("ad.used"), checked = true) %>
 <%else%>
-<%= radio_button_tag(:new, "مستعملة") %>
+<%= radio_button_tag(:new, t("ad.used")) %>
 <%end%>
- مستوردة
- <%if params[:imported] == "مستوردة"%>
-<%= radio_button_tag(:imported, "مستوردة", checked = true) %>
+ <%= t("ad.imported")  %>
+ <%if params[:imported] == t("ad.imported")%>
+<%= radio_button_tag(:imported, t("ad.imported"), checked = true) %>
 <%else%>
-<%= radio_button_tag(:imported, "مستوردة") %>
+<%= radio_button_tag(:imported, t("ad.imported")) %>
 <%end%>
- محلية
- <%if params[:imported] == "محلية"%>
-<%= radio_button_tag(:imported, "محلية", checked = true) %>
+ <%=t("ad.local")%>
+ <%if params[:imported] == t("ad.local")%>
+<%= radio_button_tag(:imported, t("ad.local"), checked = true) %>
 <%else%>
-<%= radio_button_tag(:imported, "محلية") %>
+<%= radio_button_tag(:imported, t("ad.local")) %>
 <%end%>
 <div id="atrrparent">
 <div id="vanwrapper">

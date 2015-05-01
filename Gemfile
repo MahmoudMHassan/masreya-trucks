@@ -11,7 +11,7 @@ gem 'omniauth-oauth2'
 
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'i18n'
 gem 'whenever' ,:require => false
 gem 'searchkick'
 gem 'gmaps4rails'

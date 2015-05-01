@@ -11,6 +11,7 @@
   <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 
     <div id="header">
+         locale <%= I18n.locale %>
         <div id="headerRight">
         <%= link_to(root_path) do %>
             <%= image_tag 'truck-green-icon1.png'%>
@@ -21,28 +22,28 @@
 
         <button id="searchbutton" style="font-size:20px;color:#000000">
 
-            <div id = "searchtext" style="margin-right:40px;width:0px;height:0px;"> البحث</div>
+            <div id = "searchtext" style="margin-right:40px;width:0px;height:0px;"> <%=t("header.search")%></div>
             <div id="arrowwrapper">
             <div id="downarrow"></div>
             <div id="uparrow"></div>
             </div>
         </button>
-  
+
         <button id="allbutton" class="vehicleButtons">
-            <div style="position:relative; top:-2px;">جميع الشاحنات</div>
+            <div style="position:relative; top:-2px;"><%=t("header.all_vehicles")%></div>
         </button>
 
         <button id="vanbutton" class="vehicleButtons">
-            <div style="position:relative; top:20px;">عربة</div>
+            <div style="position:relative; top:20px;"><%=t("header.van")%></div>
         </button>
         <button id="semibutton" class="vehicleButtons">
-            <div style="position:relative; top:20px;">شبه مقطورة</div>
+            <div style="position:relative; top:20px;"><%=t("header.semi_trailer")%></div>
         </button>
         <button id="sttbutton" class="vehicleButtons">
-            <div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
+            <div style="position:relative; top:20px;"><%=t("header.semi_trailer_truck")%></div>
         </button>
         <button id="heavybutton" class="vehicleButtons">
-            <div style="position:relative; top:20px;">شاحنة ثقيلة</div>
+            <div style="position:relative; top:20px;"><%=t("header.heavy_truck")%></div>
         </button>
 
 
@@ -53,11 +54,11 @@
     <%if self.current_user==nil %>
     <div id="headerLeftOut">
     <ul>
-        <li> 
-        <%=button_to "فتح حساب", "/users/new",id: "signupbutton", class: "listButtons", method: :get%> 
+        <li>
+        <%=button_to t("header.signup"), "/users/new",id: "signupbutton", class: "listButtons", method: :get%>
         </li>
-        <li> 
-        <%=button_to "تسجيل الدخول", "/users/signin",id: "loginbutton", class: "listButtons", method: :get%>
+        <li>
+        <%=button_to t("header.login"), "/users/signin",id: "loginbutton", class: "listButtons", method: :get%>
         </li>
     </ul>
     <%else%>
@@ -66,33 +67,34 @@
         <table>
         <tr>
         <td>
-            <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton",class: "listButtons",  method: :get%>
+            <%=button_to t("header.profile"),"/users/#{self.current_user.id}",id: "profilebutton",class: "listButtons",  method: :get%>
         </td><td>
-            <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
+            <%=button_to t("header.place_ad") ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
         </td>
         </tr>
         <tr>
         <td>
-            <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
+            <%=button_to t("header.bookmarks") ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
         </td><td>
-            <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
+            <%=button_to t("header.logout") ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
         </td></tr>
         </table>
         </div>
+
         <div id="listButton"></div>
         <div id="buttonList">
         <ul>
         <li>
-        <%=button_to "صفحة الحساب" ,"/users/#{self.current_user.id}",id: "profilebutton", class: "listButtons", method: :get%>
+        <%=button_to t("header.profile") ,"/users/#{self.current_user.id}",id: "profilebutton", class: "listButtons", method: :get%>
         </li>
         <li>
-        <%=button_to "إضافة إعلان" ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
+        <%=button_to t("header.place_ad") ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
         </li>
         <li>
-        <%=button_to "صفحة الجراج" ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
+        <%=button_to t("header.bookmarks"),"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
         </li>
         <li>
-        <%=button_to "تسجيل الخروج" ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
+        <%=button_to t("header.logout") ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
         </li>
         <ul>
         </div>

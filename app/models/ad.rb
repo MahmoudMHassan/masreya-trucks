@@ -6,7 +6,7 @@ class Ad < ActiveRecord::Base
   has_one :semitrailer
   has_one :semitrailertruck
   has_one :heavytruck
-  has_one :make,dependent: :destroy 
+  has_one :make,dependent: :destroy
   validates_presence_of(:title)
 
    mount_uploader :image , ImageUploader
@@ -19,21 +19,21 @@ class Ad < ActiveRecord::Base
   def self.make_search (purchase, newV, imported)
   		@make = Make.joins(:ad)
         if purchase.present?
-       if (purchase == "للبيع")
+       if (purchase == t("ad.for_sale"))
   		@make = @make.where('purchase LIKE ?',"1")
         else
           @make = @make.where('purchase LIKE ?',"0")
         end
       end
       if new.present?
-        if new == "جديدة"
+        if new == t("ad.new")
         @make = @make.where('new LIKE ?',"1")
       else
         @make = @make.where('new LIKE ?',"0")
        end
        end
        if imported.present?
-          if imported == "مستوردة"
+          if imported == t("ad.imported")
         @make = @make.where('imported LIKE ?',"1")
         else
           @make = @make.where('imported LIKE ?',"0")
@@ -96,21 +96,21 @@ class Ad < ActiveRecord::Base
       makes = makes.order('manyear DESC')
        end
 if purchase.present?
-       if purchase == "للبيع"
+       if purchase == t("ad.for_sale")
   		makes = makes.where('purchase LIKE ?',"1")
         else
           makes = makes.where('purchase LIKE ?',"0")
         end
       end
       if new.present?
-        if (new == "جديدة")
+        if (new == t("ad.new"))
         makes = makes.where('new LIKE ?',"1")
       else
         makes = makes.where('new LIKE ?',"0")
        end
        end
        if imported.present?
-          if imported == "مستوردة"
+          if imported == t("ad.imported")
        makes = makes.where('imported LIKE ?',"1")
         else
           makes = makes.where('imported LIKE ?',"0")

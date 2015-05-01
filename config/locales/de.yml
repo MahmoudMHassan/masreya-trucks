@@ -74,7 +74,6 @@ en:
     save: "Save changes"
     map: "Click on the map to change your location"
     info: "Information about the vehicle"
-    order: "Order"
   users:
     edit: "Edit Profile"
     rm: "Delete Account"

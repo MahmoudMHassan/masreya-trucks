@@ -5,32 +5,38 @@
 <%end%>
 <br>
 <div style = "float:right;">
-    <p>البريد الالكتروني<%if @email==""%><span style = "color: red;"> * </span><%end%> </p>
+    <p><%= t("signup_page.email")%>
+    <%if @email==""%><span style = "color: red;"> * </span><%end%> </p>
     <%= f.email_field :email, :value => self.current_user.email%>
-    <p>الاسم<%if @fname==""%><span style = "color: red;"> * </span><%end%></p>
+    <p><%= t("signup_page.name")%>
+    <%if @fname==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :fname, :value => self.current_user.fname %>
-    <p>اسم العائلة<%if @lname==""%><span style = "color: red;"> * </span><%end%></p>
+    <p><%= t("signup_page.surname")%>
+    <%if @lname==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :lname, :value => self.current_user.lname%>
-     <p>البلد<%if @country==""%><span style = "color: red;"> * </span><%end%></p>
+     <p><%= t("ad.manu")%>
+     <%if @country==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :country,:value => self.current_user.country %>
-    <p>الهاتف<%if @phone==""%><span style = "color: red;"> * </span><%end%></p>
+    <p><%= t("signup_page.phone")%>
+    <%if @phone==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :phone ,:value => self.current_user.phone%><br><br>
     <%=f.file_field :avatar%><br><br>
-    
+
     <%if @companyseller != nil%>
     <%=fields_for :company_seller do |cs|%>
         <%=cs.hidden_field :lat, id: 'map_lat', value: @companyseller.lat%>
         <%=cs.hidden_field :lng, id: 'map_lng', value: @companyseller.lng%>
     <%end%>
     <%end%>
-    <%= f.submit "حفظ"%>
+    <%= f.submit t("ad.save")%>
     </div>
 <% end %>
+
 <%if @companyseller != nil%>
 <div style='width:50%;height: 420px;float:left;'>
-انقر على الخريطة لتغيير مكان شركتك
+<%= t("ad.map")%>
   <div id="map" style='height: 400px;border:1px solid #000;'>
-  
+
         <script>
 	  handler = Gmaps.build('Google');
 	  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){

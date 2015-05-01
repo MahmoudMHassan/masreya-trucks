@@ -1,9 +1,9 @@
 <%=hidden_field_tag 'type', 'van'%>
-حمولة
+<%=t("ad.capacity")%>
 <%if params[:capacity]%>
 <%=check_box_tag :capacity, "1", checked = true%>
 <%else%>
 <%=check_box_tag :capacity%>
 <%end%>
-مسافة
+<%=t("ad.mileage")%>
 <%=number_field_tag :mileage, params[:mileage]%>
