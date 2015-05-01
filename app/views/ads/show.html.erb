@@ -44,7 +44,7 @@
 <%elsif @heavytruck !=nil%>
  الشاحنات الثقيلة
 <%elsif @semitrailer !=nil%>
- شبه مقطورة 
+ شبه مقطورة
 <%elsif @semitrailertruck !=nil%>
  الشاحنات أشباه المقطورة
 <%end%>
@@ -59,19 +59,19 @@
 <li>
 <b>معلومات عربة النقل :</b>
 <%if @make.new%>
-جديدة 
+جديدة
 <%else%>
-مستعملة 
+مستعملة
 <%end%>
 <%if @make.imported%>
-مستوردة 
+مستوردة
 <%else%>
-محلية 
+محلية
 <%end%>
 <%if @make.purchase%>
-للبيع 
+للبيع
 <%else%>
-للإيجار 
+للإيجار
 <%end%>
 </li>
 <li>
@@ -123,6 +123,9 @@
 <%if @ad.description != ""%>
 <li><b>الوصف:</b></li>
 <li><%=@ad.description%></li>
+<li><b>التليفون:</b></li>
+<li><%=@ad.phone%></li>
+
 <%end%>
 </div>
 <div id ="sellerinfo">
