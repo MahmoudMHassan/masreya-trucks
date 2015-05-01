@@ -13,7 +13,7 @@
 
 <td><%= t("ad.man_year")%></td>
 <td><%=number_field_tag :manyear,params[:manyear]%></td>
-<td><%= t("ad.country")%></td>
+<td><%= t("signup_page.country")%></td>
 <td><%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
                  ['madagascar', 'madagascar']], params[:country]), :include_blank => true) %></td>
 
