@@ -268,6 +268,7 @@ $listButton.hover(function() {$buttonList.css('visibility','visible');}
 $buttonList.hover(function() {$buttonList.css('visibility','visible');}
                  , function() {$buttonList.css('visibility','hidden');}
 );
+// change url if sortlist value changes
 $('#sortlist').bind('change', function() {
   window.location.href = $(this).val() 
 });

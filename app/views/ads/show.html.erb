@@ -65,7 +65,11 @@
 <%elsif @make.new == 2%>
 <%= t("ad.used")%>
 <%end%>
-
+<%if !@make.sale%>
+للبيع
+<%else%>
+للإيجار
+<%end%>
 </li>
 <li>
 <b><%= t("ad.man_year")%> :</b>

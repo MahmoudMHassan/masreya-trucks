@@ -41,8 +41,11 @@
 	</li>
 	<%end%>
 	<%end%>
+
 	<li>
+
 	<%= t("ad.man_year")%> : <%= v.number_field :manyear, :class => find_errors(@vehicle, :manyear)%>
+
 	</li><li>
 	<%= t("ad.country")%>: <%= v.select :country ,(["Egypt" , "madagascar"])%>
 	</li><li>
@@ -73,10 +76,12 @@
 	</li><li>
 	<%= t("ad.imported")%>: <%= m.radio_button :new,"1"%>
 	</li><li>
+
 	<%= t("ad.used")%>: <%= m.radio_button :new,"2"%>
 	</li><li>
 	<%end%>
 	<%= t("ad.description")%> :
+	 <%= t("ad.rent") %>: <%=m.check_box :sale%>
 	</li><li>
 	<%= a.text_area :description, size: "100x20"%>
 
