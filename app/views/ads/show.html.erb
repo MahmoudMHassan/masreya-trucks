@@ -50,7 +50,7 @@
 <%end%>
 </li>
 <li>
-<b>انتاج :</b>
+<b>الماركة :</b>
 <%=@vehicle.make%>
 </li>
 <li>
@@ -58,24 +58,21 @@
 <%=@vehicle.model%><li>
 <li>
 <b>معلومات عربة النقل :</b>
-<%if @make.new%>
-جديدة
-<%else%>
+<%if @make.new == 0%>
+جديدة 
+<%elsif @make.new == 1%>
+استيراد 
+<%elsif @make.new == 2%>
 مستعملة
 <%end%>
-<%if @make.imported%>
-مستوردة
-<%else%>
-محلية
-<%end%>
-<%if @make.purchase%>
+<%if !@make.sale%>
 للبيع
 <%else%>
 للإيجار
 <%end%>
 </li>
 <li>
-<b>سنة الانتاج :</b>
+<b>سنة الصنع :</b>
 <%=@vehicle.manyear%>
 </li><li>
 <b>البلد :</b>
