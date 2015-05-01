@@ -55,7 +55,7 @@ ar:
     new: "جديدة"
     imported: "مستوردة"
     for_sale: "للبيع"
-    description: "وصف العربة (اختياري("
+    description: "وصف العربة (اختياري)"
     create_ad: "صنع اعلان"
     axles: "عدد المحاور"
     colour: "اللون"
