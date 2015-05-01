@@ -4,13 +4,13 @@
 <tr>
 <td><%= t("ad.manu")%></td>
 
- <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
-                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
+<td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
+		['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
 
 <td><%= t("ad.model")%></td>
 
 <td><%= select_tag(:model, options_for_select([['i10', 'i10'],
-                 ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
+		['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
 
 <td><%= t("ad.man_year")%></td>
 <td><%=number_field_tag :manyear,params[:manyear]%></td>

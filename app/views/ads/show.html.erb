@@ -44,7 +44,11 @@
 <%elsif @heavytruck !=nil%>
 <%= t("header.heavy_truck")%>
 <%elsif @semitrailer !=nil%>
+<<<<<<< HEAD
  <%= t("header.semi_trailer")%>
+=======
+ شبه مقطورة
+>>>>>>> master
 <%elsif @semitrailertruck !=nil%>
  <%= t("header.semi_trailer_truck")%>
 <%end%>
@@ -124,6 +128,10 @@
 </div>
 <div id ="sellerinfo">
 <li><b><%= t("ad.seller")%>  :</b></li>
+<li><b><%= t("signup_page.phone")%>:</b></li>
+<li><%=@ad.phone%></li>
+
+
 
 <li><%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%></li>
 <li>

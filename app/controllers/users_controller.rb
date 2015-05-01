@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
     before_filter :authorize, :only => [:bookmark, :destroy, :edit]
 
     def authorize

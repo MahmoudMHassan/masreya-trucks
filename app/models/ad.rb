@@ -1,4 +1,5 @@
 class Ad < ActiveRecord::Base
+
     has_many :users, through: :bookmark
     has_one :seller, through: :make
     has_many :vehicles, through: :make
@@ -43,26 +44,24 @@ class Ad < ActiveRecord::Base
     end
 
 
-
-
-
   def self.search(sort,make,model,manyear,country,axles,gearbox,colour,price_from,price_to,capacity,mileage,type,new,sale)
-      if type == "van"
+    if type == "van"
       makes = Make.joins(:ad, vehicle: :van)
       makes = makes.where('capacity = ?', capacity) if capacity.present?
       makes = makes.where('mileage = ?', mileage) if mileage.present?
-      elsif type == "semi"
+    elsif type == "semi"
       makes = Make.joins(:ad, vehicle: :semitrailer)
       makes = makes.where('capacity = ?', capacity) if capacity.present?
-      elsif type == "stt"
+    elsif type == "stt"
       makes = Make.joins(:ad, vehicle: :semitrailertruck)
       makes = makes.where('mileage = ?', mileage) if mileage.present?
-      elsif type == "heavy"
+    elsif type == "heavy"
       makes = Make.joins(:ad, vehicle: :heavytruck)
       makes = makes.where('capacity = ?', capacity) if capacity.present?
       makes = makes.where('mileage = ?', mileage) if mileage.present?
-      else
+    else
       makes = Make.joins(:ad, :vehicle)
+
       end
       makes = makes.where('make LIKE ?',"%#{make}%") if make.present?
       makes = makes.where('model LIKE ?',"%#{model}%") if model.present?
@@ -80,19 +79,21 @@ class Ad < ActiveRecord::Base
 	makes = makes.where('price <= ? and price >= ?',price_to,price_from)
       end
       if sort == "0"
+
       makes = makes.order('price ASC')
-       elsif sort == "1"
+    elsif sort == "1"
       makes = makes.order('price DESC')
-       elsif sort == "2"
+    elsif sort == "2"
       makes = makes.order('manyear ASC')
-       elsif sort == "3"
+    elsif sort == "3"
       makes = makes.order('manyear DESC')
-      elsif sort == "4"
-	makes = makes.order('updated_at ASC')
-      elsif sort == "5"
-	makes = makes.order('updated_at DESC')
-      else
+    elsif sort == "4"
+      makes = makes.order('updated_at ASC')
+    elsif sort == "5"
+      makes = makes.order('updated_at DESC')
+    else
       makes = makes.order('price ASC')
+
       end
       if new.present?
           makes = makes.where('new = ?',new)

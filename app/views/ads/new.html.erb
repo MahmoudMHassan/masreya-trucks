@@ -129,9 +129,14 @@
 	<%= t("ad.rent")%>: <%=m.check_box :sale%>
 	</li>
 	<%end%>
+	
+	<li><b>تليفون بديل:</b></li>
+	<li><%=a.number_field :phone%></li>
 	<li>
+
 	<%= t("ad.description")%> :
 	</li><li>
+
 	<%= a.text_area :description, size: "100x20"%>
 
 	</li>

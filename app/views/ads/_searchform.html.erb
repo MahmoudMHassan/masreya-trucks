@@ -3,19 +3,19 @@
 <tr>
 <td><%= t("ad.manu")%></td>
 
- <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
-                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
+<td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
+		['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
 
 <td><%= t("ad.model")%></td>
 
 <td><%= select_tag(:model, options_for_select([['i10', 'i10'],
-                 ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
+		['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
 
 <td><%= t("ad.man_year")%></td>
 <td><%=number_field_tag :manyear,params[:manyear]%></td>
 <td><%= t("signup_page.country")%></td>
 <td><%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
-                 ['madagascar', 'madagascar']], params[:country]), :include_blank => true) %></td>
+		['madagascar', 'madagascar']], params[:country]), :include_blank => true) %></td>
 
 </tr>
 <tr>
@@ -42,19 +42,24 @@
 
 
  <%= t("ad.new")%>
+
 <%if params[:new] == "0"%>
 <%= radio_button_tag(:new, "0", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "0") %>
 <%end%>
+
 <%= t("ad.imported")%>
  <%if params[:new] == "1"%>
+
 <%= radio_button_tag(:new, "1", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "1") %>
 <%end%>
+
  <%= t("ad.used")%>
  <%if params[:new] == "2"%>
+
 <%= radio_button_tag(:new, "2", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "2") %>

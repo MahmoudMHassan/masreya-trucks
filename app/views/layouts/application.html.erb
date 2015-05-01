@@ -12,16 +12,18 @@
 
     <div id="header">
 
+
         <div id="headerRight">
         <%= link_to(root_path) do %>
             <%= image_tag 'truck-green-icon1.png'%>
         <% end %>
         </div>
+
 <!--header simple search does not appear in the advancedsearch page-->
 <%if request.original_fullpath != "/advancedsearch"%>
-        <div style="width:1000px;margin-top:0.5%;margin-right:10%;height:0px;z-index:1500">
+	<div style="width:1000px;margin-top:0.5%;margin-right:10%;height:0px;z-index:1500">
 
-        <button id="searchbutton" style="font-size:20px;color:#000000">
+	<button id="searchbutton" style="font-size:20px;color:#000000">
 
             <div id = "searchtext" style="margin-right:40px;width:0px;height:0px;"> <%=t("header.search")%></div>
             <div id="arrowwrapper">
@@ -104,6 +106,7 @@
         </li>
         <ul>
         </div>
+
     <%end%>
 
     </div>
