@@ -55,12 +55,15 @@
 العنوان: <%= a.text_field :title, :class => find_errors(@ad, :title)%>
 </li>
 
+
+   <li>
 <%= a.fields_for :pictures do |p| %>
      <div class="field">
-       <%= p.label :image %><br>
+       اختر الصور: 
        <%= p.file_field :image, :multiple => true, name: "pictures[image][]" %>
      </div>
    <% end %>
+   </li>
 
 	<%=fields_for :vehicle do |v|%>
 	<li>
