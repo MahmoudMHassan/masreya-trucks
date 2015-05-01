@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   get 'pictures/show'
   post 'pictures/new' => 'pictures#create'
-  
+  get 'advancedsearch' => 'ads#advancedsearch'
   #get 'ads/search_make' => 'ads#search_make'
   get 'ads/search_make'
   get 'ads/search/:page' => 'ads#search'

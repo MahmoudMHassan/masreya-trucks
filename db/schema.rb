@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(version: 20150429074919) do
     t.string   "email",       limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.string   "image1",      limit: 255
+    t.string   "image2",      limit: 255
+    t.string   "image3",      limit: 255
+    t.string   "image4",      limit: 255
+    t.string   "image",       limit: 255
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -64,16 +69,15 @@ ActiveRecord::Schema.define(version: 20150429074919) do
     t.integer  "user_id",    limit: 4
     t.integer  "vehicle_id", limit: 4
     t.integer  "ad_id",      limit: 4
-    t.boolean  "new",        limit: 1
-    t.boolean  "purchase",   limit: 1
-    t.boolean  "imported",   limit: 1
+    t.integer  "new",        limit: 4
+    t.boolean  "sale",       limit: 1
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_86576efe9a", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_c831402b38", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_b594a7ccda", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_6d92b16090", using: :btree
 
   create_table "pictures", force: :cascade do |t|
     t.string   "image",      limit: 255
@@ -112,7 +116,7 @@ ActiveRecord::Schema.define(version: 20150429074919) do
     t.string   "oauth_token",      limit: 255
     t.datetime "oauth_expires_at"
     t.string   "email",            limit: 255
-    t.string   "password",         limit: 255
+    t.string   "password_digest",  limit: 255
     t.string   "fname",            limit: 255
     t.string   "lname",            limit: 255
     t.string   "country",          limit: 255
@@ -150,7 +154,7 @@ ActiveRecord::Schema.define(version: 20150429074919) do
   add_foreign_key "company_sellers", "users"
   add_foreign_key "heavytrucks", "vehicles"
   add_foreign_key "makes", "ads"
-  add_foreign_key "makes", "sellers", column: "user_id", primary_key: "user_id", name: "makes_ibfk_1"
+  add_foreign_key "makes", "users", name: "makes_ibfk_1"
   add_foreign_key "makes", "vehicles"
   add_foreign_key "sellers", "users"
   add_foreign_key "semitrailers", "vehicles"

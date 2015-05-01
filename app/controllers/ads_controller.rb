@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
- before_filter :authorize, :except => [:home, :search,:search_make, :show,:vansearch,:sttsearch]
+  before_filter :authorize, :except => [:home, :advancedsearch,:search,:search_make, :show,:vansearch,:sttsearch]
   def authorize
     if self.current_user != nil
       true
@@ -7,11 +7,11 @@ class AdsController < ApplicationController
       redirect_to root_path
     end
   end
-
+  
   def home
     @ads = Make.joins(:ad,:vehicle).limit(10).order('created_at DESC')
   end
-
+  
   def new
     @ad = Ad.new
     @vehicle = Vehicle.new
@@ -22,7 +22,7 @@ class AdsController < ApplicationController
     @semitrailertruck = Semitrailertruck.new
   
   end
-
+  
   def create
     @ad = Ad.new(ad_params)
     @vehicle = Vehicle.new(vehicle_params)
@@ -81,12 +81,13 @@ class AdsController < ApplicationController
   end
   end
   def search
-    @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity],params[:mileage],params[:type],params[:new],params[:imported],params[:purchase])
+    @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price_from],params[:price_to],params[:capacity],params[:mileage],params[:type],params[:new],params[:sale])
   end
-
-
-
-
+  
+  def advancedsearch
+  end
+  
+  
   def show
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
@@ -98,7 +99,7 @@ class AdsController < ApplicationController
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
     @pictures = @ad.pictures.limit(5)
   end
-
+  
   def bookmark
     @bookmark = Bookmark.new(user_id: self.current_user.id, ad_id: params[:id])
     @bookmark.save
@@ -109,14 +110,14 @@ class AdsController < ApplicationController
     Bookmark.where(:user_id => self.current_user.id,:ad_id => params[:id]).destroy_all
     redirect_to "/ads/#{params[:id]}"
   end
-
+  
   def delete
     Make.destroy_all(user_id: self.current_user.id, ad_id: params[:id])
     Bookmark.destroy_all(ad_id: params[:id])
     Ad.destroy(params[:id])
     redirect_to root_path
   end
-
+  
   def edit
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
@@ -128,7 +129,7 @@ class AdsController < ApplicationController
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
     @pictures = Picture.find(@ad.id)
   end
-
+  
   def update
     @ad = Ad.find(params[:id]) if Ad.exists?(params[:id])
     @make = Make.find_by_ad_id(params[:id])
@@ -180,42 +181,42 @@ class AdsController < ApplicationController
 
   end
   def inputValidation ad
-return ad.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) && ad.phone.match(/^\+?+[[:digit:]]{,20}$/)
-end
- private
-
- def ad_params
-  ad_params = params.require(:ad).permit(:title,:description, pictures_attributes: [:id, :ad_id, :image])
-  ad_params
- end
-
- def vehicle_params
-  vehicle_params = params.require(:vehicle).permit(:make,:model,:manyear,:country,:axles,:gearbox,:colour,:price)
-  vehicle_params
- end
-
- def make_params
-  make_params = params[:make].permit(:new,:imported,:purchase)
-  make_params
- end
-
- def van_params
-  van_params = params[:van].permit(:capacity,:mileage)
-  van_params
- end
-
- def heavytruck_params
-  heavytruck_params = params[:heavytruck].permit(:capacity,:mileage)
-  heavytruck_params
- end
-
- def semitrailer_params
-  semitrailer_params = params[:semitrailer].permit(:capacity)
-  semitrailer_params
- end
-
- def semitrailertruck_params
-  semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
-  semitrailertruck_params
- end
+    return ad.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) && ad.phone.match(/^\+?+[[:digit:]]{,20}$/)
+  end
+  private
+  
+  def ad_params
+    ad_params = params.require(:ad).permit(:title,:description, :image, :image1, :image2, :image3, :image4,:phone)
+    ad_params
+  end
+  
+  def vehicle_params
+    vehicle_params = params.require(:vehicle).permit(:make,:model,:manyear,:country,:axles,:gearbox,:colour,:price)
+    vehicle_params
+  end
+  
+  def make_params
+    make_params = params[:make].permit(:new,:sale)
+    make_params
+  end
+  
+  def van_params
+    van_params = params[:van].permit(:capacity,:mileage)
+    van_params
+  end
+  
+  def heavytruck_params
+    heavytruck_params = params[:heavytruck].permit(:capacity,:mileage)
+    heavytruck_params
+  end
+  
+  def semitrailer_params
+    semitrailer_params = params[:semitrailer].permit(:capacity)
+    semitrailer_params
+  end
+  
+  def semitrailertruck_params
+    semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
+    semitrailertruck_params
+  end
 end

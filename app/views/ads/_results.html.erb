@@ -1,4 +1,42 @@
 <div id ="adwrapper">
+الترتيب
+<%sortpath = request.original_fullpath.split("&sort=")[0]%>
+<!--select tag for sorting method (change default depending on params[:sort])  -->
+<select id="sortlist">
+    <%if params[:sort] == "0"%>
+    <option selected="selected" value=<%="#{sortpath}&sort=0"%>>↑ سعر</option>
+    <%else%>
+    <option value=<%="#{sortpath}&sort=0"%>>↑ سعر</option>
+    <%end%>
+    <%if params[:sort] == "1"%>
+    <option selected="selected" value=<%="#{sortpath}&sort=1"%>>↓ سعر</option>
+    <%else%>
+    <option value=<%="#{sortpath}&sort=1"%>>↓ سعر</option>
+    <%end%>
+    <%if params[:sort] == "2"%>
+    <option selected="selected" value=<%="#{sortpath}&sort=2"%>>↑ سنة الإنتاج</option>
+    <%else%>
+    <option value=<%="#{sortpath}&sort=2"%>>↑ سنة الإنتاج</option>
+    <%end%>
+    <%if params[:sort] == "3"%>
+    <option selected="selected" value=<%="#{sortpath}&sort=3"%>>↓ سنة الإنتاج</option>
+    <%else%>
+    <option value=<%="#{sortpath}&sort=3"%>>↓ سنة الإنتاج</option>
+    <%end%>
+    <%if params[:sort] == "4"%>
+    <option selected="selected" value=<%="#{sortpath}&sort=3"%>>↑ تاريخ الإعلان</option>
+    <%else%>
+    <option value=<%="#{sortpath}&sort=4"%>>↑ تاريخ الإعلان</option>
+    <%end%>
+    <%if params[:sort] == "5"%>
+    <option selected="selected" value=<%="#{sortpath}&sort=3"%>>↓ تاريخ الإعلان</option>
+    <%else%>
+    <option value=<%="#{sortpath}&sort=5"%>>↓ تاريخ الإعلان</option>
+    <%end%>
+    
+    
+    
+</select>
 <%adscount = @ads.count%>
 <br>
 وجد <%=adscount%> نتيجة <br>
