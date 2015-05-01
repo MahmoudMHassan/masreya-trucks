@@ -96,7 +96,7 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
-    @pictures = @ad.pictures.all
+    @pictures = @ad.pictures.limit(5)
   end
 
   def bookmark
@@ -126,7 +126,7 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
-    #@pictures = @ad.pictures
+    @pictures = Picture.find(@ad.id)
   end
 
   def update
@@ -157,6 +157,10 @@ class AdsController < ApplicationController
       @ad.save
       if @ad.save
 	    if @ad.update(ad_params)
+	      
+	     Picture.where(:ad_id => @ad.id).destroy_all
+	      
+	      
           unless params[:pictures].nil?
             params[:pictures]['image'].each do |k|
               @picture = @ad.pictures.create!(:image => k, :ad_id => @ad.id)

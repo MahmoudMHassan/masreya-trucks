@@ -20,14 +20,15 @@ class PicturesController < ApplicationController
     @picture = @make.pictures.find(params[:id])
   end
  
-  def index
-     @picture = Picture.find(params[:id])
-
-    # Access all items for that order
-    @ads = @picture.ads
-  end
   
-     def update
-     @post_attachment.update(post_attachment_params)
+  def edit
+    Picture.find_by_ad_id(params[:id]).delete
   end
+     def update
+     @picture.update(picture_params)
+  end
+   def picture_params
+  picture_params = params[:picture].permit(:name, :ad_id)
+  picture_params
+ end
 end
