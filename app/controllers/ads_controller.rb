@@ -72,7 +72,7 @@ class AdsController < ApplicationController
   end
   
   def search
-    @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price_from],params[:price_to],params[:capacity],params[:mileage],params[:type],params[:new])
+    @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price_from],params[:price_to],params[:capacity],params[:mileage],params[:type],params[:new],params[:sale])
   end
 
   def advancedsearch
@@ -170,7 +170,7 @@ end
  end
 
  def make_params
-  make_params = params[:make].permit(:new)
+  make_params = params[:make].permit(:new,:sale)
   make_params
  end
 

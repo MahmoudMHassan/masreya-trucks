@@ -30,7 +30,8 @@
 <td>اللون</td>
 
 <td><%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], params[:colour]), :include_blank => true) %></td>
-
+<td>للإيجار</td>
+<td><%= check_box_tag :sale%></td>
 <td>السعر من</td>
 <td><%= number_field_tag :price_from, params[:price_from]%></td>
 <td>إلى</td>

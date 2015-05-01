@@ -46,7 +46,7 @@ class Ad < ActiveRecord::Base
 
 
 
-  def self.search(sort,make,model,manyear,country,axles,gearbox,colour,price_from,price_to,capacity,mileage,type,new)
+  def self.search(sort,make,model,manyear,country,axles,gearbox,colour,price_from,price_to,capacity,mileage,type,new,sale)
       if type == "van"
       makes = Make.joins(:ad, vehicle: :van)
       makes = makes.where('capacity = ?', capacity) if capacity.present?
@@ -96,6 +96,9 @@ class Ad < ActiveRecord::Base
       end
       if new.present?
           makes = makes.where('new = ?',new)
+      end
+      if sale.present?
+	makes = makes.where('sale = ?',sale)
       end
 
       makes

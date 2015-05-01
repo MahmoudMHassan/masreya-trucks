@@ -65,7 +65,11 @@
 <%elsif @make.new == 2%>
 مستعملة
 <%end%>
-
+<%if !@make.sale%>
+للبيع
+<%else%>
+للإيجار
+<%end%>
 </li>
 <li>
 <b>سنة الصنع :</b>

@@ -5,6 +5,7 @@ class CreateMakes < ActiveRecord::Migration
       t.references :vehicle
       t.references :ad
       t.integer :new
+      t.boolean :sale
 
       t.timestamps null: false
     end

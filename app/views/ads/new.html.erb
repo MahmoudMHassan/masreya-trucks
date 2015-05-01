@@ -90,6 +90,7 @@
 	</li>
 	<%end%>
 	<%end%>
+	
 	<li>
 	سنة الصنع: <%= v.number_field :manyear, :class => find_errors(@vehicle, :manyear)%>
 	</li><li>
@@ -123,8 +124,12 @@
 	استيراد: <%= m.radio_button :new,"1"%>
 	</li><li>
 	مستعملة: <%= m.radio_button :new,"2"%>
-	</li><li>
+	</li>
+	<li>
+	للإيجار: <%=m.check_box :sale%>
+	</li>
 	<%end%>
+	<li>
 	الوصف: (اختياري)
 	</li><li>
 	<%= a.text_area :description, size: "100x20"%>

@@ -70,13 +70,14 @@ ActiveRecord::Schema.define(version: 20150423215159) do
     t.integer  "vehicle_id", limit: 4
     t.integer  "ad_id",      limit: 4
     t.integer  "new",        limit: 4
+    t.boolean  "sale",       limit: 1
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_e21f4cc3b4", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_f7ab11ee02", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_aaf7ad84dd", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_949d83dcc5", using: :btree
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false
