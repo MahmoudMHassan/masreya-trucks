@@ -8,9 +8,6 @@ class UsersController < ApplicationController
       redirect_to root_path
     end  
   end
-  def index
-    @user = User.all
-  end
 
   def show
     if User.exists?(params[:id])
@@ -30,6 +27,13 @@ class UsersController < ApplicationController
     @ads = Make.joins(:ad,:vehicle,:user).where('ad_id IN (?)',Bookmark.where('user_id = ?',self.current_user.id).select(:ad_id))
   end
 
+  def index
+ #@ads=Make.all.select { |m| m.user_id == params(:id) }
+     @ads= Make.where('user_id = ?', params[:id])
+    # @ads= Make.find_by_user_id(params[:id])
+
+end
+  
   def destroy
     User.find_by_id(self.current_user.id).delete if User.find_by_id(self.current_user.id)!=nil
     sign_out

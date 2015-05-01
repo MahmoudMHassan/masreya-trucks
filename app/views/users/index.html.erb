@@ -1,5 +1,5 @@
-
-<% @ads.each do |ad| %>
-  <%= ad.title %>
-  <br>
-<% end %>
+ <% @ads.each do |ad| %>
+<br>
+<br>
+<%= link_to Ad.find(ad.id).title, "/ads/#{ad.id}"%>
+<%end%>
