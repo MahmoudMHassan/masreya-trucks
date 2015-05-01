@@ -75,6 +75,11 @@ fr:
     map: "Changer De Lieu"
     info: "Informations Sur Le Véhicule"
     order: "Ordre"
+    type: "Type"
+    range: "Gamme de Prix"
+    ad_date: "Date De Création"
+    result: "Résultat"
+    advanced: "Recherche Avancée"
   users:
     edit: "Modifier Le Profil"
     rm: "Effacer Le Compte"

@@ -66,16 +66,16 @@
 <%= t("ad.used")%>
 <%end%>
 <%if !@make.sale%>
-للبيع
+<%= t("ad.for_sale")%>
 <%else%>
-للإيجار
+<%= t("ad.rent")%>
 <%end%>
 </li>
 <li>
 <b><%= t("ad.man_year")%> :</b>
 <%=@vehicle.manyear%>
 </li><li>
-<b><%= t("ad.country")%> :</b>
+<b><%= t("signup_page.country")%> :</b>
 <%=@vehicle.country%>
 </li><li>
 <b><%= t("ad.axles")%> :</b>

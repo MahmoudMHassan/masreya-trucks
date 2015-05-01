@@ -1,7 +1,7 @@
 <div id = "adwrapper">
 <%= form_for :user do |f|%>
 <%if @blank%>
-<span class ="error">يوجد مسافات فارغة*</span>
+<span class ="error"> <%= t("signup_page.error")%> </span>
 <%end%>
 <br>
 <div style = "float:right;">

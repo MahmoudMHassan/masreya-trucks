@@ -42,7 +42,7 @@ en:
     country: "Country"
     phone: "Phone"
     profile_picture: "Profile Picture"
-    error: "There are empty fields *"
+    error: "There are empty or incorrect fields *"
     pass_error: "Email or password not correct *"
   ad:
     title: "Title"
@@ -76,6 +76,10 @@ en:
     info: "Information about the vehicle"
     order: "Order"
     type: "Type"
+    range: "Price Range"
+    ad_date: "Created At"
+    result: "Result"
+    advanced: "Advanced Search"
   users:
     edit: "Edit Profile"
     rm: "Delete Account"

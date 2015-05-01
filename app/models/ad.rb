@@ -19,21 +19,21 @@ class Ad < ActiveRecord::Base
     def self.make_search (purchase, newV, imported)
         @make = Make.joins(:ad)
         if purchase.present?
-            if (purchase == "للبيع")
+            if (purchase == t("ad.for_sale"))
                 @make = @make.where('purchase LIKE ?',"1")
             else
                 @make = @make.where('purchase LIKE ?',"0")
             end
         end
         if new.present?
-            if new == "<%= t("ad.new")%>"
+            if new == t("ad.new")
                 @make = @make.where('new LIKE ?',"1")
             else
                 @make = @make.where('new LIKE ?',"0")
             end
         end
         if imported.present?
-            if imported == "مستوردة"
+            if imported == t("ad.imported")
                 @make = @make.where('imported LIKE ?',"1")
             else
                 @make = @make.where('imported LIKE ?',"0")

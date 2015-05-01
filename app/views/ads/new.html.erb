@@ -9,10 +9,10 @@
 <div style="position:relative; top:20px;"><%= t("header.semi_trailer")%></div>
   </button>
   <button onclick="location.href='/ads/new/semitrailertruck'" id="newsttbutton" class="newVehicleButtons">
-<div style="position:relative; top:20px;">شاحنة <%= t("header.semi_trailer")%></div>
+<div style="position:relative; top:20px;"> <%= t("header.semi_trailer")%></div>
   </button>
   <button onclick="location.href='/ads/new/heavytruck'" id="newheavybutton" class="newVehicleButtons">
-<div style="position:relative; top:20px;">شاحنة ثقيلة</div>
+<div style="position:relative; top:20px;"><%= t("header.heavy_truck")%></div>
   </button><br><br><br><br>
   <%= t("ad.select")%>
 </div>
@@ -37,14 +37,14 @@
   <%else%>
   <button onclick="location.href='/ads/new/semitrailertruck'" id="newsttbutton" class="newVehicleButtons">
   <%end%>
-<div style="position:relative; top:20px;">شاحنة <%= t("header.semi_trailer")%></div>
+<div style="position:relative; top:20px;"> <%= t("header.semi_trailer")%></div>
   </button>
   <%if request.original_fullpath == "/ads/new/heavytruck"%>
   <button onclick="location.href='/ads/new/heavytruck'" id="newheavybutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
   <button onclick="location.href='/ads/new/heavytruck'" id="newheavybutton" class="newVehicleButtons">
   <%end%>
-<div style="position:relative; top:20px;">شاحنة ثقيلة</div>
+<div style="position:relative; top:20px;"><%= t("header.heavy_truck")%></div>
   </button>
 </div>
 <div id = "adwrapper">
@@ -52,7 +52,7 @@
 
 <ul>
 <li>
-عنوان الإعلان: <%= a.text_field :title, :class => find_errors(@ad, :title)%>
+<%= t("ad.title")%>: <%= a.text_field :title, :class => find_errors(@ad, :title)%>
 </li>
 
 	<%=fields_for :vehicle do |v|%>
@@ -94,7 +94,7 @@
 	<li>
 	<%= t("ad.man_year")%>: <%= v.number_field :manyear, :class => find_errors(@vehicle, :manyear)%>
 	</li><li>
-	<%= t("ad.country")%>: <%= v.select :country ,(["Egypt" , "madagascar"])%>
+	<%= t("signup_page.country")%>: <%= v.select :country ,(["Egypt" , "madagascar"])%>
 	</li><li>
 	 <%= t("ad.axles") %>: <%= v.select(:axles) do %>
 	</li><li>
@@ -141,7 +141,7 @@
 	<li><%= a.file_field :image3 %></li>
 	<li><%= a.file_field :image4 %></li>
 <div style="margin-right:50%">
-	<li><%= a.submit "إضافة الإعلان"%></li>
+	<li><%= a.submit t("ad.create_ad")%></li>
 	</div>
 	<%end%>
 	<%end%>

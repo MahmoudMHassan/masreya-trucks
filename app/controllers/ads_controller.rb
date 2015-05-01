@@ -150,7 +150,7 @@ class AdsController < ApplicationController
       @make.save
       redirect_to "/ads/#{@ad.id}"
     else
-      flash.now[:error] = "*خطأ فى تعديل اﻹعلان"
+        flash.now[:error] =  t("ad.error")
       render 'edit'
     end
   end

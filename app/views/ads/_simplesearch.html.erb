@@ -24,9 +24,9 @@
 
 <td><%= select_tag(:gearbox, options_for_select([['Automatic', 1],['Manual', 0]], params[:gearbox]), :include_blank => true) %></td>
 
-<td><%= t("ad.price")%>  من</td>
+<td><%= t("ad.range")%>  </td>
 <td><%= number_field_tag :price_from, params[:price_from]%></td>
-<td>إلى</td>
+<td>-</td>
 <td><%= number_field_tag :price_to, params[:price_to]%></td>
 
 
@@ -53,6 +53,6 @@
 </tr>
 </table>
 <div style="text-align:center;margin-top:15px;">
-<%= submit_tag "بحث", :name => nil,:class => 'submit_button'%>
+<%= submit_tag t("header.search"), :name => nil,:class => 'submit_button'%>
 </div>
 <%end%>

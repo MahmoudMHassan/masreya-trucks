@@ -1,39 +1,38 @@
 <%=form_tag "/search/1", :method => 'get' do%>
 <table>
 <tr>
-<td>الماركة</td>
+<td><%= t("ad.manu")%></td>
 
  <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
                  ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
 
-<td>الموديل</td>
+<td><%= t("ad.model")%></td>
 
 <td><%= select_tag(:model, options_for_select([['i10', 'i10'],
                  ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
 
-<td>سنة الصنع</td>
+<td><%= t("ad.man_year")%></td>
 <td><%=number_field_tag :manyear,params[:manyear]%></td>
-<td>البلد</td>
+<td><%= t("ad.country")%></td>
 <td><%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
                  ['madagascar', 'madagascar']], params[:country]), :include_blank => true) %></td>
 
 </tr>
 <tr>
-<td>المحاور</td>
+<td><%= t("ad.axles")%></td>
 <td><%= select_tag(:axles, options_for_select([['1', 1],['2', 2],['3', 3],['3>', 4]], params[:axles]), :include_blank => true) %></td>
 
-<td>عجلة السرعة</td>
+<td><%= t("ad.transmission")%></td>
 
 <td><%= select_tag(:gearbox, options_for_select([['Automatic', 1],['Manual', 0]], params[:gearbox]), :include_blank => true) %></td>
 
 
-<td>اللون</td>
+<td><%= t("ad.colour")%></td>
 
 <td><%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], params[:colour]), :include_blank => true) %></td>
 
-<td>السعر من</td>
+<td><%= t("ad.range")%> </td>
 <td><%= number_field_tag :price_from, params[:price_from]%></td>
-<td>إلى</td>
 <td><%= number_field_tag :price_to, params[:price_to]%></td>
 
 
@@ -42,19 +41,19 @@
 </table>
 
 
- جديدة
- <%if params[:new] == "0"%>
+ <%= t("ad.new")%>
+<%if params[:new] == "0"%>
 <%= radio_button_tag(:new, "0", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "0") %>
 <%end%>
-استيراد
+<%= t("ad.imported")%>
  <%if params[:new] == "1"%>
 <%= radio_button_tag(:new, "1", checked = true) %>
 <%else%>
 <%= radio_button_tag(:new, "1") %>
 <%end%>
- مستعملة
+ <%= t("ad.used")%>
  <%if params[:new] == "2"%>
 <%= radio_button_tag(:new, "2", checked = true) %>
 <%else%>
@@ -78,6 +77,6 @@
 </div>
 </div>
 <div style="float:left;margin-top:50px;">
-<%= submit_tag "بحث", :name => nil,:class => 'submit_button'%>
+<%= submit_tag t("header.search"), :name => nil,:class => 'submit_button'%>
 </div>
 <%end%>

@@ -11,7 +11,7 @@
   <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 
     <div id="header">
-         locale <%= I18n.locale %>
+
         <div id="headerRight">
         <%= link_to(root_path) do %>
             <%= image_tag 'truck-green-icon1.png'%>
@@ -51,10 +51,10 @@
         <div id="searchwrapper">
             <%=render 'ads/simplesearch'%>
             <div style="float:left;margin-top:-20px;font-size:16px;">
-            <%=link_to "بحث متقدم...", "/advancedsearch"%>
+            <%=link_to t("ad.advanced"), "/advancedsearch"%>
             </div>
         </div>
-        
+
         </div>
         <%end%>
     <%if self.current_user==nil %>
