@@ -55,6 +55,16 @@
 <%= t("ad.title")%>: <%= a.text_field :title, :class => find_errors(@ad, :title)%>
 </li>
 
+
+   <li>
+<%= a.fields_for :pictures do |p| %>
+     <div class="field">
+       اختر الصور: 
+       <%= p.file_field :image, :multiple => true, name: "pictures[image][]" %>
+     </div>
+   <% end %>
+   </li>
+
 	<%=fields_for :vehicle do |v|%>
 	<li>
 <%= t("ad.manu")%>: <%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
@@ -140,11 +150,7 @@
 	<%= a.text_area :description, size: "100x20"%>
 
 	</li>
-	<li><%= a.file_field :image %></li>
-	<li><%= a.file_field :image1 %></li>
-	<li><%= a.file_field :image2 %></li>
-	<li><%= a.file_field :image3 %></li>
-	<li><%= a.file_field :image4 %></li>
+	
 <div style="margin-right:50%">
 	<li><%= a.submit t("ad.create_ad")%></li>
 	</div>

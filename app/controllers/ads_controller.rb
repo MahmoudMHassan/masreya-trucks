@@ -20,6 +20,7 @@ class AdsController < ApplicationController
     @heavytruck = Heavytruck.new
     @semitrailer = Semitrailer.new
     @semitrailertruck = Semitrailertruck.new
+    
   end
   
   def create
@@ -48,29 +49,39 @@ class AdsController < ApplicationController
     #check if ad, vehicle and subclass params are all valid before saving
     if ((@ad.valid?) & (@vehicle.valid?) & (subclassvalid))
       @ad.save
-      @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
-      @make.update(make_params)
-      @make.save
-
-      if params[:van]
-	@van.save
-      elsif params[:heavytruck]
-	@heavytruck.save
-      elsif params[:semitrailer]
-	@semitrailer.save
-      elsif params[:semitrailertruck]
-	@semitrailertruck.save
+      if @ad.save
+	unless params[:pictures].nil?
+	  params[:pictures]['image'].each do |a|
+	    @pictures = @ad.pictures.create!(:image => a, :ad_id => @ad.id)
+	    
+	  end
+	end
+	
+	@make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
+	@make.update(make_params)
+	@make.save
+	
+	if params[:van]
+	  @van.save
+	elsif params[:heavytruck]
+	  @heavytruck.save
+	elsif params[:semitrailer]
+	  @semitrailer.save
+	elsif params[:semitrailertruck]
+	  @semitrailertruck.save
+	end
+	
+	redirect_to "/ads/#{@ad.id}"
+      else
+	#delete saved record of vehicle and display error message
+	@vehicle.destroy
+	flash.now[:error] = t("signup_page.error")
+	render 'new'
       end
-
-      redirect_to "/ads/#{@ad.id}"
-    else
-      #delete saved record of vehicle and display error message
-      @vehicle.destroy
-      flash.now[:error] = t("signup_page.error")
-      render 'new'
     end
+    
   end
-
+  
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price_from],params[:price_to],params[:capacity],params[:mileage],params[:type],params[:new],params[:sale])
   end
@@ -88,6 +99,7 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
+    @pictures = @ad.pictures.limit(5)
   end
   
   def bookmark
@@ -95,7 +107,7 @@ class AdsController < ApplicationController
     @bookmark.save
     redirect_to "/ads/#{params[:id]}"
   end
-
+  
   def  unbookmark
     Bookmark.where(:user_id => self.current_user.id,:ad_id => params[:id]).destroy_all
     redirect_to "/ads/#{params[:id]}"
@@ -117,6 +129,7 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
+    @pictures = Picture.find(@ad.id)
   end
   
   def update
@@ -128,7 +141,7 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
-
+    
     subclassvalid = false
     @vehicle.assign_attributes(vehicle_params)
     if @van !=nil
@@ -140,19 +153,34 @@ class AdsController < ApplicationController
     elsif @heavytruck !=nil
       subclassvalid = true if @heavytruck.update(heavytruck_params)
     end
-
+    
     @ad.assign_attributes(ad_params)
-
+    
     if @ad.valid? & @vehicle.valid? & subclassvalid
       @ad.save
+      if @ad.save
+	if @ad.update(ad_params)
+	  
+	  Picture.where(:ad_id => @ad.id).destroy_all
+	  
+	  
+	  unless params[:pictures].nil?
+	    params[:pictures]['image'].each do |k|
+	      @picture = @ad.pictures.create!(:image => k, :ad_id => @ad.id)
+	    end
+	  end
+	end
+      end
       @vehicle.save
       @make.update(make_params)
       @make.save
       redirect_to "/ads/#{@ad.id}"
     else
-        flash.now[:error] =  t("ad.error")
+      flash.now[:error] =  t("ad.error")
       render 'edit'
     end
+    
+    
   end
   def inputValidation ad
     return ad.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) && ad.phone.match(/^\+?+[[:digit:]]{,20}$/)
@@ -193,10 +221,4 @@ class AdsController < ApplicationController
     semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
     semitrailertruck_params
   end
-  
-  
-  
-  
-  
-  
 end

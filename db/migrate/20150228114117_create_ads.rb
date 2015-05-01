@@ -6,7 +6,6 @@ class CreateAds < ActiveRecord::Migration
       t.boolean :validated
       t.string :phone
       t.string :email
-
       t.timestamps null: false
     end
   end

@@ -1,47 +1,22 @@
 class Ad < ActiveRecord::Base
-
-    has_many :users, through: :bookmark
-    has_one :seller, through: :make
-    has_many :vehicles, through: :make
-    has_one :van
-    has_one :semitrailer
-    has_one :semitrailertruck
-    has_one :heavytruck
-    has_one :make,dependent: :destroy
-    validates_presence_of(:title)
-
-    mount_uploader :image , ImageUploader
-    mount_uploader :image1 , Image1Uploader
-    mount_uploader :image2 ,Image2Uploader
-    mount_uploader :image3 ,Image3Uploader
-    mount_uploader :image4 ,Image4Uploader
-    accepts_nested_attributes_for :vehicles, :van, :semitrailer, :semitrailertruck, :heavytruck , :make
-
-    def self.make_search (purchase, newV, imported)
-        @make = Make.joins(:ad)
-        if purchase.present?
-            if (purchase == t("ad.for_sale"))
-                @make = @make.where('purchase LIKE ?',"1")
-            else
-                @make = @make.where('purchase LIKE ?',"0")
-            end
-        end
-        if new.present?
-            if new == t("ad.new")
-                @make = @make.where('new LIKE ?',"1")
-            else
-                @make = @make.where('new LIKE ?',"0")
-            end
-        end
-        if imported.present?
-            if imported == t("ad.imported")
-                @make = @make.where('imported LIKE ?',"1")
-            else
-                @make = @make.where('imported LIKE ?',"0")
-            end
-        end
-        @make
-    end
+  has_many :users, through: :bookmark
+  has_one :seller, through: :make
+  has_many :vehicles, through: :make
+  has_many :pictures
+  has_one :van
+  has_one :semitrailer
+  has_one :semitrailertruck
+  has_one :heavytruck
+  has_one :make,dependent: :destroy 
+  validates_presence_of(:title)
+  
+#   mount_uploader :image , ImageUploader
+#   mount_uploader :image1 , Image1Uploader
+#   mount_uploader :image2 ,Image2Uploader
+#   mount_uploader :image3 ,Image3Uploader
+#   mount_uploader :image4 ,Image4Uploader
+  accepts_nested_attributes_for :vehicles, :van, :semitrailer, :semitrailertruck, :heavytruck , :make,:pictures
+ 
 
 
   def self.search(sort,make,model,manyear,country,axles,gearbox,colour,price_from,price_to,capacity,mileage,type,new,sale)

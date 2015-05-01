@@ -81,6 +81,7 @@ Rails.application.routes.draw do
     get 'users/signin'
     get 'users/show'
     get 'users/edit'
+    get 'users/index/:id' => 'users#index'
     get 'users/:id' => 'users#show'
     get 'users/changetoseller/:id' => 'users#changetoseller'
     #get 'makes/new'

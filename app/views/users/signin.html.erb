@@ -10,7 +10,7 @@
 
   <p><%= t("signup_page.email")%> <%if @email==""%><span style = "color: red;"> * </span><%end%></p>
 
-    <%= f.email_field :email, :value => @email%>
+    <%= f.text_field :email, :value => @email%>
 
 <p><%= t("signup_page.password")%> <%if @password==""%><span style = "color: red;"> * </span><%end%></p>
 

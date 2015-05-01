@@ -144,35 +144,23 @@
 <%=@seller.email%>
 </li>
 
-<%if @ad.image_url.to_s != ""%>
-<%= link_to(@ad.image_url.to_s) do %>
-  <%= image_tag @ad.image_url.to_s,size:"300x180" %>
-<% end %>
-<%end%>
 
-<%if @ad.image1_url.to_s != ""%>
-<%= link_to(@ad.image1_url.to_s) do %>
-  <%= image_tag @ad.image1_url.to_s,size:"300x180" %>
-<% end %>
+<% unless @pictures.empty? %>
+<%@pictures.each do |p| %>
+<%= image_tag p.image_url, size: "250x250" %>
 <%end%>
+<%else%>
+<%if @van!= nil%>
+ <%= image_tag "van.png", size: "150x150"%>
+    <%elsif @heavytruck !=nil%>
+    <%= image_tag "heavytruck.png", size: "150x150"%>
+        <%elsif @semitrailertruck !=nil%>
+        <%= image_tag "zefttruck.png", size: "150x150"%>
+          <%elsif @semitrailer!=nil%>
+         <%= image_tag "semitrailer.png", size: "150x150"%>
+	<%end%>
+	<%end%>
 
-<%if @ad.image2_url.to_s != ""%>
-<%= link_to(@ad.image2_url.to_s) do %>
-  <%= image_tag @ad.image2_url.to_s,size:"300x180" %>
-<% end %>
-<%end%>
-
-<%if @ad.image3_url.to_s != ""%>
-<%= link_to(@ad.image3_url.to_s) do %>
-  <%= image_tag @ad.image3_url.to_s,size:"300x180" %>
-<% end %>
-<%end%>
-
-<%if @ad.image4_url.to_s != ""%>
-<%= link_to(@ad.image4_url.to_s) do %>
-  <%= image_tag @ad.image4_url.to_s,size:"300x180" %>
-<% end %>
-<%end%>
 </div>
 
 </div>

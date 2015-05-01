@@ -7,24 +7,9 @@ class PicturesController < ApplicationController
   end
 
   def create
-   #  @picture = Picture.new(params.require(:picture).permit(:image))
+    @picture = Picture.new(params.require(:picture).permit(:name, :ad_id))
     #@picture = Picture.find(params
-     # @picture.save
-     
-    @ad = Ad.find(params[:ad_id])
-    @picture = @ad.pictures.create!(params[:picture])
-    redirect_to @post
-
-    # For URL like /orders/1/items
-    # Populate an item associate with order 1 with form data
-    # Order will be associated with the item
-    #@picture = @make.pictures.build(params[:picture])
-    #@picture.save
-   # if @picture.save
-      # Save the item successfully
-   # else
-     # render :action => "new"
-   # end
+     @picture.save
   end
 
   def show
@@ -35,10 +20,15 @@ class PicturesController < ApplicationController
     @picture = @make.pictures.find(params[:id])
   end
  
-  def index
-     @picture = Picture.find(params[:id])
-
-    # Access all items for that order
-    @ads = @picture.ads
+  
+  def edit
+    Picture.find_by_ad_id(params[:id]).delete
   end
+     def update
+     @picture.update(picture_params)
+  end
+   def picture_params
+  picture_params = params[:picture].permit(:name, :ad_id)
+  picture_params
+ end
 end

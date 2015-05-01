@@ -1,2 +1,39 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div id ="adwrapper">
+<%@ads.each do |a|%>
+<div class = "post_wrapper">
+<div style="float:right;width:200px;">
+
+<% unless a.ad.pictures.empty? %>
+<%a.ad.pictures.each_with_index do |p, index|%>
+<% if index==0 %>
+<%= image_tag p.image_url,size:"150x150" %> 
+<% end %>
+<%end%>
+<%else%>
+<%if a.vehicle.van!= nil%>
+ <%= image_tag "van.png", size: "150x150"%>
+    <%elsif a.vehicle.heavytruck !=nil%>
+    <%= image_tag "heavytruck.png", size: "150x150"%>
+        <%elsif a.vehicle.semitrailertruck !=nil%>
+        <%= image_tag "zefttruck.png", size: "150x150"%>
+          <%elsif a.vehicle.semitrailer!=nil%>
+         <%= image_tag "semitrailer.png", size: "150x150"%>
+	<%end%>
+<%end%>
+</div>
+<div style="float:center;">
+<%=link_to a.ad.title, "/ads/#{a.ad.id}"%><br>
+<%= a.vehicle.make%> | <%=a.vehicle.model%><br>
+السعر:<%= number_with_delimiter(a.vehicle.price, :delimiter => ',')%>
+السنة: <%= a.vehicle.manyear%>
+<br>
+<%if a.ad.description.length > 300%>
+<%=a.ad.description.first(300)%> ... <br>
+<%else%>
+<%=a.ad.description%><br>
+<%end%>
+</div>
+</div>
+<%end%>
+
+</div>
