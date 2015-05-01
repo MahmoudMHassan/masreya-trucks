@@ -110,15 +110,16 @@ class AdsController < ApplicationController
     redirect_to "/ads/#{params[:id]}"
   end
  def index
- @ads= Make.where('user_id = ?', self.current_user.id)
+ #@ads= Make.where('user_id = ?', self.current_user.id)
+ @ads=Make.all.select { |m| m.user_id == self.current_user.id }
    #@seller= User.find(params[:id])
  # @ads = @seller.ads
 end
 # 
- def view
-  # @seller = User.find(params[:id])
-@seller = User.find(params[:id])
-end
+# def view
+  #@seller = User.find(params[:id])
+#@seller = User.find(params[:id])
+#end
 
   def delete
     Make.destroy_all(user_id: self.current_user.id, ad_id: params[:id])
