@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-    before_filter :authorize, :only => [:bookmark, :destroy, :edit]
+  before_filter :authorize, :only => [:bookmark, :destroy, :edit]
 
   def authorize
     if self.current_user != nil
       true
     else
       redirect_to root_path
-    end  
+    end
   end
   def index
     @user = User.all
@@ -16,12 +16,12 @@ class UsersController < ApplicationController
     if User.exists?(params[:id])
       @user = User.find(params[:id])
       @companyseller = CompanySeller.find_by_user_id(params[:id])
-#       if @companyseller != nil
-# 	  @hash = Gmaps4rails.build_markers(@companyseller) do |companyseller, marker|
-# 	  marker.lat companyseller.lat
-# 	  marker.lng companyseller.lng
-# 	end
-#       end
+      #       if @companyseller != nil
+      #     @hash = Gmaps4rails.build_markers(@companyseller) do |companyseller, marker|
+      #     marker.lat companyseller.lat
+      #     marker.lng companyseller.lng
+      #   end
+      #       end
     else
       redirect_to root_path
     end
@@ -62,16 +62,16 @@ class UsersController < ApplicationController
 
     @user = User.new(params.require(:user).permit(:email, :password , :fname , :lname, :country, :phone, :validated, :avatar))
     if !inputValidation @user
-     @valid = false
+      @valid = false
       render 'new'
-     return 
-       end 
+      return
+    end
     if  @user.save
       log_in(@user)
- 
+
       @seller= Seller.create(user_id: @user.id)
       @seller.save
-           redirect_to "/users/#{@user.id}"
+      redirect_to "/users/#{@user.id}"
     else
       render 'new'
 
@@ -90,9 +90,9 @@ class UsersController < ApplicationController
     @wrong = false
 
     user = User.where(:email => @email.downcase).first
-    if user == nil 
+    if user == nil
       user = User.where(:phone => @email).first
-    end 
+    end
     if ((@email.blank?) || (@password.blank?) || (!validateLogin @email))
 
       @blank = true
@@ -111,7 +111,7 @@ class UsersController < ApplicationController
     end
 
   end
-   def edit
+  def edit
     @user = self.current_user
     @companyseller = CompanySeller.find_by_user_id(self.current_user.id)
   end
@@ -121,23 +121,23 @@ class UsersController < ApplicationController
     @user.company_seller.update(params[:company_seller].permit(:lng,:lat)) if CompanySeller.find_by_user_id(@user.id) != nil
     if @user.update(params[:user].permit(:email,:password,:fname,:lname,:country,:phone,:validated, :avatar))
       if inputValidation @user
-      redirect_to "/users/#{@user.id}"
-    else
-      render 'edit'
-     end 
+  redirect_to "/users/#{@user.id}"
+      else
+  render 'edit'
+      end
     end
   end
-  
+
   def changetoseller
-      Buyer.find_by_user_id(self.current_user.id).delete if Buyer.find_by_user_id(self.current_user.id)!=nil
+    Buyer.find_by_user_id(self.current_user.id).delete if Buyer.find_by_user_id(self.current_user.id)!=nil
     @seller = Seller.create(user_id: self.current_user.id)
     @seller.save
     redirect_to "/users/#{self.current_user.id}"
   end
   def inputValidation user
-return user.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@[[:alpha:]]+(.[[:alpha:]]+){,5}$/) && user.fname.match(/^[[:alpha:]]+$/) && user.lname.match(/^[[:alpha:]]+$/) && user.country.match(/^[[:alpha:]]+$/) && user.phone.match(/^\+?+[[:digit:]]{,20}$/)
-end
- def validateLogin param
-return param.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@[[:alpha:]]+(.[[:alpha:]]+){,5}$/) || param.match(/^\+?+[[:digit:]]{,20}$/)
-end
+    return user.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@[[:alpha:]]+(.[[:alpha:]]+){,5}$/) && user.fname.match(/^[[:alpha:]]+$/) && user.lname.match(/^[[:alpha:]]+$/) && user.country.match(/^[[:alpha:]]+$/) && user.phone.match(/^\+?+[[:digit:]]{,20}$/)
+  end
+  def validateLogin param
+    return param.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*@[[:alpha:]]+(.[[:alpha:]]+){,5}$/) || param.match(/^\+?+[[:digit:]]{,20}$/)
+  end
 end
