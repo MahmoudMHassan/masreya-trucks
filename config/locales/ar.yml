@@ -23,7 +23,7 @@ ar:
     signup: "فتح حساب"
     login: "تسجيل دحول"
     all_vehicles: "جميع العربات"
-    van: "شاحنة صغيرة"
+    van: "ميكروباص"
     semi_trailer: "نصف مقطورة"
     semi_trailer_truck: "رأس نصف مقطورة"
     heavy_truck: "الشاحنات الثقيلة"
