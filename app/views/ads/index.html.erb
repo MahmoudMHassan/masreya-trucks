@@ -1,9 +1,5 @@
  <% @ads.each do |ad| %>
-	<div class="post_wrapper">
-
-	<tr>
-	<div style="text-align: right">
-	
+<br>
 <br>
 <%= link_to Ad.find(ad.id).title, "/ads/#{ad.id}"%>
 <%end%>

@@ -27,12 +27,7 @@ class PicturesController < ApplicationController
     @ads = @picture.ads
   end
   
-#     def update
-#   respond_to do |format|
-#     if @post_attachment.update(post_attachment_params)
-#       format.html { redirect_to @post_attachment.post, notice: 'Post attachment was successfully updated.' }
-#     end 
-#   end
-
+     def update
+     @post_attachment.update(post_attachment_params)
   end
 end

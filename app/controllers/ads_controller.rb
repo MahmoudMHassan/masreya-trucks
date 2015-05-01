@@ -50,9 +50,13 @@ class AdsController < ApplicationController
     if ((@ad.valid?) & (@vehicle.valid?) & (subclassvalid))
       @ad.save
        if @ad.save
+	 unless params[:pictures].nil?
        params[:pictures]['image'].each do |a|
           @pictures = @ad.pictures.create!(:image => a, :ad_id => @ad.id)
+	  @pictures.update(picture_params)
        end
+	 end
+	
       @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
       @make.update(make_params)
       @make.save
@@ -160,6 +164,15 @@ end
     
     if @ad.valid? & @vehicle.valid? & subclassvalid
       @ad.save
+      if @ad.save
+	    if @ad.update(ad_params)
+          unless params[:images].nil?
+            params[:pictures]['image'].each do |k|
+              @picture = @ad.pictures.create!(:avatar => k, :ad_id => @ad.id)
+            end
+	  end
+	end
+      end
       @vehicle.save
       @make.update(make_params)
       @make.save
@@ -168,6 +181,8 @@ end
       flash.now[:error] = "*خطأ فى تعديل اﻹعلان"
       render 'edit'
     end
+    
+
   end
   def inputValidation ad
 return ad.email.match(/^[[:alpha:]]+[[:punct:]]?[[:alpha:]]*(@[[:alpha:]]+.[[:alpha:]]+){,5}$/) && ad.phone.match(/^\+?+[[:digit:]]{,20}$/)
