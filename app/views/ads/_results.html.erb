@@ -1,45 +1,45 @@
 <div id ="adwrapper">
-الترتيب
+<%= t("ad.order")%>
 <%sortpath = request.original_fullpath.split("&sort=")[0]%>
 <!--select tag for sorting method (change default depending on params[:sort])  -->
 <select id="sortlist">
     <%if params[:sort] == "0"%>
-    <option selected="selected" value=<%="#{sortpath}&sort=0"%>>↑ سعر</option>
+    <option selected="selected" value=<%="#{sortpath}&sort=0"%>>↑ <%= t("ad.price")%></option>
     <%else%>
-    <option value=<%="#{sortpath}&sort=0"%>>↑ سعر</option>
+    <option value=<%="#{sortpath}&sort=0"%>>↑ <%= t("ad.price")%></option>
     <%end%>
     <%if params[:sort] == "1"%>
-    <option selected="selected" value=<%="#{sortpath}&sort=1"%>>↓ سعر</option>
+    <option selected="selected" value=<%="#{sortpath}&sort=1"%>>↓ <%= t("ad.price")%></option>
     <%else%>
-    <option value=<%="#{sortpath}&sort=1"%>>↓ سعر</option>
+    <option value=<%="#{sortpath}&sort=1"%>>↓ <%= t("ad.price")%></option>
     <%end%>
     <%if params[:sort] == "2"%>
-    <option selected="selected" value=<%="#{sortpath}&sort=2"%>>↑ سنة الإنتاج</option>
+    <option selected="selected" value=<%="#{sortpath}&sort=2"%>>↑ <%= t("ad.man_year")%></option>
     <%else%>
-    <option value=<%="#{sortpath}&sort=2"%>>↑ سنة الإنتاج</option>
+    <option value=<%="#{sortpath}&sort=2"%>>↑ <%= t("ad.man_year")%></option>
     <%end%>
     <%if params[:sort] == "3"%>
-    <option selected="selected" value=<%="#{sortpath}&sort=3"%>>↓ سنة الإنتاج</option>
+    <option selected="selected" value=<%="#{sortpath}&sort=3"%>>↓ <%= t("ad.man_year")%></option>
     <%else%>
-    <option value=<%="#{sortpath}&sort=3"%>>↓ سنة الإنتاج</option>
+    <option value=<%="#{sortpath}&sort=3"%>>↓ <%= t("ad.man_year")%></option>
     <%end%>
     <%if params[:sort] == "4"%>
-    <option selected="selected" value=<%="#{sortpath}&sort=3"%>>↑ تاريخ الإعلان</option>
+    <option selected="selected" value=<%="#{sortpath}&sort=3"%>>↑ <%= t("ad.ad_date")%></option>
     <%else%>
-    <option value=<%="#{sortpath}&sort=4"%>>↑ تاريخ الإعلان</option>
+    <option value=<%="#{sortpath}&sort=4"%>>↑ <%= t("ad.ad_date")%></option>
     <%end%>
     <%if params[:sort] == "5"%>
-    <option selected="selected" value=<%="#{sortpath}&sort=3"%>>↓ تاريخ الإعلان</option>
+    <option selected="selected" value=<%="#{sortpath}&sort=3"%>>↓ <%= t("ad.ad_date")%></option>
     <%else%>
-    <option value=<%="#{sortpath}&sort=5"%>>↓ تاريخ الإعلان</option>
+    <option value=<%="#{sortpath}&sort=5"%>>↓ <%= t("ad.ad_date")%></option>
     <%end%>
-    
-    
-    
+
+
+
 </select>
 <%adscount = @ads.count%>
 <br>
-وجد <%=adscount%> نتيجة <br>
+ <%=adscount%> <%= t("ad.result")%> <br>
 <% pageads = @ads.limit(10).offset((params[:page].to_i-1)*10)%>
 <%pageads.each do |a|%>
 <div class = "post_wrapper">
@@ -51,8 +51,8 @@
 <div style="float:center;">
 <%=link_to a.ad.title, "/ads/#{a.ad.id}"%><br>
 <%= a.vehicle.make%> | <%=a.vehicle.model%><br>
-السعر:<%= number_with_delimiter(a.vehicle.price, :delimiter => ',')%>
-السنة: <%= a.vehicle.manyear%>
+<%= t("ad.price")%>:<%= number_with_delimiter(a.vehicle.price, :delimiter => ',')%>
+<%= t("ad.man_year")%>: <%= a.vehicle.manyear%>
 <br>
 <%if a.ad.description.length > 300%>
 <%=a.ad.description.first(300)%> ... <br>
@@ -94,5 +94,5 @@
 <%=link_to "↞", "#{path.sub "/search/#{params[:page]}", "/search/#{(adscount / 10.0).ceil}"}", {:style => 'color:black;'}%>
 <%end%>
 <%end%>
- 
+
 </div>

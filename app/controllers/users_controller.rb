@@ -133,7 +133,6 @@ class UsersController < ApplicationController
     end
 
 
-
     def changetoseller
         Buyer.find_by_user_id(self.current_user.id).delete if Buyer.find_by_user_id(self.current_user.id)!=nil
         @seller = Seller.create(user_id: self.current_user.id)

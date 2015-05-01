@@ -51,7 +51,7 @@ class AdsController < ApplicationController
       @make = Make.new(user_id: self.current_user.id,vehicle_id: @vehicle.id,ad_id: @ad.id)
       @make.update(make_params)
       @make.save
-      
+
       if params[:van]
 	@van.save
       elsif params[:heavytruck]
@@ -61,16 +61,16 @@ class AdsController < ApplicationController
       elsif params[:semitrailertruck]
 	@semitrailertruck.save
       end
-      
+
       redirect_to "/ads/#{@ad.id}"
     else
       #delete saved record of vehicle and display error message
       @vehicle.destroy
-      flash.now[:error] = "*خطأ فى إضافة اﻹعلان"
+      flash.now[:error] = t("signup_page.error")
       render 'new'
     end
   end
-  
+
   def search
     @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price_from],params[:price_to],params[:capacity],params[:mileage],params[:type],params[:new],params[:sale])
   end
@@ -95,7 +95,7 @@ class AdsController < ApplicationController
     @bookmark.save
     redirect_to "/ads/#{params[:id]}"
   end
-  
+
   def  unbookmark
     Bookmark.where(:user_id => self.current_user.id,:ad_id => params[:id]).destroy_all
     redirect_to "/ads/#{params[:id]}"
@@ -128,7 +128,7 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
-    
+
     subclassvalid = false
     @vehicle.assign_attributes(vehicle_params)
     if @van !=nil
@@ -140,9 +140,9 @@ class AdsController < ApplicationController
     elsif @heavytruck !=nil
       subclassvalid = true if @heavytruck.update(heavytruck_params)
     end
-    
+
     @ad.assign_attributes(ad_params)
-    
+
     if @ad.valid? & @vehicle.valid? & subclassvalid
       @ad.save
       @vehicle.save
@@ -150,7 +150,7 @@ class AdsController < ApplicationController
       @make.save
       redirect_to "/ads/#{@ad.id}"
     else
-      flash.now[:error] = "*خطأ فى تعديل اﻹعلان"
+        flash.now[:error] =  t("ad.error")
       render 'edit'
     end
   end

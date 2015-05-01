@@ -5,7 +5,7 @@
 <span><%= link_to "SEMITRAILERTRUCK", "/semitrailertrucks/new",:style=>'color: black'%></span> |
 </div>
 <%if @blank%>
-<span class ="error">يوجد بيانات فارغة*</span>
+<span class ="error"><%= t("signup_page.error")%></span>
 <%end%>
 <%= form_tag do %>
 

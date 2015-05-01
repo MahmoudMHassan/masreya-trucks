@@ -9,28 +9,28 @@ Find me in app/views/vehicles/new.html.erb
 <br>
 <%=f.select :model,([ "i10" , "w30" , "503"])%>
 <br>
-سنة الصنع
+<%= t("ad.man_year")%>
 <br>
 <%=f.number_field :manyear%>
 <br>
-المكان
+<%= t("signup_page.country")%>
 <br>
 <%=f.select :country ,(["مصر" , "المملكة العربية السعودية", "الأمرات المتحدة", "الكويت"])%>
 <br>
-عدد المحاور
+<%= t("ad.axles")%>
 <br>
 <%=f.select :axles, options_for_select([['1', 1],['2', 2],['3', 3],['3', 4]])%>
 <br>
-ناقل الحركة
+<%= t("ad.transmission")%>
 <br>
-يدوي
+<%= t("ad.manual")%>
 <%=f.check_box :gearbox %>
 <br>
-اللون
+<%= t("ad.colour")%>
 <br>
 <%=f.select :colour, options_for_select([["أبيض"],["أسود"]])%>
 <br>
-السعر
+<%= t("ad.price")%>
 <br>
 <%= f.number_field :price %>
 <br>

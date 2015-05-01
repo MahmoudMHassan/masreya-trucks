@@ -10,21 +10,21 @@
 	<%else%>
 	  <%= image_tag "user.png", size: "100x100"%>
 	<%end%></li>
-<li><b>الاسم: </b><%= @user.fname%></li>
-<li><b> اسم العائلة: </b><%= @user.lname%></li>
-<li><b>البريد الالكتروني: </b><%= @user.email%></li>
-<li><b>البلد: </b><%= @user.country%></li>
-<li><b>الهاتف: </b><%= @user.phone%></li>
+<li><b><%= t("signup_page.name")%>: </b><%= @user.fname%></li>
+<li><b> <%= t("signup_page.surname")%>: </b><%= @user.lname%></li>
+<li><b><%= t("signup_page.email")%>: </b><%= @user.email%></li>
+<li><b><%= t("ad.manu")%>: </b><%= @user.country%></li>
+<li><b><%= t("signup_page.phone")%>: </b><%= @user.phone%></li>
 </ul>
 <%if self.current_user != nil && @user.id == self.current_user.id%>
 <li><%= link_to "/users/edit" do %>
 	  <%= image_tag "edit.png", size:"20x20"%>
 	<% end %>
-<%= link_to "تعديل البيانات", "/users/edit"%></li>
+<%= link_to t("users.edit"), "/users/edit"%></li>
 <li><%= link_to "destroy/#{self.current_user.id}", method: :post,data: {confirm: 'Are you sure?'} do %>
 	  <%= image_tag "delete.png", size:"16x16"%>
 	<% end %>
-<%= link_to "إلغاء الحساب", "destroy/#{self.current_user.id}", :style=>'color: red', method: :post,data: {confirm: 'Are you sure?'}%></li>
+<%= link_to  t("users.rm"), "destroy/#{self.current_user.id}", :style=>'color: red', method: :post,data: {confirm: 'Are you sure?'}%></li>
 <%end%>
 
 

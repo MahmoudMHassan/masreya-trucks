@@ -3,18 +3,18 @@
 <%if request.original_fullpath == "/ads/new"%>
 <div style="text-align:center;width:700px;margin: 10px auto;">
   <button onclick="location.href='/ads/new/van'" id="newvanbutton" class="newVehicleButtons">
-<div style="position:relative; top:20px;">عربة</div>
+<div style="position:relative; top:20px;"><%= t("header.van")%></div>
   </button>
   <button onclick="location.href='/ads/new/semitrailer'" id="newsemibutton" class="newVehicleButtons">
-<div style="position:relative; top:20px;">شبه مقطورة</div>
+<div style="position:relative; top:20px;"><%= t("header.semi_trailer_truck")%></div>
   </button>
   <button onclick="location.href='/ads/new/semitrailertruck'" id="newsttbutton" class="newVehicleButtons">
-<div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
+<div style="position:relative; top:20px;"> <%= t("header.semi_trailer")%></div>
   </button>
   <button onclick="location.href='/ads/new/heavytruck'" id="newheavybutton" class="newVehicleButtons">
-<div style="position:relative; top:20px;">شاحنة ثقيلة</div>
+<div style="position:relative; top:20px;"><%= t("header.heavy_truck")%></div>
   </button><br><br><br><br>
-  اختر نوع الشاحنة لإضافة
+  <%= t("ad.select")%>
 </div>
 <%elsif ["/ads/new/van","/ads/new/semitrailer","/ads/new/heavytruck","/ads/new/semitrailertruck"].include? request.original_fullpath%>
 <div style="width:700px;margin: 10px auto;">
@@ -23,28 +23,28 @@
   <%else%>
   <button onclick="location.href='/ads/new/van'" id="newvanbutton" class="newVehicleButtons">
   <%end%>
-<div style="position:relative; top:20px;">عربة</div>
+<div style="position:relative; top:20px;"><%= t("header.van")%></div>
   </button>
   <%if request.original_fullpath == "/ads/new/semitrailer"%>
   <button onclick="location.href='/ads/new/semitrailer'" id="newsemibutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
   <button onclick="location.href='/ads/new/semitrailer'" id="newsemibutton" class="newVehicleButtons">
   <%end%>
-<div style="position:relative; top:20px;">شبه مقطورة</div>
+<div style="position:relative; top:20px;"><%= t("header.semi_trailer")%></div>
   </button>
   <%if request.original_fullpath == "/ads/new/semitrailertruck"%>
   <button onclick="location.href='/ads/new/semitrailertruck'" id="newsttbutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
   <button onclick="location.href='/ads/new/semitrailertruck'" id="newsttbutton" class="newVehicleButtons">
   <%end%>
-<div style="position:relative; top:20px;">شاحنة شبه مقطورة</div>
+<div style="position:relative; top:20px;"> <%= t("header.semi_trailer")%></div>
   </button>
   <%if request.original_fullpath == "/ads/new/heavytruck"%>
   <button onclick="location.href='/ads/new/heavytruck'" id="newheavybutton" class="newVehicleButtons" style="background-color:#9DE56A">
   <%else%>
   <button onclick="location.href='/ads/new/heavytruck'" id="newheavybutton" class="newVehicleButtons">
   <%end%>
-<div style="position:relative; top:20px;">شاحنة ثقيلة</div>
+<div style="position:relative; top:20px;"><%= t("header.heavy_truck")%></div>
   </button>
 </div>
 <div id = "adwrapper">
@@ -52,51 +52,51 @@
 
 <ul>
 <li>
-عنوان الإعلان: <%= a.text_field :title, :class => find_errors(@ad, :title)%>
+<%= t("ad.title")%>: <%= a.text_field :title, :class => find_errors(@ad, :title)%>
 </li>
 
 	<%=fields_for :vehicle do |v|%>
 	<li>
-الماركة: <%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
+<%= t("ad.manu")%>: <%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
 </li><li>
-	الموديل: <%= v.select :model,([ "i10" , "w30" , "503"])%>
+	<%= t("ad.model")%>: <%= v.select :model,([ "i10" , "w30" , "503"])%>
 </li>
 	<%if request.original_fullpath == "/ads/new/van"%>
 	<%=fields_for :van do |van|%>
 	<li>
-	حمولة: <%= van.check_box :capacity%>
+	<%= t("ad.capacity")%> : <%= van.check_box :capacity%>
 	</li><li>
-مسافة: <%= van.number_field :mileage, :class => find_errors(@van, :mileage)%>
+<%= t("ad.mileage")%> : <%= van.number_field :mileage, :class => find_errors(@van, :mileage)%>
 </li>
 	<%end%>
 	<%elsif request.original_fullpath == "/ads/new/semitrailer"%>
 	<%=fields_for :semitrailer do |s|%>
 	<li>
-	حمولة: <%= s.check_box :capacity%>
+	<%= t("ad.capacity")%> : <%= s.check_box :capacity%>
 	</li>
 	<%end%>
 	<%elsif request.original_fullpath == "/ads/new/semitrailertruck"%>
 	<%=fields_for :semitrailertruck do |st|%>
 	<li>
-	مسافة: <%= st.number_field :mileage, :class => find_errors(@semitrailertruck, :mileage)%>
+	<%= t("ad.mileage")%> : <%= st.number_field :mileage, :class => find_errors(@semitrailertruck, :mileage)%>
 	</li>
 	<%end%>
 	<%elsif request.original_fullpath == "/ads/new/heavytruck"%>
 	<%=fields_for :heavytruck do |h|%>
 	<li>
-	حمولة: <%= h.check_box :capacity%>
+	<%= t("ad.capacity")%> : <%= h.check_box :capacity%>
 	</li><li>
-	مسافة: <%= h.number_field :mileage, :class => find_errors(@heavytruck, :mileage)%>
+	<%= t("ad.mileage")%> : <%= h.number_field :mileage, :class => find_errors(@heavytruck, :mileage)%>
 	</li>
 	<%end%>
 	<%end%>
-	
+
 	<li>
-	سنة الصنع: <%= v.number_field :manyear, :class => find_errors(@vehicle, :manyear)%>
+	<%= t("ad.man_year")%>: <%= v.number_field :manyear, :class => find_errors(@vehicle, :manyear)%>
 	</li><li>
-	البلد: <%= v.select :country ,(["Egypt" , "madagascar"])%>
+	<%= t("signup_page.country")%>: <%= v.select :country ,(["Egypt" , "madagascar"])%>
 	</li><li>
-	المحاور النقلات: <%= v.select(:axles) do %>
+	 <%= t("ad.axles") %>: <%= v.select(:axles) do %>
 	</li><li>
       <% [['1', '1'], ['2', '2'], ['3', '3'], ['3>', '4']].each do |c| -%>
 	<%= content_tag(:option, c.first, value: c.last) %>
@@ -104,40 +104,41 @@
       <% end %>
 	</li>
 	<li>
-	عجلة السرعة: <%= v.select(:gearbox) do %>
+	<%= t("ad.transmission")%> : <%= v.select(:gearbox) do %>
       <% [['Automatic', true], ['Manual', false]].each do |c| -%>
 	<%= content_tag(:option, c.first, value: c.last) %>
       <% end %>
       <% end %>
 	</li><li>
-	اللون: <%= v.select :colour ,(["white","black","yellow","brown","green","red","orange","blue","grey"])%>
+	<%= t("ad.colour")%> : <%= v.select :colour ,(["white","black","yellow","brown","green","red","orange","blue","grey"])%>
 	</li>
 
 	<li>
-	السعر: <%= v.number_field :price, :class => find_errors(@vehicle, :price)%>
+	<%= t("ad.price")%> : <%= v.number_field :price, :class => find_errors(@vehicle, :price)%>
 	</li>
 	<%end%>
 	<%=fields_for :make do |m|%>
 	<li>
-	جديدة: <%= m.radio_button :new, "0"%>
+	<%= t("ad.new")%>: <%= m.radio_button :new, "0"%>
 	</li><li>
-	استيراد: <%= m.radio_button :new,"1"%>
+	<%= t("ad.imported")%>: <%= m.radio_button :new,"1"%>
 	</li><li>
-	مستعملة: <%= m.radio_button :new,"2"%>
+	<%= t("ad.used")%>: <%= m.radio_button :new,"2"%>
 	</li>
 	<li>
-	للإيجار: <%=m.check_box :sale%>
+	<%= t("ad.rent")%>: <%=m.check_box :sale%>
 	</li>
 	<%end%>
 	
 	<li><b>تليفون بديل:</b></li>
 	<li><%=a.number_field :phone%></li>
 	<li>
-	الوصف: (اختياري)
-	</li>
-	<li>
+
+	<%= t("ad.description")%> :
+	</li><li>
+
 	<%= a.text_area :description, size: "100x20"%>
-	
+
 	</li>
 	<li><%= a.file_field :image %></li>
 	<li><%= a.file_field :image1 %></li>
@@ -145,7 +146,7 @@
 	<li><%= a.file_field :image3 %></li>
 	<li><%= a.file_field :image4 %></li>
 <div style="margin-right:50%">
-	<li><%= a.submit "إضافة الإعلان"%></li>
+	<li><%= a.submit t("ad.create_ad")%></li>
 	</div>
 	<%end%>
 	<%end%>
