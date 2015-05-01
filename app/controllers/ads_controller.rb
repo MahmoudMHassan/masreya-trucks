@@ -170,7 +170,7 @@ class AdsController < ApplicationController
   end
   
   def make_params
-    make_params = params[:make].permit(:new,:imported,:purchase)
+    make_params = params[:make].permit(:new,:sale)
     make_params
   end
   
