@@ -193,9 +193,4 @@ class AdsController < ApplicationController
     semitrailertruck_params = params[:semitrailertruck].permit(:mileage)
     semitrailertruck_params
   end
-  
-  
-  
-  
-  
 end
