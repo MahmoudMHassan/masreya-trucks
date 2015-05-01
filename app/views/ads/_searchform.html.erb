@@ -1,17 +1,17 @@
 <%=form_tag "/search/1", :method => 'get' do%>
 <table>
 <tr>
-<td>انتاج</td>
+<td>الماركة</td>
 
  <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
                  ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
 
-<td>موديل</td>
+<td>الموديل</td>
 
 <td><%= select_tag(:model, options_for_select([['i10', 'i10'],
                  ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
 
-<td>سنة الانتاج</td>
+<td>سنة الصنع</td>
 <td><%=number_field_tag :manyear,params[:manyear]%></td>
 <td>البلد</td>
 <td><%= select_tag(:country, options_for_select([['Egypt', 'Egypt'],
@@ -24,58 +24,45 @@
 
 <td>عجلة السرعة</td>
 
-<td><%= select_tag(:gearbox, options_for_select([['Automatic', true],['Manual', false]], params[:gearbox]), :include_blank => true) %></td>
+<td><%= select_tag(:gearbox, options_for_select([['Automatic', 1],['Manual', 0]], params[:gearbox]), :include_blank => true) %></td>
 
 
 <td>اللون</td>
 
 <td><%= select_tag(:colour, options_for_select([['white', 'white'],['black', 'black'],['yellow', 'yellow'],['brown', 'brown'],['green', 'green'],['red', 'red'],['orange', 'orange'],['blue', 'blue'],['grey', 'grey']], params[:colour]), :include_blank => true) %></td>
 
-<td>السعر</td>
-<td style="width:200px;"><%= select_tag(:price, options_for_select([['< 120,000', '0'],['120,000 - 160,000', '1'],['160,000 - 200,000', '2'],['200,000 - 240,000', '3'],['240,000 - 280,000', '4'],['> 280,000', '5']], params[:price]), :include_blank => true) %></td>
+<td>السعر من</td>
+<td><%= number_field_tag :price_from, params[:price_from]%></td>
+<td>إلى</td>
+<td><%= number_field_tag :price_to, params[:price_to]%></td>
 
-<td>الترتيب</td>
-<td><%= select_tag(:sort, options_for_select([['↑ price', '0'],['↓ price', '1'],['↑ manyear', '2'],['↓ manyear', '3']], params[:sort])) %></td>
 
 
 </tr>
 </table>
- للبيع
- <%if params[:purchase] == "للبيع"%>
-<%= radio_button_tag(:purchase, "للبيع", checked = true) %>
-<%else%>
-<%= radio_button_tag(:purchase, "للبيع") %>
-<%end%>
- للإيجار
-  <%if params[:purchase] == "للإيجار"%>
-<%= radio_button_tag(:purchase, "للإيجار", checked = true) %>
-<%else%>
-<%= radio_button_tag(:purchase, "للإيجار") %>
-<%end%>
+
+
  جديدة
- <%if params[:new] == "جديدة"%>
-<%= radio_button_tag(:new, "جديدة", checked = true) %>
+ <%if params[:new] == "0"%>
+<%= radio_button_tag(:new, "0", checked = true) %>
 <%else%>
-<%= radio_button_tag(:new, "جديدة") %>
+<%= radio_button_tag(:new, "0") %>
+<%end%>
+استيراد
+ <%if params[:new] == "1"%>
+<%= radio_button_tag(:new, "1", checked = true) %>
+<%else%>
+<%= radio_button_tag(:new, "1") %>
 <%end%>
  مستعملة
- <%if params[:new] == "مستعملة"%>
-<%= radio_button_tag(:new, "مستعملة", checked = true) %>
+ <%if params[:new] == "2"%>
+<%= radio_button_tag(:new, "2", checked = true) %>
 <%else%>
-<%= radio_button_tag(:new, "مستعملة") %>
+<%= radio_button_tag(:new, "2") %>
 <%end%>
- مستوردة
- <%if params[:imported] == "مستوردة"%>
-<%= radio_button_tag(:imported, "مستوردة", checked = true) %>
-<%else%>
-<%= radio_button_tag(:imported, "مستوردة") %>
-<%end%>
- محلية
- <%if params[:imported] == "محلية"%>
-<%= radio_button_tag(:imported, "محلية", checked = true) %>
-<%else%>
-<%= radio_button_tag(:imported, "محلية") %>
-<%end%>
+ 
+
+ 
 <div id="atrrparent">
 <div id="vanwrapper">
 <%=render 'ads/vanform'%>
@@ -90,7 +77,7 @@
 <%= render 'ads/heavyform'%>
 </div>
 </div>
-<div style="text-align:center;margin-top:15px;">
+<div style="float:left;margin-top:50px;">
 <%= submit_tag "بحث", :name => nil,:class => 'submit_button'%>
 </div>
 <%end%>

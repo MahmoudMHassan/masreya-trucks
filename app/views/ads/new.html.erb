@@ -52,12 +52,12 @@
 
 <ul>
 <li>
-العنوان: <%= a.text_field :title, :class => find_errors(@ad, :title)%>
+عنوان الإعلان: <%= a.text_field :title, :class => find_errors(@ad, :title)%>
 </li>
 
 	<%=fields_for :vehicle do |v|%>
 	<li>
-انتاج: <%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
+الماركة: <%= v.select :make,(["Mercedes" , "Man" , "Volvo" , "Chevrolet"]) %>
 </li><li>
 	الموديل: <%= v.select :model,([ "i10" , "w30" , "503"])%>
 </li>
@@ -91,7 +91,7 @@
 	<%end%>
 	<%end%>
 	<li>
-	سنة الانتاج: <%= v.number_field :manyear, :class => find_errors(@vehicle, :manyear)%>
+	سنة الصنع: <%= v.number_field :manyear, :class => find_errors(@vehicle, :manyear)%>
 	</li><li>
 	البلد: <%= v.select :country ,(["Egypt" , "madagascar"])%>
 	</li><li>
@@ -118,11 +118,11 @@
 	<%end%>
 	<%=fields_for :make do |m|%>
 	<li>
-	جديدة: <%= m.check_box :new%>
+	جديدة: <%= m.radio_button :new, "0"%>
 	</li><li>
-	مستوردة: <%= m.check_box :imported%>
+	استيراد: <%= m.radio_button :new,"1"%>
 	</li><li>
-	للبيع: <%= m.check_box :purchase%>
+	مستعملة: <%= m.radio_button :new,"2"%>
 	</li><li>
 	<%end%>
 	الوصف: (اختياري)

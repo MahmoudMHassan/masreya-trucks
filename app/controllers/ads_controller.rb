@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
- before_filter :authorize, :except => [:home, :search,:search_make, :show,:vansearch,:sttsearch]
+ before_filter :authorize, :except => [:home, :advancedsearch,:search,:search_make, :show,:vansearch,:sttsearch]
   def authorize
     if self.current_user != nil
       true
@@ -72,10 +72,11 @@ class AdsController < ApplicationController
   end
   
   def search
-    @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price],params[:capacity],params[:mileage],params[:type],params[:new],params[:imported],params[:purchase])
+    @ads = Ad.search(params[:sort],params[:make],params[:model],params[:manyear],params[:country],params[:axles],params[:gearbox],params[:colour],params[:price_from],params[:price_to],params[:capacity],params[:mileage],params[:type],params[:new])
   end
 
-
+  def advancedsearch
+  end
 
 
   def show
@@ -169,7 +170,7 @@ end
  end
 
  def make_params
-  make_params = params[:make].permit(:new,:imported,:purchase)
+  make_params = params[:make].permit(:new)
   make_params
  end
 

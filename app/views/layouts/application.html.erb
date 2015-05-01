@@ -16,7 +16,7 @@
             <%= image_tag 'truck-green-icon1.png'%>
         <% end %>
         </div>
-
+<%if request.original_fullpath != "/advancedsearch"%>
         <div style="width:1000px;margin-top:0.5%;margin-right:10%;height:0px;z-index:1500">
 
         <button id="searchbutton" style="font-size:20px;color:#000000">
@@ -47,9 +47,14 @@
 
 
         <div id="searchwrapper">
-            <%=render 'ads/searchform'%>
+            <%=render 'ads/simplesearch'%>
+            <div style="float:left;margin-top:-20px;font-size:16px;">
+            <%=link_to "بحث متقدم...", "/advancedsearch"%>
+            </div>
         </div>
+        
         </div>
+        <%end%>
     <%if self.current_user==nil %>
     <div id="headerLeftOut">
     <ul>

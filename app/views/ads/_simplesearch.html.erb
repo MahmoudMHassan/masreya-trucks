@@ -1,0 +1,58 @@
+ 
+<%=form_tag "/search/1", :method => 'get' do%>
+<table>
+<tr>
+<td>الماركة</td>
+
+ <td><%= select_tag(:make, options_for_select([['Mercedes', 'Mercedes'],
+                 ['Man', 'Man'],['Volvo','Volvo'],['Chevrolet','Chevrolet']], params[:make]), :include_blank => true) %></td>
+
+<td>الموديل</td>
+
+<td><%= select_tag(:model, options_for_select([['i10', 'i10'],
+                 ['w30', 'w30'],['503','503']], params[:model]), :include_blank => true)%></td>
+
+<td>سنة الصنع</td>
+<td><%=number_field_tag :manyear,params[:manyear]%></td>
+
+
+</tr>
+<tr>
+
+
+<td>عجلة السرعة</td>
+
+<td><%= select_tag(:gearbox, options_for_select([['Automatic', 1],['Manual', 0]], params[:gearbox]), :include_blank => true) %></td>
+
+<td>السعر من</td>
+<td><%= number_field_tag :price_from, params[:price_from]%></td>
+<td>إلى</td>
+<td><%= number_field_tag :price_to, params[:price_to]%></td>
+
+
+
+
+
+ 
+
+ 
+<div id="atrrparent">
+<td id="vanwrapper">
+<%=render 'ads/vanform'%>
+</td>
+<td id = "sttwrapper">
+<%= render 'ads/sttform'%>
+</td>
+<td id = "semiwrapper">
+<%= render 'ads/semiform'%>
+</td>
+<td id = "heavywrapper">
+<%= render 'ads/heavyform'%>
+</td>
+</div>
+</tr>
+</table>
+<div style="text-align:center;margin-top:15px;">
+<%= submit_tag "بحث", :name => nil,:class => 'submit_button'%>
+</div>
+<%end%>

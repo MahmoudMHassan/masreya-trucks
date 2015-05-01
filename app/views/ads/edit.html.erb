@@ -69,11 +69,11 @@
 	<%end%>
 	<%=fields_for :make do |m|%>
 	<li>
-	جديدة: <%= m.check_box :new%>
+	جديدة: <%= m.radio_button :new, "0"%>
 	</li><li>
-	مستوردة: <%= m.check_box :imported%>
+	استيراد: <%= m.radio_button :new,"1"%>
 	</li><li>
-	للبيع: <%= m.check_box :purchase%>
+	مستعملة: <%= m.radio_button :new,"2"%>
 	</li><li>
 	<%end%>
 	الوصف: (اختياري)
