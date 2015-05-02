@@ -17,10 +17,10 @@
 <li><b><%= t("signup_page.phone")%>: </b><%= @user.phone%></li>
 </ul>
 <%if self.current_user != nil && @user.id == self.current_user.id%>
-<li><%= link_to "/users/edit" do %>
+<li><%= link_to "/users/edit",'data-no-turbolink' => true do %>
 	  <%= image_tag "edit.png", size:"20x20"%>
 	<% end %>
-<%= link_to t("users.edit"), "/users/edit"%></li>
+<%= link_to t("users.edit"), "/users/edit",'data-no-turbolink' => true%></li>
 <li><%= link_to "destroy/#{self.current_user.id}", method: :post,data: {confirm: 'Are you sure?'} do %>
 	  <%= image_tag "delete.png", size:"16x16"%>
 	<% end %>

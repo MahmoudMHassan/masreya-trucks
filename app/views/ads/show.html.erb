@@ -48,13 +48,13 @@
 </table>
 <%else%>
 <%if @van!= nil%>
-<%= image_tag "van.png", size: "150x150"%>
+<%= image_tag "van.svg", size: "150x150"%>
     <%elsif @heavytruck !=nil%>
-    <%= image_tag "heavytruck.png", size: "150x150"%>
+    <%= image_tag "heavytruck.svg", size: "150x150"%>
 	<%elsif @semitrailertruck !=nil%>
-	<%= image_tag "zefttruck.png", size: "150x150"%>
+	<%= image_tag "zefttruck.svg", size: "150x150"%>
 	  <%elsif @semitrailer!=nil%>
-	<%= image_tag "semitrailer.png", size: "150x150"%>
+	<%= image_tag "semitrailer.svg", size: "150x150"%>
 	<%end%>
 	<%end%>
 <ul>
@@ -147,12 +147,12 @@
 <%end%>
 </div>
 <div id ="sellerinfo">
-<li><b><%= t("ad.seller")%>  :</b></li>
-<li><b><%= t("signup_page.phone")%>:</b></li>
+
+<li><b><%= t("ad.phone")%>:</b></li>
 <li><%=@ad.phone%></li>
 
 
-
+<li><b><%= t("ad.seller")%>  :</b></li>
 <li><%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%></li>
 <li>
 <b><%= t("signup_page.phone")%>  : </b>

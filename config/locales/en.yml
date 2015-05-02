@@ -80,6 +80,7 @@ en:
     ad_date: "Created At"
     result: "Result"
     advanced: "Advanced Search"
+    phone: "Ad's phone"
   users:
     edit: "Edit Profile"
     rm: "Delete Account"

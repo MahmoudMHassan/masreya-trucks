@@ -74,6 +74,7 @@ en:
     save: "Save changes"
     map: "Click on the map to change your location"
     info: "Information about the vehicle"
+    phone: "Telefon Fahrzeugs"
   users:
     edit: "Edit Profile"
     rm: "Delete Account"

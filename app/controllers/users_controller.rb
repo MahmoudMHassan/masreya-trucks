@@ -72,15 +72,14 @@ class UsersController < ApplicationController
     @user.save
     if  @user.save
       log_in(@user)
-      
       @seller= Seller.create(user_id: @user.id)
       @seller.save
       redirect_to "/users/#{@user.id}"
     else
       render 'new'
-      
     end
   end
+  
   def logout
     sign_out
   end
