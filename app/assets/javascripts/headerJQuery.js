@@ -28,6 +28,7 @@ $(document).ready(function() {
   var $listButton = $('#listButton');
   var $buttonList = $('#buttonList');
   var $buttonwrapper = $('#buttonwrapper');
+  var $mainImage = $('#mainImage');
   
   
   $(function(){
@@ -272,6 +273,21 @@ $(document).ready(function() {
   $('#sortlist').bind('change', function() {
     window.location.href = $(this).val() 
   });
+  
+  $('.listImage').hover(function() {
+    var bg = $(this).css('background-image');
+    $mainImage.css('background-image',bg);
+    $(this).css('border','2px solid #2D882D');
+  },function() {
+    $(this).css('border','2px solid transparent');
+  });
+  $mainImage.click(function(){
+    //$mainImage.css('width','800px');
+    //$mainImage.css('height','800px');
+    //$mainImage.css('background-size','800px 800px');
+    window.location.href = $(this).css('background-image').replace('url(','').replace(')','');
+  });
+  
 });
 
 

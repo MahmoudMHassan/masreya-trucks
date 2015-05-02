@@ -21,11 +21,6 @@ ActiveRecord::Schema.define(version: 20150429074919) do
     t.string   "email",       limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.string   "image1",      limit: 255
-    t.string   "image2",      limit: 255
-    t.string   "image3",      limit: 255
-    t.string   "image4",      limit: 255
-    t.string   "image",       limit: 255
   end
 
   create_table "authentications", force: :cascade do |t|
@@ -75,9 +70,9 @@ ActiveRecord::Schema.define(version: 20150429074919) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "makes", ["ad_id"], name: "fk_rails_c831402b38", using: :btree
+  add_index "makes", ["ad_id"], name: "fk_rails_185ac1f7c1", using: :btree
   add_index "makes", ["user_id"], name: "user_id", using: :btree
-  add_index "makes", ["vehicle_id"], name: "fk_rails_6d92b16090", using: :btree
+  add_index "makes", ["vehicle_id"], name: "fk_rails_ada3e4498c", using: :btree
 
   create_table "pictures", force: :cascade do |t|
     t.string   "image",      limit: 255
@@ -85,7 +80,6 @@ ActiveRecord::Schema.define(version: 20150429074919) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
-
 
   create_table "sellers", primary_key: "user_id", force: :cascade do |t|
     t.datetime "created_at", null: false

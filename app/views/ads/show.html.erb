@@ -31,11 +31,34 @@
 <div class="fb-share-button" data-href="<%=request.original_url%>" data-layout="button"></div>
 </div>
 </div>
+<div style= "font-size:150%;">
+<%=@ad.title%>
+</div>
+<% unless @pictures.empty? %>
+<div id="mainImage" style="width:500px;height:400px;border: 1px solid #000;background-image:url('<%=@pictures.first.image_url%>');background-size: 500px 400px;cursor: pointer;">
+</div>
+<table style="width:300px;">
+<%@pictures.each do |p| %>
+
+<tr class="listImage" style="display:inline-block;width:50px;height:50px;border: 2px solid transparent;background-image:url('<%=p.image_url%>');background-size: 50px 50px;">
+
+</tr>
+<%end%>
+</table>
+<%else%>
+<%if @van!= nil%>
+ <%= image_tag "van.png", size: "150x150"%>
+    <%elsif @heavytruck !=nil%>
+    <%= image_tag "heavytruck.png", size: "150x150"%>
+        <%elsif @semitrailertruck !=nil%>
+        <%= image_tag "zefttruck.png", size: "150x150"%>
+          <%elsif @semitrailer!=nil%>
+         <%= image_tag "semitrailer.png", size: "150x150"%>
+	<%end%>
+	<%end%>
 <ul>
 <div id="showadwrapper">
-<div style= "font-size:150%;">
-<li><%=@ad.title%></li>
-</div>
+
 
 <li><b><%= t("ad.type")%>:</b>
 
@@ -44,11 +67,7 @@
 <%elsif @heavytruck !=nil%>
 <%= t("header.heavy_truck")%>
 <%elsif @semitrailer !=nil%>
-<<<<<<< HEAD
  <%= t("header.semi_trailer")%>
-=======
- شبه مقطورة
->>>>>>> master
 <%elsif @semitrailertruck !=nil%>
  <%= t("header.semi_trailer_truck")%>
 <%end%>
@@ -145,21 +164,7 @@
 </li>
 
 
-<% unless @pictures.empty? %>
-<%@pictures.each do |p| %>
-<%= image_tag p.image_url, size: "250x250" %>
-<%end%>
-<%else%>
-<%if @van!= nil%>
- <%= image_tag "van.png", size: "150x150"%>
-    <%elsif @heavytruck !=nil%>
-    <%= image_tag "heavytruck.png", size: "150x150"%>
-        <%elsif @semitrailertruck !=nil%>
-        <%= image_tag "zefttruck.png", size: "150x150"%>
-          <%elsif @semitrailer!=nil%>
-         <%= image_tag "semitrailer.png", size: "150x150"%>
-	<%end%>
-	<%end%>
+</ul>
 
 </div>
 
