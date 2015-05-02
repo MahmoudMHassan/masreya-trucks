@@ -129,7 +129,7 @@ class AdsController < ApplicationController
     @semitrailer = Semitrailer.find_by_vehicle_id(@vehicle.id)
     @semitrailertruck = Semitrailertruck.find_by_vehicle_id(@vehicle.id)
     @heavytruck = Heavytruck.find_by_vehicle_id(@vehicle.id)
-    @pictures = Picture.find(@ad.id)
+    @pictures = @ad.pictures
   end
   
   def update
@@ -161,10 +161,11 @@ class AdsController < ApplicationController
       if @ad.save
 	if @ad.update(ad_params)
 	  
-	  Picture.where(:ad_id => @ad.id).destroy_all
+	  
 	  
 	  
 	  unless params[:pictures].nil?
+	    Picture.where(:ad_id => @ad.id).destroy_all
 	    params[:pictures]['image'].each do |k|
 	      @picture = @ad.pictures.create!(:image => k, :ad_id => @ad.id)
 	    end

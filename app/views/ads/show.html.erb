@@ -31,11 +31,35 @@
 <div class="fb-share-button" data-href="<%=request.original_url%>" data-layout="button"></div>
 </div>
 </div>
+<div style= "font-size:150%;">
+<%=@ad.title%>
+</div>
+<% unless @pictures.empty? %>
+<!--mainImage holds the larger image and listImage is the smaller ones in a table  -->
+<div id="mainImage" style="width:500px;height:400px;border: 1px solid #000;background-image:url('<%=@pictures.first.image_url%>');background-size: 500px 400px;cursor: pointer;">
+</div>
+<table style="width:300px;">
+<%@pictures.each do |p| %>
+
+<tr class="listImage" style="display:inline-block;width:50px;height:50px;border: 2px solid transparent;background-image:url('<%=p.image.thumb.url%>');background-size: 50px 50px;">
+
+</tr>
+<%end%>
+</table>
+<%else%>
+<%if @van!= nil%>
+<%= image_tag "van.svg", size: "150x150"%>
+    <%elsif @heavytruck !=nil%>
+    <%= image_tag "heavytruck.svg", size: "150x150"%>
+	<%elsif @semitrailertruck !=nil%>
+	<%= image_tag "semitruck.svg", size: "150x150"%>
+	  <%elsif @semitrailer!=nil%>
+	<%= image_tag "semitrailer.svg", size: "150x150"%>
+	<%end%>
+	<%end%>
 <ul>
 <div id="showadwrapper">
-<div style= "font-size:150%;">
-<li><%=@ad.title%></li>
-</div>
+
 
 <li><b><%= t("ad.type")%>:</b>
 
@@ -44,9 +68,9 @@
 <%elsif @heavytruck !=nil%>
 <%= t("header.heavy_truck")%>
 <%elsif @semitrailer !=nil%>
- <%= t("header.semi_trailer")%>
+<%= t("header.semi_trailer")%>
 <%elsif @semitrailertruck !=nil%>
- <%= t("header.semi_trailer_truck")%>
+<%= t("header.semi_trailer_truck")%>
 <%end%>
 </li>
 <li>
@@ -123,39 +147,25 @@
 <%end%>
 </div>
 <div id ="sellerinfo">
-<li><b><%= t("ad.seller")%>  :</b></li>
-<li><b><%= t("signup_page.phone")%>:</b></li>
+<%if @ad.phone != ""%>
+<li><b><%= t("ad.phone")%>:</b></li>
 <li><%=@ad.phone%></li>
+<%end%>
 
-
-
+<li><b><%= t("ad.seller")%>  :</b></li>
 <li><%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%></li>
 <li>
- <b><%= t("signup_page.phone")%>  : </b>
+<b><%= t("signup_page.phone")%>  : </b>
 </li><li>
 <%=@seller.phone%>
 </li><li>
- <b><%= t("signup_page.email")%>  : </b>
+<b><%= t("signup_page.email")%>  : </b>
 </li><li>
 <%=@seller.email%>
 </li>
 
 
-<% unless @pictures.empty? %>
-<%@pictures.each do |p| %>
-<%= image_tag p.image_url, size: "250x250" %>
-<%end%>
-<%else%>
-<%if @van!= nil%>
- <%= image_tag "van.png", size: "150x150"%>
-    <%elsif @heavytruck !=nil%>
-    <%= image_tag "heavytruck.png", size: "150x150"%>
-        <%elsif @semitrailertruck !=nil%>
-        <%= image_tag "zefttruck.png", size: "150x150"%>
-          <%elsif @semitrailer!=nil%>
-         <%= image_tag "semitrailer.png", size: "150x150"%>
-	<%end%>
-	<%end%>
+</ul>
 
 </div>
 

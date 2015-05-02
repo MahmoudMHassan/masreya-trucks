@@ -13,7 +13,7 @@
 <li><b><%= t("signup_page.name")%>: </b><%= @user.fname%></li>
 <li><b> <%= t("signup_page.surname")%>: </b><%= @user.lname%></li>
 <li><b><%= t("signup_page.email")%>: </b><%= @user.email%></li>
-<li><b><%= t("ad.manu")%>: </b><%= @user.country%></li>
+<li><b><%= t("signup_page.country")%>: </b><%= @user.country%></li>
 <li><b><%= t("signup_page.phone")%>: </b><%= @user.phone%></li>
 </ul>
 <%if self.current_user != nil && @user.id == self.current_user.id%>
@@ -28,7 +28,7 @@
 <%end%>
 
 
-<%= link_to( "اعلانات البائع", :controller => "users", :action => "index", :id => @user.id)%>
+<%= link_to( t("users.ads"), :controller => "users", :action => "index", :id => @user.id)%>
 </div>
 <%if @companyseller != nil and @companyseller.lat != nil%>
 <div id="map" style='width: 50%; height: 400px;border:1px solid #000;float:left;'>

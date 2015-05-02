@@ -8,13 +8,17 @@
     <p><%= t("signup_page.email")%>
     <%if @email==""%><span style = "color: red;"> * </span><%end%> </p>
     <%= f.email_field :email, :value => self.current_user.email%>
+    <p><%=t("signup_page.password")%><%if @password==""%><span style = "color: red;"> * </span><%end%></p>
+    <%= f.password_field :password%>
+     <p><%=t("signup_page.password_confirmation")%><%if @password==""%><span style = "color: red;"> * </span><%end%></p>
+     <%= f.password_field :password_confirmation%>
     <p><%= t("signup_page.name")%>
     <%if @fname==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :fname, :value => self.current_user.fname %>
     <p><%= t("signup_page.surname")%>
     <%if @lname==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :lname, :value => self.current_user.lname%>
-     <p><%= t("ad.manu")%>
+     <p><%= t("signup_page.country")%>
      <%if @country==""%><span style = "color: red;"> * </span><%end%></p>
     <%= f.text_field :country,:value => self.current_user.country %>
     <p><%= t("signup_page.phone")%>
@@ -71,6 +75,7 @@
 	document.getElementById("map_lat").value = event.latLng.lat();
 	document.getElementById("map_lng").value = event.latLng.lng();
 	});
+
 	</script>
   </div>
   </div>
