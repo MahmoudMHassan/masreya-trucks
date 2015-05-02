@@ -59,8 +59,7 @@
    <li>
 <%= a.fields_for :pictures do |p| %>
      <div class="field">
-       اختر الصور: 
-       <%= p.file_field :image, :multiple => true, name: "pictures[image][]" %>
+<%= t("ad.choose_photo")%>: <%= p.file_field :image, :multiple => true, name: "pictures[image][]" %>
      </div>
    <% end %>
    </li>
@@ -140,7 +139,7 @@
 	</li>
 	<%end%>
 	
-	<li><b>تليفون بديل:</b></li>
+	<b><%= t("ad.phone")%>:</b></li>
 	<li><%=a.number_field :phone%></li>
 	<li>
 

@@ -75,6 +75,8 @@ en:
     map: "Click on the map to change your location"
     info: "Information about the vehicle"
     phone: "Telefon Fahrzeugs"
+    choose_photo: "Wählen Sie Fotos"
   users:
     edit: "Edit Profile"
     rm: "Delete Account"
+    ads: "Anzeigen des Verkäufers"

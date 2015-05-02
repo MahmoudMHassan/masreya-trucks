@@ -81,6 +81,8 @@ fr:
     result: "Résultat"
     advanced: "Recherche Avancée"
     phone: "Le téléphone de l'annonce"
+    choose_photo: "Choisir des photos"
   users:
     edit: "Modifier Le Profil"
     rm: "Effacer Le Compte"
+    ads: "Les annonces du vendeur"

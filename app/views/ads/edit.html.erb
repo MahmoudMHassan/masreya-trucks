@@ -9,8 +9,7 @@
    <li>
 <%= a.fields_for :pictures do |p| %>
      <div class="field">
-       اختر الصور: 
-       <%= p.file_field :image, :multiple => true, name: "pictures[image][]" %>
+<%= t("ad.choose_photo")%>: <%= p.file_field :image, :multiple => true, name: "pictures[image][]" %>
      </div>
    <% end %>
    </li>
@@ -89,10 +88,12 @@
 
 	<%= t("ad.used")%>: <%= m.radio_button :new,"2"%>
 	</li><li>
-	
-	<%= t("ad.description")%> :
-	 <%= t("ad.rent") %>: <%=m.check_box :sale%>
+	<%= t("ad.rent") %>: <%=m.check_box :sale%>
+	</li>
 	<%end%>
+	<b><%= t("ad.phone")%>:</b></li>
+	<li><%=a.number_field :phone%></li>
+	<li><%= t("ad.description")%> :
 	</li><li>
 	<%= a.text_area :description, size: "100x20"%>
 

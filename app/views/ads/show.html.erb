@@ -147,10 +147,10 @@
 <%end%>
 </div>
 <div id ="sellerinfo">
-
+<%if @ad.phone != ""%>
 <li><b><%= t("ad.phone")%>:</b></li>
 <li><%=@ad.phone%></li>
-
+<%end%>
 
 <li><b><%= t("ad.seller")%>  :</b></li>
 <li><%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%></li>

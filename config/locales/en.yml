@@ -81,6 +81,8 @@ en:
     result: "Result"
     advanced: "Advanced Search"
     phone: "Ad's phone"
+    choose_photo: "Choose photos"
   users:
     edit: "Edit Profile"
     rm: "Delete Account"
+    ads: "Seller's Ads"
