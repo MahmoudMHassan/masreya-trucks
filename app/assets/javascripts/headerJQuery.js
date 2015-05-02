@@ -274,10 +274,11 @@ $(document).ready(function() {
     window.location.href = $(this).val() 
   });
   //when hover over one of the listImages change background-image of mainImage
+  //to bigger version (not thumbnail) of background-image of listImage
   //and add colour to its border
   //remove colour when hovering out
   $('.listImage').hover(function() {
-    var bg = $(this).css('background-image');
+    var bg = $(this).css('background-image').replace('thumb_','');
     $mainImage.css('background-image',bg);
     $(this).css('border','2px solid #2D882D');
   },function() {

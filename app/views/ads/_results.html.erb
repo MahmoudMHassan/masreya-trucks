@@ -47,7 +47,7 @@
 <% unless a.ad.pictures.empty? %>
 <%a.ad.pictures.each_with_index do |p, index|%>
 <% if index==0 %>
-<%= image_tag p.image_url,size:"150x150" %> 
+<%= image_tag p.image.medium.url,size:"150x150" %> 
 <% end %>
 <%end%>
 <%else%>

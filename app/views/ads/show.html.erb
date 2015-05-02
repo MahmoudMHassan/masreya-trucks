@@ -41,7 +41,7 @@
 <table style="width:300px;">
 <%@pictures.each do |p| %>
 
-<tr class="listImage" style="display:inline-block;width:50px;height:50px;border: 2px solid transparent;background-image:url('<%=p.image_url%>');background-size: 50px 50px;">
+<tr class="listImage" style="display:inline-block;width:50px;height:50px;border: 2px solid transparent;background-image:url('<%=p.image.thumb.url%>');background-size: 50px 50px;">
 
 </tr>
 <%end%>
