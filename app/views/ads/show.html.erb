@@ -35,6 +35,7 @@
 <%=@ad.title%>
 </div>
 <% unless @pictures.empty? %>
+<!--mainImage holds the larger image and listImage is the smaller ones in a table  -->
 <div id="mainImage" style="width:500px;height:400px;border: 1px solid #000;background-image:url('<%=@pictures.first.image_url%>');background-size: 500px 400px;cursor: pointer;">
 </div>
 <table style="width:300px;">
@@ -47,13 +48,13 @@
 </table>
 <%else%>
 <%if @van!= nil%>
- <%= image_tag "van.png", size: "150x150"%>
+<%= image_tag "van.png", size: "150x150"%>
     <%elsif @heavytruck !=nil%>
     <%= image_tag "heavytruck.png", size: "150x150"%>
-        <%elsif @semitrailertruck !=nil%>
-        <%= image_tag "zefttruck.png", size: "150x150"%>
-          <%elsif @semitrailer!=nil%>
-         <%= image_tag "semitrailer.png", size: "150x150"%>
+	<%elsif @semitrailertruck !=nil%>
+	<%= image_tag "zefttruck.png", size: "150x150"%>
+	  <%elsif @semitrailer!=nil%>
+	<%= image_tag "semitrailer.png", size: "150x150"%>
 	<%end%>
 	<%end%>
 <ul>
@@ -67,9 +68,9 @@
 <%elsif @heavytruck !=nil%>
 <%= t("header.heavy_truck")%>
 <%elsif @semitrailer !=nil%>
- <%= t("header.semi_trailer")%>
+<%= t("header.semi_trailer")%>
 <%elsif @semitrailertruck !=nil%>
- <%= t("header.semi_trailer_truck")%>
+<%= t("header.semi_trailer_truck")%>
 <%end%>
 </li>
 <li>
@@ -154,11 +155,11 @@
 
 <li><%=link_to "#{@seller.fname} #{@seller.lname}", "/users/#{@seller.id}"%></li>
 <li>
- <b><%= t("signup_page.phone")%>  : </b>
+<b><%= t("signup_page.phone")%>  : </b>
 </li><li>
 <%=@seller.phone%>
 </li><li>
- <b><%= t("signup_page.email")%>  : </b>
+<b><%= t("signup_page.email")%>  : </b>
 </li><li>
 <%=@seller.email%>
 </li>

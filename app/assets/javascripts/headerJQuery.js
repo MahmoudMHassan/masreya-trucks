@@ -273,7 +273,9 @@ $(document).ready(function() {
   $('#sortlist').bind('change', function() {
     window.location.href = $(this).val() 
   });
-  
+  //when hover over one of the listImages change background-image of mainImage
+  //and add colour to its border
+  //remove colour when hovering out
   $('.listImage').hover(function() {
     var bg = $(this).css('background-image');
     $mainImage.css('background-image',bg);
@@ -281,11 +283,12 @@ $(document).ready(function() {
   },function() {
     $(this).css('border','2px solid transparent');
   });
+  //when clicking on mainImage open it in a new tab
   $mainImage.click(function(){
     //$mainImage.css('width','800px');
     //$mainImage.css('height','800px');
     //$mainImage.css('background-size','800px 800px');
-    window.location.href = $(this).css('background-image').replace('url(','').replace(')','');
+    window.open($(this).css('background-image').replace('url(','').replace(')',''));
   });
   
 });
