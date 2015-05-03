@@ -75,13 +75,13 @@ Rails.application.routes.draw do
 
     get 'sessions/destroy'
 
-    get 'users/bookmark/:id' => 'users#bookmark'
+    get 'users/bookmark/:page' => 'users#bookmark'
     get 'users/new'
     post 'users/new'=> 'users#create'
     get 'users/signin'
     get 'users/show'
     get 'users/edit'
-    get 'users/index/:id' => 'users#index'
+    get 'users/index/:id/:page' => 'users#index'
     get 'users/:id' => 'users#show'
     get 'users/changetoseller/:id' => 'users#changetoseller'
     #get 'makes/new'

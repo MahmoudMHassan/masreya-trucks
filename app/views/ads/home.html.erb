@@ -2,23 +2,27 @@
 <%@ads.each do |a|%>
 <div class = "post_wrapper">
 <div style="float:right;width:200px;">
-
 <% unless a.ad.pictures.empty? %>
 <%a.ad.pictures.each_with_index do |p, index|%>
 <% if index==0 %>
-<%= image_tag p.image.medium.url,size:"150x150" %> 
+<%= link_to("/ads/#{a.ad.id}") do %>
+  <%= image_tag p.image.medium.url,size:"150x150" %> 
+<% end %>
+
 <% end %>
 <%end%>
 <%else%>
-<%if a.vehicle.van!= nil%>
- <%= image_tag "van.svg", size: "150x150"%>
+  <%= link_to("/ads/#{a.ad.id}") do %>
+    <%if a.vehicle.van!= nil%>
+      <%= image_tag "van.svg", size: "150x150"%>
     <%elsif a.vehicle.heavytruck !=nil%>
-    <%= image_tag "heavytruck.svg", size: "150x150"%>
-        <%elsif a.vehicle.semitrailertruck !=nil%>
-        <%= image_tag "semitruck.svg", size: "150x150"%>
-          <%elsif a.vehicle.semitrailer!=nil%>
-         <%= image_tag "semitrailer.svg", size: "150x150"%>
-	<%end%>
+      <%= image_tag "heavytruck.svg", size: "150x150"%>
+    <%elsif a.vehicle.semitrailertruck !=nil%>
+      <%= image_tag "semitruck.svg", size: "150x150"%>
+    <%elsif a.vehicle.semitrailer!=nil%>
+      <%= image_tag "semitrailer.svg", size: "150x150"%>
+    <%end%>
+  <% end %>
 <%end%>
 </div>
 <div style="float:center;">

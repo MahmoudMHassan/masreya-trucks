@@ -1,30 +1,38 @@
 <div id ="adwrapper">
-<%@ads.each do |a|%>
+<%adscount = @ads.count%>
+<br>
+ <%=adscount%> <%= t("ad.result")%> <br>
+<% pageads = @ads.limit(10).offset((params[:page].to_i-1)*10)%>
+<%pageads.each do |a|%>
 <div class = "post_wrapper">
 <div style="float:right;width:200px;">
 <% unless a.ad.pictures.empty? %>
 <%a.ad.pictures.each_with_index do |p, index|%>
 <% if index==0 %>
-<%= image_tag p.image_url,size:"150x150" %> 
+<%= link_to("/ads/#{a.ad.id}") do %>
+  <%= image_tag p.image.medium.url,size:"150x150" %> 
+<% end %>
+
 <% end %>
 <%end%>
 <%else%>
-<%if a.vehicle.van!= nil%>
- <%= image_tag "van.png", size: "150x150"%>
+  <%= link_to("/ads/#{a.ad.id}") do %>
+    <%if a.vehicle.van!= nil%>
+      <%= image_tag "van.svg", size: "150x150"%>
     <%elsif a.vehicle.heavytruck !=nil%>
-    <%= image_tag "heavytruck.png", size: "150x150"%>
-        <%elsif a.vehicle.semitrailertruck !=nil%>
-        <%= image_tag "zefttruck.png", size: "150x150"%>
-          <%elsif a.vehicle.semitrailer!=nil%>
-         <%= image_tag "semitrailer.png", size: "150x150"%>
-	<%end%>
-	<%end%>
+      <%= image_tag "heavytruck.svg", size: "150x150"%>
+    <%elsif a.vehicle.semitrailertruck !=nil%>
+      <%= image_tag "semitruck.svg", size: "150x150"%>
+    <%elsif a.vehicle.semitrailer!=nil%>
+      <%= image_tag "semitrailer.svg", size: "150x150"%>
+    <%end%>
+  <% end %>
+<%end%>
 </div>
 <div style="float:center;">
 <%=link_to a.ad.title, "/ads/#{a.ad.id}"%><br>
 <%= a.vehicle.make%> | <%=a.vehicle.model%><br>
 <%= t("ad.price")%>:<%= number_with_delimiter(a.vehicle.price, :delimiter => ',')%>
-<br>
 <%= t("ad.man_year")%>: <%= a.vehicle.manyear%>
 <br>
 <%if a.ad.description.length > 300%>
@@ -34,6 +42,38 @@
 <%end%>
 </div>
 </div>
+<%end%>
+<% path = request.original_fullpath%>
+<%if adscount > 10 %>
+<%if params[:page] != "1"%>
+<%=link_to "↠", "/users/bookmark/1", {:style => 'color:black;'}%>
+<%=link_to "→", "/users/bookmark/#{params[:page].to_i-1}", {:style => 'color:black;'}%>
+
+<%end%>
+<%i=1%>
+<%count = 4%>
+<%until i > 8%>
+<%if (params[:page].to_i)+i-count > 0%>
+<%if adscount>((params[:page].to_i)+i-count-1)*10%>
+<%if i == count %>
+<%=link_to "#{(params[:page].to_i)+i-count}","/users/bookmark/#{params[:page].to_i+i-count}", {:style => 'color:black;'}%>
+<%else%>
+<%=link_to "#{(params[:page].to_i)+i-count}","/users/bookmark/#{params[:page].to_i+i-count}"%>
+<%end%>
+<%end%>
+<%else%>
+<%count = count - 1%>
+<%i = i - 1%>
+<%end%>
+<%i+=1%>
+<%end%>
+<!--<%if ((params[:page].to_i)+i-count-1) < (adscount / 10.0).ceil %>
+
+<%end%>-->
+<%if (adscount > ((params[:page].to_i))*10)%>
+<%=link_to "←", "/users/bookmark/#{params[:page].to_i+1}", {:style => 'color:black;'}%>
+<%=link_to "↞", "/users/bookmark/#{(adscount / 10.0).ceil}", {:style => 'color:black;'}%>
+<%end%>
 <%end%>
 
 </div>

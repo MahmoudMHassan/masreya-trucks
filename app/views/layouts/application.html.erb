@@ -82,7 +82,7 @@
         </tr>
         <tr>
         <td>
-            <%=button_to t("header.bookmarks") ,"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
+            <%=button_to t("header.bookmarks") ,"/users/bookmark/1",id: "garagebutton", class: "listButtons", method: :get%>
         </td><td>
             <%=button_to t("header.logout") ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>
         </td></tr>
@@ -99,7 +99,7 @@
         <%=button_to t("header.place_ad") ,"/ads/new",id: "createAdbutton", class: "listButtons", method: :get%>
         </li>
         <li>
-        <%=button_to t("header.bookmarks"),"/users/bookmark/#{self.current_user.id}",id: "garagebutton", class: "listButtons", method: :get%>
+        <%=button_to t("header.bookmarks"),"/users/bookmark/1",id: "garagebutton", class: "listButtons", method: :get%>
         </li>
         <li>
         <%=button_to t("header.logout") ,"/users/logout",id: "logoutbutton", class: "listButtons", method: :post%>

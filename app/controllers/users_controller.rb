@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @ads= Make.where('user_id = ?', params[:id])
+    @ads = Make.where('user_id = ?', params[:id])
   end
   
   def show
